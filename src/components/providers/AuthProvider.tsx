@@ -31,37 +31,25 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       setProfile(data as unknown as UserProfile)
     }
 
-    async function initAuth() {
-      console.log('[Auth] initializing...')
-      try {
-        const { data: { session }, error } = await supabase.auth.getSession()
-        if (error) console.error('[Auth] getSession error:', error.message)
-        console.log('[Auth] initial session:', session ? `uid=${session.user.id}` : 'null')
-
-        setUser(session?.user ?? null)
-        if (session?.user) await fetchProfile(session.user.id)
-      } catch (err) {
-        console.error('[Auth] unexpected error in initAuth:', err)
-      } finally {
-        setLoading(false)
-        console.log('[Auth] loading = false')
-      }
-    }
-
-    initAuth()
-
-    // Handle sign-in / sign-out / token refresh AFTER the initial load
+    // Use onAuthStateChange exclusively — it fires INITIAL_SESSION synchronously
+    // from cookie storage without any network call, avoiding hangs.
     const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
-      // INITIAL_SESSION is already handled by initAuth above — skip to avoid double fetch
-      if (event === 'INITIAL_SESSION') return
-
-      console.log('[Auth] state change:', event, session ? `uid=${session.user.id}` : 'null')
+      console.log('[Auth] event:', event, session ? `uid=${session.user.id}` : 'null')
       setUser(session?.user ?? null)
 
-      if (session?.user) {
-        await fetchProfile(session.user.id)
-      } else {
-        setProfile(null)
+      try {
+        if (session?.user) {
+          await fetchProfile(session.user.id)
+        } else {
+          setProfile(null)
+        }
+      } catch (err) {
+        console.error('[Auth] unexpected error:', err)
+      } finally {
+        if (event === 'INITIAL_SESSION') {
+          setLoading(false)
+          console.log('[Auth] loading = false')
+        }
       }
     })
 

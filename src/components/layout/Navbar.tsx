@@ -22,10 +22,11 @@ export function Navbar() {
   const tier  = profile ? getEloTier(profile.elo) : null
   const color = tier ? ELO_TIER_COLORS[tier] : '#6b7280'
 
-  async function handleSignOut() {
+  function handleSignOut() {
     const supabase = createClient()
-    await supabase.auth.signOut()
+    supabase.auth.signOut() // fire-and-forget — don't await, redirect immediately
     router.push('/')
+    router.refresh()
   }
 
   return (
@@ -66,22 +67,18 @@ export function Navbar() {
 
         {/* Auth / profile */}
         <div className="flex items-center gap-2">
-          {user ? (
+          {user && profile ? (
             <>
-              {/* ELO badge — only when profile loaded */}
-              {profile && (
-                <div className="hidden sm:flex items-center gap-2 px-3 py-1 rounded-lg bg-void-800 border border-white/10">
-                  <div className="w-2 h-2 rounded-full" style={{ background: color, boxShadow: `0 0 6px ${color}` }} />
-                  <span className="text-xs font-mono font-bold" style={{ color }}>
-                    {formatElo(profile.elo)}
-                  </span>
-                </div>
-              )}
+              {/* ELO badge */}
+              <div className="hidden sm:flex items-center gap-2 px-3 py-1 rounded-lg bg-void-800 border border-white/10">
+                <div className="w-2 h-2 rounded-full" style={{ background: color, boxShadow: `0 0 6px ${color}` }} />
+                <span className="text-xs font-mono font-bold" style={{ color }}>
+                  {formatElo(profile.elo)}
+                </span>
+              </div>
 
-              {/* Username or fallback email */}
-              <span className="text-sm text-white/70 hidden sm:block">
-                {profile?.username ?? user.email?.split('@')[0] ?? '…'}
-              </span>
+              {/* Username */}
+              <span className="text-sm text-white/70 hidden sm:block">{profile.username}</span>
 
               <button
                 onClick={handleSignOut}
