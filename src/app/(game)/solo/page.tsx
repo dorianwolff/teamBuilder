@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Swords, Bot, Trophy, ChevronRight, RotateCcw, Info } from 'lucide-react'
+import toast from 'react-hot-toast'
 import { createClient } from '@/lib/supabase/client'
 import { useAuth } from '@/hooks/useAuth'
 import { PlayingCard, FaceDownCard } from '@/components/game/PlayingCard'
@@ -73,7 +74,12 @@ export default function SoloPage() {
       .eq('verse', verse)
 
     if (error || !data || data.length < 10) {
-      alert('Could not load characters. Run `npm run seed` first.')
+      toast.error(
+        data && data.length > 0
+          ? `Only ${data.length} characters found for this verse — need at least 10.`
+          : 'No characters found. The database needs to be seeded.',
+        { duration: 6000 }
+      )
       setLoadingGame(false)
       return
     }
