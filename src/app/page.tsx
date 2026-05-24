@@ -43,7 +43,7 @@ export default function HomePage() {
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
           <Link
-            href="/register"
+            href="/lobby"
             className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-gradient-to-r from-gold-600 to-gold-400 text-void-950 font-bold text-base hover:from-gold-500 hover:to-gold-300 transition-all shadow-gold-glow hover:shadow-gold-glow active:scale-[0.98]"
           >
             Play Now
