@@ -13,8 +13,8 @@ interface CardHandProps {
   disabled?: boolean
 }
 
-const CARD_OVERLAP: Record<string, number> = { sm: 40, md: 52, lg: 64 }
-const CARD_WIDTH:   Record<string, number> = { sm: 100, md: 140, lg: 180 }
+const CARD_OVERLAP: Record<string, number> = { sm: 45, md: 60, lg: 75 }
+const CARD_WIDTH:   Record<string, number> = { sm: 110, md: 150, lg: 190 }
 const MAX_ROTATION = 12   // degrees max tilt at edges
 const MAX_LIFT     = 16   // px vertical drop at edges
 

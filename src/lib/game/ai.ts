@@ -8,58 +8,36 @@ export const AI_ID = 'ai'
 export const AI_NAME = 'TeamBuilder AI'
 
 /**
- * AI picks a slot from the draft pool.
- * Returns the chosen slot position.
+ * AI picks a slot from the current round's pair only.
+ * Each round owns exactly one pair: positions (round-1)*2 and (round-1)*2+1.
+ * Picking from other rounds' pairs caused the same character to appear twice.
  */
 export function aiDraftPick(
   pool: DraftPoolSlot[],
   difficulty: AiDifficulty,
+  currentRound: number,
 ): number {
-  // Collect available pairs (both slots unpicked)
-  const availablePairs: [DraftPoolSlot, DraftPoolSlot][] = []
-  for (let i = 0; i < pool.length; i += 2) {
-    if (!pool[i].is_picked && !pool[i + 1].is_picked) {
-      availablePairs.push([pool[i], pool[i + 1]])
-    }
-  }
+  const pairStart = (currentRound - 1) * 2
+  const slotA = pool[pairStart]
+  const slotB = pool[pairStart + 1]
 
-  if (availablePairs.length === 0) return 0
+  if (!slotA || !slotB) return pairStart
 
   if (difficulty === 'easy') {
-    const pair = availablePairs[Math.floor(Math.random() * availablePairs.length)]
-    return pair[Math.random() < 0.5 ? 0 : 1].position
+    return Math.random() < 0.5 ? slotA.position : slotB.position
   }
 
-  // Normal + Hard: pick the highest-power visible character from any available pair
-  let bestPosition = availablePairs[0][0].position
-  let bestPower = -1
+  // Normal + Hard: prefer the visible card with higher power
+  const aVisible = !slotA.is_masked && slotA.character
+  const bVisible = !slotB.is_masked && slotB.character
 
-  for (const [slotA, slotB] of availablePairs) {
-    // Evaluate slot A
-    if (!slotA.is_masked && slotA.character) {
-      if (slotA.character.power_level > bestPower) {
-        bestPower = slotA.character.power_level
-        bestPosition = slotA.position
-      }
-    } else if (slotA.is_masked) {
-      // Masked: assume average power — prefer known card unless nothing better found
-      const maskedEstimate = 2_000_000
-      if (maskedEstimate > bestPower && bestPower < 0) {
-        bestPosition = slotA.position
-      }
-    }
-    // Evaluate slot B
-    if (!slotB.is_masked && slotB.character) {
-      if (slotB.character.power_level > bestPower) {
-        bestPower = slotB.character.power_level
-        bestPosition = slotB.position
-      }
-    } else if (slotB.is_masked && bestPower < 0) {
-      bestPosition = slotB.position
-    }
+  if (aVisible && bVisible) {
+    return slotA.character!.power_level >= slotB.character!.power_level
+      ? slotA.position : slotB.position
   }
-
-  return bestPosition
+  if (aVisible) return slotA.position  // take the known card
+  if (bVisible) return slotB.position
+  return Math.random() < 0.5 ? slotA.position : slotB.position  // both masked → random
 }
 
 /**

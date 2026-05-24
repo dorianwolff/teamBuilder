@@ -35,10 +35,21 @@ const VERSE_COLORS: Record<string, { border: string; accent: string; glow: strin
   hxh:       { border: 'border-emerald-500/40',accent: 'text-emerald-400',glow: 'shadow-[0_0_20px_rgba(52,211,153,0.3)]', label: 'HxH' },
 }
 
+// Card layout: [header: name + subtitle] [image] [footer: power]
+// Heights must sum to h exactly.
 const SIZES = {
-  sm:  { w: 100, h: 140, img: 96,  name: 'text-[10px]', sub: 'text-[8px]',  power: 'text-[9px]'  },
-  md:  { w: 140, h: 196, img: 140, name: 'text-xs',     sub: 'text-[10px]', power: 'text-[11px]' },
-  lg:  { w: 180, h: 252, img: 184, name: 'text-sm',     sub: 'text-xs',     power: 'text-sm'     },
+  sm: { w: 110, h: 154, headerH: 38, imgH: 92,  footerH: 24,
+        nameSize:  'text-[11px] font-black leading-tight',
+        subSize:   'text-[8px]',
+        powerSize: 'text-[12px] font-black tracking-tight' },
+  md: { w: 150, h: 210, headerH: 52, imgH: 122, footerH: 36,
+        nameSize:  'text-[14px] font-black leading-tight',
+        subSize:   'text-[10px]',
+        powerSize: 'text-[16px] font-black tracking-tight' },
+  lg: { w: 190, h: 266, headerH: 64, imgH: 158, footerH: 44,
+        nameSize:  'text-[18px] font-black leading-tight',
+        subSize:   'text-[11px]',
+        powerSize: 'text-[20px] font-black tracking-tight' },
 }
 
 interface PlayingCardProps {
@@ -77,7 +88,7 @@ export function PlayingCard({
       onClick={() => selectable && !used && onSelect?.(character)}
       style={{ width: dims.w, height: dims.h, ...style }}
       className={cn(
-        'relative flex flex-col overflow-hidden rounded-xl border bg-void-800',
+        'relative flex flex-col overflow-hidden rounded-xl border bg-void-900',
         'transition-all duration-200 select-none',
         verse.border,
         selectable && !used && 'cursor-pointer',
@@ -89,16 +100,30 @@ export function PlayingCard({
       )}
     >
       {faceDown ? (
-        // Face-down / masked card back
         <div className="flex-1 flex items-center justify-center bg-gradient-to-br from-void-700 to-void-900">
           <div className="w-3/4 h-3/4 rounded-lg border border-white/10 bg-void-800/50 flex items-center justify-center">
-            <span className="text-white/10 text-2xl font-bold">?</span>
+            <span className="text-white/10 font-bold" style={{ fontSize: dims.footerH * 0.8 }}>?</span>
           </div>
         </div>
       ) : (
         <>
-          {/* Art */}
-          <div className="relative overflow-hidden" style={{ height: dims.img }}>
+          {/* ── Header: name + verse·arc ── */}
+          <div
+            className="flex flex-col justify-center px-2 shrink-0 bg-void-900 border-b border-white/5"
+            style={{ height: dims.headerH }}
+          >
+            <p className={cn('text-white truncate', dims.nameSize)}>
+              {locked ? '???' : character.name}
+            </p>
+            {!locked && (
+              <p className={cn('text-white/40 truncate', dims.subSize)}>
+                {verse.label} · {character.arc_version}
+              </p>
+            )}
+          </div>
+
+          {/* ── Image ── */}
+          <div className="relative overflow-hidden shrink-0" style={{ height: dims.imgH }}>
             <Image
               src={imgSrc}
               alt={character.name}
@@ -109,15 +134,6 @@ export function PlayingCard({
               loading="lazy"
               onError={imgOnError}
             />
-            {/* Bottom gradient */}
-            <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-void-900/95 to-transparent pointer-events-none" />
-
-            {/* Verse pip — top-left */}
-            <div className={cn('absolute top-1.5 left-1.5 text-[8px] font-black uppercase tracking-wider', verse.accent)}>
-              {verse.label}
-            </div>
-
-            {/* Locked overlay */}
             {locked && (
               <div className="absolute inset-0 flex items-center justify-center bg-void-900/60">
                 <span className="text-2xl font-black text-white/20">???</span>
@@ -125,22 +141,19 @@ export function PlayingCard({
             )}
           </div>
 
-          {/* Info strip */}
-          <div className="flex flex-col gap-0.5 px-2 py-1.5 bg-gradient-to-b from-void-800 to-void-900">
-            <p className={cn('font-bold text-white leading-tight truncate', dims.name)}>
-              {locked ? '???' : character.name}
-            </p>
+          {/* ── Footer: power level ── */}
+          <div
+            className="flex items-center justify-center px-2 shrink-0 bg-void-900 border-t border-white/5"
+            style={{ height: dims.footerH }}
+          >
             {!locked && (
-              <>
-                <p className={cn('text-white/40 truncate', dims.sub)}>{character.arc_version}</p>
-                <p className={cn('font-mono font-bold', dims.power, verse.accent)}>
-                  ⚡ {formatPowerLevel(character.power_level)}
-                </p>
-              </>
+              <p className={cn(dims.powerSize, verse.accent)}>
+                {formatPowerLevel(character.power_level)}
+              </p>
             )}
           </div>
 
-          {/* Selected gold glow overlay */}
+          {/* Selected ring overlay */}
           {selected && (
             <div className="absolute inset-0 rounded-xl ring-inset ring-2 ring-gold-400/60 pointer-events-none" />
           )}
@@ -199,7 +212,7 @@ export function FaceDownCard({
     >
       <div className="flex-1 w-full h-full flex items-center justify-center">
         <div className="w-3/4 h-3/4 rounded-lg border border-white/8 bg-void-800/40 flex items-center justify-center">
-          <span className="text-white/10 font-bold" style={{ fontSize: dims.img / 5 }}>?</span>
+          <span className="text-white/10 font-bold" style={{ fontSize: dims.imgH / 5 }}>?</span>
         </div>
       </div>
       {/* Shimmer sweep */}
