@@ -1,20 +1,32 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
-import { Swords, User, AlertCircle, CheckCircle } from 'lucide-react'
+import { Swords, User, AlertCircle, CheckCircle, Loader2 } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import { Button } from '@/components/ui/Button'
 import { useAuth } from '@/hooks/useAuth'
 
 export default function UsernamePage() {
   const router = useRouter()
-  const { user, setProfile } = useAuth()
+  const { user, profile, loading: authLoading, setProfile } = useAuth()
   const [username, setUsername] = useState('')
   const [error, setError]       = useState('')
   const [loading, setLoading]   = useState(false)
   const [success, setSuccess]   = useState(false)
+
+  // Pre-fill if profile already has a username
+  useEffect(() => {
+    if (profile?.username) setUsername(profile.username)
+  }, [profile?.username])
+
+  // Redirect unauthenticated users once auth has settled
+  useEffect(() => {
+    if (!authLoading && !user) {
+      router.replace('/register')
+    }
+  }, [authLoading, user, router])
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -38,8 +50,17 @@ export default function UsernamePage() {
     } else {
       if (data) setProfile(data as never)
       setSuccess(true)
-      setTimeout(() => router.push('/lobby'), 1000)
+      setTimeout(() => { router.push('/lobby'); router.refresh() }, 1000)
     }
+  }
+
+  // Show spinner while waiting for auth to resolve
+  if (authLoading) {
+    return (
+      <div className="min-h-[calc(100vh-56px)] flex items-center justify-center">
+        <Loader2 size={28} className="animate-spin text-gold-400" />
+      </div>
+    )
   }
 
   return (
@@ -90,7 +111,7 @@ export default function UsernamePage() {
         </form>
 
         <button
-          onClick={() => router.push('/lobby')}
+          onClick={() => { router.push('/lobby'); router.refresh() }}
           className="w-full text-center text-sm text-white/30 hover:text-white/50 mt-4 transition-colors"
         >
           Skip for now

@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
-import { Swords, Mail, Lock, User, AlertCircle } from 'lucide-react'
+import { Swords, Mail, Lock, User, AlertCircle, MailCheck } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import { Button } from '@/components/ui/Button'
 
@@ -35,8 +35,9 @@ export default function RegisterPage() {
   const [username, setUsername]  = useState('')
   const [email, setEmail]        = useState('')
   const [password, setPassword]  = useState('')
-  const [error, setError]        = useState('')
-  const [loading, setLoading]    = useState(false)
+  const [error, setError]          = useState('')
+  const [loading, setLoading]      = useState(false)
+  const [emailSent, setEmailSent]  = useState(false)
   const [oauthLoading, setOauthLoading] = useState<'google' | 'azure' | null>(null)
 
   async function handleRegister(e: React.FormEvent) {
@@ -45,7 +46,7 @@ export default function RegisterPage() {
     setLoading(true)
     setError('')
     const supabase = createClient()
-    const { error: err } = await supabase.auth.signUp({
+    const { data, error: err } = await supabase.auth.signUp({
       email,
       password,
       options: { data: { username } },
@@ -53,9 +54,14 @@ export default function RegisterPage() {
     if (err) {
       setError(err.message)
       setLoading(false)
-    } else {
+    } else if (data.session) {
+      // Email confirmation disabled — signed in immediately
       router.push('/lobby')
       router.refresh()
+    } else {
+      // Supabase requires email confirmation
+      setEmailSent(true)
+      setLoading(false)
     }
   }
 
@@ -70,6 +76,30 @@ export default function RegisterPage() {
       },
     })
     setOauthLoading(null)
+  }
+
+  if (emailSent) {
+    return (
+      <div className="min-h-[calc(100vh-56px)] flex items-center justify-center px-4">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="w-full max-w-sm text-center"
+        >
+          <div className="w-16 h-16 rounded-2xl bg-green-500/10 border border-green-500/20 flex items-center justify-center mx-auto mb-6">
+            <MailCheck size={32} className="text-green-400" />
+          </div>
+          <h1 className="text-2xl font-bold text-white mb-2">Check your email</h1>
+          <p className="text-white/50 text-sm leading-relaxed mb-6">
+            We sent a confirmation link to <span className="text-white font-medium">{email}</span>.
+            Click it to activate your account and you&apos;ll be signed in automatically.
+          </p>
+          <Link href="/login" className="text-gold-400 hover:text-gold-300 text-sm font-medium transition-colors">
+            Back to sign in
+          </Link>
+        </motion.div>
+      </div>
+    )
   }
 
   return (

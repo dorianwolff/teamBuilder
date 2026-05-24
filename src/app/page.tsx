@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Swords, Users, Trophy, BookOpen, ChevronRight, Zap } from 'lucide-react'
+import { Swords, Users, Trophy, BookOpen, ChevronRight, Zap, Bot } from 'lucide-react'
 
 export default function HomePage() {
   return (
@@ -125,7 +125,7 @@ export default function HomePage() {
 
       {/* ── Game Mode CTA ──────────────────────────────────────────────────── */}
       <section className="relative max-w-7xl mx-auto px-4 py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
           {/* Ranked */}
           <div className="relative p-8 rounded-2xl bg-gradient-to-br from-gold-500/10 to-void-800 border border-gold-500/20 overflow-hidden group">
@@ -133,8 +133,7 @@ export default function HomePage() {
             <Trophy size={28} className="text-gold-400 mb-4" />
             <h3 className="text-xl font-bold text-white mb-2">Ranked</h3>
             <p className="text-sm text-white/50 mb-6 leading-relaxed">
-              Compete for ELO. The verse is assigned — no cherry-picking. Unlock harder verses
-              as you climb and face opponents who&apos;ve mastered the meta.
+              Compete for ELO. Unlock harder verses as you climb and face opponents who&apos;ve mastered the meta.
             </p>
             <Link
               href="/lobby?mode=ranked"
@@ -150,14 +149,29 @@ export default function HomePage() {
             <Users size={28} className="text-blue-400 mb-4" />
             <h3 className="text-xl font-bold text-white mb-2">With Friends</h3>
             <p className="text-sm text-white/50 mb-6 leading-relaxed">
-              Create a private room, share a 6-character code with a friend, choose any verse
-              including All Verses mode. No ELO on the line — pure fun.
+              Create a private room, share a 6-character code, and choose any verse. No ELO on the line — pure fun.
             </p>
             <Link
               href="/lobby?mode=casual"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm transition-colors"
             >
               Create Room <ChevronRight size={16} />
+            </Link>
+          </div>
+
+          {/* Solo / vs AI */}
+          <div className="relative p-8 rounded-2xl bg-gradient-to-br from-emerald-500/10 to-void-800 border border-emerald-500/20 overflow-hidden group sm:col-span-2 lg:col-span-1">
+            <div className="absolute inset-0 bg-shimmer-gradient bg-[length:200%_100%] group-hover:animate-shimmer opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+            <Bot size={28} className="text-emerald-400 mb-4" />
+            <h3 className="text-xl font-bold text-white mb-2">Solo vs AI</h3>
+            <p className="text-sm text-white/50 mb-6 leading-relaxed">
+              Draft your team and battle the AI — no opponent needed. Perfect for learning the mechanics or testing strategies.
+            </p>
+            <Link
+              href="/solo"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white font-semibold text-sm transition-colors"
+            >
+              Start Solo <ChevronRight size={16} />
             </Link>
           </div>
         </div>
