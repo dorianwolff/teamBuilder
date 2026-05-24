@@ -209,11 +209,11 @@ export default function EncyclopediaPage() {
         </div>
       )}
 
-      {/* Detail modal — wide two-column layout */}
+      {/* Detail modal — wide two-column layout, scrollable on small screens */}
       <Modal
         open={!!selected}
         onClose={() => setSelected(null)}
-        className="max-w-2xl"
+        className="max-w-2xl max-h-[90vh] overflow-y-auto"
       >
         {selected && <CharacterDetail character={selected} />}
       </Modal>
@@ -244,15 +244,18 @@ function CharacterDetail({ character }: { character: Character }) {
     /* Mobile: stacked; md+: card on left, scrollable details on right */
     <div className="flex flex-col md:flex-row gap-5 md:gap-6">
 
-      {/* ── Left column: large card ── */}
+      {/* ── Left column: card (md on mobile, lg on desktop) ── */}
       <div className="flex justify-center md:justify-start shrink-0">
-        <PlayingCard character={character} size="lg" animate={false} />
+        <div className="md:hidden">
+          <PlayingCard character={character} size="md" animate={false} />
+        </div>
+        <div className="hidden md:block">
+          <PlayingCard character={character} size="lg" animate={false} />
+        </div>
       </div>
 
-      {/* ── Right column: details (scrolls if needed on both breakpoints) ── */}
-      <div className="flex-1 min-w-0 overflow-y-auto max-h-[60vh] md:max-h-[55vh] space-y-4 pb-1 pr-1"
-        style={{ scrollbarWidth: 'thin', scrollbarColor: 'rgba(255,255,255,0.1) transparent' }}
-      >
+      {/* ── Right column: details ── */}
+      <div className="flex-1 min-w-0 space-y-4 pb-1">
 
         {/* Name + verse */}
         <div>

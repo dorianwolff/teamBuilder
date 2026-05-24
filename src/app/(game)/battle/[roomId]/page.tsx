@@ -4,7 +4,7 @@ import { useEffect, useState, use } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import toast from 'react-hot-toast'
-import { Swords, Trophy, Shield, ChevronRight, Info } from 'lucide-react'
+import { Swords, Trophy, Shield, ChevronRight, Info, RotateCcw } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import { useGameRoom } from '@/hooks/useGameRoom'
 import { useAuth } from '@/hooks/useAuth'
@@ -13,8 +13,10 @@ import { Timer } from '@/components/ui/Timer'
 import { Button } from '@/components/ui/Button'
 import { Modal } from '@/components/ui/Modal'
 import { resolveBattle } from '@/lib/game/battle'
+import { buildInitialDraftState } from '@/lib/game/draft'
 import { formatPowerLevel, formatEloDelta } from '@/lib/utils/format'
 import type { BattleState, BattleRound } from '@/types/game'
+import type { Character, Verse } from '@/types/character'
 import { cn } from '@/lib/utils/cn'
 
 const BATTLE_TIMER_SECONDS = 20
@@ -45,10 +47,17 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [battle?.rounds.length])
 
-  // Handle finished game
+  const [playingAgain, setPlayingAgain] = useState(false)
+
+  // Ranked: auto-redirect after 4 s; Casual: stay until user acts
   useEffect(() => {
-    if (room?.status === 'finished') {
-      setTimeout(() => router.push('/lobby'), 4000)
+    if (room?.status === 'finished' && room.mode === 'ranked') {
+      const t = setTimeout(() => router.push('/lobby'), 4000)
+      return () => clearTimeout(t)
+    }
+    // Casual "play again" — if someone reset the room to drafting, navigate
+    if (room?.status === 'drafting') {
+      router.push(`/draft/${roomId}`)
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [room?.status])
@@ -228,7 +237,7 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
           >
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
@@ -239,22 +248,76 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
                 <>
                   <Trophy size={64} className="text-gold-400 mx-auto mb-4" />
                   <h2 className="text-4xl font-black text-gold-400 mb-2">Victory!</h2>
-                  <p className="text-white/60">Returning to lobby…</p>
                 </>
               ) : (
                 <>
                   <div className="text-6xl mb-4">💀</div>
                   <h2 className="text-4xl font-black text-crimson-400 mb-2">Defeat</h2>
-                  <p className="text-white/60">Returning to lobby…</p>
                 </>
               )}
+
+              {/* ELO delta (ranked only) */}
               {room.elo_delta_a !== null && (
                 <p className={cn(
-                  'text-2xl font-mono font-bold mt-4',
+                  'text-2xl font-mono font-bold mt-2 mb-4',
                   (isA ? room.elo_delta_a : room.elo_delta_b ?? 0) > 0 ? 'text-gold-400' : 'text-crimson-400',
                 )}>
                   {formatEloDelta(isA ? room.elo_delta_a : room.elo_delta_b ?? 0)} ELO
                 </p>
+              )}
+
+              {room.mode === 'ranked' ? (
+                <p className="text-white/40 text-sm mt-2">Returning to lobby…</p>
+              ) : (
+                /* Casual: offer Play Again or Lobby */
+                <div className="flex flex-col gap-3 mt-6 min-w-[200px]">
+                  <button
+                    disabled={playingAgain}
+                    onClick={async () => {
+                      if (!room.player_b_id) return
+                      setPlayingAgain(true)
+                      try {
+                        const supabase = createClient()
+                        const { data: chars } = room.verse === 'all'
+                          ? await supabase.from('characters').select('*')
+                          : await supabase.from('characters').select('*').eq('verse', room.verse)
+                        const draft = buildInitialDraftState(
+                          roomId,
+                          room.player_a_id,
+                          room.player_b_id,
+                          room.verse as Verse | 'all',
+                          (chars ?? []) as Character[],
+                        )
+                        await supabase.from('game_rooms').update({
+                          status:      'drafting',
+                          draft_state: draft,
+                          battle_state: null,
+                          winner_id:   null,
+                          elo_delta_a: null,
+                          elo_delta_b: null,
+                          started_at:  new Date().toISOString(),
+                          finished_at: null,
+                        }).eq('id', roomId)
+                        router.push(`/draft/${roomId}`)
+                      } catch {
+                        toast.error('Failed to restart — try again')
+                        setPlayingAgain(false)
+                      }
+                    }}
+                    className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-gold-500/15 text-gold-400 border border-gold-500/30 hover:bg-gold-500/25 transition-colors font-semibold disabled:opacity-50"
+                  >
+                    {playingAgain
+                      ? <><span className="animate-spin inline-block">⟳</span> Starting…</>
+                      : <><RotateCcw size={16} /> Play Again</>
+                    }
+                  </button>
+                  <button
+                    onClick={() => router.push('/lobby')}
+                    className="w-full py-2.5 rounded-xl text-white/40 hover:text-white/70 transition-colors text-sm"
+                  >
+                    Back to Lobby
+                  </button>
+                </div>
               )}
             </motion.div>
           </motion.div>

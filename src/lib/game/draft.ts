@@ -1,10 +1,38 @@
-import type { Character } from '@/types/character'
+import type { Character, Verse } from '@/types/character'
 import type { DraftPoolSlot, DraftState, PlayerDraftState } from '@/types/game'
 
 export const DRAFT_ROUNDS = 5
 export const DRAFT_TIMER_SECONDS = 30
 export const POOL_SIZE = 10  // characters revealed per draft
 export const MASKED_COUNT = 5 // half are masked at start
+
+/**
+ * Build the complete initial DraftState for a new game room.
+ * Both the lobby (casual join / ranked match) and the solo page use this.
+ */
+export function buildInitialDraftState(
+  roomId:    string,
+  playerAId: string,
+  playerBId: string,
+  verse:     Verse | 'all',
+  characters: Character[],
+): DraftState {
+  const pool        = buildDraftPool(characters)
+  const timerEndsAt = new Date(Date.now() + DRAFT_TIMER_SECONDS * 1000).toISOString()
+
+  return {
+    room_id:           roomId,
+    verse,
+    current_round:     1,
+    current_picker_id: playerAId,   // player A always picks first
+    draft_pool:        pool,
+    player_a:          { user_id: playerAId, characters: [], power_sum: 0 },
+    player_b:          { user_id: playerBId, characters: [], power_sum: 0 },
+    picks:             [],
+    timer_ends_at:     timerEndsAt,
+    phase:             'picking',
+  }
+}
 
 /**
  * Build the initial draft pool from a shuffled list of characters.

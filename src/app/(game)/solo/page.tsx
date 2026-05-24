@@ -21,17 +21,18 @@ import { cn } from '@/lib/utils/cn'
 
 type Phase = 'setup' | 'draft' | 'battle' | 'result'
 
-const VERSE_OPTIONS: { value: Verse; label: string; color: string }[] = [
+const VERSE_OPTIONS: { value: Verse | 'all'; label: string; color: string }[] = [
   { value: 'one_piece', label: 'One Piece',        color: 'text-orange-400' },
   { value: 'naruto',    label: 'Naruto',            color: 'text-amber-400'  },
   { value: 'dbz',       label: 'Dragon Ball',       color: 'text-purple-400' },
-  { value: 'hxh',       label: 'Hunter x Hunter',   color: 'text-emerald-400'},
+  { value: 'hxh',       label: 'Hunter × Hunter',   color: 'text-emerald-400'},
+  { value: 'all',       label: 'All Verses',        color: 'text-blue-400'   },
 ]
 
 const DIFFICULTY_OPTIONS: { value: AiDifficulty; label: string; desc: string; dot: string }[] = [
-  { value: 'easy',   label: 'Easy',   desc: 'AI picks randomly',                     dot: 'bg-green-400' },
-  { value: 'normal', label: 'Normal', desc: 'AI targets highest power level',         dot: 'bg-amber-400' },
-  { value: 'hard',   label: 'Hard',   desc: 'AI evaluates every possible matchup',    dot: 'bg-red-400'   },
+  { value: 'easy',   label: 'Easy',   desc: 'Random picks and plays',                         dot: 'bg-green-400' },
+  { value: 'medium', label: 'Medium', desc: 'Targets strong cards, clutch plays under pressure', dot: 'bg-amber-400' },
+  { value: 'hard',   label: 'Hard',   desc: 'Median drafting, adapts strategy when losing',   dot: 'bg-red-400'   },
 ]
 
 const PLAYER_ID = 'player'
@@ -43,9 +44,11 @@ export default function SoloPage() {
   const { user, profile } = useAuth()
 
   const [phase, setPhase]             = useState<Phase>('setup')
-  const [verse, setVerse]             = useState<Verse>('one_piece')
-  const [difficulty, setDifficulty]   = useState<AiDifficulty>('normal')
+  const [verse, setVerse]             = useState<Verse | 'all'>('one_piece')
+  const [difficulty, setDifficulty]   = useState<AiDifficulty>('medium')
   const [loadingGame, setLoadingGame] = useState(false)
+  // Full character roster for the current game — used by AI difficulty logic
+  const [allVerseChars, setAllVerseChars] = useState<Character[]>([])
 
   // Draft
   const [draft, setDraft]           = useState<DraftState | null>(null)
@@ -71,24 +74,26 @@ export default function SoloPage() {
     console.log('[Solo] loading characters for verse:', verse)
     try {
       const supabase = createClient()
-      const { data, error } = await supabase
-        .from('characters')
-        .select('*')
-        .eq('verse', verse)
+      const query    = verse === 'all'
+        ? supabase.from('characters').select('*')
+        : supabase.from('characters').select('*').eq('verse', verse)
+      const { data, error } = await query
 
       console.log('[Solo] result → count:', data?.length ?? 0, '| error:', error?.message ?? 'none')
 
       if (error || !data || data.length < 10) {
         toast.error(
           data && data.length > 0
-            ? `Only ${data.length} characters found for this verse — need at least 10.`
+            ? `Only ${data.length} characters found — need at least 10.`
             : 'No characters found. Run "npm run seed" to populate the database.',
           { duration: 8000 }
         )
         return
       }
 
-      const pool = buildDraftPool(data as unknown as Character[])
+      const chars = data as unknown as Character[]
+      setAllVerseChars(chars)
+      const pool = buildDraftPool(chars)
       const state: DraftState = {
         room_id:           'solo',
         verse,
@@ -120,7 +125,20 @@ export default function SoloPage() {
 
     setAiThinking(true)
     setTimeout(() => {
-      const aiSlot   = aiDraftPick(state.draft_pool, difficulty, state.current_round)
+      // Build AI-observable context for smart draft strategies
+      const aiTeam = state.player_b.characters
+      const playerRevealedChars = state.draft_pool
+        .filter(s => s.picked_by === PLAYER_ID && !s.is_masked && s.character)
+        .map(s => s.character!)
+
+      const aiSlot = aiDraftPick({
+        pool:                state.draft_pool,
+        difficulty,
+        currentRound:        state.current_round,
+        allVerseChars,
+        aiTeam,
+        playerRevealedChars,
+      })
       const newState = applyPick(state, AI_ID, aiSlot)
       setDraft(newState)
       setAiThinking(false)
@@ -178,7 +196,12 @@ export default function SoloPage() {
     if (!selectedCharId) return
 
     const playerChar  = playerRemaining.find(c => c.id === selectedCharId)!
-    const aiChar      = aiBattlePick(aiRemaining, difficulty, difficulty === 'hard' ? playerRemaining : undefined)
+    const aiChar      = aiBattlePick({
+      aiRemaining,
+      difficulty,
+      scores,
+      playerRemaining: difficulty === 'hard' ? playerRemaining : undefined,
+    })
     const result      = resolveBattle(playerChar, aiChar)
     const playerWinsRound = !result.is_draw && result.winner?.id === playerChar.id
 
@@ -339,7 +362,7 @@ export default function SoloPage() {
 // ── Setup screen ──────────────────────────────────────────────────────────────
 
 function SetupScreen({ verse, setVerse, difficulty, setDifficulty, onStart, loading, onBack }: {
-  verse: Verse; setVerse: (v: Verse) => void
+  verse: Verse | 'all'; setVerse: (v: Verse | 'all') => void
   difficulty: AiDifficulty; setDifficulty: (d: AiDifficulty) => void
   onStart: () => void; loading: boolean; onBack: () => void
 }) {

@@ -31,7 +31,7 @@ export interface PlayerDraftState {
 
 export interface DraftState {
   room_id: string
-  verse: Verse
+  verse: Verse | 'all'
   current_round: number       // 1–5
   current_picker_id: string
   draft_pool: DraftPoolSlot[] // 10 cards (5 revealed, 5 masked — ratio set at game start)
