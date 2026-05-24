@@ -1,10 +1,32 @@
 'use client'
 
 import Image from 'next/image'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils/cn'
 import { formatPowerLevel } from '@/lib/utils/format'
 import type { Character } from '@/types/character'
+
+// Tries .webp → .jpg → .png in order, falls back to placeholder.
+// Works regardless of what extension is stored in image_path.
+const IMG_EXTS = ['.webp', '.jpg', '.jpeg', '.png'] as const
+
+function useCardImage(imagePath: string) {
+  const base = '/' + imagePath.replace(/\.(webp|jpe?g|png)$/i, '')
+  const [idx, setIdx] = useState(0)
+  const prevBase = useRef(base)
+
+  useEffect(() => {
+    if (prevBase.current !== base) {
+      prevBase.current = base
+      setIdx(0)
+    }
+  }, [base])
+
+  const src      = idx < IMG_EXTS.length ? `${base}${IMG_EXTS[idx]}` : '/assets/placeholder_character.png'
+  const onError  = useCallback(() => setIdx(i => i + 1), [])
+  return { src, onError }
+}
 
 const VERSE_COLORS: Record<string, { border: string; accent: string; glow: string; label: string }> = {
   one_piece: { border: 'border-orange-500/40', accent: 'text-orange-400', glow: 'shadow-[0_0_20px_rgba(249,115,22,0.3)]', label: 'One Piece' },
@@ -46,8 +68,9 @@ export function PlayingCard({
   className,
   style,
 }: PlayingCardProps) {
-  const verse = VERSE_COLORS[character.verse] ?? VERSE_COLORS.one_piece
-  const dims  = SIZES[size]
+  const verse              = VERSE_COLORS[character.verse] ?? VERSE_COLORS.one_piece
+  const dims               = SIZES[size]
+  const { src: imgSrc, onError: imgOnError } = useCardImage(character.image_path)
 
   const cardContent = (
     <div
@@ -77,17 +100,14 @@ export function PlayingCard({
           {/* Art */}
           <div className="relative overflow-hidden" style={{ height: dims.img }}>
             <Image
-              src={`/${character.image_path}`}
+              src={imgSrc}
               alt={character.name}
               fill
               className={cn('object-cover object-top', locked && 'blur-sm')}
               sizes={`${dims.w}px`}
               quality={80}
               loading="lazy"
-              onError={(e) => {
-                const t = e.currentTarget as HTMLImageElement
-                t.src = '/assets/placeholder_character.png'
-              }}
+              onError={imgOnError}
             />
             {/* Bottom gradient */}
             <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-void-900/95 to-transparent pointer-events-none" />

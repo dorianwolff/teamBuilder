@@ -70,7 +70,7 @@
     "short_description": "Pre-Gear Luffy during the Skypiea arc, whose rubber body's lightning immunity proved decisive against the self-proclaimed god of that sky island."
   },
   {
-    "slug": "gol_d_roger",
+    "slug": "gold_d_roger",
     "name": "Gol D. Roger",
     "verse": "one_piece",
     "arc_version": "Peak – Pirate King Era",
@@ -87,7 +87,7 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "image_path": "assets/characters/one_piece/gol_d_roger.png",
+    "image_path": "assets/characters/one_piece/gold_d_roger.png",
     "short_description": "The Pirate King at his peak, wielding advanced Conqueror's Haki through his sword to challenge anyone on the seas."
   },
   {

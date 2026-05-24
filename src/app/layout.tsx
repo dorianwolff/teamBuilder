@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { Toaster } from 'react-hot-toast'
-import { Navbar } from '@/components/layout/Navbar'
+import { ConditionalLayout } from '@/components/layout/ConditionalLayout'
 import { AuthProvider } from '@/components/providers/AuthProvider'
 import './globals.css'
 
@@ -34,10 +34,9 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-void-950 text-white`}>
         <AuthProvider>
-          <Navbar />
-          <main className="pt-14 min-h-screen">
+          <ConditionalLayout>
             {children}
-          </main>
+          </ConditionalLayout>
           <Toaster
             position="top-center"
             toastOptions={{

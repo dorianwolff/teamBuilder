@@ -11,7 +11,8 @@ export const MASKED_COUNT = 5 // half are masked at start
  * Exactly MASKED_COUNT slots are masked; rest are revealed.
  */
 export function buildDraftPool(characters: Character[]): DraftPoolSlot[] {
-  const shuffled = [...characters].sort(() => Math.random() - 0.5).slice(0, POOL_SIZE)
+  const unique = [...new Map(characters.map(c => [c.slug, c])).values()]
+  const shuffled = [...unique].sort(() => Math.random() - 0.5).slice(0, POOL_SIZE)
   const slots: DraftPoolSlot[] = []
   // Each pair (0&1, 2&3, …) gets exactly one masked and one revealed card
   for (let i = 0; i < POOL_SIZE; i += 2) {
