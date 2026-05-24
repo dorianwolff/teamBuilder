@@ -1,0 +1,429 @@
+[
+  {
+    "slug": "naruto_six_paths",
+    "name": "Naruto Uzumaki",
+    "verse": "naruto",
+    "arc_version": "Six Paths Sage Mode – Fourth Shinobi War",
+    "power_level": 8743291.8820,
+    "martial_ratio": 0.5,
+    "power_tags": ["six_paths_sage_mode", "nine_tails_chakra", "truth_seeking_balls", "sage_art", "rasengan", "flight", "chakra", "wind"],
+    "strengths": [
+      {"tag": "ninjutsu", "coefficient": 0.5},
+      {"tag": "taijutsu", "coefficient": 0.4},
+      {"tag": "chakra_drain", "coefficient": 0.6},
+      {"tag": "natural_energy", "coefficient": 0.5}
+    ],
+    "weaknesses": [
+      {"tag": "genjutsu", "coefficient": 0.3},
+      {"tag": "sealing_jutsu", "coefficient": 0.35}
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "image_path": "assets/characters/naruto/naruto_six_paths.png",
+    "short_description": "Naruto at his zenith wielding all nine tailed-beast chakras and Six Paths power gifted by the Sage of Six Paths, capable of flight and truth-seeking balls."
+  },
+  {
+    "slug": "sasuke_rinnegan",
+    "name": "Sasuke Uchiha",
+    "verse": "naruto",
+    "arc_version": "Rinnegan – Fourth Shinobi War",
+    "power_level": 8521047.3310,
+    "martial_ratio": 0.55,
+    "power_tags": ["rinnegan", "eternal_mangekyo_sharingan", "indra_susanoo", "six_paths_chakra", "amenotejikara", "genjutsu", "chidori", "lightning"],
+    "strengths": [
+      {"tag": "ninjutsu", "coefficient": 0.45},
+      {"tag": "genjutsu", "coefficient": 0.6},
+      {"tag": "illusion", "coefficient": 0.6}
+    ],
+    "weaknesses": [
+      {"tag": "chakra_drain", "coefficient": 0.3},
+      {"tag": "emotional_distraction", "coefficient": 0.2}
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "image_path": "assets/characters/naruto/sasuke_rinnegan.png",
+    "short_description": "Sasuke after receiving the Rinnegan from the Sage of Six Paths, wielding space-time teleportation and the colossal Indra Susanoo."
+  },
+  {
+    "slug": "madara_six_paths",
+    "name": "Madara Uchiha",
+    "verse": "naruto",
+    "arc_version": "Six Paths Madara – Ten-Tails Jinchuriki",
+    "power_level": 8912473.6640,
+    "martial_ratio": 0.6,
+    "power_tags": ["six_paths", "ten_tails_jinchuriki", "rinnegan", "limbo", "truth_seeking_balls", "wood_release", "fire_release", "taijutsu"],
+    "strengths": [
+      {"tag": "ninjutsu", "coefficient": 0.6},
+      {"tag": "taijutsu", "coefficient": 0.55},
+      {"tag": "genjutsu", "coefficient": 0.55},
+      {"tag": "healing", "coefficient": 0.7}
+    ],
+    "weaknesses": [
+      {"tag": "sealing_jutsu", "coefficient": 0.3},
+      {"tag": "black_zetsu_betrayal", "coefficient": 1.0}
+    ],
+    "cannot_win_against": ["kaguya"],
+    "draw_conditions": [],
+    "image_path": "assets/characters/naruto/madara_six_paths.png",
+    "short_description": "Madara as the Ten-Tails jinchuriki with Six Paths power, using invisible Limbo clones and truth-seeking balls to dominate all five Kage simultaneously."
+  },
+  {
+    "slug": "kaguya",
+    "name": "Kaguya Otsutsuki",
+    "verse": "naruto",
+    "arc_version": "Rabbit Goddess – Fourth Shinobi War",
+    "power_level": 9421847.2210,
+    "martial_ratio": 0.4,
+    "power_tags": ["all_killing_ash_bones", "dimensional_travel", "byakugan", "rinnegan_third_eye", "infinite_tsukuyomi", "chakra_absorption", "hair_manipulation"],
+    "strengths": [
+      {"tag": "ninjutsu", "coefficient": 0.7},
+      {"tag": "chakra", "coefficient": 0.8},
+      {"tag": "taijutsu", "coefficient": 0.5},
+      {"tag": "genjutsu", "coefficient": 0.7}
+    ],
+    "weaknesses": [
+      {"tag": "combination_sealing", "coefficient": 0.5},
+      {"tag": "teamwork", "coefficient": 0.3}
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "image_path": "assets/characters/naruto/kaguya.png",
+    "short_description": "The progenitor of chakra herself, mother of the Sage of Six Paths, capable of dimensional manipulation and the instant-kill Ash Killing Bones technique."
+  },
+  {
+    "slug": "hashirama_sage_mode",
+    "name": "Hashirama Senju",
+    "verse": "naruto",
+    "arc_version": "Sage Mode – Edo Tensei Revival",
+    "power_level": 7234821.9930,
+    "martial_ratio": 0.55,
+    "power_tags": ["wood_release", "sage_mode", "wood_style_true_several_thousand_hands", "natural_energy", "bijuu_suppression", "healing_factor"],
+    "strengths": [
+      {"tag": "healing", "coefficient": 0.8},
+      {"tag": "ninjutsu", "coefficient": 0.5},
+      {"tag": "bijuu_control", "coefficient": 0.6},
+      {"tag": "natural_energy", "coefficient": 0.45}
+    ],
+    "weaknesses": [
+      {"tag": "fire_release", "coefficient": 0.25},
+      {"tag": "lightning_release", "coefficient": 0.25}
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "image_path": "assets/characters/naruto/hashirama_sage_mode.png",
+    "short_description": "The God of Shinobi in Sage Mode, whose Wood Style and cellular regeneration make him the only person who ever defeated Madara in fair combat."
+  },
+  {
+    "slug": "minato_kcm2",
+    "name": "Minato Namikaze",
+    "verse": "naruto",
+    "arc_version": "KCM2 – Edo Tensei Revival",
+    "power_level": 6847293.4410,
+    "martial_ratio": 0.65,
+    "power_tags": ["kcm2_toad_sage", "flying_raijin", "space_time_ninjutsu", "rasengan", "bijuu_mode_partial", "wind_release", "taijutsu_speed"],
+    "strengths": [
+      {"tag": "tracking", "coefficient": 0.6},
+      {"tag": "speed", "coefficient": 0.5},
+      {"tag": "space_time", "coefficient": 0.4}
+    ],
+    "weaknesses": [
+      {"tag": "genjutsu", "coefficient": 0.25},
+      {"tag": "overwhelming_taijutsu", "coefficient": 0.2}
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "image_path": "assets/characters/naruto/minato_kcm2.png",
+    "short_description": "The Yellow Flash with both Toad Sage Mode and Nine-Tails Chakra Mode, combining unmatched teleportation speed with Bijuu-enhanced power."
+  },
+  {
+    "slug": "nagato_pain",
+    "name": "Nagato (Pain – Six Paths)",
+    "verse": "naruto",
+    "arc_version": "Six Paths of Pain – Konoha Invasion",
+    "power_level": 5234817.8820,
+    "martial_ratio": 0.45,
+    "power_tags": ["rinnegan", "six_paths_of_pain", "shinra_tensei", "chibaku_tensei", "chakra_absorption", "soul_removal", "gravity"],
+    "strengths": [
+      {"tag": "ninjutsu", "coefficient": 0.5},
+      {"tag": "taijutsu", "coefficient": 0.4},
+      {"tag": "chakra", "coefficient": 0.45}
+    ],
+    "weaknesses": [
+      {"tag": "chakra_drain", "coefficient": 0.45},
+      {"tag": "pain_path_destruction", "coefficient": 0.4},
+      {"tag": "empathy", "coefficient": 0.6}
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "image_path": "assets/characters/naruto/nagato_pain.png",
+    "short_description": "Nagato commanding six corpse-puppets as the Six Paths of Pain, able to repel anything with Shinra Tensei and create miniature moons with Chibaku Tensei."
+  },
+  {
+    "slug": "obito_ten_tails",
+    "name": "Obito Uchiha",
+    "verse": "naruto",
+    "arc_version": "Ten-Tails Jinchuriki – Fourth Shinobi War",
+    "power_level": 8347821.1130,
+    "martial_ratio": 0.5,
+    "power_tags": ["ten_tails_jinchuriki", "mangekyo_sharingan", "kamui", "wood_release", "truth_seeking_balls", "intangibility"],
+    "strengths": [
+      {"tag": "physical_attacks", "coefficient": 0.6},
+      {"tag": "ninjutsu", "coefficient": 0.5},
+      {"tag": "intangibility", "coefficient": 0.7}
+    ],
+    "weaknesses": [
+      {"tag": "kamui_disruption", "coefficient": 0.5},
+      {"tag": "sealing_jutsu", "coefficient": 0.3}
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "image_path": "assets/characters/naruto/obito_ten_tails.png",
+    "short_description": "Obito as the Ten-Tails jinchuriki, combining his intangible Kamui with the raw devastation of the primal beast's power."
+  },
+  {
+    "slug": "itachi",
+    "name": "Itachi Uchiha",
+    "verse": "naruto",
+    "arc_version": "Edo Tensei – Fourth Shinobi War",
+    "power_level": 3847291.6640,
+    "martial_ratio": 0.5,
+    "power_tags": ["mangekyo_sharingan", "tsukuyomi", "amaterasu", "susanoo_totsuka_blade", "susanoo_yata_mirror", "genjutsu", "fire_release"],
+    "strengths": [
+      {"tag": "genjutsu", "coefficient": 0.7},
+      {"tag": "illusion", "coefficient": 0.7},
+      {"tag": "ninjutsu", "coefficient": 0.4},
+      {"tag": "susanoo_yata_mirror", "coefficient": 0.8, "description": "Yata Mirror blocks all ninjutsu"}
+    ],
+    "weaknesses": [
+      {"tag": "physical_overwhelm", "coefficient": 0.3},
+      {"tag": "illness", "coefficient": 0.4}
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "image_path": "assets/characters/naruto/itachi.png",
+    "short_description": "The Uchiha prodigy whose Perfect Susanoo wields the unstoppable Totsuka Blade and the all-blocking Yata Mirror, making him nearly untouchable in direct combat."
+  },
+  {
+    "slug": "jiraiya_sage_mode",
+    "name": "Jiraiya",
+    "verse": "naruto",
+    "arc_version": "Sage Mode – Pain Battle",
+    "power_level": 2934817.2210,
+    "martial_ratio": 0.6,
+    "power_tags": ["sage_mode_toad", "rasengan", "summoning_toads", "hair_needle", "natural_energy", "wind_release"],
+    "strengths": [
+      {"tag": "ninjutsu", "coefficient": 0.4},
+      {"tag": "natural_energy", "coefficient": 0.4}
+    ],
+    "weaknesses": [
+      {"tag": "multiple_opponents", "coefficient": 0.4},
+      {"tag": "rinnegan", "coefficient": 0.5}
+    ],
+    "cannot_win_against": ["nagato_pain"],
+    "draw_conditions": [],
+    "image_path": "assets/characters/naruto/jiraiya_sage_mode.png",
+    "short_description": "The Toad Sage whose perfected Sage Mode amplifies all techniques to godly levels, falling only to his own student Nagato's Six Paths of Pain."
+  },
+  {
+    "slug": "tsunade",
+    "name": "Tsunade",
+    "verse": "naruto",
+    "arc_version": "Byakugou Seal Released – Fourth Shinobi War",
+    "power_level": 2847293.5510,
+    "martial_ratio": 0.75,
+    "power_tags": ["byakugou_seal", "strength_of_a_hundred", "cellular_regeneration", "medical_ninjutsu", "taijutsu_strength", "summoning_slugs"],
+    "strengths": [
+      {"tag": "poison", "coefficient": 0.7},
+      {"tag": "healing", "coefficient": 0.9},
+      {"tag": "physical_attacks", "coefficient": 0.3}
+    ],
+    "weaknesses": [
+      {"tag": "genjutsu", "coefficient": 0.3},
+      {"tag": "long_range", "coefficient": 0.3},
+      {"tag": "chakra_drain", "coefficient": 0.4}
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "image_path": "assets/characters/naruto/tsunade.png",
+    "short_description": "The legendary Sannin and Hokage whose Byakugou Seal enables near-immortal regeneration and earth-shattering taijutsu powered by chakra-enhanced strength."
+  },
+  {
+    "slug": "kabuto_snake_sage",
+    "name": "Kabuto Yakushi",
+    "verse": "naruto",
+    "arc_version": "Snake Sage Mode – Fourth Shinobi War",
+    "power_level": 2643829.7730,
+    "martial_ratio": 0.55,
+    "power_tags": ["snake_sage_mode", "orochimaru_cells", "medical_ninjutsu", "dragon_scales", "sound"],
+    "strengths": [
+      {"tag": "healing", "coefficient": 0.8},
+      {"tag": "poison", "coefficient": 0.5},
+      {"tag": "sensing", "coefficient": 0.4}
+    ],
+    "weaknesses": [
+      {"tag": "izanami", "coefficient": 1.0, "description": "Izanami traps him in an infinite loop — inescapable"}
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "image_path": "assets/characters/naruto/kabuto_snake_sage.png",
+    "short_description": "Kabuto having surpassed Orochimaru through Snake Sage Mode, combining perfect regeneration, enhanced senses, and control over the entire Edo Tensei army."
+  },
+  {
+    "slug": "guy_eight_gates",
+    "name": "Might Guy",
+    "verse": "naruto",
+    "arc_version": "Eight Gates Released – Ten-Tails War",
+    "power_level": 5021847.4410,
+    "martial_ratio": 1.0,
+    "power_tags": ["eight_gates", "evening_elephant", "night_guy", "taijutsu_supreme", "daytime_tiger"],
+    "strengths": [
+      {"tag": "taijutsu", "coefficient": 0.6},
+      {"tag": "speed", "coefficient": 0.5},
+      {"tag": "genjutsu_immunity", "coefficient": 0.7, "description": "Pure taijutsu — genjutsu is irrelevant"}
+    ],
+    "weaknesses": [
+      {"tag": "long_range", "coefficient": 0.3},
+      {"tag": "ninjutsu", "coefficient": 0.2},
+      {"tag": "after_eight_gates", "coefficient": 0.9, "description": "Body breaks down after the Eighth Gate — massive vulnerability post-use"}
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "image_path": "assets/characters/naruto/guy_eight_gates.png",
+    "short_description": "Might Guy at the Eighth Gate of Death, achieving speed and force that forced Madara Uchiha to call him the strongest taijutsu user he had ever faced."
+  },
+  {
+    "slug": "rock_lee_fifth_gate",
+    "name": "Rock Lee",
+    "verse": "naruto",
+    "arc_version": "Fifth Gate – Chunin Exams",
+    "power_level": 321847.5540,
+    "martial_ratio": 1.0,
+    "power_tags": ["inner_gates_fifth", "drunken_fist", "primary_lotus", "reverse_lotus", "taijutsu_pure"],
+    "strengths": [
+      {"tag": "taijutsu", "coefficient": 0.5},
+      {"tag": "genjutsu_immunity", "coefficient": 0.7}
+    ],
+    "weaknesses": [
+      {"tag": "ninjutsu", "coefficient": 0.25},
+      {"tag": "long_range", "coefficient": 0.4},
+      {"tag": "recovery_time", "coefficient": 0.5}
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "image_path": "assets/characters/naruto/rock_lee_fifth_gate.png",
+    "short_description": "The taijutsu prodigy who could never mold chakra, opening the Fifth Gate to move faster than the Sharingan can track during the Chunin Exams."
+  },
+  {
+    "slug": "kakashi_dual_sharingan",
+    "name": "Kakashi Hatake",
+    "verse": "naruto",
+    "arc_version": "Dual Sharingan – Obito's Gift",
+    "power_level": 2247821.3310,
+    "martial_ratio": 0.6,
+    "power_tags": ["dual_sharingan", "kamui_enhanced", "lightning_cutter", "taijutsu", "ninjutsu_copy"],
+    "strengths": [
+      {"tag": "tracking", "coefficient": 0.5},
+      {"tag": "genjutsu", "coefficient": 0.4},
+      {"tag": "ninjutsu_copy", "coefficient": 0.45}
+    ],
+    "weaknesses": [
+      {"tag": "chakra_drain", "coefficient": 0.5},
+      {"tag": "eye_removal", "coefficient": 0.6}
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "image_path": "assets/characters/naruto/kakashi_dual_sharingan.png",
+    "short_description": "Kakashi briefly wielding both Sharingan eyes gifted by Obito's spirit, achieving perfect Kamui mastery to face Kaguya herself."
+  },
+  {
+    "slug": "sakura_post_war",
+    "name": "Sakura Haruno",
+    "verse": "naruto",
+    "arc_version": "Post-War – Byakugou User",
+    "power_level": 2143829.2210,
+    "martial_ratio": 0.8,
+    "power_tags": ["byakugou_seal", "strength_of_a_hundred", "medical_ninjutsu", "taijutsu_strength", "healing"],
+    "strengths": [
+      {"tag": "poison", "coefficient": 0.6},
+      {"tag": "healing", "coefficient": 0.85},
+      {"tag": "physical_attacks", "coefficient": 0.35}
+    ],
+    "weaknesses": [
+      {"tag": "genjutsu", "coefficient": 0.25},
+      {"tag": "long_range", "coefficient": 0.3},
+      {"tag": "overwhelming_ninjutsu", "coefficient": 0.3}
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "image_path": "assets/characters/naruto/sakura_post_war.png",
+    "short_description": "Sakura having mastered the Byakugou Seal, surpassing Tsunade in medical ninjutsu while delivering earth-shattering punches."
+  },
+  {
+    "slug": "gaara_kazekage",
+    "name": "Gaara",
+    "verse": "naruto",
+    "arc_version": "Kazekage – Fourth Shinobi War",
+    "power_level": 2034817.6640,
+    "martial_ratio": 0.3,
+    "power_tags": ["sand_manipulation", "sand_armor", "absolute_defense", "shukaku_link", "wind_release"],
+    "strengths": [
+      {"tag": "physical_attacks", "coefficient": 0.55},
+      {"tag": "projectile", "coefficient": 0.5},
+      {"tag": "blunt_force", "coefficient": 0.45}
+    ],
+    "weaknesses": [
+      {"tag": "wind", "coefficient": 0.35},
+      {"tag": "water", "coefficient": 0.4},
+      {"tag": "fire", "coefficient": 0.35},
+      {"tag": "lightning", "coefficient": 0.3}
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "image_path": "assets/characters/naruto/gaara_kazekage.png",
+    "short_description": "The Fifth Kazekage whose sand-based absolute defense and long-range crushing attacks make him virtually untouchable in open combat."
+  },
+  {
+    "slug": "killer_b",
+    "name": "Killer B",
+    "verse": "naruto",
+    "arc_version": "Eight-Tails Full Bijuu Mode",
+    "power_level": 3421847.7720,
+    "martial_ratio": 0.65,
+    "power_tags": ["eight_tails_jinchuriki", "bijuu_mode", "gyuki_chakra", "lightning_release", "seven_swords", "ink_blast"],
+    "strengths": [
+      {"tag": "chakra_drain", "coefficient": 0.5},
+      {"tag": "bijuu_resilience", "coefficient": 0.6},
+      {"tag": "lightning", "coefficient": 0.3}
+    ],
+    "weaknesses": [
+      {"tag": "genjutsu", "coefficient": 0.4},
+      {"tag": "sealing_jutsu", "coefficient": 0.35}
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "image_path": "assets/characters/naruto/killer_b.png",
+    "short_description": "The perfect Jinchuriki of the Eight-Tails who achieved complete harmony with Gyuki, combining rapper swagger with devastating bijuu-mode combat power."
+  },
+  {
+    "slug": "orochimaru",
+    "name": "Orochimaru",
+    "verse": "naruto",
+    "arc_version": "Sannin Era – Prime",
+    "power_level": 2247821.5510,
+    "martial_ratio": 0.45,
+    "power_tags": ["forbidden_jutsu", "summoning_manda", "eight_branches_snake", "body_shedding", "curse_mark", "sword_of_kusanagi"],
+    "strengths": [
+      {"tag": "poison", "coefficient": 0.6},
+      {"tag": "physical_attack", "coefficient": 0.5}
+    ],
+    "weaknesses": [
+      {"tag": "fire_release", "coefficient": 0.3},
+      {"tag": "sealing_jutsu", "coefficient": 0.4},
+      {"tag": "sage_mode", "coefficient": 0.35}
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "image_path": "assets/characters/naruto/orochimaru.png",
+    "short_description": "The Snake Sannin at his prime, master of forbidden jutsu who conquered death itself through body-hopping and terrorized the shinobi world for generations."
+  }
+]

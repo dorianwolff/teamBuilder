@@ -1,0 +1,334 @@
+[
+  {
+    "slug": "gon_adult",
+    "name": "Gon Freecss",
+    "verse": "hxh",
+    "arc_version": "Adult Transformation – Chimera Ant Arc",
+    "power_level": 8234821.6640,
+    "martial_ratio": 0.65,
+    "power_tags": ["jajanken_rock_god", "enhancement", "adult_transformation", "unlimited_nen", "ren_massive"],
+    "strengths": [
+      {"tag": "nen_attacks", "coefficient": 0.5},
+      {"tag": "physical_attacks", "coefficient": 0.6},
+      {"tag": "power_output", "coefficient": 0.5}
+    ],
+    "weaknesses": [
+      {"tag": "nen_loss_post_transformation", "coefficient": 1.0, "description": "After this form Gon loses all Nen — he is completely vulnerable if the fight extends past this peak"},
+      {"tag": "tactical_thinking", "coefficient": 0.3},
+      {"tag": "stamina_post_form", "coefficient": 0.9}
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "image_path": "assets/characters/hxh/gon_adult.png",
+    "short_description": "Gon's ultimate transformation sacrificing all future nen potential to fight at adult peak, achieving power that visibly unsettled Neferpitou."
+  },
+  {
+    "slug": "killua_godspeed",
+    "name": "Killua Zoldyck",
+    "verse": "hxh",
+    "arc_version": "Godspeed – Chimera Ant Arc",
+    "power_level": 3234821.4410,
+    "martial_ratio": 0.75,
+    "power_tags": ["godspeed", "lightning_speed", "electricity_nen", "whirlwind", "rhythm_echo", "zoldyck_assassination_arts"],
+    "strengths": [
+      {"tag": "electricity", "coefficient": 0.7, "description": "Transmutes Nen into electricity — immune to external electrical attacks"},
+      {"tag": "speed", "coefficient": 0.5},
+      {"tag": "detection_evasion", "coefficient": 0.4}
+    ],
+    "weaknesses": [
+      {"tag": "overwhelming_nen", "coefficient": 0.3},
+      {"tag": "emotional_manipulation_alluka", "coefficient": 0.6}
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "image_path": "assets/characters/hxh/killua_godspeed.png",
+    "short_description": "Killua activating Godspeed, transmuting his Nen into lightning to move at electric speeds essentially invisible to Chimera Ant soldiers."
+  },
+  {
+    "slug": "meruem_post_rose",
+    "name": "Meruem",
+    "verse": "hxh",
+    "arc_version": "Post-Rose – Chimera Ant Arc",
+    "power_level": 9234821.2270,
+    "martial_ratio": 0.8,
+    "power_tags": ["nen_supreme", "conjuration_consumption", "aura_synthesis", "royal_guard_absorption"],
+    "strengths": [
+      {"tag": "nen_attacks", "coefficient": 0.8},
+      {"tag": "physical_attacks", "coefficient": 0.75},
+      {"tag": "intelligence", "coefficient": 0.5},
+      {"tag": "aura_pressure", "coefficient": 0.7}
+    ],
+    "weaknesses": [
+      {"tag": "miniature_rose_poison", "coefficient": 0.8, "description": "The Miniature Rose's radiation fatally poisons him slowly"},
+      {"tag": "love_komugi", "coefficient": 0.5, "description": "His bond with Komugi makes him hesitate to act — a vulnerability of the heart"}
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "image_path": "assets/characters/hxh/meruem_post_rose.png",
+    "short_description": "The Chimera Ant King after surviving the Miniature Rose and absorbing Shaiapouf and Neferpitou's Nen, arguably the most powerful Nen user to ever live."
+  },
+  {
+    "slug": "neferpitou",
+    "name": "Neferpitou",
+    "verse": "hxh",
+    "arc_version": "Royal Guard – Chimera Ant Arc",
+    "power_level": 6234821.3310,
+    "martial_ratio": 0.7,
+    "power_tags": ["nen_conjuration", "doctor_blythe", "terpsichora_puppetry", "en_massive", "combat_instinct"],
+    "strengths": [
+      {"tag": "nen_attacks", "coefficient": 0.55},
+      {"tag": "physical_attacks", "coefficient": 0.6},
+      {"tag": "detection", "coefficient": 0.5}
+    ],
+    "weaknesses": [
+      {"tag": "dead_masters_control", "coefficient": 0.8, "description": "Uses remaining Nen to control own corpse — but the body acts without self-preservation"},
+      {"tag": "post_puppet_state", "coefficient": 0.9}
+    ],
+    "cannot_win_against": ["meruem_post_rose"],
+    "draw_conditions": [],
+    "image_path": "assets/characters/hxh/neferpitou.png",
+    "short_description": "Meruem's most powerful Royal Guard whose En stretches for kilometers and whose medical Nen can repair catastrophic injuries."
+  },
+  {
+    "slug": "netero",
+    "name": "Isaac Netero",
+    "verse": "hxh",
+    "arc_version": "100-Type Guanyin Bodhisattva – Chimera Ant Arc",
+    "power_level": 5847293.8820,
+    "martial_ratio": 0.85,
+    "power_tags": ["hundred_type_guanyin_bodhisattva", "zero_hand", "speed_training_supreme", "enhancement_mastery", "miniature_rose_sacrifice"],
+    "strengths": [
+      {"tag": "speed", "coefficient": 0.5},
+      {"tag": "nen_output", "coefficient": 0.5},
+      {"tag": "taijutsu_speed", "coefficient": 0.55}
+    ],
+    "weaknesses": [
+      {"tag": "overwhelming_nen_defense", "coefficient": 0.4},
+      {"tag": "old_age_stamina", "coefficient": 0.3}
+    ],
+    "cannot_win_against": ["meruem_post_rose"],
+    "draw_conditions": [],
+    "image_path": "assets/characters/hxh/netero.png",
+    "short_description": "The Hunter Association Chairman whose decades of prayer-training produced a 100-armed Nen statue moving faster than sound, sacrificing himself to poison Meruem."
+  },
+  {
+    "slug": "zeno_zoldyck",
+    "name": "Zeno Zoldyck",
+    "verse": "hxh",
+    "arc_version": "Zoldyck Head – Chimera Ant Arc",
+    "power_level": 3547293.4410,
+    "martial_ratio": 0.8,
+    "power_tags": ["nen_emission", "dragon_head", "dragon_lance", "dragon_dive", "zoldyck_assassination_arts", "transmutation"],
+    "strengths": [
+      {"tag": "area_of_effect", "coefficient": 0.5},
+      {"tag": "nen_attacks", "coefficient": 0.45},
+      {"tag": "precision_killing", "coefficient": 0.5}
+    ],
+    "weaknesses": [
+      {"tag": "stamina_drain", "coefficient": 0.35},
+      {"tag": "overwhelming_nen", "coefficient": 0.3}
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "image_path": "assets/characters/hxh/zeno_zoldyck.png",
+    "short_description": "The patriarch of the Zoldyck family whose Dragon Dive summons a horde of Nen dragons devastating entire areas, a veteran assassin of unparalleled experience."
+  },
+  {
+    "slug": "silva_zoldyck",
+    "name": "Silva Zoldyck",
+    "verse": "hxh",
+    "arc_version": "Zoldyck Patriarch – Current",
+    "power_level": 3134821.5540,
+    "martial_ratio": 0.85,
+    "power_tags": ["nen_emission", "silver_orbs", "transmutation", "zoldyck_assassination_arts"],
+    "strengths": [
+      {"tag": "poison", "coefficient": 1.0, "description": "Complete immunity to all poisons — has fought and survived countless assassination attempts"},
+      {"tag": "physical_attacks", "coefficient": 0.4},
+      {"tag": "nen_attacks", "coefficient": 0.4}
+    ],
+    "weaknesses": [
+      {"tag": "overwhelming_nen_beast", "coefficient": 0.3}
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "image_path": "assets/characters/hxh/silva_zoldyck.png",
+    "short_description": "The towering head of the Zoldyck family, complete immunity to all poisons and massive silver Nen orbs that can crush targets with explosive force."
+  },
+  {
+    "slug": "illumi",
+    "name": "Illumi Zoldyck",
+    "verse": "hxh",
+    "arc_version": "Top Assassin – Yorknew Arc",
+    "power_level": 2847293.6640,
+    "martial_ratio": 0.7,
+    "power_tags": ["nen_manipulation", "needle_control", "puppet_army", "manipulation_nen", "zoldyck_assassination_arts"],
+    "strengths": [
+      {"tag": "detection", "coefficient": 0.4},
+      {"tag": "mind_control", "coefficient": 0.5},
+      {"tag": "surprise_attack", "coefficient": 0.45}
+    ],
+    "weaknesses": [
+      {"tag": "overwhelming_nen_close", "coefficient": 0.3},
+      {"tag": "counter_manipulation", "coefficient": 0.35}
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "image_path": "assets/characters/hxh/illumi.png",
+    "short_description": "The eldest Zoldyck son whose needle-based manipulation Nen can control entire armies of puppets, a top-tier assassin who instills primal fear in targets."
+  },
+  {
+    "slug": "hisoka",
+    "name": "Hisoka Morow",
+    "verse": "hxh",
+    "arc_version": "Bungee Gum – Heaven's Arena",
+    "power_level": 3421047.7720,
+    "martial_ratio": 0.75,
+    "power_tags": ["bungee_gum", "texture_surprise", "transmutation", "in_hidden_aura", "elastic_love"],
+    "strengths": [
+      {"tag": "nen_attacks", "coefficient": 0.4},
+      {"tag": "physical_attacks", "coefficient": 0.45},
+      {"tag": "trap_setting", "coefficient": 0.5}
+    ],
+    "weaknesses": [
+      {"tag": "true_overwhelming_nen", "coefficient": 0.3},
+      {"tag": "ranged_specialization", "coefficient": 0.25}
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "image_path": "assets/characters/hxh/hisoka.png",
+    "short_description": "The Magician with Bungee Gum, a deceptively simple transmutation that combines the properties of rubber and gum for unstoppable elastic attacks."
+  },
+  {
+    "slug": "chrollo_full_prep",
+    "name": "Chrollo Lucilfer",
+    "verse": "hxh",
+    "arc_version": "Full Prep Bandit's Secret – Heaven's Arena",
+    "power_level": 3734821.3310,
+    "martial_ratio": 0.6,
+    "power_tags": ["bandits_secret_full", "stolen_nen_collection", "conjuration", "manipulation", "specialization", "gallery_fake", "indoor_fish"],
+    "strengths": [
+      {"tag": "versatility", "coefficient": 0.5},
+      {"tag": "preparation", "coefficient": 0.5},
+      {"tag": "nen_theft", "coefficient": 0.45}
+    ],
+    "weaknesses": [
+      {"tag": "speed_overwhelm", "coefficient": 0.3},
+      {"tag": "no_prep_time", "coefficient": 0.4}
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "image_path": "assets/characters/hxh/chrollo_full_prep.png",
+    "short_description": "The Phantom Troupe leader with full Bandit's Secret, able to wield every stolen ability simultaneously for overwhelming tactical flexibility."
+  },
+  {
+    "slug": "kurapika_emperor_time",
+    "name": "Kurapika",
+    "verse": "hxh",
+    "arc_version": "Emperor Time – Yorknew Arc",
+    "power_level": 4234821.4410,
+    "martial_ratio": 0.55,
+    "power_tags": ["emperor_time", "chain_jail", "dowsing_chain", "judgment_chain", "holy_chain", "scarlet_eyes", "specialist_nen"],
+    "strengths": [
+      {"tag": "nen_binding", "coefficient": 0.8, "description": "Chain Jail is inescapable for members of the Phantom Troupe"},
+      {"tag": "spider_weakness", "coefficient": 1.0, "description": "All abilities achieve maximum efficiency against the Phantom Troupe"},
+      {"tag": "nen_defense", "coefficient": 0.45}
+    ],
+    "weaknesses": [
+      {"tag": "lifespan_drain", "coefficient": 0.6, "description": "Emperor Time shortens his lifespan for every second used"},
+      {"tag": "non_spider_opponents", "coefficient": 0.3, "description": "Many abilities lose their unique edge outside of Spider-hunting context"}
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "image_path": "assets/characters/hxh/kurapika_emperor_time.png",
+    "short_description": "Kurapika activating Emperor Time for 100% efficiency across all Nen categories, his Chain Jail unescapable by Spiders and his Judgment Chain lethal if conditions are broken."
+  },
+  {
+    "slug": "leorio",
+    "name": "Leorio Paradinight",
+    "verse": "hxh",
+    "arc_version": "Hunter – Chimera Ant Arc",
+    "power_level": 47293.2210,
+    "martial_ratio": 0.6,
+    "power_tags": ["nen_emission", "remote_punch", "medical_knowledge", "resolve"],
+    "strengths": [
+      {"tag": "surprise_attack", "coefficient": 0.3},
+      {"tag": "determination", "coefficient": 0.3}
+    ],
+    "weaknesses": [
+      {"tag": "experienced_nen_user", "coefficient": 0.5},
+      {"tag": "close_combat_specialist", "coefficient": 0.4}
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "image_path": "assets/characters/hxh/leorio.png",
+    "short_description": "The aspiring doctor who discovered his Emission-type Nen lets him throw a long-range physical punch, driven entirely by desire to help friends."
+  },
+  {
+    "slug": "feitan_rising_sun",
+    "name": "Feitan Portor",
+    "verse": "hxh",
+    "arc_version": "Rising Sun – Chimera Ant Arc",
+    "power_level": 2934821.7720,
+    "martial_ratio": 0.75,
+    "power_tags": ["rising_sun", "pain_packer", "speed_specialization", "transmutation", "sword", "heat"],
+    "strengths": [
+      {"tag": "speed", "coefficient": 0.5},
+      {"tag": "heat_attack", "coefficient": 0.5},
+      {"tag": "pain_amplification", "coefficient": 0.5}
+    ],
+    "weaknesses": [
+      {"tag": "rising_sun_self_damage", "coefficient": 0.4, "description": "Rising Sun requires taking significant damage first — and also damages Feitan"},
+      {"tag": "overwhelming_nen_defense", "coefficient": 0.35}
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "image_path": "assets/characters/hxh/feitan_rising_sun.png",
+    "short_description": "The Phantom Troupe's fastest member whose Pain Packer amplifies Rising Sun by how much damage he's taken, becoming a miniature sun that incinerates everything."
+  },
+  {
+    "slug": "knov",
+    "name": "Knov",
+    "verse": "hxh",
+    "arc_version": "Hide and Seek – Chimera Ant Arc",
+    "power_level": 987293.5540,
+    "martial_ratio": 0.4,
+    "power_tags": ["hide_and_seek", "dimensional_portals", "conjuration", "tactical_intel"],
+    "strengths": [
+      {"tag": "escape", "coefficient": 0.7},
+      {"tag": "infiltration", "coefficient": 0.6},
+      {"tag": "surprise_attack", "coefficient": 0.4}
+    ],
+    "weaknesses": [
+      {"tag": "overwhelming_en", "coefficient": 0.8, "description": "Large-scale En-detection ability causes him extreme panic"},
+      {"tag": "aura_pressure_extreme", "coefficient": 0.7, "description": "Sensing Meruem's aura caused permanent psychological damage"},
+      {"tag": "direct_combat", "coefficient": 0.5}
+    ],
+    "cannot_win_against": ["meruem_post_rose", "neferpitou"],
+    "draw_conditions": [],
+    "image_path": "assets/characters/hxh/knov.png",
+    "short_description": "The Hunter whose conjured pocket dimensions make infiltration and extraction seamless, though his psyche was shattered by merely sensing Meruem's terrifying aura."
+  },
+  {
+    "slug": "morel",
+    "name": "Morel Mackernasey",
+    "verse": "hxh",
+    "arc_version": "Deep Purple – Chimera Ant Arc",
+    "power_level": 1234821.4410,
+    "martial_ratio": 0.55,
+    "power_tags": ["deep_purple_smoke", "manipulation_nen", "smoke_puppet_army", "cloud_pipe", "nen_emission"],
+    "strengths": [
+      {"tag": "area_control", "coefficient": 0.55},
+      {"tag": "nen_output_volume", "coefficient": 0.45},
+      {"tag": "surprise_attack", "coefficient": 0.4}
+    ],
+    "weaknesses": [
+      {"tag": "wind", "coefficient": 0.5, "description": "Strong wind disperses his smoke puppets instantly"},
+      {"tag": "royal_guard_level", "coefficient": 0.7},
+      {"tag": "direct_overwhelm", "coefficient": 0.4}
+    ],
+    "cannot_win_against": ["meruem_post_rose", "neferpitou"],
+    "draw_conditions": [],
+    "image_path": "assets/characters/hxh/morel.png",
+    "short_description": "The veteran Hunter who fills entire areas with smoke to deploy an army of Nen puppets, one of the most experienced and tactically wise fighters in the Association."
+  }
+]

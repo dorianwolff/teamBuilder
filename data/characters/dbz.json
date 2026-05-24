@@ -1,0 +1,332 @@
+[
+  {
+    "slug": "goku_mui",
+    "name": "Son Goku",
+    "verse": "dbz",
+    "arc_version": "Ultra Instinct Mastered – Tournament of Power",
+    "power_level": 9847293.4521,
+    "martial_ratio": 0.75,
+    "power_tags": ["ultra_instinct", "godly_ki", "autonomous_movement", "kamehameha_god", "flight", "instant_transmission"],
+    "strengths": [
+      {"tag": "physical_attacks", "coefficient": 0.7, "description": "Autonomous dodging makes physical attacks nearly impossible to land"},
+      {"tag": "speed_blitz", "coefficient": 0.65},
+      {"tag": "energy_attacks", "coefficient": 0.5},
+      {"tag": "godly_ki", "coefficient": 0.5}
+    ],
+    "weaknesses": [
+      {"tag": "emotional_disruption", "coefficient": 0.3},
+      {"tag": "stamina_drain", "coefficient": 0.25}
+    ],
+    "cannot_win_against": ["whis", "beerus"],
+    "draw_conditions": [],
+    "image_path": "assets/characters/dbz/goku_mui.png",
+    "short_description": "Goku mastering Ultra Instinct, his body moving autonomously to dodge and counter with godly precision beyond conscious thought."
+  },
+  {
+    "slug": "vegeta_ultra_ego",
+    "name": "Vegeta",
+    "verse": "dbz",
+    "arc_version": "Ultra Ego – Granolah Arc",
+    "power_level": 9621047.7730,
+    "martial_ratio": 0.78,
+    "power_tags": ["ultra_ego", "godly_ki", "hakai_destroyer", "big_bang_attack", "galick_gun", "flight", "pride"],
+    "strengths": [
+      {"tag": "damage_received", "coefficient": 0.6, "description": "Ultra Ego grows stronger when taking damage"},
+      {"tag": "destroyer_energy", "coefficient": 0.55},
+      {"tag": "physical_attacks", "coefficient": 0.5}
+    ],
+    "weaknesses": [
+      {"tag": "stamina_overwhelm", "coefficient": 0.3},
+      {"tag": "speed_blitz", "coefficient": 0.2}
+    ],
+    "cannot_win_against": ["whis", "beerus"],
+    "draw_conditions": [],
+    "image_path": "assets/characters/dbz/vegeta_ultra_ego.png",
+    "short_description": "Vegeta unleashing Ultra Ego, a form that grows stronger as he receives damage, embodying the destructive philosophy of the God of Destruction."
+  },
+  {
+    "slug": "beerus",
+    "name": "Beerus",
+    "verse": "dbz",
+    "arc_version": "God of Destruction – Battle of Gods",
+    "power_level": 9934821.2210,
+    "martial_ratio": 0.8,
+    "power_tags": ["hakai", "destroyer_energy", "godly_ki", "ultra_instinct_partial", "sphere_of_destruction", "flight", "sealing"],
+    "strengths": [
+      {"tag": "physical_attacks", "coefficient": 0.6},
+      {"tag": "energy_attacks", "coefficient": 0.65},
+      {"tag": "hakai_resistance", "coefficient": 0.8, "description": "Destroyer energy resists being destroyed"}
+    ],
+    "weaknesses": [
+      {"tag": "deep_sleep", "coefficient": 0.9},
+      {"tag": "food", "coefficient": 0.1}
+    ],
+    "cannot_win_against": ["whis"],
+    "draw_conditions": [],
+    "image_path": "assets/characters/dbz/beerus.png",
+    "short_description": "The God of Destruction of Universe 7 whose Hakai can erase existence itself, operating at a level so far above mortals he rarely fights seriously."
+  },
+  {
+    "slug": "whis",
+    "name": "Whis",
+    "verse": "dbz",
+    "arc_version": "Angel Attendant – Universe 7",
+    "power_level": 9998472.8830,
+    "martial_ratio": 0.85,
+    "power_tags": ["angel_ki", "ultra_instinct_perfected", "time_rewind", "staff_of_omega", "godly_ki_supreme", "dimension_creation", "flight"],
+    "strengths": [
+      {"tag": "physical_attacks", "coefficient": 0.9},
+      {"tag": "energy_attacks", "coefficient": 0.9},
+      {"tag": "hakai", "coefficient": 0.7},
+      {"tag": "time_manipulation", "coefficient": 0.6}
+    ],
+    "weaknesses": [
+      {"tag": "angel_law_violation", "coefficient": 0.5}
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "image_path": "assets/characters/dbz/whis.png",
+    "short_description": "The Angel attendant and trainer of Beerus who possesses perfected Ultra Instinct and the ability to rewind time, essentially untouchable by any mortal."
+  },
+  {
+    "slug": "jiren",
+    "name": "Jiren",
+    "verse": "dbz",
+    "arc_version": "Full Power – Tournament of Power",
+    "power_level": 9721047.5540,
+    "martial_ratio": 0.85,
+    "power_tags": ["ki_concentration", "full_power_jiren", "heat_barrier", "energy_prison", "flight", "godly_ki"],
+    "strengths": [
+      {"tag": "physical_attacks", "coefficient": 0.65},
+      {"tag": "energy_attacks", "coefficient": 0.6},
+      {"tag": "overwhelming_ki", "coefficient": 0.7}
+    ],
+    "weaknesses": [
+      {"tag": "emotional_support", "coefficient": 0.4, "description": "His philosophy of strength as the only truth is his mental vulnerability"},
+      {"tag": "trust_and_bonds", "coefficient": 0.35}
+    ],
+    "cannot_win_against": ["whis", "beerus"],
+    "draw_conditions": [],
+    "image_path": "assets/characters/dbz/jiren.png",
+    "short_description": "The Pride Trooper who surpassed the limits of a mortal, described as having a ki that rivals a God of Destruction purely through relentless training."
+  },
+  {
+    "slug": "broly_dbs",
+    "name": "Broly",
+    "verse": "dbz",
+    "arc_version": "Legendary Super Saiyan – DBS Movie",
+    "power_level": 9512847.9930,
+    "martial_ratio": 0.9,
+    "power_tags": ["legendary_super_saiyan", "great_ape_ki", "berserker", "zenkai_unlimited", "energy_spiral", "flight"],
+    "strengths": [
+      {"tag": "physical_attacks", "coefficient": 0.65},
+      {"tag": "energy_attacks", "coefficient": 0.55},
+      {"tag": "zenkai_healing", "coefficient": 0.8, "description": "Grows measurably stronger every second of combat"}
+    ],
+    "weaknesses": [
+      {"tag": "emotional_destabilization", "coefficient": 0.45},
+      {"tag": "teleportation", "coefficient": 0.25}
+    ],
+    "cannot_win_against": ["whis", "beerus"],
+    "draw_conditions": [],
+    "image_path": "assets/characters/dbz/broly_dbs.png",
+    "short_description": "The DBS Legendary Super Saiyan who fought Goku and Vegeta to a standstill before forcing them to fuse, his power multiplying the longer the battle continues."
+  },
+  {
+    "slug": "gohan_beast",
+    "name": "Gohan",
+    "verse": "dbz",
+    "arc_version": "Beast Form – Super Hero Movie",
+    "power_level": 8934821.6640,
+    "martial_ratio": 0.65,
+    "power_tags": ["beast_gohan", "hidden_potential_unlocked", "instinct_awakened", "kamehameha_beast", "flight", "godly_ki_partial"],
+    "strengths": [
+      {"tag": "physical_attacks", "coefficient": 0.55},
+      {"tag": "energy_attacks", "coefficient": 0.6},
+      {"tag": "rage_amplification", "coefficient": 0.5}
+    ],
+    "weaknesses": [
+      {"tag": "training_inconsistency", "coefficient": 0.3},
+      {"tag": "stamina_drain", "coefficient": 0.3}
+    ],
+    "cannot_win_against": ["whis", "beerus"],
+    "draw_conditions": [],
+    "image_path": "assets/characters/dbz/gohan_beast.png",
+    "short_description": "Gohan's true awakening in Beast Form, unlocking a power even Cell Max could not withstand as his latent potential finally manifests fully."
+  },
+  {
+    "slug": "goku_ssb",
+    "name": "Son Goku",
+    "verse": "dbz",
+    "arc_version": "Super Saiyan Blue – Universe 6 Arc",
+    "power_level": 7821047.3310,
+    "martial_ratio": 0.72,
+    "power_tags": ["super_saiyan_blue", "godly_ki", "kaioken_ssb", "kamehameha_god", "instant_transmission", "flight"],
+    "strengths": [
+      {"tag": "physical_attacks", "coefficient": 0.55},
+      {"tag": "energy_attacks", "coefficient": 0.5},
+      {"tag": "godly_ki", "coefficient": 0.4}
+    ],
+    "weaknesses": [
+      {"tag": "ki_drain_kaioken", "coefficient": 0.4},
+      {"tag": "overwhelming_godly_ki", "coefficient": 0.3}
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "image_path": "assets/characters/dbz/goku_ssb.png",
+    "short_description": "Goku combining Super Saiyan with God ki for SSB, able to further stack Kaioken multipliers for explosive bursts beyond normal godly limits."
+  },
+  {
+    "slug": "vegeta_ssb_evolved",
+    "name": "Vegeta",
+    "verse": "dbz",
+    "arc_version": "Super Saiyan Blue Evolved – Tournament of Power",
+    "power_level": 7634821.8820,
+    "martial_ratio": 0.74,
+    "power_tags": ["ssb_evolved", "godly_ki", "final_flash", "big_bang_attack_god", "flight"],
+    "strengths": [
+      {"tag": "physical_attacks", "coefficient": 0.5},
+      {"tag": "energy_attacks", "coefficient": 0.5},
+      {"tag": "godly_ki", "coefficient": 0.4}
+    ],
+    "weaknesses": [
+      {"tag": "hakai_user", "coefficient": 0.3},
+      {"tag": "speed_blitz", "coefficient": 0.25}
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "image_path": "assets/characters/dbz/vegeta_ssb_evolved.png",
+    "short_description": "Vegeta breaking through the ceiling of SSB to create SSB Evolved, representing his own mastery of God ki distinct from imitation."
+  },
+  {
+    "slug": "frieza_black",
+    "name": "Frieza",
+    "verse": "dbz",
+    "arc_version": "Black Frieza – Post-Training",
+    "power_level": 9234821.4410,
+    "martial_ratio": 0.7,
+    "power_tags": ["black_frieza", "death_beam_black", "death_ball_black", "godly_ki", "ki_suppression", "flight"],
+    "strengths": [
+      {"tag": "physical_attacks", "coefficient": 0.55},
+      {"tag": "energy_attacks", "coefficient": 0.65},
+      {"tag": "ki_control", "coefficient": 0.5}
+    ],
+    "weaknesses": [
+      {"tag": "angel_ki", "coefficient": 0.5}
+    ],
+    "cannot_win_against": ["whis"],
+    "draw_conditions": [],
+    "image_path": "assets/characters/dbz/frieza_black.png",
+    "short_description": "Frieza after training in a time chamber equivalent, achieving Black Frieza form that one-shot both MUI Goku and Ultra Ego Vegeta."
+  },
+  {
+    "slug": "frieza_golden",
+    "name": "Frieza",
+    "verse": "dbz",
+    "arc_version": "Golden Frieza – Resurrection F",
+    "power_level": 7847293.1130,
+    "martial_ratio": 0.65,
+    "power_tags": ["golden_frieza", "death_beam", "death_ball", "godly_ki_partial", "ki_suppression", "flight"],
+    "strengths": [
+      {"tag": "physical_attacks", "coefficient": 0.5},
+      {"tag": "energy_attacks", "coefficient": 0.55}
+    ],
+    "weaknesses": [
+      {"tag": "stamina_drain", "coefficient": 0.5, "description": "Unfamiliar transformation drains stamina rapidly"},
+      {"tag": "training_deficiency", "coefficient": 0.4}
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "image_path": "assets/characters/dbz/frieza_golden.png",
+    "short_description": "Frieza's evolved Golden form achieved through his first-ever dedicated training, powerful but draining due to his unfamiliarity with the transformation."
+  },
+  {
+    "slug": "cell_perfect",
+    "name": "Cell",
+    "verse": "dbz",
+    "arc_version": "Perfect Form – Cell Games",
+    "power_level": 5934821.7720,
+    "martial_ratio": 0.7,
+    "power_tags": ["perfect_cell", "zenkai_cells", "kamehameha_solar", "regeneration", "absorption", "flight", "saiyan_cells"],
+    "strengths": [
+      {"tag": "physical_attacks", "coefficient": 0.55},
+      {"tag": "energy_attacks", "coefficient": 0.55},
+      {"tag": "regeneration", "coefficient": 0.7}
+    ],
+    "weaknesses": [
+      {"tag": "forced_reversion", "coefficient": 0.6},
+      {"tag": "emotional_triggers", "coefficient": 0.4}
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "image_path": "assets/characters/dbz/cell_perfect.png",
+    "short_description": "The ultimate bio-weapon in Perfect Form, combining the cells of every great warrior to become the most complete fighter of his era."
+  },
+  {
+    "slug": "majin_buu_pure",
+    "name": "Majin Buu",
+    "verse": "dbz",
+    "arc_version": "Pure Evil Buu – Buu Arc",
+    "power_level": 7234821.5540,
+    "martial_ratio": 0.7,
+    "power_tags": ["pure_evil_buu", "candy_beam", "regeneration_unlimited", "absorption", "flight", "magic_attack"],
+    "strengths": [
+      {"tag": "physical_attacks", "coefficient": 0.7},
+      {"tag": "energy_attacks", "coefficient": 0.6},
+      {"tag": "regeneration", "coefficient": 0.9, "description": "Can regenerate from a single atom — essentially unkillable by conventional means"},
+      {"tag": "absorption", "coefficient": 0.5}
+    ],
+    "weaknesses": [
+      {"tag": "sealing", "coefficient": 0.5},
+      {"tag": "overwhelming_energy", "coefficient": 0.3}
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "image_path": "assets/characters/dbz/majin_buu_pure.png",
+    "short_description": "Pure Evil Buu stripped of all good influence, a near-unkillable magical entity whose rubber body regenerates from any injury."
+  },
+  {
+    "slug": "piccolo_orange",
+    "name": "Piccolo",
+    "verse": "dbz",
+    "arc_version": "Orange Piccolo – Super Hero Movie",
+    "power_level": 5234821.4410,
+    "martial_ratio": 0.7,
+    "power_tags": ["orange_piccolo", "special_beam_cannon_god", "regeneration", "giant_form", "namekian_ki", "flight"],
+    "strengths": [
+      {"tag": "physical_attacks", "coefficient": 0.5},
+      {"tag": "energy_attacks", "coefficient": 0.5},
+      {"tag": "regeneration", "coefficient": 0.6}
+    ],
+    "weaknesses": [
+      {"tag": "hakai", "coefficient": 0.5},
+      {"tag": "overwhelming_godly_ki", "coefficient": 0.3}
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "image_path": "assets/characters/dbz/piccolo_orange.png",
+    "short_description": "Piccolo after unlocking Orange Piccolo via Shenron, a transformation that elevates him to the level of the gods and rivals Gohan Beast in raw power."
+  },
+  {
+    "slug": "android_17_top",
+    "name": "Android 17",
+    "verse": "dbz",
+    "arc_version": "Ranger – Tournament of Power",
+    "power_level": 5021047.8820,
+    "martial_ratio": 0.75,
+    "power_tags": ["infinite_energy", "barrier", "android_acrobatics", "energy_rifle", "flight", "no_ki_signature"],
+    "strengths": [
+      {"tag": "stamina_drain", "coefficient": 1.0, "description": "Infinite energy reactor — stamina drain has zero effect"},
+      {"tag": "ki_sensing", "coefficient": 0.7, "description": "No ki signature makes him invisible to ki sensing"},
+      {"tag": "barrier_protection", "coefficient": 0.5}
+    ],
+    "weaknesses": [
+      {"tag": "overwhelming_physical", "coefficient": 0.3},
+      {"tag": "hakai", "coefficient": 0.5}
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "image_path": "assets/characters/dbz/android_17_top.png",
+    "short_description": "Android 17 as Tournament of Power MVP, his infinite energy core eliminating all stamina concerns while his barrier deflects devastating attacks."
+  }
+]
