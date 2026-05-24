@@ -1,8 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, Suspense } from 'react'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { motion } from 'framer-motion'
 import { Swords, Mail, Lock, AlertCircle } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
@@ -30,8 +30,10 @@ function MicrosoftIcon() {
   )
 }
 
-export default function LoginPage() {
-  const router = useRouter()
+function LoginContent() {
+  const router       = useRouter()
+  const searchParams = useSearchParams()
+  const next         = searchParams.get('next') ?? '/'
   const [email, setEmail]       = useState('')
   const [password, setPassword] = useState('')
   const [error, setError]       = useState('')
@@ -48,7 +50,7 @@ export default function LoginPage() {
       setError(err.message)
       setLoading(false)
     } else {
-      router.push('/lobby')
+      router.push(next)
       router.refresh()
     }
   }
@@ -59,7 +61,7 @@ export default function LoginPage() {
     await supabase.auth.signInWithOAuth({
       provider,
       options: {
-        redirectTo: `${window.location.origin}/auth/callback?next=/lobby`,
+        redirectTo: `${window.location.origin}/auth/callback?next=${encodeURIComponent(next)}`,
         ...(provider === 'azure' && { scopes: 'email' }),
       },
     })
@@ -150,11 +152,15 @@ export default function LoginPage() {
 
         <p className="text-center text-sm text-white/40 mt-6">
           No account?{' '}
-          <Link href="/register" className="text-gold-400 hover:text-gold-300 font-medium transition-colors">
+          <Link href={`/register${next !== '/' ? `?next=${encodeURIComponent(next)}` : ''}`} className="text-gold-400 hover:text-gold-300 font-medium transition-colors">
             Create one
           </Link>
         </p>
       </motion.div>
     </div>
   )
+}
+
+export default function LoginPage() {
+  return <Suspense><LoginContent /></Suspense>
 }

@@ -1,8 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, Suspense } from 'react'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { motion } from 'framer-motion'
 import { Swords, Mail, Lock, User, AlertCircle, MailCheck } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
@@ -30,8 +30,10 @@ function MicrosoftIcon() {
   )
 }
 
-export default function RegisterPage() {
-  const router = useRouter()
+function RegisterContent() {
+  const router       = useRouter()
+  const searchParams = useSearchParams()
+  const next         = searchParams.get('next') ?? '/'
   const [username, setUsername]  = useState('')
   const [email, setEmail]        = useState('')
   const [password, setPassword]  = useState('')
@@ -56,7 +58,7 @@ export default function RegisterPage() {
       setLoading(false)
     } else if (data.session) {
       // Email confirmation disabled — signed in immediately
-      router.push('/lobby')
+      router.push(next)
       router.refresh()
     } else {
       // Supabase requires email confirmation
@@ -71,7 +73,7 @@ export default function RegisterPage() {
     await supabase.auth.signInWithOAuth({
       provider,
       options: {
-        redirectTo: `${window.location.origin}/auth/callback?next=/lobby`,
+        redirectTo: `${window.location.origin}/auth/callback?next=${encodeURIComponent(next)}`,
         ...(provider === 'azure' && { scopes: 'email' }),
       },
     })
@@ -203,11 +205,15 @@ export default function RegisterPage() {
 
         <p className="text-center text-sm text-white/40 mt-4">
           Already have an account?{' '}
-          <Link href="/login" className="text-gold-400 hover:text-gold-300 font-medium transition-colors">
+          <Link href={`/login${next !== '/' ? `?next=${encodeURIComponent(next)}` : ''}`} className="text-gold-400 hover:text-gold-300 font-medium transition-colors">
             Sign in
           </Link>
         </p>
       </motion.div>
     </div>
   )
+}
+
+export default function RegisterPage() {
+  return <Suspense><RegisterContent /></Suspense>
 }

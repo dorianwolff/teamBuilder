@@ -41,24 +41,30 @@ export default function EncyclopediaPage() {
   const [selected, setSelected]       = useState<Character | null>(null)
   const [showLocked, setShowLocked]   = useState(true)
 
-  const discoveredSlugs = profile?.discovered_characters ?? []
+  const { user } = useAuth()
+  const [discoveredSlugs, setDiscoveredSlugs] = useState<string[]>(profile?.discovered_characters ?? [])
+
+  // Keep local discovered list in sync with auth profile
+  useEffect(() => {
+    if (profile?.discovered_characters) {
+      setDiscoveredSlugs(profile.discovered_characters)
+    }
+  }, [profile?.discovered_characters])
 
   useEffect(() => {
     async function load() {
-      console.log('[Encyclopedia] loading characters...')
       try {
         const supabase = createClient()
-        const { data, error } = await supabase
-          .from('characters')
-          .select('*')
-          .order('power_level', { ascending: false })
 
-        console.log('[Encyclopedia] result → count:', data?.length ?? 0, '| error:', error?.message ?? 'none')
+        // Fetch characters + fresh discovered list in parallel
+        const [charRes, profileRes] = await Promise.all([
+          supabase.from('characters').select('*').order('power_level', { ascending: false }),
+          user ? supabase.from('profiles').select('discovered_characters').eq('id', user.id).single() : null,
+        ])
 
-        if (error) {
-          console.error('[Encyclopedia] Supabase error:', error)
-        } else if (data) {
-          setCharacters(data as unknown as Character[])
+        if (charRes.data) setCharacters(charRes.data as unknown as Character[])
+        if (profileRes?.data?.discovered_characters) {
+          setDiscoveredSlugs(profileRes.data.discovered_characters as string[])
         }
       } catch (err) {
         console.error('[Encyclopedia] unexpected error:', err)
@@ -67,7 +73,9 @@ export default function EncyclopediaPage() {
       }
     }
     load()
-  }, [])
+  // Re-run when user identity changes so a fresh login gets the latest data
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user?.id])
 
   const filtered = characters
     .filter(c => verseFilter === 'all' || c.verse === verseFilter)

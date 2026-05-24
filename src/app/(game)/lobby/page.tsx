@@ -93,7 +93,7 @@ function LobbyContent() {
   const tier = getEloTier(elo)
 
   function requireAuth(): boolean {
-    if (!user)    { router.push('/register'); return false }
+    if (!user)    { router.push('/register?next=/lobby'); return false }
     if (!profile) { toast.error('Profile still loading — try again'); return false }
     return true
   }
@@ -160,14 +160,14 @@ function LobbyContent() {
       {/* Tab bar */}
       <div className="flex gap-2 mb-6">
         {(['ranked', 'rooms', 'solo'] as LobbyTab[]).map(t => {
-          const icons  = { ranked: '🏆', rooms: '🚪', solo: '🤖' }
+            const icons  = { ranked: <Swords size={14} />, rooms: <Users size={14} />, solo: <Bot size={14} /> }
           const labels = { ranked: 'Ranked', rooms: 'Rooms', solo: 'Solo' }
           return (
             <button
               key={t}
               onClick={() => setTab(t)}
               className={cn(
-                'flex-1 py-2.5 rounded-xl text-sm font-medium transition-colors',
+                'flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-sm font-medium transition-colors',
                 tab === t
                   ? 'bg-gold-500/15 text-gold-400 border border-gold-500/30'
                   : 'bg-void-800 text-white/50 border border-white/8 hover:text-white',

@@ -4,51 +4,142 @@ import { useEffect, useState, use } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import toast from 'react-hot-toast'
-import { Shield, ChevronRight } from 'lucide-react'
+import { Users, ChevronRight } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import { useGameRoom } from '@/hooks/useGameRoom'
 import { useAuth } from '@/hooks/useAuth'
-import { CharacterCard } from '@/components/game/CharacterCard'
-import { MaskedCharacterCard } from '@/components/game/MaskedCharacterCard'
+import { PlayingCard, FaceDownCard } from '@/components/game/PlayingCard'
 import { Timer } from '@/components/ui/Timer'
 import { Button } from '@/components/ui/Button'
-import { formatPowerLevel } from '@/lib/utils/format'
-import { applyPick, getVisiblePool, DRAFT_TIMER_SECONDS } from '@/lib/game/draft'
-import type { DraftState, DraftPoolSlot } from '@/types/game'
+import { applyPick, getVisiblePool, DRAFT_TIMER_SECONDS, DRAFT_ROUNDS } from '@/lib/game/draft'
+import type { DraftState, DraftPoolSlot, BattlePlayerState } from '@/types/game'
+import type { Character } from '@/types/character'
 import { cn } from '@/lib/utils/cn'
+
+// ── Shared card-strip constants (mirrors solo page) ───────────────────────────
+const STRIP_W = 110
+const STRIP_H = 154
+const STRIP_OVERLAP = 45
+
+// Overlapping row of sm playing cards — null slots show face-down or empty placeholder
+function TeamStrip({
+  cards,
+  total = DRAFT_ROUNDS,
+  reversed = false,
+}: {
+  cards: (Character | null)[]
+  total?: number
+  reversed?: boolean
+}) {
+  const slots   = Array.from({ length: total }, (_, i) => cards[i] ?? null)
+  const ordered = reversed ? [...slots].reverse() : slots
+  return (
+    <div className="flex justify-center">
+      {ordered.map((char, i) => (
+        <div key={i} style={{ marginLeft: i > 0 ? -STRIP_OVERLAP : 0, zIndex: reversed ? total - i : i }}>
+          {char ? (
+            <PlayingCard character={char} size="sm" animate={false} />
+          ) : (
+            <div
+              className="rounded-xl border border-dashed border-white/8 bg-void-800/20 shrink-0"
+              style={{ width: STRIP_W, height: STRIP_H }}
+            />
+          )}
+        </div>
+      ))}
+    </div>
+  )
+}
+
+// Opponent strip — shows face-down cards for hidden picks, null = empty slot
+function OppStrip({ cards, total = DRAFT_ROUNDS }: { cards: (Character | null | 'hidden')[] , total?: number }) {
+  const slots = Array.from({ length: total }, (_, i) => cards[i] ?? null)
+  return (
+    <div className="flex justify-center">
+      {slots.map((entry, i) => (
+        <div key={i} style={{ marginLeft: i > 0 ? -STRIP_OVERLAP : 0, zIndex: i }}>
+          {entry === 'hidden' ? (
+            <FaceDownCard size="sm" animate={false} />
+          ) : entry ? (
+            <PlayingCard character={entry} size="sm" animate={false} />
+          ) : (
+            <div
+              className="rounded-xl border border-dashed border-white/8 bg-void-800/20 shrink-0"
+              style={{ width: STRIP_W, height: STRIP_H }}
+            />
+          )}
+        </div>
+      ))}
+    </div>
+  )
+}
+
+// ── Pair card (sm on mobile, md on sm+) ──────────────────────────────────────
+
+function PairCard({ slot, isMyTurn, selected, onSelect }: {
+  slot: DraftPoolSlot
+  isMyTurn: boolean
+  selected: boolean
+  onSelect: () => void
+}) {
+  const common = {
+    selectable: isMyTurn,
+    selected,
+    onSelect: isMyTurn ? onSelect : undefined,
+    animate: false as const,
+  }
+  if (slot.is_masked) {
+    return (
+      <>
+        <div className="sm:hidden"><FaceDownCard size="sm" {...common} /></div>
+        <div className="hidden sm:block"><FaceDownCard size="md" {...common} /></div>
+      </>
+    )
+  }
+  if (!slot.character) return null
+  return (
+    <>
+      <div className="sm:hidden">
+        <PlayingCard character={slot.character} size="sm" {...common} />
+      </div>
+      <div className="hidden sm:block">
+        <PlayingCard character={slot.character} size="md" {...common} />
+      </div>
+    </>
+  )
+}
+
+// ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function DraftPage({ params }: { params: Promise<{ roomId: string }> }) {
   const { roomId } = use(params)
-  const router = useRouter()
-  const { user } = useAuth()
-  const { room } = useGameRoom(roomId)
+  const router     = useRouter()
+  const { user }   = useAuth()
+  const { room }   = useGameRoom(roomId)
 
   const [selectedSlot, setSelectedSlot] = useState<number | null>(null)
-  const [submitting, setSubmitting] = useState(false)
+  const [submitting, setSubmitting]     = useState(false)
 
-  const draft = room?.draft_state as DraftState | null
-  const isMyTurn = draft?.current_picker_id === user?.id
+  const draft    = room?.draft_state as DraftState | null
+  const myId     = user?.id
+  const isMyTurn = draft?.current_picker_id === myId
 
-  // Redirect to battle when draft completes
+  // Navigate to battle when draft completes
   useEffect(() => {
-    if (room?.status === 'battling') {
-      router.push(`/battle/${roomId}`)
-    }
+    if (room?.status === 'battling') router.push(`/battle/${roomId}`)
   }, [room?.status, roomId, router])
 
   async function handlePick() {
     if (selectedSlot === null || !user || !draft || !isMyTurn || submitting) return
     setSubmitting(true)
-
     try {
-      const supabase = createClient()
-      const newDraft = applyPick(draft, user.id, selectedSlot)
-
-      let updates: Record<string, unknown> = { draft_state: newDraft }
+      const supabase  = createClient()
+      const newDraft  = applyPick(draft, user.id, selectedSlot)
+      const updates: Record<string, unknown> = { draft_state: newDraft }
       if (newDraft.phase === 'complete') {
-        updates = { ...updates, status: 'battling', battle_state: initBattleState(newDraft, room!.player_a_id, room!.player_b_id!) }
+        updates.status       = 'battling'
+        updates.battle_state = initBattleState(newDraft, room!.player_a_id, room!.player_b_id!)
       }
-
       const { error } = await supabase.from('game_rooms').update(updates).eq('id', roomId)
       if (error) throw error
       setSelectedSlot(null)
@@ -59,243 +150,160 @@ export default function DraftPage({ params }: { params: Promise<{ roomId: string
     }
   }
 
+  // ── Loading state ────────────────────────────────────────────────────────────
   if (!room || !draft) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
+      <div className="h-screen flex items-center justify-center bg-void-950">
         <div className="text-white/40">Loading draft…</div>
       </div>
     )
   }
 
-  const myId   = user?.id
-  const pool   = myId ? getVisiblePool(draft.draft_pool, myId) : draft.draft_pool
-  const myState   = draft.player_a.user_id === myId ? draft.player_a : draft.player_b
-  const oppState  = draft.player_a.user_id === myId ? draft.player_b : draft.player_a
+  // ── Compute display data ─────────────────────────────────────────────────────
+  const visiblePool = myId ? getVisiblePool(draft.draft_pool, myId) : draft.draft_pool
+  const myState     = draft.player_a.user_id === myId ? draft.player_a : draft.player_b
+  const oppState    = draft.player_a.user_id === myId ? draft.player_b : draft.player_a
+  const oppId       = oppState.user_id
 
-  // Pair slots for display: 0&1, 2&3, 4&5, 6&7, 8&9
-  const pairs: [DraftPoolSlot, DraftPoolSlot][] = []
-  for (let i = 0; i < pool.length; i += 2) {
-    pairs.push([pool[i], pool[i + 1]])
-  }
+  // Build opponent's visible team: revealed = Character, masked = 'hidden'
+  const oppPickedSlots = visiblePool.filter(s => s.is_picked && s.picked_by === oppId)
+  const oppCards: (Character | 'hidden')[] = oppPickedSlots.map(s =>
+    s.character ? s.character : 'hidden'
+  )
+
+  const round    = draft.current_round
+  const pairIdx  = (round - 1) * 2
+  const slotA    = visiblePool[pairIdx]
+  const slotB    = visiblePool[pairIdx + 1]
+
+  if (!slotA || !slotB) return null
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8">
+    <div className="h-screen flex flex-col overflow-hidden select-none bg-void-950">
 
-      {/* Header */}
-      <div className="flex items-center justify-between mb-8">
-        <div>
-          <h1 className="text-2xl font-bold text-white">Draft Phase</h1>
-          <p className="text-sm text-white/40 mt-1">
-            Round {draft.current_round}/5
-            {isMyTurn
-              ? ' — Your pick!'
-              : ` — Waiting for opponent…`}
+      {/* ── TOP: Opponent's accumulated picks ── */}
+      <div className="flex flex-col items-center px-4 pt-3 pb-2 border-b border-white/5 shrink-0">
+        <div className="flex items-center gap-1.5 mb-2">
+          <Users size={10} className="text-white/30" />
+          <p className="text-[10px] text-white/30 uppercase tracking-widest">Opponent</p>
+        </div>
+        <OppStrip cards={oppCards} total={DRAFT_ROUNDS} />
+      </div>
+
+      {/* ── MIDDLE: Round info + pair + confirm ── */}
+      <div className="flex-1 flex flex-col items-center justify-center gap-3 px-4 py-2 min-h-0">
+
+        {/* Round progress */}
+        <div className="text-center">
+          <p className="text-[10px] text-white/30 uppercase tracking-widest mb-2">
+            Draft · Round {round} of {DRAFT_ROUNDS}
           </p>
-        </div>
-
-        <div className="flex items-center gap-4">
-          {isMyTurn && (
-            <Timer
-              endsAt={draft.timer_ends_at}
-              totalSeconds={DRAFT_TIMER_SECONDS}
-              urgentThreshold={10}
-              className="w-24"
-            />
-          )}
-        </div>
-      </div>
-
-      {/* Draft pool — shown as pairs */}
-      <div className="mb-10">
-        <p className="text-xs text-white/30 uppercase tracking-wider mb-4">
-          Choose one from each pair — the other goes to your opponent
-        </p>
-        <div className="flex flex-col gap-6">
-          {pairs.map(([slotA, slotB], pairIdx) => {
-            const roundPair = pairIdx + 1
-            const isPairPicked = slotA.is_picked && slotB.is_picked
-
-            return (
-              <motion.div
-                key={pairIdx}
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: pairIdx * 0.05 }}
-                className={cn('flex items-center gap-6', isPairPicked && 'opacity-50')}
-              >
-                {/* Pair label */}
-                <div className="text-xs text-white/20 font-mono w-4 text-center shrink-0">
-                  {roundPair}
-                </div>
-
-                {/* Slot A */}
-                <SlotCard
-                  slot={slotA}
-                  isMyTurn={isMyTurn && !slotA.is_picked && !slotB.is_picked}
-                  selected={selectedSlot === slotA.position}
-                  onSelect={() => setSelectedSlot(slotA.position)}
-                  myId={myId}
-                />
-
-                {/* VS divider */}
-                <div className="text-white/20 text-xs font-bold shrink-0">OR</div>
-
-                {/* Slot B */}
-                <SlotCard
-                  slot={slotB}
-                  isMyTurn={isMyTurn && !slotA.is_picked && !slotB.is_picked}
-                  selected={selectedSlot === slotB.position}
-                  onSelect={() => setSelectedSlot(slotB.position)}
-                  myId={myId}
-                />
-
-                {/* Picked indicator */}
-                {isPairPicked && (
-                  <div className="flex flex-col gap-1 text-xs text-white/30">
-                    <span>{slotA.picked_by === myId ? '🟢 You' : '🔴 Opp'}</span>
-                    <span>{slotB.picked_by === myId ? '🟢 You' : '🔴 Opp'}</span>
-                  </div>
-                )}
-              </motion.div>
-            )
-          })}
-        </div>
-      </div>
-
-      {/* Confirm pick button */}
-      <AnimatePresence>
-        {isMyTurn && selectedSlot !== null && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 20 }}
-            className="fixed bottom-6 inset-x-4 flex justify-center z-30"
-          >
-            <Button
-              variant="gold"
-              size="lg"
-              onClick={handlePick}
-              loading={submitting}
-              className="shadow-gold-glow"
-            >
-              Confirm Pick
-              <ChevronRight size={18} />
-            </Button>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Teams */}
-      <div className="grid grid-cols-2 gap-6 mt-4">
-        {[
-          { state: myState, label: 'Your Team' },
-          { state: oppState, label: "Opponent's Team" },
-        ].map(({ state, label }) => (
-          <div key={label}>
-            <div className="flex items-center justify-between mb-3">
-              <p className="text-xs text-white/40 uppercase tracking-wider">{label}</p>
-              <span className="text-xs font-mono text-gold-400">
-                Σ {formatPowerLevel(state.power_sum)}
-              </span>
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {state.characters.map(char => (
-                <CharacterCard
-                  key={char.slug}
-                  character={char}
-                  size="sm"
-                  showTags={false}
-                  animate={false}
-                />
-              ))}
-              {Array.from({ length: 5 - state.characters.length }).map((_, i) => (
-                <div
-                  key={i}
-                  className="w-32 h-40 rounded-2xl border border-dashed border-white/10 bg-void-800/50 flex items-center justify-center"
-                >
-                  <Shield size={20} className="text-white/10" />
-                </div>
-              ))}
-            </div>
+          <div className="flex justify-center gap-2 mb-2">
+            {Array.from({ length: DRAFT_ROUNDS }).map((_, i) => (
+              <div key={i} className={cn(
+                'w-6 h-6 rounded-full text-xs font-bold flex items-center justify-center transition-all',
+                i + 1 <  round  ? 'bg-gold-500 text-void-950'
+                : i + 1 === round ? 'bg-void-700 border-2 border-gold-500 text-gold-400'
+                : 'bg-void-800 border border-white/10 text-white/20',
+              )}>
+                {i + 1}
+              </div>
+            ))}
           </div>
-        ))}
+
+          {/* Status + timer */}
+          <div className="flex items-center justify-center gap-2 min-h-[20px]">
+            {isMyTurn ? (
+              <>
+                <span className="text-gold-400 text-sm font-medium">Your pick — choose one</span>
+                <Timer endsAt={draft.timer_ends_at} totalSeconds={DRAFT_TIMER_SECONDS} showBar={false} urgentThreshold={10} className="text-xs" />
+              </>
+            ) : (
+              <span className="text-white/40 text-xs animate-pulse">Waiting for opponent…</span>
+            )}
+          </div>
+        </div>
+
+        {/* Card pair */}
+        <div className="flex items-center justify-center gap-4 sm:gap-10">
+          <AnimatePresence mode="wait">
+            <motion.div key={`A-${round}`}
+              initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.18 }}
+            >
+              <PairCard
+                slot={slotA}
+                isMyTurn={isMyTurn}
+                selected={selectedSlot === slotA.position}
+                onSelect={() => setSelectedSlot(slotA.position)}
+              />
+            </motion.div>
+          </AnimatePresence>
+
+          <span className="text-white/20 font-bold text-xs shrink-0 select-none">OR</span>
+
+          <AnimatePresence mode="wait">
+            <motion.div key={`B-${round}`}
+              initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 20 }} transition={{ duration: 0.18 }}
+            >
+              <PairCard
+                slot={slotB}
+                isMyTurn={isMyTurn}
+                selected={selectedSlot === slotB.position}
+                onSelect={() => setSelectedSlot(slotB.position)}
+              />
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* Confirm button */}
+        <div className="h-12 flex items-center justify-center">
+          <AnimatePresence>
+            {isMyTurn && selectedSlot !== null && (
+              <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 8 }}>
+                <Button
+                  variant="gold"
+                  size="lg"
+                  onClick={handlePick}
+                  loading={submitting}
+                  className="px-8 sm:px-12 shadow-gold-glow"
+                >
+                  Confirm Pick <ChevronRight size={16} />
+                </Button>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
       </div>
+
+      {/* ── BOTTOM: My accumulated picks ── */}
+      <div className="flex flex-col items-center px-4 pt-2 pb-3 border-t border-white/5 shrink-0">
+        <TeamStrip cards={myState.characters} total={DRAFT_ROUNDS} />
+        <p className="text-[10px] text-white/30 uppercase tracking-widest mt-2">Your Team</p>
+      </div>
+
     </div>
   )
 }
 
-// ── Sub-component ─────────────────────────────────────────────────────────────
+// ── Battle state initialiser ──────────────────────────────────────────────────
 
-function SlotCard({
-  slot,
-  isMyTurn,
-  selected,
-  onSelect,
-  myId,
-}: {
-  slot: DraftPoolSlot
-  isMyTurn: boolean
-  selected: boolean
-  onSelect: () => void
-  myId?: string
-}) {
-  if (slot.is_picked) {
-    // Show who picked it
-    if (slot.character && slot.picked_by === myId) {
-      return <CharacterCard character={slot.character} size="sm" showTags={false} dimmed animate={false} />
-    }
-    return (
-      <div className="w-32 h-[200px] rounded-2xl border border-white/5 bg-void-800/30 flex items-center justify-center">
-        <span className="text-xs text-white/20">Picked</span>
-      </div>
-    )
-  }
-
-  if (slot.is_masked) {
-    return (
-      <MaskedCharacterCard
-        size="sm"
-        selectable={isMyTurn}
-        selected={selected}
-        onSelect={onSelect}
-        animate={false}
-      />
-    )
-  }
-
-  return slot.character ? (
-    <CharacterCard
-      character={slot.character}
-      size="sm"
-      selectable={isMyTurn}
-      selected={selected}
-      onSelect={onSelect}
-      showTags={false}
-      animate={false}
-    />
-  ) : null
-}
-
-// ── Battle state initializer (minimal — real logic lives server-side) ─────────
 function initBattleState(draft: DraftState, playerAId: string, playerBId: string) {
+  const makePlayer = (state: typeof draft.player_a, userId: string): BattlePlayerState => ({
+    user_id:              userId,
+    remaining_characters: state.characters,
+    selected_character:   null,
+    confirmed:            false,
+  })
   return {
-    room_id: draft.room_id,
-    player_a: {
-      user_id: playerAId,
-      remaining_characters: draft.player_a.characters,
-      selected_character: null,
-      confirmed: false,
-    },
-    player_b: {
-      user_id: playerBId,
-      remaining_characters: draft.player_b.characters,
-      selected_character: null,
-      confirmed: false,
-    },
-    rounds: [],
+    room_id:       draft.room_id,
+    player_a:      makePlayer(draft.player_a, playerAId),
+    player_b:      makePlayer(draft.player_b, playerBId),
+    rounds:        [],
     current_round: 1,
-    scores: { a: 0, b: 0 },
-    phase: 'selecting' as const,
-    winner_id: null,
+    scores:        { a: 0, b: 0 },
+    phase:         'selecting' as const,
+    winner_id:     null,
   }
 }

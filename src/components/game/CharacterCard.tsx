@@ -1,6 +1,5 @@
 'use client'
 
-import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils/cn'
 import { formatPowerLevel } from '@/lib/utils/format'
@@ -74,16 +73,14 @@ export function CharacterCard({
     >
       {/* Character image */}
       <div className="relative overflow-hidden" style={{ height: imgHeight[size] }}>
-        <Image
-          src={`/${character.image_path}`}
+        <img
+          src={`/api/character-img/${character.verse}/${character.slug}`}
           alt={character.name}
-          fill
-          className="object-cover object-top"
-          sizes="(max-width: 768px) 128px, 192px"
+          className="absolute inset-0 w-full h-full object-cover object-top"
+          loading="lazy"
           onError={(e) => {
-            // Fallback to placeholder on missing image
-            const target = e.currentTarget as HTMLImageElement
-            target.src = '/assets/placeholder_character.png'
+            const t = e.currentTarget
+            t.src = '/assets/placeholder_character.png'
           }}
         />
         {/* Gradient overlay for text readability */}
