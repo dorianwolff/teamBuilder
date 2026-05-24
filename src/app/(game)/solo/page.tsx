@@ -11,7 +11,7 @@ import { PlayingCard, FaceDownCard } from '@/components/game/PlayingCard'
 import { CardHand } from '@/components/game/CardHand'
 import { Button } from '@/components/ui/Button'
 import { Modal } from '@/components/ui/Modal'
-import { buildDraftPool, applyPick, DRAFT_ROUNDS } from '@/lib/game/draft'
+import { buildDraftPool, applyPick, DRAFT_ROUNDS, getVisiblePool } from '@/lib/game/draft'
 import { resolveBattle } from '@/lib/game/battle'
 import { aiDraftPick, aiBattlePick, AI_ID, AI_NAME, type AiDifficulty } from '@/lib/game/ai'
 import { formatPowerLevel } from '@/lib/utils/format'
@@ -62,6 +62,7 @@ export default function SoloPage() {
   const [scores, setScores]                       = useState({ player: 0, ai: 0 })
   const [resultRound, setResultRound]             = useState<BattleRound | null>(null)
   const [winner, setWinner]                       = useState<'player' | 'ai' | null>(null)
+  const [aiHiddenSlugs, setAiHiddenSlugs]         = useState<Set<string>>(new Set())
 
   // ── Start game ──────────────────────────────────────────────────────────────
 
@@ -152,6 +153,14 @@ export default function SoloPage() {
   function transitionToBattle(state: DraftState) {
     const pTeam = state.player_a.characters
     const aTeam = state.player_b.characters
+    // Track which AI cards were hidden so BattleScreen can show them face-down
+    const hiddenSlugs = new Set<string>()
+    for (const slot of state.draft_pool) {
+      if (slot.is_masked && slot.picked_by === AI_ID && slot.character) {
+        hiddenSlugs.add(slot.character.slug)
+      }
+    }
+    setAiHiddenSlugs(hiddenSlugs)
     setPlayerTeam(pTeam)
     setAiTeam(aTeam)
     setPlayerRemaining(pTeam)
@@ -240,6 +249,7 @@ export default function SoloPage() {
     setWinner(null)
     setRounds([])
     setResultRound(null)
+    setAiHiddenSlugs(new Set())
   }
 
   // ── Render ───────────────────────────────────────────────────────────────────
@@ -273,6 +283,7 @@ export default function SoloPage() {
         <BattleScreen
           playerRemaining={playerRemaining}
           aiRemaining={aiRemaining}
+          aiHiddenSlugs={aiHiddenSlugs}
           scores={scores}
           rounds={rounds}
           selectedCharId={selectedCharId}
@@ -303,6 +314,7 @@ export default function SoloPage() {
         winner={winner}
         playerTeam={playerTeam}
         aiTeam={aiTeam}
+        aiHiddenSlugs={aiHiddenSlugs}
         scores={scores}
         rounds={rounds}
         difficulty={difficulty}
@@ -323,7 +335,7 @@ function SetupScreen({ verse, setVerse, difficulty, setDifficulty, onStart, load
   onStart: () => void; loading: boolean; onBack: () => void
 }) {
   return (
-    <div className="max-w-lg mx-auto px-4 py-10">
+    <div className="max-w-sm mx-auto px-4 py-10">
       <button onClick={onBack} className="text-white/40 hover:text-white text-sm mb-6 transition-colors">
         ← Back to lobby
       </button>
@@ -403,150 +415,165 @@ function DraftScreen({ draft, selectedSlot, setSelectedSlot, onConfirm, aiThinki
   onConfirm: () => void
   aiThinking: boolean
 }) {
-  const isMyTurn = draft.current_picker_id === PLAYER_ID && !aiThinking
-  const myState  = draft.player_a
-  const aiState  = draft.player_b
+  const isMyTurn  = draft.current_picker_id === PLAYER_ID && !aiThinking
+  const round     = draft.current_round
 
-  const pairs: [DraftPoolSlot, DraftPoolSlot][] = []
-  for (let i = 0; i < draft.draft_pool.length; i += 2) {
-    pairs.push([draft.draft_pool[i], draft.draft_pool[i + 1]])
-  }
+  // Current round's pair: positions (round-1)*2 and (round-1)*2+1
+  const pairStart = (round - 1) * 2
+  const slotA     = draft.draft_pool[pairStart]
+  const slotB     = draft.draft_pool[pairStart + 1]
+
+  // Accumulated teams — use getVisiblePool so AI's hidden picks stay face-down
+  const visiblePool  = getVisiblePool(draft.draft_pool, PLAYER_ID)
+  const myChars      = draft.player_a.characters
+  const aiPickSlots  = visiblePool.filter(s => s.is_picked && s.picked_by === AI_ID)
+
+  if (!slotA || !slotB) return null
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
-      <div className="flex items-center justify-between mb-6">
-        <div>
-          <h1 className="text-2xl font-bold text-white">Draft Phase</h1>
-          <p className="text-sm text-white/40 mt-0.5">
-            Round {draft.current_round}/{DRAFT_ROUNDS} ·{' '}
-            {aiThinking
-              ? <span className="text-white/50 animate-pulse">AI is thinking…</span>
-              : isMyTurn
-                ? <span className="text-gold-400">Your pick</span>
-                : <span className="text-white/50">Waiting…</span>
-            }
-          </p>
-        </div>
-        <div className="flex items-center gap-2 text-xs text-white/30">
-          <Bot size={14} className="text-gold-400" />
-          {AI_NAME}
-        </div>
-      </div>
+    <div className="max-w-lg mx-auto px-4 py-6 flex flex-col items-center">
 
-      {/* Pool of pairs */}
-      <div className="mb-8 space-y-3">
-        <p className="text-xs text-white/30 uppercase tracking-wider">
-          Choose one card — the other goes to AI
+      {/* Round progress */}
+      <div className="w-full text-center mb-6">
+        <p className="text-xs text-white/30 uppercase tracking-widest mb-3">
+          Draft · Round {round} of {DRAFT_ROUNDS}
         </p>
-        {pairs.map(([slotA, slotB], idx) => {
-          const picked = slotA.is_picked && slotB.is_picked
-          return (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, x: -10 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: idx * 0.04 }}
-              className={cn('flex items-center gap-3', picked && 'opacity-40')}
-            >
-              <span className="text-xs text-white/20 font-mono w-4 shrink-0 text-center">{idx + 1}</span>
-              <DraftSlot slot={slotA} isMyTurn={isMyTurn && !picked}
-                selected={selectedSlot === slotA.position}
-                onSelect={() => setSelectedSlot(slotA.position)} />
-              <span className="text-white/20 text-xs font-bold shrink-0">or</span>
-              <DraftSlot slot={slotB} isMyTurn={isMyTurn && !picked}
-                selected={selectedSlot === slotB.position}
-                onSelect={() => setSelectedSlot(slotB.position)} />
-              {picked && (
-                <div className="text-xs text-white/20 ml-1 space-y-0.5">
-                  <p>{slotA.picked_by === PLAYER_ID ? '🟢' : '🤖'}</p>
-                  <p>{slotB.picked_by === PLAYER_ID ? '🟢' : '🤖'}</p>
-                </div>
+        <div className="flex justify-center gap-2 mb-3">
+          {Array.from({ length: DRAFT_ROUNDS }).map((_, i) => (
+            <div
+              key={i}
+              className={cn(
+                'w-7 h-7 rounded-full text-xs font-bold flex items-center justify-center transition-all',
+                i + 1 < round  ? 'bg-gold-500 text-void-950'
+                : i + 1 === round ? 'bg-void-700 border-2 border-gold-500 text-gold-400'
+                : 'bg-void-800 border border-white/10 text-white/20',
               )}
-            </motion.div>
-          )
-        })}
+            >
+              {i + 1}
+            </div>
+          ))}
+        </div>
+        <p className="text-sm font-medium min-h-[20px]">
+          {aiThinking
+            ? <span className="text-white/40 animate-pulse">AI is choosing…</span>
+            : isMyTurn
+              ? <span className="text-gold-400">Your pick — choose one card</span>
+              : <span className="text-white/40">AI picks from this pair</span>
+          }
+        </p>
       </div>
 
-      {/* Confirm */}
-      <AnimatePresence>
-        {isMyTurn && selectedSlot !== null && (
-          <motion.div
-            initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 16 }}
-            className="fixed bottom-6 inset-x-4 flex justify-center z-30"
+      {/* Current pair — one at a time */}
+      <div className="flex items-center justify-center gap-4 sm:gap-10 mb-6">
+        <AnimatePresence mode="wait">
+          <motion.div key={`A-${round}`}
+            initial={{ opacity: 0, x: -24 }} animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -24 }} transition={{ duration: 0.18 }}
           >
-            <Button variant="gold" size="lg" onClick={onConfirm} className="shadow-gold-glow px-10">
-              Confirm Pick <ChevronRight size={18} />
-            </Button>
+            {slotA.is_masked
+              ? <FaceDownCard size="md" selectable={isMyTurn}
+                  selected={selectedSlot === slotA.position}
+                  onSelect={isMyTurn ? () => setSelectedSlot(slotA.position) : undefined}
+                  animate={false} />
+              : <PlayingCard character={slotA.character!} size="md" selectable={isMyTurn}
+                  selected={selectedSlot === slotA.position}
+                  onSelect={isMyTurn ? () => setSelectedSlot(slotA.position) : undefined}
+                  animate={false} />
+            }
           </motion.div>
-        )}
-      </AnimatePresence>
+        </AnimatePresence>
 
-      {/* Teams */}
-      <div className="grid grid-cols-2 gap-4 mb-24">
-        {[
-          { state: myState,  label: 'Your Team' },
-          { state: aiState,  label: 'AI Team'   },
-        ].map(({ state, label }) => (
-          <div key={label}>
-            <div className="flex items-center justify-between mb-2">
-              <p className="text-xs text-white/40 uppercase tracking-wider">{label}</p>
-              <span className="text-xs font-mono text-gold-400">Σ {formatPowerLevel(state.power_sum)}</span>
-            </div>
-            <div className="flex flex-wrap gap-1.5">
-              {state.characters.map(c => (
-                <PlayingCard key={c.slug} character={c} size="sm" animate={false} />
-              ))}
-              {Array.from({ length: 5 - state.characters.length }).map((_, i) => (
-                <div key={i} className="rounded-xl border border-dashed border-white/8 bg-void-800/20" style={{ width: 100, height: 140 }} />
-              ))}
-            </div>
+        <span className="text-white/20 font-bold text-xs shrink-0 select-none">OR</span>
+
+        <AnimatePresence mode="wait">
+          <motion.div key={`B-${round}`}
+            initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 24 }} transition={{ duration: 0.18 }}
+          >
+            {slotB.is_masked
+              ? <FaceDownCard size="md" selectable={isMyTurn}
+                  selected={selectedSlot === slotB.position}
+                  onSelect={isMyTurn ? () => setSelectedSlot(slotB.position) : undefined}
+                  animate={false} />
+              : <PlayingCard character={slotB.character!} size="md" selectable={isMyTurn}
+                  selected={selectedSlot === slotB.position}
+                  onSelect={isMyTurn ? () => setSelectedSlot(slotB.position) : undefined}
+                  animate={false} />
+            }
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      {/* Confirm button */}
+      <div className="h-14 flex items-center justify-center mb-6">
+        <AnimatePresence>
+          {isMyTurn && selectedSlot !== null && (
+            <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 8 }}>
+              <Button variant="gold" size="lg" onClick={onConfirm} className="px-10 shadow-gold-glow">
+                Confirm Pick <ChevronRight size={16} />
+              </Button>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+
+      {/* Teams accumulated so far */}
+      <div className="w-full grid grid-cols-2 gap-4 border-t border-white/8 pt-4">
+        {/* Player team */}
+        <div>
+          <p className="text-xs text-white/30 uppercase tracking-wider mb-2 text-center">Your Team</p>
+          <div className="flex flex-wrap gap-1 justify-center">
+            {myChars.map(c => (
+              <PlayingCard key={c.slug} character={c} size="sm" animate={false} />
+            ))}
+            {Array.from({ length: DRAFT_ROUNDS - myChars.length }).map((_, i) => (
+              <div key={i} className="rounded-xl border border-dashed border-white/8 bg-void-800/20 shrink-0" style={{ width: 80, height: 112 }} />
+            ))}
           </div>
-        ))}
+        </div>
+
+        {/* AI team — hidden cards stay face-down */}
+        <div>
+          <div className="flex items-center justify-center gap-1 mb-2">
+            <Bot size={11} className="text-white/30" />
+            <p className="text-xs text-white/30 uppercase tracking-wider">AI Team</p>
+          </div>
+          <div className="flex flex-wrap gap-1 justify-center">
+            {aiPickSlots.map((s, i) => (
+              s.character
+                ? <PlayingCard key={s.character.slug} character={s.character} size="sm" animate={false} />
+                : <FaceDownCard key={i} size="sm" animate={false} />
+            ))}
+            {Array.from({ length: DRAFT_ROUNDS - aiPickSlots.length }).map((_, i) => (
+              <div key={i} className="rounded-xl border border-dashed border-white/8 bg-void-800/20 shrink-0" style={{ width: 80, height: 112 }} />
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   )
 }
 
-function DraftSlot({ slot, isMyTurn, selected, onSelect }: {
-  slot: DraftPoolSlot; isMyTurn: boolean; selected: boolean; onSelect: () => void
-}) {
-  if (slot.is_picked) {
-    if (slot.character && slot.picked_by === PLAYER_ID) {
-      return <PlayingCard character={slot.character} size="sm" used animate={false} />
-    }
-    return (
-      <div className="rounded-xl border border-white/5 bg-void-800/20 flex items-center justify-center text-xs text-white/20" style={{ width: 100, height: 140 }}>
-        Taken
-      </div>
-    )
-  }
-  if (slot.is_masked) {
-    return <FaceDownCard size="sm" selectable={isMyTurn} selected={selected} onSelect={onSelect} animate={false} />
-  }
-  return slot.character ? (
-    <PlayingCard character={slot.character} size="sm" selectable={isMyTurn}
-      selected={selected} onSelect={() => onSelect()} animate={false} />
-  ) : null
-}
-
 // ── Battle screen ─────────────────────────────────────────────────────────────
 
-function BattleScreen({ playerRemaining, aiRemaining, scores, rounds, selectedCharId, setSelectedCharId, onConfirm }: {
+function BattleScreen({ playerRemaining, aiRemaining, aiHiddenSlugs, scores, rounds, selectedCharId, setSelectedCharId, onConfirm }: {
   playerRemaining: Character[]; aiRemaining: Character[]
+  aiHiddenSlugs: Set<string>
   scores: { player: number; ai: number }; rounds: BattleRound[]
   selectedCharId: string | null; setSelectedCharId: (id: string | null) => void
   onConfirm: () => void
 }) {
   return (
-    <div className="max-w-2xl mx-auto px-4 py-8 flex flex-col gap-6">
+    <div className="max-w-lg mx-auto px-4 py-6 flex flex-col gap-5 pb-28">
+
       {/* Score */}
-      <div className="flex items-center justify-center gap-10">
+      <div className="flex items-center justify-center gap-8 sm:gap-14">
         <div className="text-center">
           <p className="text-white/40 text-xs mb-1">You</p>
           <p className="text-5xl font-black text-white">{scores.player}</p>
         </div>
         <div className="text-center">
-          <Swords size={22} className="text-gold-400 mx-auto mb-1" />
+          <Swords size={20} className="text-gold-400 mx-auto mb-1" />
           <p className="text-xs text-white/30">Round {rounds.length + 1}</p>
         </div>
         <div className="text-center">
@@ -555,7 +582,7 @@ function BattleScreen({ playerRemaining, aiRemaining, scores, rounds, selectedCh
         </div>
       </div>
 
-      {/* Round dots */}
+      {/* Round results dots */}
       {rounds.length > 0 && (
         <div className="flex justify-center gap-2">
           {rounds.map(r => (
@@ -569,10 +596,32 @@ function BattleScreen({ playerRemaining, aiRemaining, scores, rounds, selectedCh
         </div>
       )}
 
+      {/* AI remaining team */}
+      <div>
+        <div className="flex items-center gap-1.5 mb-3">
+          <Bot size={13} className="text-white/30" />
+          <p className="text-xs text-white/30 uppercase tracking-wider">
+            {AI_NAME} — {aiRemaining.length} fighter{aiRemaining.length !== 1 ? 's' : ''} remaining
+          </p>
+        </div>
+        <div className="flex flex-wrap gap-2 justify-center">
+          {aiRemaining.map((char, i) => (
+            aiHiddenSlugs.has(char.slug)
+              ? <FaceDownCard key={char.id ?? i} size="sm" animate={false} />
+              : <PlayingCard key={char.id ?? i} character={char} size="sm" animate={false} />
+          ))}
+        </div>
+      </div>
+
+      {/* Divider */}
+      <div className="border-t border-white/8" />
+
       {/* Player hand */}
       <div>
-        <p className="text-xs text-white/30 uppercase tracking-wider mb-4">Choose your fighter</p>
-        <div className="overflow-x-auto pb-4">
+        <p className="text-xs text-white/30 uppercase tracking-wider mb-3 text-center">
+          Choose your fighter — {playerRemaining.length} remaining
+        </p>
+        <div className="overflow-x-auto pb-2">
           <CardHand
             characters={playerRemaining}
             selectedId={selectedCharId}
@@ -582,18 +631,7 @@ function BattleScreen({ playerRemaining, aiRemaining, scores, rounds, selectedCh
         </div>
       </div>
 
-      {/* AI roster hidden */}
-      <div className="flex items-center gap-3 p-3 rounded-xl bg-void-800 border border-white/8 mt-2">
-        <Bot size={16} className="text-white/30" />
-        <p className="text-xs text-white/50">{AI_NAME} — {aiRemaining.length} fighter{aiRemaining.length !== 1 ? 's' : ''} left</p>
-        <div className="ml-auto flex gap-1">
-          {aiRemaining.map((_, i) => (
-            <div key={i} className="w-7 h-7 rounded-md bg-void-900 border border-white/10 flex items-center justify-center text-xs text-white/20">?</div>
-          ))}
-        </div>
-      </div>
-
-      {/* Confirm */}
+      {/* Confirm — fixed at bottom */}
       <AnimatePresence>
         {selectedCharId && (
           <motion.div
@@ -664,14 +702,15 @@ function RoundResultContent({ round, playerChar, aiChar, onClose }: {
 
 // ── Result screen ─────────────────────────────────────────────────────────────
 
-function ResultScreen({ winner, playerTeam, aiTeam, scores, rounds, difficulty, onPlayAgain, onLobby }: {
+function ResultScreen({ winner, playerTeam, aiTeam, aiHiddenSlugs, scores, rounds, difficulty, onPlayAgain, onLobby }: {
   winner: 'player' | 'ai' | null; playerTeam: Character[]; aiTeam: Character[]
+  aiHiddenSlugs: Set<string>
   scores: { player: number; ai: number }; rounds: BattleRound[]; difficulty: AiDifficulty
   onPlayAgain: () => void; onLobby: () => void
 }) {
   const playerWon = winner === 'player'
   return (
-    <div className="max-w-2xl mx-auto px-4 py-12 text-center">
+    <div className="max-w-lg mx-auto px-4 py-12 text-center">
       <motion.div initial={{ scale: 0.85, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ type: 'spring', damping: 16 }}>
         {playerWon ? (
           <>
@@ -700,14 +739,22 @@ function ResultScreen({ winner, playerTeam, aiTeam, scores, rounds, difficulty, 
         </div>
 
         <div className="grid grid-cols-2 gap-4 mb-8 text-left">
-          {[{ team: playerTeam, label: 'Your Team' }, { team: aiTeam, label: 'AI Team' }].map(({ team, label }) => (
-            <div key={label}>
-              <p className="text-xs text-white/30 uppercase tracking-wider mb-2">{label}</p>
-              <div className="flex flex-wrap gap-1">
-                {team.map(c => <PlayingCard key={c.slug} character={c} size="sm" animate={false} />)}
-              </div>
+          <div>
+            <p className="text-xs text-white/30 uppercase tracking-wider mb-2">Your Team</p>
+            <div className="flex flex-wrap gap-1 justify-center">
+              {playerTeam.map(c => <PlayingCard key={c.slug} character={c} size="sm" animate={false} />)}
             </div>
-          ))}
+          </div>
+          <div>
+            <p className="text-xs text-white/30 uppercase tracking-wider mb-2">AI Team</p>
+            <div className="flex flex-wrap gap-1 justify-center">
+              {aiTeam.map(c =>
+                aiHiddenSlugs.has(c.slug)
+                  ? <FaceDownCard key={c.slug} size="sm" animate={false} />
+                  : <PlayingCard key={c.slug} character={c} size="sm" animate={false} />
+              )}
+            </div>
+          </div>
         </div>
 
         <div className="flex gap-3">

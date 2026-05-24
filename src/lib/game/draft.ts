@@ -12,19 +12,14 @@ export const MASKED_COUNT = 5 // half are masked at start
  */
 export function buildDraftPool(characters: Character[]): DraftPoolSlot[] {
   const shuffled = [...characters].sort(() => Math.random() - 0.5).slice(0, POOL_SIZE)
-  // Decide which positions are masked (random)
-  const maskedPositions = new Set<number>()
-  while (maskedPositions.size < MASKED_COUNT) {
-    maskedPositions.add(Math.floor(Math.random() * POOL_SIZE))
+  const slots: DraftPoolSlot[] = []
+  // Each pair (0&1, 2&3, …) gets exactly one masked and one revealed card
+  for (let i = 0; i < POOL_SIZE; i += 2) {
+    const maskedFirst = Math.random() < 0.5
+    slots.push({ position: i,     character: shuffled[i],     is_masked: maskedFirst,  is_picked: false, picked_by: null })
+    slots.push({ position: i + 1, character: shuffled[i + 1], is_masked: !maskedFirst, is_picked: false, picked_by: null })
   }
-
-  return shuffled.map((char, i) => ({
-    position: i,
-    character: char,
-    is_masked: maskedPositions.has(i),
-    is_picked: false,
-    picked_by: null,
-  }))
+  return slots
 }
 
 /**
