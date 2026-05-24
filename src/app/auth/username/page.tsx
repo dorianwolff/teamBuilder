@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
-import { Swords, User, AlertCircle, CheckCircle, Loader2 } from 'lucide-react'
+import { Swords, User, AlertCircle, Loader2 } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import { Button } from '@/components/ui/Button'
 import { useAuth } from '@/hooks/useAuth'
@@ -14,7 +14,6 @@ export default function UsernamePage() {
   const [username, setUsername] = useState('')
   const [error, setError]       = useState('')
   const [loading, setLoading]   = useState(false)
-  const [success, setSuccess]   = useState(false)
 
   // Pre-fill if profile already has a username
   useEffect(() => {
@@ -49,8 +48,8 @@ export default function UsernamePage() {
       setLoading(false)
     } else {
       if (data) setProfile(data as never)
-      setSuccess(true)
-      setTimeout(() => { router.push('/lobby'); router.refresh() }, 1000)
+      router.push('/lobby')
+      router.refresh()
     }
   }
 
@@ -85,12 +84,6 @@ export default function UsernamePage() {
               {error}
             </div>
           )}
-          {success && (
-            <div className="flex items-center gap-2 p-3 rounded-xl bg-green-500/10 border border-green-500/20 text-green-400 text-sm">
-              <CheckCircle size={14} className="shrink-0" />
-              Username set! Redirecting…
-            </div>
-          )}
           <div className="relative">
             <User size={14} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-white/30 pointer-events-none" />
             <input
@@ -105,7 +98,7 @@ export default function UsernamePage() {
             />
           </div>
           <p className="text-xs text-white/30">3–20 characters · letters, numbers, underscores only</p>
-          <Button type="submit" variant="gold" size="lg" fullWidth loading={loading} disabled={success}>
+          <Button type="submit" variant="gold" size="lg" fullWidth loading={loading}>
             Set Username
           </Button>
         </form>
