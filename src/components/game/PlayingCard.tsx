@@ -1,32 +1,9 @@
 'use client'
 
-import Image from 'next/image'
-import { useState, useEffect, useCallback, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils/cn'
 import { formatPowerLevel } from '@/lib/utils/format'
 import type { Character } from '@/types/character'
-
-// Tries .webp → .jpg → .png in order, falls back to placeholder.
-// Works regardless of what extension is stored in image_path.
-const IMG_EXTS = ['.webp', '.jpg', '.jpeg', '.png'] as const
-
-function useCardImage(imagePath: string) {
-  const base = '/' + imagePath.replace(/\.(webp|jpe?g|png)$/i, '')
-  const [idx, setIdx] = useState(0)
-  const prevBase = useRef(base)
-
-  useEffect(() => {
-    if (prevBase.current !== base) {
-      prevBase.current = base
-      setIdx(0)
-    }
-  }, [base])
-
-  const src      = idx < IMG_EXTS.length ? `${base}${IMG_EXTS[idx]}` : '/assets/placeholder_character.png'
-  const onError  = useCallback(() => setIdx(i => i + 1), [])
-  return { src, onError }
-}
 
 const VERSE_COLORS: Record<string, { border: string; accent: string; glow: string; label: string }> = {
   one_piece: { border: 'border-orange-500/40', accent: 'text-orange-400', glow: 'shadow-[0_0_20px_rgba(249,115,22,0.3)]', label: 'One Piece' },
@@ -79,9 +56,10 @@ export function PlayingCard({
   className,
   style,
 }: PlayingCardProps) {
-  const verse              = VERSE_COLORS[character.verse] ?? VERSE_COLORS.one_piece
-  const dims               = SIZES[size]
-  const { src: imgSrc, onError: imgOnError } = useCardImage(character.image_path)
+  const verse  = VERSE_COLORS[character.verse] ?? VERSE_COLORS.one_piece
+  const dims   = SIZES[size]
+  // API route does server-side extension probing → zero client-side 404s
+  const imgSrc = `/api/character-img/${character.verse}/${character.slug}`
 
   const cardContent = (
     <div
@@ -124,15 +102,15 @@ export function PlayingCard({
 
           {/* ── Image ── */}
           <div className="relative overflow-hidden shrink-0" style={{ height: dims.imgH }}>
-            <Image
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
               src={imgSrc}
               alt={character.name}
-              fill
-              className={cn('object-cover object-top', locked && 'blur-sm')}
-              sizes={`${dims.w}px`}
-              quality={80}
               loading="lazy"
-              onError={imgOnError}
+              className={cn(
+                'absolute inset-0 w-full h-full object-cover object-top',
+                locked && 'blur-sm',
+              )}
             />
             {locked && (
               <div className="absolute inset-0 flex items-center justify-center bg-void-900/60">

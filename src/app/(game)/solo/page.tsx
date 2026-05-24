@@ -595,22 +595,22 @@ function BattleScreen({ playerRemaining, aiRemaining, aiHiddenSlugs, scores, rou
         <TeamStrip cards={aiRemaining} hiddenSlugs={aiHiddenSlugs} total={aiRemaining.length} />
       </div>
 
-      {/* ── MIDDLE: Score + selected card preview ── */}
-      <div className="flex-1 flex flex-col items-center justify-center gap-4 px-4">
+      {/* ── MIDDLE: Score + round dots + card preview (desktop) ── */}
+      <div className="flex-1 flex flex-col items-center justify-center gap-3 px-4 min-h-0">
 
         {/* Score */}
-        <div className="flex items-center gap-10 sm:gap-16">
+        <div className="flex items-center gap-8 sm:gap-16">
           <div className="text-center">
             <p className="text-white/40 text-[10px] uppercase tracking-wider mb-1">You</p>
-            <p className="text-5xl sm:text-6xl font-black text-white">{scores.player}</p>
+            <p className="text-4xl sm:text-5xl font-black text-white">{scores.player}</p>
           </div>
           <div className="text-center">
-            <Swords size={20} className="text-gold-400 mx-auto mb-1" />
+            <Swords size={16} className="text-gold-400 mx-auto mb-1" />
             <p className="text-[10px] text-white/30">Round {rounds.length + 1}</p>
           </div>
           <div className="text-center">
             <p className="text-white/40 text-[10px] uppercase tracking-wider mb-1">AI</p>
-            <p className="text-5xl sm:text-6xl font-black text-white">{scores.ai}</p>
+            <p className="text-4xl sm:text-5xl font-black text-white">{scores.ai}</p>
           </div>
         </div>
 
@@ -628,38 +628,40 @@ function BattleScreen({ playerRemaining, aiRemaining, aiHiddenSlugs, scores, rou
           </div>
         )}
 
-        {/* Selected card preview */}
-        <AnimatePresence mode="wait">
-          {selectedChar ? (
-            <motion.div key={selectedChar.id}
-              initial={{ opacity: 0, scale: 0.85, y: 12 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.85, y: 12 }}
-              transition={{ type: 'spring', damping: 18, stiffness: 280 }}
-              className="flex flex-col items-center gap-2"
-            >
-              <p className="text-[10px] text-gold-400 uppercase tracking-widest">Ready for battle</p>
-              <div className="sm:hidden">
-                <PlayingCard character={selectedChar} size="sm" animate={false} selected />
-              </div>
-              <div className="hidden sm:block">
+        {/* Card preview — desktop only (mobile: selected card lifts in the hand) */}
+        <div className="hidden sm:block">
+          <AnimatePresence mode="wait">
+            {selectedChar ? (
+              <motion.div key={selectedChar.id}
+                initial={{ opacity: 0, scale: 0.85, y: 12 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.85, y: 12 }}
+                transition={{ type: 'spring', damping: 18, stiffness: 280 }}
+                className="flex flex-col items-center gap-2"
+              >
+                <p className="text-[10px] text-gold-400 uppercase tracking-widest">Ready for battle</p>
                 <PlayingCard character={selectedChar} size="md" animate={false} selected />
-              </div>
-            </motion.div>
-          ) : (
-            <motion.p key="hint"
-              initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-              className="text-white/20 text-xs"
-            >
-              Select a fighter below
-            </motion.p>
-          )}
-        </AnimatePresence>
+              </motion.div>
+            ) : (
+              <motion.p key="hint"
+                initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+                className="text-white/20 text-xs"
+              >
+                Select a fighter below
+              </motion.p>
+            )}
+          </AnimatePresence>
+        </div>
+
+        {/* Mobile-only hint when nothing selected */}
+        <p className={cn('text-white/20 text-xs sm:hidden', selectedChar && 'invisible')}>
+          Select a fighter below
+        </p>
 
       </div>
 
       {/* ── BOTTOM: Player hand + confirm ── */}
-      <div className="flex flex-col items-center px-4 pt-2 pb-4 border-t border-white/5 shrink-0 gap-3">
+      <div className="flex flex-col items-center px-4 pt-2 pb-3 border-t border-white/5 shrink-0 gap-2">
         <p className="text-[10px] text-white/30 uppercase tracking-widest">
           Your fighters · {playerRemaining.length} remaining
         </p>
@@ -674,15 +676,18 @@ function BattleScreen({ playerRemaining, aiRemaining, aiHiddenSlugs, scores, rou
             onSelect={c => setSelectedCharId(c.id)} size="md" />
         </div>
 
-        <AnimatePresence>
-          {selectedCharId && (
-            <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 8 }}>
-              <Button variant="gold" size="lg" onClick={onConfirm} className="shadow-gold-glow px-8 sm:px-12">
-                Send into Battle <ChevronRight size={18} />
-              </Button>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {/* Fixed-height slot so layout doesn't shift when button appears */}
+        <div className="h-11 flex items-center justify-center">
+          <AnimatePresence>
+            {selectedCharId && (
+              <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 6 }}>
+                <Button variant="gold" size="lg" onClick={onConfirm} className="shadow-gold-glow px-8 sm:px-12">
+                  Battle <ChevronRight size={16} />
+                </Button>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
       </div>
 
     </div>

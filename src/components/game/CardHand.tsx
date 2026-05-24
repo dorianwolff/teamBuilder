@@ -15,6 +15,7 @@ interface CardHandProps {
 
 const CARD_OVERLAP: Record<string, number> = { sm: 45, md: 60, lg: 75 }
 const CARD_WIDTH:   Record<string, number> = { sm: 110, md: 150, lg: 190 }
+const CARD_HEIGHT:  Record<string, number> = { sm: 154, md: 210, lg: 266 }
 const MAX_ROTATION = 12   // degrees max tilt at edges
 const MAX_LIFT     = 16   // px vertical drop at edges
 
@@ -30,6 +31,7 @@ export function CardHand({
   const n        = characters.length
   const overlap  = CARD_OVERLAP[size] ?? 32
   const cardW    = CARD_WIDTH[size] ?? 140
+  const cardH    = CARD_HEIGHT[size] ?? 210
   const visibleW = cardW + (n - 1) * (cardW - overlap)
 
   if (n === 0) return null
@@ -37,7 +39,7 @@ export function CardHand({
   return (
     <div
       className="relative flex items-end justify-center"
-      style={{ width: visibleW, height: 'auto', minHeight: 20 }}
+      style={{ width: visibleW, height: cardH }}
     >
       {characters.map((char, i) => {
         const center    = (n - 1) / 2
