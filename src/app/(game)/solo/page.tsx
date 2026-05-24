@@ -182,14 +182,23 @@ export default function SoloPage() {
     const result      = resolveBattle(playerChar, aiChar)
     const playerWinsRound = !result.is_draw && result.winner?.id === playerChar.id
 
+    // makeWin always stores winner's score as effective_score_a (loser's as b).
+    // makeDraw keeps charA (= playerChar) as a. Normalise: a = player, b = AI.
+    const playerScore = playerWinsRound || result.is_draw
+      ? result.effective_score_a
+      : result.effective_score_b
+    const aiScore = playerWinsRound || result.is_draw
+      ? result.effective_score_b
+      : result.effective_score_a
+
     const roundNum = rounds.length + 1
     const newRound: BattleRound = {
       round_number:      roundNum,
       player_a_pick:     playerChar.id,
       player_b_pick:     aiChar.id,
       winner_id:         playerWinsRound ? PLAYER_ID : (!result.is_draw ? AI_ID : null),
-      effective_score_a: result.effective_score_a,
-      effective_score_b: result.effective_score_b,
+      effective_score_a: playerScore,
+      effective_score_b: aiScore,
       modifiers_applied: result.modifiers,
       resolved_at:       new Date().toISOString(),
       phase:             'result',
@@ -794,11 +803,10 @@ function ResultScreen({ winner, playerTeam, aiTeam, aiHiddenSlugs, scores, round
           <div>
             <p className="text-xs text-white/30 uppercase tracking-wider mb-2">AI Team</p>
             <div className="flex flex-wrap gap-1 justify-center">
-              {aiTeam.map(c =>
-                aiHiddenSlugs.has(c.slug)
-                  ? <FaceDownCard key={c.slug} size="sm" animate={false} />
-                  : <PlayingCard key={c.slug} character={c} size="sm" animate={false} />
-              )}
+              {/* Game over — reveal all cards (no more face-down) */}
+              {aiTeam.map(c => (
+                <PlayingCard key={c.slug} character={c} size="sm" animate={false} />
+              ))}
             </div>
           </div>
         </div>

@@ -174,7 +174,7 @@ export default function EncyclopediaPage() {
         </button>
       </div>
 
-      {/* Grid */}
+      {/* Grid — sm cards on mobile, md cards on md+ */}
       {loading ? (
         <div className="text-center py-20 text-white/30">Loading…</div>
       ) : filtered.length === 0 ? (
@@ -183,7 +183,7 @@ export default function EncyclopediaPage() {
           <p className="text-white/30 text-sm">No results found.</p>
         </div>
       ) : (
-        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 gap-3">
+        <div className="flex flex-wrap gap-1.5">
           {filtered.map((char, i) => {
             const isDiscovered = discoveredSlugs.includes(char.slug)
             return (
@@ -192,27 +192,28 @@ export default function EncyclopediaPage() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: Math.min(i, 24) * 0.02 }}
-                className={cn('cursor-pointer', !isDiscovered && 'cursor-default')}
+                className={cn(isDiscovered ? 'cursor-pointer' : 'cursor-default')}
                 onClick={() => isDiscovered && setSelected(char)}
               >
-                <PlayingCard
-                  character={char}
-                  size="sm"
-                  locked={!isDiscovered}
-                  animate={false}
-                />
+                {/* sm card below md breakpoint */}
+                <div className="md:hidden">
+                  <PlayingCard character={char} size="sm" locked={!isDiscovered} animate={false} />
+                </div>
+                {/* md card at md and above */}
+                <div className="hidden md:block">
+                  <PlayingCard character={char} size="md" locked={!isDiscovered} animate={false} />
+                </div>
               </motion.div>
             )
           })}
         </div>
       )}
 
-      {/* Detail modal */}
+      {/* Detail modal — wide two-column layout */}
       <Modal
         open={!!selected}
         onClose={() => setSelected(null)}
-        title={selected?.name}
-        className="max-w-lg"
+        className="max-w-2xl"
       >
         {selected && <CharacterDetail character={selected} />}
       </Modal>
@@ -220,99 +221,148 @@ export default function EncyclopediaPage() {
   )
 }
 
+const VERSE_LABEL: Record<string, string> = {
+  one_piece: 'One Piece',
+  naruto:    'Naruto',
+  dbz:       'Dragon Ball',
+  hxh:       'Hunter × Hunter',
+}
+
+function SectionTitle({ children }: { children: React.ReactNode }) {
+  return (
+    <p className="text-[10px] font-semibold uppercase tracking-widest text-white/30 mb-1.5">
+      {children}
+    </p>
+  )
+}
+
 function CharacterDetail({ character }: { character: Character }) {
-  const accent = VERSE_ACCENT[character.verse] ?? 'text-gold-400'
+  const accent      = VERSE_ACCENT[character.verse] ?? 'text-gold-400'
+  const verseLabel  = VERSE_LABEL[character.verse] ?? character.verse
 
   return (
-    <div className="space-y-4">
-      <p className={cn('text-sm font-semibold uppercase tracking-wide', accent)}>
-        {character.verse.replace('_', ' ')} · {character.arc_version}
-      </p>
-      {character.short_description && (
-        <p className="text-white/60 text-sm leading-relaxed">{character.short_description}</p>
-      )}
+    /* Mobile: stacked; md+: card on left, scrollable details on right */
+    <div className="flex flex-col md:flex-row gap-5 md:gap-6">
 
-      <div className="grid grid-cols-2 gap-3 text-sm">
-        <div className="p-3 rounded-xl bg-void-900">
-          <p className="text-white/30 text-xs mb-1">Power Level</p>
-          <p className={cn('font-mono font-bold', accent)}>{formatPowerLevel(character.power_level)}</p>
-        </div>
-        <div className="p-3 rounded-xl bg-void-900">
-          <p className="text-white/30 text-xs mb-1">Martial Ratio</p>
-          <p className="font-mono font-bold text-white">{Math.round(character.martial_ratio * 100)}%</p>
-        </div>
+      {/* ── Left column: large card ── */}
+      <div className="flex justify-center md:justify-start shrink-0">
+        <PlayingCard character={character} size="lg" animate={false} />
       </div>
 
-      {character.power_tags.length > 0 && (
+      {/* ── Right column: details (scrolls if needed on both breakpoints) ── */}
+      <div className="flex-1 min-w-0 overflow-y-auto max-h-[60vh] md:max-h-[55vh] space-y-4 pb-1 pr-1"
+        style={{ scrollbarWidth: 'thin', scrollbarColor: 'rgba(255,255,255,0.1) transparent' }}
+      >
+
+        {/* Name + verse */}
         <div>
-          <p className="text-xs text-white/30 uppercase tracking-wider mb-2">Ability Types</p>
-          <div className="flex flex-wrap gap-1">
-            {character.power_tags.map(tag => (
-              <PowerTagBadge key={tag} label={tag.replace(/_/g, ' ')} />
-            ))}
+          <h2 className="text-xl font-black text-white leading-tight">{character.name}</h2>
+          <p className={cn('text-xs font-semibold uppercase tracking-widest mt-0.5', accent)}>
+            {verseLabel} · {character.arc_version}
+          </p>
+        </div>
+
+        {/* Description */}
+        {character.short_description && (
+          <p className="text-white/50 text-sm leading-relaxed border-l-2 border-white/10 pl-3">
+            {character.short_description}
+          </p>
+        )}
+
+        {/* Stats row */}
+        <div className="grid grid-cols-2 gap-2">
+          <div className="p-3 rounded-xl bg-void-900/80 border border-white/5">
+            <p className="text-white/30 text-[10px] uppercase tracking-wider mb-1">Power Level</p>
+            <p className={cn('font-mono font-black text-lg leading-none', accent)}>
+              {formatPowerLevel(character.power_level)}
+            </p>
+          </div>
+          <div className="p-3 rounded-xl bg-void-900/80 border border-white/5">
+            <p className="text-white/30 text-[10px] uppercase tracking-wider mb-1">Martial Ratio</p>
+            <p className="font-mono font-black text-lg leading-none text-white">
+              {Math.round(character.martial_ratio * 100)}%
+            </p>
           </div>
         </div>
-      )}
 
-      {character.strengths.length > 0 && (
-        <div>
-          <p className="text-xs text-white/30 uppercase tracking-wider mb-2">Strengths</p>
-          <div className="space-y-1">
-            {character.strengths.map(s => (
-              <div key={s.tag} className="flex items-center justify-between text-xs">
-                <span className="text-green-400 capitalize">{s.tag.replace(/_/g, ' ')}</span>
-                <span className="text-white/40 font-mono">{Math.round(s.coefficient * 100)}% nullify</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {character.weaknesses.length > 0 && (
-        <div>
-          <p className="text-xs text-white/30 uppercase tracking-wider mb-2">Weaknesses</p>
-          <div className="space-y-1">
-            {character.weaknesses.map(w => (
-              <div key={w.tag} className="text-xs">
-                <div className="flex items-center justify-between">
-                  <span className="text-red-400 capitalize">{w.tag.replace(/_/g, ' ')}</span>
-                  <span className="text-white/40 font-mono">+{Math.round(w.coefficient * 100)}% dmg taken</span>
-                </div>
-                {w.description && (
-                  <p className="text-white/30 mt-0.5 pl-2 border-l border-white/10">{w.description}</p>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {character.draw_conditions.length > 0 && (
-        <div>
-          <p className="text-xs text-white/30 uppercase tracking-wider mb-2">Special Conditions</p>
-          {character.draw_conditions.map(d => (
-            <div key={d.character_slug} className="flex items-center gap-2 text-xs">
-              <span className="px-2 py-0.5 rounded-full bg-pink-500/20 text-pink-400 border border-pink-500/30 font-medium">
-                ♥ Draw vs {d.character_slug.replace(/_/g, ' ')}
-              </span>
-              <span className="text-white/30">{d.reason}</span>
+        {/* Ability types */}
+        {character.power_tags.length > 0 && (
+          <div>
+            <SectionTitle>Ability Types</SectionTitle>
+            <div className="flex flex-wrap gap-1">
+              {character.power_tags.map(tag => (
+                <PowerTagBadge key={tag} label={tag.replace(/_/g, ' ')} />
+              ))}
             </div>
-          ))}
-        </div>
-      )}
-
-      {character.cannot_win_against.length > 0 && (
-        <div>
-          <p className="text-xs text-white/30 uppercase tracking-wider mb-2">Cannot Win Against</p>
-          <div className="flex flex-wrap gap-1">
-            {character.cannot_win_against.map(slug => (
-              <span key={slug} className="px-2 py-0.5 rounded-full text-xs bg-crimson-600/20 text-crimson-400 border border-crimson-600/30">
-                {slug.replace(/_/g, ' ')}
-              </span>
-            ))}
           </div>
-        </div>
-      )}
+        )}
+
+        {/* Strengths */}
+        {character.strengths.length > 0 && (
+          <div>
+            <SectionTitle>Strengths</SectionTitle>
+            <div className="space-y-1">
+              {character.strengths.map(s => (
+                <div key={s.tag} className="flex items-center justify-between text-xs py-0.5">
+                  <span className="text-green-400 capitalize font-medium">{s.tag.replace(/_/g, ' ')}</span>
+                  <span className="text-white/35 font-mono tabular-nums">
+                    {Math.round(s.coefficient * 100)}% nullify
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Weaknesses */}
+        {character.weaknesses.length > 0 && (
+          <div>
+            <SectionTitle>Weaknesses</SectionTitle>
+            <div className="space-y-1">
+              {character.weaknesses.map(w => (
+                <div key={w.tag} className="text-xs py-0.5">
+                  <div className="flex items-center justify-between">
+                    <span className="text-red-400 capitalize font-medium">{w.tag.replace(/_/g, ' ')}</span>
+                    <span className="text-white/35 font-mono tabular-nums">
+                      +{Math.round(w.coefficient * 100)}% dmg taken
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Cannot win against */}
+        {character.cannot_win_against.length > 0 && (
+          <div>
+            <SectionTitle>Cannot Win Against</SectionTitle>
+            <div className="flex flex-wrap gap-1">
+              {character.cannot_win_against.map(slug => (
+                <span key={slug}
+                  className="px-2 py-0.5 rounded-full text-[11px] font-medium bg-crimson-600/15 text-crimson-400 border border-crimson-600/25 capitalize">
+                  {slug.replace(/_/g, ' ')}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Draw conditions */}
+        {character.draw_conditions.length > 0 && (
+          <div>
+            <SectionTitle>Always Draws Against</SectionTitle>
+            <div className="flex flex-wrap gap-1">
+              {character.draw_conditions.map(d => (
+                <span key={d.character_slug}
+                  className="px-2 py-0.5 rounded-full text-[11px] font-medium bg-pink-500/15 text-pink-400 border border-pink-500/25 capitalize">
+                  ♥ {d.character_slug.replace(/_/g, ' ')}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   )
 }
