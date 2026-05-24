@@ -90,7 +90,7 @@ function LobbyContent() {
     setRoomCode(data.code)
     setCasualOpen(true)
 
-    const channel = supabase
+    supabase
       .channel(`room-wait:${data.id}`)
       .on('postgres_changes', {
         event: 'UPDATE', schema: 'public', table: 'game_rooms', filter: `id=eq.${data.id}`,

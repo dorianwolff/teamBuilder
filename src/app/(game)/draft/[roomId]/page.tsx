@@ -4,7 +4,7 @@ import { useEffect, useState, use } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import toast from 'react-hot-toast'
-import { Swords, Clock, Shield, ChevronRight } from 'lucide-react'
+import { Shield, ChevronRight } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import { useGameRoom } from '@/hooks/useGameRoom'
 import { useAuth } from '@/hooks/useAuth'
@@ -14,7 +14,6 @@ import { Timer } from '@/components/ui/Timer'
 import { Button } from '@/components/ui/Button'
 import { formatPowerLevel } from '@/lib/utils/format'
 import { applyPick, getVisiblePool, DRAFT_TIMER_SECONDS } from '@/lib/game/draft'
-import type { Character } from '@/types/character'
 import type { DraftState, DraftPoolSlot } from '@/types/game'
 import { cn } from '@/lib/utils/cn'
 
@@ -189,9 +188,9 @@ export default function DraftPage({ params }: { params: Promise<{ roomId: string
       {/* Teams */}
       <div className="grid grid-cols-2 gap-6 mt-4">
         {[
-          { state: myState, label: 'Your Team', mine: true },
-          { state: oppState, label: "Opponent's Team", mine: false },
-        ].map(({ state, label, mine }) => (
+          { state: myState, label: 'Your Team' },
+          { state: oppState, label: "Opponent's Team" },
+        ].map(({ state, label }) => (
           <div key={label}>
             <div className="flex items-center justify-between mb-3">
               <p className="text-xs text-white/40 uppercase tracking-wider">{label}</p>

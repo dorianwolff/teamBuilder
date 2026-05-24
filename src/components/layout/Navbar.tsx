@@ -2,8 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
-import { motion } from 'framer-motion'
-import { Swords, BookOpen, LogOut, User } from 'lucide-react'
+import { Swords, BookOpen, LogOut } from 'lucide-react'
 import { cn } from '@/lib/utils/cn'
 import { useAuth } from '@/hooks/useAuth'
 import { formatElo } from '@/lib/utils/format'

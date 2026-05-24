@@ -7,7 +7,6 @@ import { motion } from 'framer-motion'
 import { Swords, Mail, Lock, AlertCircle } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import { Button } from '@/components/ui/Button'
-import { Input } from '@/components/ui/Input'
 
 function GoogleIcon() {
   return (

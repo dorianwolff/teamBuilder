@@ -9,14 +9,11 @@ import { createClient } from '@/lib/supabase/client'
 import { useGameRoom } from '@/hooks/useGameRoom'
 import { useAuth } from '@/hooks/useAuth'
 import { CharacterCard } from '@/components/game/CharacterCard'
-import { PowerTagBadge } from '@/components/game/PowerTag'
 import { Timer } from '@/components/ui/Timer'
 import { Button } from '@/components/ui/Button'
 import { Modal } from '@/components/ui/Modal'
 import { resolveBattle } from '@/lib/game/battle'
-import { computeElo } from '@/lib/game/elo'
 import { formatPowerLevel, formatEloDelta } from '@/lib/utils/format'
-import type { Character } from '@/types/character'
 import type { BattleState, BattleRound } from '@/types/game'
 import { cn } from '@/lib/utils/cn'
 
@@ -45,6 +42,7 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
     if (lastRound?.phase === 'result' && !resultModal) {
       setResultModal(lastRound)
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [battle?.rounds.length])
 
   // Handle finished game
@@ -52,6 +50,7 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
     if (room?.status === 'finished') {
       setTimeout(() => router.push('/lobby'), 4000)
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [room?.status])
 
   async function confirmSelection() {
@@ -60,8 +59,6 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
 
     try {
       const supabase = createClient()
-      const field = isA ? 'battle_state->player_a->selected_character' : 'battle_state->player_b->selected_character'
-
       // Update this player's selection
       const updatedBattle: BattleState = {
         ...battle,
@@ -80,9 +77,8 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
       const updates: Record<string, unknown> = { battle_state: finalBattle }
 
       if (finalBattle.winner_id) {
-        // Game over — compute ELO
+        // Game over
         const winnerId  = finalBattle.winner_id
-        const loserProfile = null // would fetch opponent profile for real ELO
         updates.status     = 'finished'
         updates.winner_id  = winnerId
         updates.finished_at = new Date().toISOString()
@@ -315,7 +311,7 @@ function RoundResultModal({
 
 // ── Battle resolution helper ──────────────────────────────────────────────────
 
-function resolveCurrentRound(battle: BattleState, isA: boolean): BattleState {
+function resolveCurrentRound(battle: BattleState, _isA: boolean): BattleState {
   const charAId = battle.player_a.selected_character!
   const charBId = battle.player_b.selected_character!
   const charA   = battle.player_a.remaining_characters.find(c => c.id === charAId)!
