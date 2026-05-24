@@ -67,44 +67,49 @@ export default function SoloPage() {
 
   async function startGame() {
     setLoadingGame(true)
-    const supabase = createClient()
-    const { data, error } = await supabase
-      .from('characters')
-      .select('*')
-      .eq('verse', verse)
+    console.log('[Solo] loading characters for verse:', verse)
+    try {
+      const supabase = createClient()
+      const { data, error } = await supabase
+        .from('characters')
+        .select('*')
+        .eq('verse', verse)
 
-    if (error || !data || data.length < 10) {
-      toast.error(
-        data && data.length > 0
-          ? `Only ${data.length} characters found for this verse — need at least 10.`
-          : 'No characters found. The database needs to be seeded.',
-        { duration: 6000 }
-      )
+      console.log('[Solo] result → count:', data?.length ?? 0, '| error:', error?.message ?? 'none')
+
+      if (error || !data || data.length < 10) {
+        toast.error(
+          data && data.length > 0
+            ? `Only ${data.length} characters found for this verse — need at least 10.`
+            : 'No characters found. Run "npm run seed" to populate the database.',
+          { duration: 8000 }
+        )
+        return
+      }
+
+      const pool = buildDraftPool(data as unknown as Character[])
+      const state: DraftState = {
+        room_id:           'solo',
+        verse,
+        current_round:     1,
+        current_picker_id: PLAYER_ID,
+        draft_pool:        pool,
+        player_a:          { user_id: PLAYER_ID, characters: [], power_sum: 0 },
+        player_b:          { user_id: AI_ID,     characters: [], power_sum: 0 },
+        picks:             [],
+        timer_ends_at:     new Date(Date.now() + 99999999).toISOString(),
+        phase:             'picking',
+      }
+
+      setDraft(state)
+      setSelectedSlot(null)
+      setPhase('draft')
+    } catch (err) {
+      console.error('[Solo] unexpected error:', err)
+      toast.error('Something went wrong starting the game.')
+    } finally {
       setLoadingGame(false)
-      return
     }
-
-    const pool = buildDraftPool(data as unknown as Character[])
-    const state: DraftState = {
-      room_id:           'solo',
-      verse,
-      current_round:     1,
-      current_picker_id: PLAYER_ID,
-      draft_pool:        pool,
-      player_a:          { user_id: PLAYER_ID, characters: [], power_sum: 0 },
-      player_b:          { user_id: AI_ID,     characters: [], power_sum: 0 },
-      picks:             [],
-      timer_ends_at:     new Date(Date.now() + 99999999).toISOString(),
-      phase:             'picking',
-    }
-
-    setDraft(state)
-    setSelectedSlot(null)
-    setLoadingGame(false)
-
-    // Round 5 might start with AI if somehow player has more power_sum — but
-    // at game start it's always PLAYER_ID for round 1, so we're fine.
-    setPhase('draft')
   }
 
   // ── Draft ───────────────────────────────────────────────────────────────────

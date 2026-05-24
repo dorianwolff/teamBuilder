@@ -45,13 +45,26 @@ export default function EncyclopediaPage() {
 
   useEffect(() => {
     async function load() {
-      const supabase = createClient()
-      const { data, error } = await supabase
-        .from('characters')
-        .select('*')
-        .order('power_level', { ascending: false })
-      if (!error && data) setCharacters(data as unknown as Character[])
-      setLoading(false)
+      console.log('[Encyclopedia] loading characters...')
+      try {
+        const supabase = createClient()
+        const { data, error } = await supabase
+          .from('characters')
+          .select('*')
+          .order('power_level', { ascending: false })
+
+        console.log('[Encyclopedia] result → count:', data?.length ?? 0, '| error:', error?.message ?? 'none')
+
+        if (error) {
+          console.error('[Encyclopedia] Supabase error:', error)
+        } else if (data) {
+          setCharacters(data as unknown as Character[])
+        }
+      } catch (err) {
+        console.error('[Encyclopedia] unexpected error:', err)
+      } finally {
+        setLoading(false)
+      }
     }
     load()
   }, [])
