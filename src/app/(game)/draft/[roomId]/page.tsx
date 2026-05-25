@@ -1,20 +1,24 @@
 'use client'
 
-import { useEffect, useState, use } from 'react'
+import { useEffect, useRef, useState, use } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import toast from 'react-hot-toast'
-import { Users, ChevronRight, Flag } from 'lucide-react'
+import { Users, ChevronRight, Flag, Timer as TimerIcon } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import { useGameRoom } from '@/hooks/useGameRoom'
 import { useAuth } from '@/hooks/useAuth'
+import { useCountdown } from '@/hooks/useTimer'
 import { PlayingCard, FaceDownCard } from '@/components/game/PlayingCard'
-import { Timer } from '@/components/ui/Timer'
 import { Button } from '@/components/ui/Button'
-import { applyPick, getVisiblePool, DRAFT_TIMER_SECONDS, DRAFT_ROUNDS } from '@/lib/game/draft'
+import { applyPick, getVisiblePool, DRAFT_ROUNDS } from '@/lib/game/draft'
 import type { DraftState, DraftPoolSlot, BattlePlayerState } from '@/types/game'
 import type { Character } from '@/types/character'
 import { cn } from '@/lib/utils/cn'
+
+// ── Per-player time-bank constants ────────────────────────────────────────────
+const DRAFT_BANK_INITIAL_S = 10   // starting bank (seconds)
+const DRAFT_TURN_BONUS_S   = 5    // added to bank at the start of each turn
 
 // ── Shared card-strip constants (mirrors solo page) ───────────────────────────
 const STRIP_W = 110
@@ -34,19 +38,21 @@ function TeamStrip({
   const slots   = Array.from({ length: total }, (_, i) => cards[i] ?? null)
   const ordered = reversed ? [...slots].reverse() : slots
   return (
-    <div className="flex justify-center">
-      {ordered.map((char, i) => (
-        <div key={i} style={{ marginLeft: i > 0 ? -STRIP_OVERLAP : 0, zIndex: reversed ? total - i : i }}>
-          {char ? (
-            <PlayingCard character={char} size="sm" animate={false} />
-          ) : (
-            <div
-              className="rounded-xl border border-dashed border-white/8 bg-void-800/20 shrink-0"
-              style={{ width: STRIP_W, height: STRIP_H }}
-            />
-          )}
-        </div>
-      ))}
+    <div className="flex justify-center overflow-x-auto">
+      <div className="flex shrink-0">
+        {ordered.map((char, i) => (
+          <div key={i} style={{ marginLeft: i > 0 ? -STRIP_OVERLAP : 0, zIndex: reversed ? total - i : i }}>
+            {char ? (
+              <PlayingCard character={char} size="sm" animate={false} />
+            ) : (
+              <div
+                className="rounded-xl border border-dashed border-white/8 bg-void-800/20 shrink-0"
+                style={{ width: STRIP_W, height: STRIP_H }}
+              />
+            )}
+          </div>
+        ))}
+      </div>
     </div>
   )
 }
@@ -55,21 +61,23 @@ function TeamStrip({
 function OppStrip({ cards, total = DRAFT_ROUNDS }: { cards: (Character | null | 'hidden')[] , total?: number }) {
   const slots = Array.from({ length: total }, (_, i) => cards[i] ?? null)
   return (
-    <div className="flex justify-center">
-      {slots.map((entry, i) => (
-        <div key={i} style={{ marginLeft: i > 0 ? -STRIP_OVERLAP : 0, zIndex: i }}>
-          {entry === 'hidden' ? (
-            <FaceDownCard size="sm" animate={false} />
-          ) : entry ? (
-            <PlayingCard character={entry} size="sm" animate={false} />
-          ) : (
-            <div
-              className="rounded-xl border border-dashed border-white/8 bg-void-800/20 shrink-0"
-              style={{ width: STRIP_W, height: STRIP_H }}
-            />
-          )}
-        </div>
-      ))}
+    <div className="flex justify-center overflow-x-auto">
+      <div className="flex shrink-0">
+        {slots.map((entry, i) => (
+          <div key={i} style={{ marginLeft: i > 0 ? -STRIP_OVERLAP : 0, zIndex: i }}>
+            {entry === 'hidden' ? (
+              <FaceDownCard size="sm" animate={false} />
+            ) : entry ? (
+              <PlayingCard character={entry} size="sm" animate={false} />
+            ) : (
+              <div
+                className="rounded-xl border border-dashed border-white/8 bg-void-800/20 shrink-0"
+                style={{ width: STRIP_W, height: STRIP_H }}
+              />
+            )}
+          </div>
+        ))}
+      </div>
     </div>
   )
 }
@@ -121,25 +129,79 @@ export default function DraftPage({ params }: { params: Promise<{ roomId: string
   const [submitting, setSubmitting]     = useState(false)
   const [opponentLeft, setOpponentLeft] = useState(false)
 
+  // ── Per-player time bank (chess-clock style, local only) ──────────────────────
+  const [localTimerEndsAt, setLocalTimerEndsAt] = useState<string | null>(null)
+  const bankMsRef      = useRef(DRAFT_BANK_INITIAL_S * 1000)  // my remaining bank in ms
+  const turnStartRef   = useRef(0)                            // when my current turn began
+  const prevPickerRef  = useRef<string | null>(null)
+  const autoPickedRef  = useRef(false)
+  const pickFnRef      = useRef<((pos: number) => void) | null>(null)
+
   const draft    = room?.draft_state as DraftState | null
   const myId     = user?.id
   const isMyTurn = draft?.current_picker_id === myId
+
+  // Countdown from local deadline (only counts while it's my turn)
+  const myTimeLeft = useCountdown(isMyTurn ? localTimerEndsAt : null)
+  const timerExpired = isMyTurn
+    && localTimerEndsAt !== null
+    && myTimeLeft === 0
+    && new Date(localTimerEndsAt).getTime() <= Date.now()
 
   // Navigate to battle when draft completes
   useEffect(() => {
     if (!room) return
     if (room.status === 'battling') router.push(`/battle/${roomId}`)
     if (room.status === 'abandoned') { toast.error('Match ended'); router.push('/lobby') }
-    // Opponent (player_b) left — room reset to 'waiting'; player_a waits for a new challenger
     if (room.status === 'waiting' && room.player_a_id === myId) setOpponentLeft(true)
   }, [room?.status, roomId, router, myId, room?.player_a_id])
 
-  async function handlePick() {
-    if (selectedSlot === null || !user || !draft || !isMyTurn || submitting) return
+  // ── Turn-change: adjust time bank ─────────────────────────────────────────────
+  useEffect(() => {
+    if (!draft || !myId || draft.phase === 'complete') return
+    const cur  = draft.current_picker_id
+    const prev = prevPickerRef.current
+    prevPickerRef.current = cur
+    if (cur === prev) return  // no change
+
+    if (cur === myId) {
+      // My turn started — add bonus to bank and start clock
+      bankMsRef.current += DRAFT_TURN_BONUS_S * 1000
+      turnStartRef.current = Date.now()
+      setLocalTimerEndsAt(new Date(Date.now() + bankMsRef.current).toISOString())
+      autoPickedRef.current = false
+    } else if (prev === myId) {
+      // My turn ended — save the remaining bank time
+      const elapsed = Date.now() - turnStartRef.current
+      bankMsRef.current = Math.max(0, bankMsRef.current - elapsed)
+      setLocalTimerEndsAt(null)
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [draft?.current_picker_id, myId])
+
+  // ── Auto-pick when timer expires ──────────────────────────────────────────────
+  useEffect(() => {
+    if (!timerExpired || !isMyTurn || autoPickedRef.current || submitting) return
+    if (!draft || draft.phase === 'complete') return
+    autoPickedRef.current = true
+    // Pick randomly from the current pair
+    const pairIdx = (draft.current_round - 1) * 2
+    const pool    = myId ? getVisiblePool(draft.draft_pool, myId) : draft.draft_pool
+    const a = pool[pairIdx]
+    const b = pool[pairIdx + 1]
+    if (!a || !b) return
+    const chosen = Math.random() < 0.5 ? a : b
+    console.log('[DraftTimer] expired — auto-picking slot', chosen.position)
+    pickFnRef.current?.(chosen.position)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [timerExpired, isMyTurn])
+
+  async function handlePickWithSlot(slotPos: number) {
+    if (!user || !draft || !isMyTurn || submitting) return
     setSubmitting(true)
     try {
       const supabase  = createClient()
-      const newDraft  = applyPick(draft, user.id, selectedSlot)
+      const newDraft  = applyPick(draft, user.id, slotPos)
       const updates: Record<string, unknown> = { draft_state: newDraft }
       if (newDraft.phase === 'complete') {
         updates.status       = 'battling'
@@ -150,9 +212,18 @@ export default function DraftPage({ params }: { params: Promise<{ roomId: string
       setSelectedSlot(null)
     } catch {
       toast.error('Pick failed — try again')
+      autoPickedRef.current = false
     } finally {
       setSubmitting(false)
     }
+  }
+
+  // Keep pick fn ref fresh for auto-pick effect
+  pickFnRef.current = handlePickWithSlot
+
+  async function handlePick() {
+    if (selectedSlot === null) return
+    handlePickWithSlot(selectedSlot)
   }
 
   // ── Abandon draft ─────────────────────────────────────────────────────────────
@@ -259,12 +330,26 @@ export default function DraftPage({ params }: { params: Promise<{ roomId: string
             ))}
           </div>
 
-          {/* Status + timer */}
-          <div className="flex items-center justify-center gap-2 min-h-[20px]">
+          {/* Status + time bank */}
+          <div className="flex items-center justify-center gap-2 min-h-[24px]">
             {isMyTurn ? (
               <>
                 <span className="text-gold-400 text-sm font-medium">Your pick — choose one</span>
-                <Timer endsAt={draft.timer_ends_at} totalSeconds={DRAFT_TIMER_SECONDS} showBar={false} urgentThreshold={10} className="text-xs" />
+                <motion.div
+                  className={cn(
+                    'flex items-center gap-1 px-2 py-0.5 rounded-full font-mono font-bold text-xs',
+                    myTimeLeft <= 5  && myTimeLeft > 0
+                      ? 'bg-crimson-600/20 text-crimson-300'
+                      : myTimeLeft <= 10
+                        ? 'bg-gold-500/20 text-gold-300'
+                        : 'bg-white/5 text-white/60',
+                  )}
+                  animate={myTimeLeft <= 5 && myTimeLeft > 0 ? { scale: [1, 1.08, 1] } : {}}
+                  transition={{ duration: 0.4, repeat: myTimeLeft <= 5 ? Infinity : 0 }}
+                >
+                  <TimerIcon size={10} />
+                  <span>{myTimeLeft}s</span>
+                </motion.div>
               </>
             ) : (
               <span className="text-white/40 text-xs animate-pulse">Waiting for opponent…</span>

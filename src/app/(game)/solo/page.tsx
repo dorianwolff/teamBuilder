@@ -278,11 +278,11 @@ export default function SoloPage() {
     const supabase = createClient()
     const existing = p.discovered_characters ?? []
     const merged   = Array.from(new Set([...existing, ...slugsOf(pTeam), ...slugsOf(aTeam)]))
+    // Solo is unranked: update games_played + discoveries only.
+    // W/L tracked exclusively for ranked PvP (leaderboard integrity).
     await supabase.from('profiles').update({
       discovered_characters: merged,
       games_played: p.games_played + 1,
-      games_won:    finalWinner === 'player' ? p.games_won + 1 : p.games_won,
-      games_lost:   finalWinner === 'ai'     ? p.games_lost + 1 : p.games_lost,
     }).eq('id', user.id)
   }
 
@@ -491,7 +491,8 @@ const STRIP_OVERLAP = 45
 
 // Flat overlapping row of team cards + placeholder slots
 function TeamStrip({ cards, hiddenSlugs, total = DRAFT_ROUNDS, reversed = false }: {
-  cards: (Character | null)[]
+  /** null = empty slot, 'hidden' = face-down picked card with '?' */
+  cards: (Character | null | 'hidden')[]
   hiddenSlugs?: Set<string>
   total?: number
   reversed?: boolean
@@ -499,21 +500,25 @@ function TeamStrip({ cards, hiddenSlugs, total = DRAFT_ROUNDS, reversed = false 
   const slots = Array.from({ length: total }, (_, i) => cards[i] ?? null)
   const ordered = reversed ? [...slots].reverse() : slots
   return (
-    <div className="flex justify-center">
-      {ordered.map((char, i) => (
-        <div key={i} style={{ marginLeft: i > 0 ? -STRIP_OVERLAP : 0, zIndex: reversed ? total - i : i }}>
-          {char ? (
-            hiddenSlugs?.has(char.slug)
-              ? <FaceDownCard size="sm" animate={false} />
-              : <PlayingCard character={char} size="sm" animate={false} />
-          ) : (
-            <div
-              className="rounded-xl border border-dashed border-white/8 bg-void-800/20 shrink-0"
-              style={{ width: STRIP_W, height: STRIP_H }}
-            />
-          )}
-        </div>
-      ))}
+    <div className="flex justify-center overflow-x-auto">
+      <div className="flex shrink-0">
+        {ordered.map((entry, i) => (
+          <div key={i} style={{ marginLeft: i > 0 ? -STRIP_OVERLAP : 0, zIndex: reversed ? total - i : i }}>
+            {entry === 'hidden' ? (
+              <FaceDownCard size="sm" animate={false} />
+            ) : entry ? (
+              hiddenSlugs?.has(entry.slug)
+                ? <FaceDownCard size="sm" animate={false} />
+                : <PlayingCard character={entry} size="sm" animate={false} />
+            ) : (
+              <div
+                className="rounded-xl border border-dashed border-white/8 bg-void-800/20 shrink-0"
+                style={{ width: STRIP_W, height: STRIP_H }}
+              />
+            )}
+          </div>
+        ))}
+      </div>
     </div>
   )
 }
@@ -538,7 +543,10 @@ function DraftScreen({ draft, selectedSlot, setSelectedSlot, onConfirm, aiThinki
   const visiblePool = getVisiblePool(draft.draft_pool, PLAYER_ID)
   const myChars     = draft.player_a.characters
   const aiPickSlots = visiblePool.filter(s => s.is_picked && s.picked_by === AI_ID)
-  const aiCards     = aiPickSlots.map(s => s.character ?? null)
+  // Masked AI picks show as face-down '?' cards, not empty slots
+  const aiCards: (Character | 'hidden' | null)[] = aiPickSlots.map(s =>
+    s.character ? s.character : 'hidden'
+  )
 
   if (!slotA || !slotB) return null
 

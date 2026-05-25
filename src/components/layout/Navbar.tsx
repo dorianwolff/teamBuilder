@@ -44,33 +44,34 @@ export function Navbar() {
           </span>
         </Link>
 
-        {/* Nav links */}
-        <div className="flex items-center gap-1">
+        {/* Nav links — icon-only on mobile, icon + label on sm+ */}
+        <div className="flex items-center gap-0.5 sm:gap-1">
           {NAV_LINKS.map(({ href, label, icon: Icon }) => {
             const active = pathname.startsWith(href)
             return (
               <Link
                 key={href}
                 href={href}
+                title={label}
                 className={cn(
-                  'flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm transition-colors',
+                  'flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-sm transition-colors',
                   active
                     ? 'text-gold-400 bg-gold-500/10'
                     : 'text-white/60 hover:text-white hover:bg-white/5',
                 )}
               >
-                <Icon size={14} />
-                {label}
+                <Icon size={14} className="shrink-0" />
+                <span className="hidden sm:inline">{label}</span>
               </Link>
             )
           })}
         </div>
 
         {/* Auth / profile */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5 sm:gap-2">
           {user && profile ? (
             <>
-              {/* ELO badge */}
+              {/* ELO badge — hidden on mobile */}
               <div className="hidden sm:flex items-center gap-2 px-3 py-1 rounded-lg bg-void-800 border border-white/10">
                 <div className="w-2 h-2 rounded-full" style={{ background: color, boxShadow: `0 0 6px ${color}` }} />
                 <span className="text-xs font-mono font-bold" style={{ color }}>
@@ -78,8 +79,19 @@ export function Navbar() {
                 </span>
               </div>
 
-              {/* Username */}
-              <span className="text-sm text-white/70 hidden sm:block">{profile.username}</span>
+              {/* On mobile: compact ELO dot only */}
+              <div
+                className="flex sm:hidden w-6 h-6 rounded-full items-center justify-center"
+                style={{ background: `${color}22`, border: `1px solid ${color}44` }}
+                title={`${formatElo(profile.elo)} ELO`}
+              >
+                <div className="w-1.5 h-1.5 rounded-full" style={{ background: color }} />
+              </div>
+
+              {/* Username — hidden on mobile */}
+              <span className="text-sm text-white/70 hidden sm:block truncate max-w-[100px]">
+                {profile.username}
+              </span>
 
               <button
                 onClick={handleSignOut}
@@ -93,13 +105,14 @@ export function Navbar() {
             <>
               <Link
                 href="/login"
-                className="text-sm text-white/60 hover:text-white px-3 py-1.5 rounded-lg hover:bg-white/5 transition-colors"
+                className="text-sm text-white/60 hover:text-white px-2.5 py-1.5 rounded-lg hover:bg-white/5 transition-colors"
               >
-                Log in
+                <span className="hidden sm:inline">Log in</span>
+                <span className="sm:hidden text-xs">Login</span>
               </Link>
               <Link
                 href="/register"
-                className="text-sm text-void-950 font-semibold px-3 py-1.5 rounded-lg bg-gold-500 hover:bg-gold-400 transition-colors"
+                className="text-xs sm:text-sm text-void-950 font-semibold px-2.5 sm:px-3 py-1.5 rounded-lg bg-gold-500 hover:bg-gold-400 transition-colors"
               >
                 Sign up
               </Link>

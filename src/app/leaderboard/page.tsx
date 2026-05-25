@@ -126,7 +126,7 @@ export default function LeaderboardPage() {
                   {ELO_TIER_LABELS[tier]}
                 </p>
                 <p className="text-white/25 text-[10px] mt-1">
-                  {winRate(row)}% WR · {row.games_played}G
+                  {winRate(row)}% ranked WR · {row.games_played}G total
                 </p>
               </motion.div>
             )
@@ -142,7 +142,7 @@ export default function LeaderboardPage() {
           <span>#</span>
           <span>Player</span>
           <span className="text-right">ELO</span>
-          <span className="text-right hidden sm:block">W/L</span>
+          <span className="text-right hidden sm:block">Ranked W/L</span>
           <span className="text-right">Win %</span>
         </div>
 

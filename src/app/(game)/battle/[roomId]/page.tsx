@@ -193,13 +193,9 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [battle?.rounds.length])
 
-  // Handle room status changes
+  // Handle room status changes (non-finish transitions)
   useEffect(() => {
     if (!room) return
-    if (room.status === 'finished' && room.mode === 'ranked') {
-      const t = setTimeout(() => router.push('/lobby'), 4000)
-      return () => clearTimeout(t)
-    }
     if (room.status === 'drafting') router.push(`/draft/${roomId}`)
     if (room.status === 'abandoned') {
       toast.error('Match ended early')
@@ -207,6 +203,16 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [room?.status])
+
+  // Ranked lobby redirect — fires only AFTER the animation completes so the
+  // game-over overlay is never shown behind/over the battle animation.
+  useEffect(() => {
+    if (!room || room.status !== 'finished' || room.mode !== 'ranked') return
+    if (animRound !== null) return // animation still playing — wait
+    const t = setTimeout(() => router.push('/lobby'), 4000)
+    return () => clearTimeout(t)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [room?.status, animRound])
 
   // ── ELO + stats update (runs on BOTH clients when the game finishes) ─────────
   // Each player updates only their own profile row — RLS compliant.
@@ -237,8 +243,9 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
       const { error } = await supabase.from('profiles').update({
         elo:          freshProfile.elo + myDelta,
         games_played: freshProfile.games_played + 1,
-        games_won:    isWinner  ? freshProfile.games_won  + 1 : freshProfile.games_won,
-        games_lost:   !isWinner ? freshProfile.games_lost + 1 : freshProfile.games_lost,
+        // W/L only from ranked — casual games don't affect the leaderboard rating
+        games_won:    (room.mode === 'ranked' && isWinner)  ? freshProfile.games_won  + 1 : freshProfile.games_won,
+        games_lost:   (room.mode === 'ranked' && !isWinner) ? freshProfile.games_lost + 1 : freshProfile.games_lost,
         ...(allSlugs.length > 0 ? {
           discovered_characters: Array.from(new Set([
             ...((freshProfile.discovered_characters as string[]) ?? []),
@@ -674,9 +681,9 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
         )}
       </Modal>
 
-      {/* ── Game over overlay ── */}
+      {/* ── Game over overlay — hidden while animation is playing ── */}
       <AnimatePresence>
-        {gameOver && (
+        {gameOver && !animRound && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

@@ -188,9 +188,13 @@ function CharPortrait({
               {showLabel && technique && (
                 <motion.div
                   className={cn(
-                    'absolute bottom-full mb-4 left-1/2 -translate-x-1/2 z-40',
-                    'flex flex-col items-center gap-0.5 text-center',
-                    'w-max max-w-[160px] sm:max-w-[220px] md:max-w-[290px]',
+                    'absolute bottom-full mb-4 z-40',
+                    'flex flex-col gap-0.5',
+                    // Align inward from the card edge so text never bleeds off-screen
+                    side === 'left'
+                      ? 'left-0 items-start text-left'
+                      : 'right-0 items-end text-right',
+                    'w-max max-w-[160px] sm:max-w-[230px] md:max-w-[300px]',
                   )}
                   initial={{ opacity: 0, y: 14, scale: 0.85 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
