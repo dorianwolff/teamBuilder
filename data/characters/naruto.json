@@ -4,25 +4,58 @@
     "name": "Naruto Uzumaki",
     "verse": "naruto",
     "arc_version": "Six Paths Sage Mode – Fourth Shinobi War",
-    "power_level": 8743291.8820,
+    "power_level": 8743291.882,
     "martial_ratio": 0.5,
-    "power_tags": ["six_paths_sage_mode", "nine_tails_chakra", "truth_seeking_balls", "sage_art", "rasengan", "flight", "chakra", "wind"],
+    "power_tags": [
+      "six_paths_sage_mode",
+      "nine_tails_chakra",
+      "truth_seeking_balls",
+      "sage_art",
+      "rasengan",
+      "flight",
+      "chakra",
+      "wind"
+    ],
     "strengths": [
-      {"tag": "ninjutsu", "coefficient": 0.5},
-      {"tag": "taijutsu", "coefficient": 0.4},
-      {"tag": "chakra_drain", "coefficient": 0.6},
-      {"tag": "natural_energy", "coefficient": 0.5}
+      {
+        "tag": "ninjutsu",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "taijutsu",
+        "coefficient": 0.4
+      },
+      {
+        "tag": "chakra_drain",
+        "coefficient": 0.6
+      },
+      {
+        "tag": "natural_energy",
+        "coefficient": 0.5
+      }
     ],
     "weaknesses": [
-      {"tag": "genjutsu", "coefficient": 0.3},
-      {"tag": "sealing_jutsu", "coefficient": 0.35}
+      {
+        "tag": "genjutsu",
+        "coefficient": 0.3
+      },
+      {
+        "tag": "sealing_jutsu",
+        "coefficient": 0.35
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "male", "shinobi", "jinchuriki", "sage_mode_user"],
+    "traits": [
+      "human",
+      "male",
+      "shinobi",
+      "jinchuriki",
+      "sage_mode_user"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/naruto/naruto_six_paths.png",
+    "image_path": "assets/characters/naruto/naruto_six_paths.jpg",
     "short_description": "Naruto at his zenith wielding all nine tailed-beast chakras and Six Paths power gifted by the Sage of Six Paths, capable of flight and truth-seeking balls."
   },
   {
@@ -30,24 +63,53 @@
     "name": "Sasuke Uchiha",
     "verse": "naruto",
     "arc_version": "Rinnegan – Fourth Shinobi War",
-    "power_level": 8521047.3310,
+    "power_level": 8521047.331,
     "martial_ratio": 0.55,
-    "power_tags": ["rinnegan", "eternal_mangekyo_sharingan", "indra_susanoo", "six_paths_chakra", "amenotejikara", "genjutsu", "chidori", "lightning"],
+    "power_tags": [
+      "rinnegan",
+      "eternal_mangekyo_sharingan",
+      "indra_susanoo",
+      "six_paths_chakra",
+      "amenotejikara",
+      "genjutsu",
+      "chidori",
+      "lightning"
+    ],
     "strengths": [
-      {"tag": "ninjutsu", "coefficient": 0.45},
-      {"tag": "genjutsu", "coefficient": 0.6},
-      {"tag": "illusion", "coefficient": 0.6}
+      {
+        "tag": "ninjutsu",
+        "coefficient": 0.45
+      },
+      {
+        "tag": "genjutsu",
+        "coefficient": 0.6
+      },
+      {
+        "tag": "illusion",
+        "coefficient": 0.6
+      }
     ],
     "weaknesses": [
-      {"tag": "chakra_drain", "coefficient": 0.3},
-      {"tag": "emotional_distraction", "coefficient": 0.2}
+      {
+        "tag": "chakra_drain",
+        "coefficient": 0.3
+      },
+      {
+        "tag": "emotional_distraction",
+        "coefficient": 0.2
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "male", "shinobi", "uchiha"],
+    "traits": [
+      "human",
+      "male",
+      "shinobi",
+      "uchiha"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/naruto/sasuke_rinnegan.png",
+    "image_path": "assets/characters/naruto/sasuke_rinnegan.jpg",
     "short_description": "Sasuke after receiving the Rinnegan from the Sage of Six Paths, wielding space-time teleportation and the colossal Indra Susanoo."
   },
   {
@@ -55,25 +117,61 @@
     "name": "Madara Uchiha",
     "verse": "naruto",
     "arc_version": "Six Paths Madara – Ten-Tails Jinchuriki",
-    "power_level": 8912473.6640,
+    "power_level": 8912473.664,
     "martial_ratio": 0.6,
-    "power_tags": ["six_paths", "ten_tails_jinchuriki", "rinnegan", "limbo", "truth_seeking_balls", "wood_release", "fire_release", "taijutsu"],
+    "power_tags": [
+      "six_paths",
+      "ten_tails_jinchuriki",
+      "rinnegan",
+      "limbo",
+      "truth_seeking_balls",
+      "wood_release",
+      "fire_release",
+      "taijutsu"
+    ],
     "strengths": [
-      {"tag": "ninjutsu", "coefficient": 0.6},
-      {"tag": "taijutsu", "coefficient": 0.55},
-      {"tag": "genjutsu", "coefficient": 0.55},
-      {"tag": "healing", "coefficient": 0.7}
+      {
+        "tag": "ninjutsu",
+        "coefficient": 0.6
+      },
+      {
+        "tag": "taijutsu",
+        "coefficient": 0.55
+      },
+      {
+        "tag": "genjutsu",
+        "coefficient": 0.55
+      },
+      {
+        "tag": "healing",
+        "coefficient": 0.7
+      }
     ],
     "weaknesses": [
-      {"tag": "sealing_jutsu", "coefficient": 0.3},
-      {"tag": "black_zetsu_betrayal", "coefficient": 1.0}
+      {
+        "tag": "sealing_jutsu",
+        "coefficient": 0.3
+      },
+      {
+        "tag": "black_zetsu_betrayal",
+        "coefficient": 1.0
+      }
     ],
-    "cannot_win_against": ["kaguya"],
+    "cannot_win_against": [
+      "kaguya"
+    ],
     "draw_conditions": [],
-    "traits": ["human", "male", "shinobi", "uchiha", "undead_edo_tensei", "ten_tails_jinchuriki"],
+    "traits": [
+      "human",
+      "male",
+      "shinobi",
+      "uchiha",
+      "undead_edo_tensei",
+      "ten_tails_jinchuriki"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/naruto/madara_six_paths.png",
+    "image_path": "assets/characters/naruto/madara_six_paths.jpg",
     "short_description": "Madara as the Ten-Tails jinchuriki with Six Paths power, using invisible Limbo clones and truth-seeking balls to dominate all five Kage simultaneously."
   },
   {
@@ -81,25 +179,56 @@
     "name": "Kaguya Otsutsuki",
     "verse": "naruto",
     "arc_version": "Rabbit Goddess – Fourth Shinobi War",
-    "power_level": 9421847.2210,
+    "power_level": 9421847.221,
     "martial_ratio": 0.4,
-    "power_tags": ["all_killing_ash_bones", "dimensional_travel", "byakugan", "rinnegan_third_eye", "infinite_tsukuyomi", "chakra_absorption", "hair_manipulation"],
+    "power_tags": [
+      "all_killing_ash_bones",
+      "dimensional_travel",
+      "byakugan",
+      "rinnegan_third_eye",
+      "infinite_tsukuyomi",
+      "chakra_absorption",
+      "hair_manipulation"
+    ],
     "strengths": [
-      {"tag": "ninjutsu", "coefficient": 0.7},
-      {"tag": "chakra", "coefficient": 0.8},
-      {"tag": "taijutsu", "coefficient": 0.5},
-      {"tag": "genjutsu", "coefficient": 0.7}
+      {
+        "tag": "ninjutsu",
+        "coefficient": 0.7
+      },
+      {
+        "tag": "chakra",
+        "coefficient": 0.8
+      },
+      {
+        "tag": "taijutsu",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "genjutsu",
+        "coefficient": 0.7
+      }
     ],
     "weaknesses": [
-      {"tag": "combination_sealing", "coefficient": 0.5},
-      {"tag": "teamwork", "coefficient": 0.3}
+      {
+        "tag": "combination_sealing",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "teamwork",
+        "coefficient": 0.3
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["otsutsuki", "female", "goddess", "beautiful"],
+    "traits": [
+      "otsutsuki",
+      "female",
+      "goddess",
+      "beautiful"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/naruto/kaguya.png",
+    "image_path": "assets/characters/naruto/kaguya.jpg",
     "short_description": "The progenitor of chakra herself, mother of the Sage of Six Paths, capable of dimensional manipulation and the instant-kill Ash Killing Bones technique."
   },
   {
@@ -107,25 +236,57 @@
     "name": "Hashirama Senju",
     "verse": "naruto",
     "arc_version": "Sage Mode – Edo Tensei Revival",
-    "power_level": 7234821.9930,
+    "power_level": 7234821.993,
     "martial_ratio": 0.55,
-    "power_tags": ["wood_release", "sage_mode", "wood_style_true_several_thousand_hands", "natural_energy", "bijuu_suppression", "healing_factor"],
+    "power_tags": [
+      "wood_release",
+      "sage_mode",
+      "wood_style_true_several_thousand_hands",
+      "natural_energy",
+      "bijuu_suppression",
+      "healing_factor"
+    ],
     "strengths": [
-      {"tag": "healing", "coefficient": 0.8},
-      {"tag": "ninjutsu", "coefficient": 0.5},
-      {"tag": "bijuu_control", "coefficient": 0.6},
-      {"tag": "natural_energy", "coefficient": 0.45}
+      {
+        "tag": "healing",
+        "coefficient": 0.8
+      },
+      {
+        "tag": "ninjutsu",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "bijuu_control",
+        "coefficient": 0.6
+      },
+      {
+        "tag": "natural_energy",
+        "coefficient": 0.45
+      }
     ],
     "weaknesses": [
-      {"tag": "fire_release", "coefficient": 0.25},
-      {"tag": "lightning_release", "coefficient": 0.25}
+      {
+        "tag": "fire_release",
+        "coefficient": 0.25
+      },
+      {
+        "tag": "lightning_release",
+        "coefficient": 0.25
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "male", "shinobi", "senju", "undead_edo_tensei", "sage_mode_user"],
+    "traits": [
+      "human",
+      "male",
+      "shinobi",
+      "senju",
+      "undead_edo_tensei",
+      "sage_mode_user"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/naruto/hashirama_sage_mode.png",
+    "image_path": "assets/characters/naruto/hashirama_sage_mode.jpg",
     "short_description": "The God of Shinobi in Sage Mode, whose Wood Style and cellular regeneration make him the only person who ever defeated Madara in fair combat."
   },
   {
@@ -133,24 +294,54 @@
     "name": "Minato Namikaze",
     "verse": "naruto",
     "arc_version": "KCM2 – Edo Tensei Revival",
-    "power_level": 6847293.4410,
+    "power_level": 6847293.441,
     "martial_ratio": 0.65,
-    "power_tags": ["kcm2_toad_sage", "flying_raijin", "space_time_ninjutsu", "rasengan", "bijuu_mode_partial", "wind_release", "taijutsu_speed"],
+    "power_tags": [
+      "kcm2_toad_sage",
+      "flying_raijin",
+      "space_time_ninjutsu",
+      "rasengan",
+      "bijuu_mode_partial",
+      "wind_release",
+      "taijutsu_speed"
+    ],
     "strengths": [
-      {"tag": "tracking", "coefficient": 0.6},
-      {"tag": "speed", "coefficient": 0.5},
-      {"tag": "space_time", "coefficient": 0.4}
+      {
+        "tag": "tracking",
+        "coefficient": 0.6
+      },
+      {
+        "tag": "speed",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "space_time",
+        "coefficient": 0.4
+      }
     ],
     "weaknesses": [
-      {"tag": "genjutsu", "coefficient": 0.25},
-      {"tag": "overwhelming_taijutsu", "coefficient": 0.2}
+      {
+        "tag": "genjutsu",
+        "coefficient": 0.25
+      },
+      {
+        "tag": "overwhelming_taijutsu",
+        "coefficient": 0.2
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "male", "shinobi", "jinchuriki", "undead_edo_tensei", "sage_mode_user"],
+    "traits": [
+      "human",
+      "male",
+      "shinobi",
+      "jinchuriki",
+      "undead_edo_tensei",
+      "sage_mode_user"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/naruto/minato_kcm2.png",
+    "image_path": "assets/characters/naruto/minato_kcm2.jpg",
     "short_description": "The Yellow Flash with both Toad Sage Mode and Nine-Tails Chakra Mode, combining unmatched teleportation speed with Bijuu-enhanced power."
   },
   {
@@ -158,25 +349,56 @@
     "name": "Nagato (Pain – Six Paths)",
     "verse": "naruto",
     "arc_version": "Six Paths of Pain – Konoha Invasion",
-    "power_level": 5234817.8820,
+    "power_level": 5234817.882,
     "martial_ratio": 0.45,
-    "power_tags": ["rinnegan", "six_paths_of_pain", "shinra_tensei", "chibaku_tensei", "chakra_absorption", "soul_removal", "gravity"],
+    "power_tags": [
+      "rinnegan",
+      "six_paths_of_pain",
+      "shinra_tensei",
+      "chibaku_tensei",
+      "chakra_absorption",
+      "soul_removal",
+      "gravity"
+    ],
     "strengths": [
-      {"tag": "ninjutsu", "coefficient": 0.5},
-      {"tag": "taijutsu", "coefficient": 0.4},
-      {"tag": "chakra", "coefficient": 0.45}
+      {
+        "tag": "ninjutsu",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "taijutsu",
+        "coefficient": 0.4
+      },
+      {
+        "tag": "chakra",
+        "coefficient": 0.45
+      }
     ],
     "weaknesses": [
-      {"tag": "chakra_drain", "coefficient": 0.45},
-      {"tag": "pain_path_destruction", "coefficient": 0.4},
-      {"tag": "empathy", "coefficient": 0.6}
+      {
+        "tag": "chakra_drain",
+        "coefficient": 0.45
+      },
+      {
+        "tag": "pain_path_destruction",
+        "coefficient": 0.4
+      },
+      {
+        "tag": "empathy",
+        "coefficient": 0.6
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "male", "shinobi", "rinnegan_user"],
+    "traits": [
+      "human",
+      "male",
+      "shinobi",
+      "rinnegan_user"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/naruto/nagato_pain.png",
+    "image_path": "assets/characters/naruto/nagato_pain.jpg",
     "short_description": "Nagato commanding six corpse-puppets as the Six Paths of Pain, able to repel anything with Shinra Tensei and create miniature moons with Chibaku Tensei."
   },
   {
@@ -184,24 +406,52 @@
     "name": "Obito Uchiha",
     "verse": "naruto",
     "arc_version": "Ten-Tails Jinchuriki – Fourth Shinobi War",
-    "power_level": 8347821.1130,
+    "power_level": 8347821.113,
     "martial_ratio": 0.5,
-    "power_tags": ["ten_tails_jinchuriki", "mangekyo_sharingan", "kamui", "wood_release", "truth_seeking_balls", "intangibility"],
+    "power_tags": [
+      "ten_tails_jinchuriki",
+      "mangekyo_sharingan",
+      "kamui",
+      "wood_release",
+      "truth_seeking_balls",
+      "intangibility"
+    ],
     "strengths": [
-      {"tag": "physical_attacks", "coefficient": 0.6},
-      {"tag": "ninjutsu", "coefficient": 0.5},
-      {"tag": "intangibility", "coefficient": 0.7}
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.6
+      },
+      {
+        "tag": "ninjutsu",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "intangibility",
+        "coefficient": 0.7
+      }
     ],
     "weaknesses": [
-      {"tag": "kamui_disruption", "coefficient": 0.5},
-      {"tag": "sealing_jutsu", "coefficient": 0.3}
+      {
+        "tag": "kamui_disruption",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "sealing_jutsu",
+        "coefficient": 0.3
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "male", "shinobi", "uchiha", "ten_tails_jinchuriki"],
+    "traits": [
+      "human",
+      "male",
+      "shinobi",
+      "uchiha",
+      "ten_tails_jinchuriki"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/naruto/obito_ten_tails.png",
+    "image_path": "assets/characters/naruto/obito_ten_tails.jpg",
     "short_description": "Obito as the Ten-Tails jinchuriki, combining his intangible Kamui with the raw devastation of the primal beast's power."
   },
   {
@@ -209,25 +459,58 @@
     "name": "Itachi Uchiha",
     "verse": "naruto",
     "arc_version": "Edo Tensei – Fourth Shinobi War",
-    "power_level": 3847291.6640,
+    "power_level": 3847291.664,
     "martial_ratio": 0.5,
-    "power_tags": ["mangekyo_sharingan", "tsukuyomi", "amaterasu", "susanoo_totsuka_blade", "susanoo_yata_mirror", "genjutsu", "fire_release"],
+    "power_tags": [
+      "mangekyo_sharingan",
+      "tsukuyomi",
+      "amaterasu",
+      "susanoo_totsuka_blade",
+      "susanoo_yata_mirror",
+      "genjutsu",
+      "fire_release"
+    ],
     "strengths": [
-      {"tag": "genjutsu", "coefficient": 0.7},
-      {"tag": "illusion", "coefficient": 0.7},
-      {"tag": "ninjutsu", "coefficient": 0.4},
-      {"tag": "susanoo_yata_mirror", "coefficient": 0.8, "description": "Yata Mirror blocks all ninjutsu"}
+      {
+        "tag": "genjutsu",
+        "coefficient": 0.7
+      },
+      {
+        "tag": "illusion",
+        "coefficient": 0.7
+      },
+      {
+        "tag": "ninjutsu",
+        "coefficient": 0.4
+      },
+      {
+        "tag": "susanoo_yata_mirror",
+        "coefficient": 0.8,
+        "description": "Yata Mirror blocks all ninjutsu"
+      }
     ],
     "weaknesses": [
-      {"tag": "physical_overwhelm", "coefficient": 0.3},
-      {"tag": "illness", "coefficient": 0.4}
+      {
+        "tag": "physical_overwhelm",
+        "coefficient": 0.3
+      },
+      {
+        "tag": "illness",
+        "coefficient": 0.4
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "male", "shinobi", "uchiha", "undead_edo_tensei"],
+    "traits": [
+      "human",
+      "male",
+      "shinobi",
+      "uchiha",
+      "undead_edo_tensei"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/naruto/itachi.png",
+    "image_path": "assets/characters/naruto/itachi.jpg",
     "short_description": "The Uchiha prodigy whose Perfect Susanoo wields the unstoppable Totsuka Blade and the all-blocking Yata Mirror, making him nearly untouchable in direct combat."
   },
   {
@@ -235,23 +518,49 @@
     "name": "Jiraiya",
     "verse": "naruto",
     "arc_version": "Sage Mode – Pain Battle",
-    "power_level": 2934817.2210,
+    "power_level": 2934817.221,
     "martial_ratio": 0.6,
-    "power_tags": ["sage_mode_toad", "rasengan", "summoning_toads", "hair_needle", "natural_energy", "wind_release"],
+    "power_tags": [
+      "sage_mode_toad",
+      "rasengan",
+      "summoning_toads",
+      "hair_needle",
+      "natural_energy",
+      "wind_release"
+    ],
     "strengths": [
-      {"tag": "ninjutsu", "coefficient": 0.4},
-      {"tag": "natural_energy", "coefficient": 0.4}
+      {
+        "tag": "ninjutsu",
+        "coefficient": 0.4
+      },
+      {
+        "tag": "natural_energy",
+        "coefficient": 0.4
+      }
     ],
     "weaknesses": [
-      {"tag": "multiple_opponents", "coefficient": 0.4},
-      {"tag": "rinnegan", "coefficient": 0.5}
+      {
+        "tag": "multiple_opponents",
+        "coefficient": 0.4
+      },
+      {
+        "tag": "rinnegan",
+        "coefficient": 0.5
+      }
     ],
-    "cannot_win_against": ["nagato_pain"],
+    "cannot_win_against": [
+      "nagato_pain"
+    ],
     "draw_conditions": [],
-    "traits": ["human", "male", "shinobi", "sage_mode_user"],
+    "traits": [
+      "human",
+      "male",
+      "shinobi",
+      "sage_mode_user"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/naruto/jiraiya_sage_mode.png",
+    "image_path": "assets/characters/naruto/jiraiya_sage_mode.jpg",
     "short_description": "The Toad Sage whose perfected Sage Mode amplifies all techniques to godly levels, falling only to his own student Nagato's Six Paths of Pain."
   },
   {
@@ -259,25 +568,56 @@
     "name": "Tsunade",
     "verse": "naruto",
     "arc_version": "Byakugou Seal Released – Fourth Shinobi War",
-    "power_level": 2847293.5510,
+    "power_level": 2847293.551,
     "martial_ratio": 0.75,
-    "power_tags": ["byakugou_seal", "strength_of_a_hundred", "cellular_regeneration", "medical_ninjutsu", "taijutsu_strength", "summoning_slugs"],
+    "power_tags": [
+      "byakugou_seal",
+      "strength_of_a_hundred",
+      "cellular_regeneration",
+      "medical_ninjutsu",
+      "taijutsu_strength",
+      "summoning_slugs"
+    ],
     "strengths": [
-      {"tag": "poison", "coefficient": 0.7},
-      {"tag": "healing", "coefficient": 0.9},
-      {"tag": "physical_attacks", "coefficient": 0.3}
+      {
+        "tag": "poison",
+        "coefficient": 0.7
+      },
+      {
+        "tag": "healing",
+        "coefficient": 0.9
+      },
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.3
+      }
     ],
     "weaknesses": [
-      {"tag": "genjutsu", "coefficient": 0.3},
-      {"tag": "long_range", "coefficient": 0.3},
-      {"tag": "chakra_drain", "coefficient": 0.4}
+      {
+        "tag": "genjutsu",
+        "coefficient": 0.3
+      },
+      {
+        "tag": "long_range",
+        "coefficient": 0.3
+      },
+      {
+        "tag": "chakra_drain",
+        "coefficient": 0.4
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "female", "shinobi", "senju", "beautiful"],
+    "traits": [
+      "human",
+      "female",
+      "shinobi",
+      "senju",
+      "beautiful"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/naruto/tsunade.png",
+    "image_path": "assets/characters/naruto/tsunade.jpg",
     "short_description": "The legendary Sannin and Hokage whose Byakugou Seal enables near-immortal regeneration and earth-shattering taijutsu powered by chakra-enhanced strength."
   },
   {
@@ -285,23 +625,47 @@
     "name": "Kabuto Yakushi",
     "verse": "naruto",
     "arc_version": "Snake Sage Mode – Fourth Shinobi War",
-    "power_level": 2643829.7730,
+    "power_level": 2643829.773,
     "martial_ratio": 0.55,
-    "power_tags": ["snake_sage_mode", "orochimaru_cells", "medical_ninjutsu", "dragon_scales", "sound"],
+    "power_tags": [
+      "snake_sage_mode",
+      "orochimaru_cells",
+      "medical_ninjutsu",
+      "dragon_scales",
+      "sound"
+    ],
     "strengths": [
-      {"tag": "healing", "coefficient": 0.8},
-      {"tag": "poison", "coefficient": 0.5},
-      {"tag": "sensing", "coefficient": 0.4}
+      {
+        "tag": "healing",
+        "coefficient": 0.8
+      },
+      {
+        "tag": "poison",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "sensing",
+        "coefficient": 0.4
+      }
     ],
     "weaknesses": [
-      {"tag": "izanami", "coefficient": 1.0, "description": "Izanami traps him in an infinite loop — inescapable"}
+      {
+        "tag": "izanami",
+        "coefficient": 1.0,
+        "description": "Izanami traps him in an infinite loop — inescapable"
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "male", "shinobi", "sage_mode_user"],
+    "traits": [
+      "human",
+      "male",
+      "shinobi",
+      "sage_mode_user"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/naruto/kabuto_snake_sage.png",
+    "image_path": "assets/characters/naruto/kabuto_snake_sage.jpg",
     "short_description": "Kabuto having surpassed Orochimaru through Snake Sage Mode, combining perfect regeneration, enhanced senses, and control over the entire Edo Tensei army."
   },
   {
@@ -309,25 +673,56 @@
     "name": "Might Guy",
     "verse": "naruto",
     "arc_version": "Eight Gates Released – Ten-Tails War",
-    "power_level": 5021847.4410,
+    "power_level": 5021847.441,
     "martial_ratio": 1.0,
-    "power_tags": ["eight_gates", "evening_elephant", "night_guy", "taijutsu_supreme", "daytime_tiger"],
+    "power_tags": [
+      "eight_gates",
+      "evening_elephant",
+      "night_guy",
+      "taijutsu_supreme",
+      "daytime_tiger"
+    ],
     "strengths": [
-      {"tag": "taijutsu", "coefficient": 0.6},
-      {"tag": "speed", "coefficient": 0.5},
-      {"tag": "genjutsu_immunity", "coefficient": 0.7, "description": "Pure taijutsu — genjutsu is irrelevant"}
+      {
+        "tag": "taijutsu",
+        "coefficient": 0.6
+      },
+      {
+        "tag": "speed",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "genjutsu_immunity",
+        "coefficient": 0.7,
+        "description": "Pure taijutsu — genjutsu is irrelevant"
+      }
     ],
     "weaknesses": [
-      {"tag": "long_range", "coefficient": 0.3},
-      {"tag": "ninjutsu", "coefficient": 0.2},
-      {"tag": "after_eight_gates", "coefficient": 0.9, "description": "Body breaks down after the Eighth Gate — massive vulnerability post-use"}
+      {
+        "tag": "long_range",
+        "coefficient": 0.3
+      },
+      {
+        "tag": "ninjutsu",
+        "coefficient": 0.2
+      },
+      {
+        "tag": "after_eight_gates",
+        "coefficient": 0.9,
+        "description": "Body breaks down after the Eighth Gate — massive vulnerability post-use"
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "male", "shinobi", "martial_artist"],
+    "traits": [
+      "human",
+      "male",
+      "shinobi",
+      "martial_artist"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/naruto/guy_eight_gates.png",
+    "image_path": "assets/characters/naruto/guy_eight_gates.jpg",
     "short_description": "Might Guy at the Eighth Gate of Death, achieving speed and force that forced Madara Uchiha to call him the strongest taijutsu user he had ever faced."
   },
   {
@@ -335,24 +730,50 @@
     "name": "Rock Lee",
     "verse": "naruto",
     "arc_version": "Fifth Gate – Chunin Exams",
-    "power_level": 321847.5540,
+    "power_level": 321847.554,
     "martial_ratio": 1.0,
-    "power_tags": ["inner_gates_fifth", "drunken_fist", "primary_lotus", "reverse_lotus", "taijutsu_pure"],
+    "power_tags": [
+      "inner_gates_fifth",
+      "drunken_fist",
+      "primary_lotus",
+      "reverse_lotus",
+      "taijutsu_pure"
+    ],
     "strengths": [
-      {"tag": "taijutsu", "coefficient": 0.5},
-      {"tag": "genjutsu_immunity", "coefficient": 0.7}
+      {
+        "tag": "taijutsu",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "genjutsu_immunity",
+        "coefficient": 0.7
+      }
     ],
     "weaknesses": [
-      {"tag": "ninjutsu", "coefficient": 0.25},
-      {"tag": "long_range", "coefficient": 0.4},
-      {"tag": "recovery_time", "coefficient": 0.5}
+      {
+        "tag": "ninjutsu",
+        "coefficient": 0.25
+      },
+      {
+        "tag": "long_range",
+        "coefficient": 0.4
+      },
+      {
+        "tag": "recovery_time",
+        "coefficient": 0.5
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "male", "shinobi", "martial_artist"],
+    "traits": [
+      "human",
+      "male",
+      "shinobi",
+      "martial_artist"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/naruto/rock_lee_fifth_gate.png",
+    "image_path": "assets/characters/naruto/rock_lee_fifth_gate.jpg",
     "short_description": "The taijutsu prodigy who could never mold chakra, opening the Fifth Gate to move faster than the Sharingan can track during the Chunin Exams."
   },
   {
@@ -360,24 +781,49 @@
     "name": "Kakashi Hatake",
     "verse": "naruto",
     "arc_version": "Dual Sharingan – Obito's Gift",
-    "power_level": 2247821.3310,
+    "power_level": 2247821.331,
     "martial_ratio": 0.6,
-    "power_tags": ["dual_sharingan", "kamui_enhanced", "lightning_cutter", "taijutsu", "ninjutsu_copy"],
+    "power_tags": [
+      "dual_sharingan",
+      "kamui_enhanced",
+      "lightning_cutter",
+      "taijutsu",
+      "ninjutsu_copy"
+    ],
     "strengths": [
-      {"tag": "tracking", "coefficient": 0.5},
-      {"tag": "genjutsu", "coefficient": 0.4},
-      {"tag": "ninjutsu_copy", "coefficient": 0.45}
+      {
+        "tag": "tracking",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "genjutsu",
+        "coefficient": 0.4
+      },
+      {
+        "tag": "ninjutsu_copy",
+        "coefficient": 0.45
+      }
     ],
     "weaknesses": [
-      {"tag": "chakra_drain", "coefficient": 0.5},
-      {"tag": "eye_removal", "coefficient": 0.6}
+      {
+        "tag": "chakra_drain",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "eye_removal",
+        "coefficient": 0.6
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "male", "shinobi"],
+    "traits": [
+      "human",
+      "male",
+      "shinobi"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/naruto/kakashi_dual_sharingan.png",
+    "image_path": "assets/characters/naruto/kakashi_dual_sharingan.jpg",
     "short_description": "Kakashi briefly wielding both Sharingan eyes gifted by Obito's spirit, achieving perfect Kamui mastery to face Kaguya herself."
   },
   {
@@ -385,25 +831,54 @@
     "name": "Sakura Haruno",
     "verse": "naruto",
     "arc_version": "Post-War – Byakugou User",
-    "power_level": 2143829.2210,
+    "power_level": 2143829.221,
     "martial_ratio": 0.8,
-    "power_tags": ["byakugou_seal", "strength_of_a_hundred", "medical_ninjutsu", "taijutsu_strength", "healing"],
+    "power_tags": [
+      "byakugou_seal",
+      "strength_of_a_hundred",
+      "medical_ninjutsu",
+      "taijutsu_strength",
+      "healing"
+    ],
     "strengths": [
-      {"tag": "poison", "coefficient": 0.6},
-      {"tag": "healing", "coefficient": 0.85},
-      {"tag": "physical_attacks", "coefficient": 0.35}
+      {
+        "tag": "poison",
+        "coefficient": 0.6
+      },
+      {
+        "tag": "healing",
+        "coefficient": 0.85
+      },
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.35
+      }
     ],
     "weaknesses": [
-      {"tag": "genjutsu", "coefficient": 0.25},
-      {"tag": "long_range", "coefficient": 0.3},
-      {"tag": "overwhelming_ninjutsu", "coefficient": 0.3}
+      {
+        "tag": "genjutsu",
+        "coefficient": 0.25
+      },
+      {
+        "tag": "long_range",
+        "coefficient": 0.3
+      },
+      {
+        "tag": "overwhelming_ninjutsu",
+        "coefficient": 0.3
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "female", "shinobi", "beautiful"],
+    "traits": [
+      "human",
+      "female",
+      "shinobi",
+      "beautiful"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/naruto/sakura_post_war.png",
+    "image_path": "assets/characters/naruto/sakura_post_war.jpg",
     "short_description": "Sakura having mastered the Byakugou Seal, surpassing Tsunade in medical ninjutsu while delivering earth-shattering punches."
   },
   {
@@ -411,26 +886,58 @@
     "name": "Gaara",
     "verse": "naruto",
     "arc_version": "Kazekage – Fourth Shinobi War",
-    "power_level": 2034817.6640,
+    "power_level": 2034817.664,
     "martial_ratio": 0.3,
-    "power_tags": ["sand_manipulation", "sand_armor", "absolute_defense", "shukaku_link", "wind_release"],
+    "power_tags": [
+      "sand_manipulation",
+      "sand_armor",
+      "absolute_defense",
+      "shukaku_link",
+      "wind_release"
+    ],
     "strengths": [
-      {"tag": "physical_attacks", "coefficient": 0.55},
-      {"tag": "projectile", "coefficient": 0.5},
-      {"tag": "blunt_force", "coefficient": 0.45}
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.55
+      },
+      {
+        "tag": "projectile",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "blunt_force",
+        "coefficient": 0.45
+      }
     ],
     "weaknesses": [
-      {"tag": "wind", "coefficient": 0.35},
-      {"tag": "water", "coefficient": 0.4},
-      {"tag": "fire", "coefficient": 0.35},
-      {"tag": "lightning", "coefficient": 0.3}
+      {
+        "tag": "wind",
+        "coefficient": 0.35
+      },
+      {
+        "tag": "water",
+        "coefficient": 0.4
+      },
+      {
+        "tag": "fire",
+        "coefficient": 0.35
+      },
+      {
+        "tag": "lightning",
+        "coefficient": 0.3
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "male", "shinobi", "jinchuriki"],
+    "traits": [
+      "human",
+      "male",
+      "shinobi",
+      "jinchuriki"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/naruto/gaara_kazekage.png",
+    "image_path": "assets/characters/naruto/gaara_kazekage.jpg",
     "short_description": "The Fifth Kazekage whose sand-based absolute defense and long-range crushing attacks make him virtually untouchable in open combat."
   },
   {
@@ -438,24 +945,51 @@
     "name": "Killer B",
     "verse": "naruto",
     "arc_version": "Eight-Tails Full Bijuu Mode",
-    "power_level": 3421847.7720,
+    "power_level": 3421847.772,
     "martial_ratio": 0.65,
-    "power_tags": ["eight_tails_jinchuriki", "bijuu_mode", "gyuki_chakra", "lightning_release", "seven_swords", "ink_blast"],
+    "power_tags": [
+      "eight_tails_jinchuriki",
+      "bijuu_mode",
+      "gyuki_chakra",
+      "lightning_release",
+      "seven_swords",
+      "ink_blast"
+    ],
     "strengths": [
-      {"tag": "chakra_drain", "coefficient": 0.5},
-      {"tag": "bijuu_resilience", "coefficient": 0.6},
-      {"tag": "lightning", "coefficient": 0.3}
+      {
+        "tag": "chakra_drain",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "bijuu_resilience",
+        "coefficient": 0.6
+      },
+      {
+        "tag": "lightning",
+        "coefficient": 0.3
+      }
     ],
     "weaknesses": [
-      {"tag": "genjutsu", "coefficient": 0.4},
-      {"tag": "sealing_jutsu", "coefficient": 0.35}
+      {
+        "tag": "genjutsu",
+        "coefficient": 0.4
+      },
+      {
+        "tag": "sealing_jutsu",
+        "coefficient": 0.35
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "male", "shinobi", "jinchuriki"],
+    "traits": [
+      "human",
+      "male",
+      "shinobi",
+      "jinchuriki"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/naruto/killer_b.png",
+    "image_path": "assets/characters/naruto/killer_b.jpg",
     "short_description": "The perfect Jinchuriki of the Eight-Tails who achieved complete harmony with Gyuki, combining rapper swagger with devastating bijuu-mode combat power."
   },
   {
@@ -463,24 +997,50 @@
     "name": "Orochimaru",
     "verse": "naruto",
     "arc_version": "Sannin Era – Prime",
-    "power_level": 2247821.5510,
+    "power_level": 2247821.551,
     "martial_ratio": 0.45,
-    "power_tags": ["forbidden_jutsu", "summoning_manda", "eight_branches_snake", "body_shedding", "curse_mark", "sword_of_kusanagi"],
+    "power_tags": [
+      "forbidden_jutsu",
+      "summoning_manda",
+      "eight_branches_snake",
+      "body_shedding",
+      "curse_mark",
+      "sword_of_kusanagi"
+    ],
     "strengths": [
-      {"tag": "poison", "coefficient": 0.6},
-      {"tag": "physical_attack", "coefficient": 0.5}
+      {
+        "tag": "poison",
+        "coefficient": 0.6
+      },
+      {
+        "tag": "physical_attack",
+        "coefficient": 0.5
+      }
     ],
     "weaknesses": [
-      {"tag": "fire_release", "coefficient": 0.3},
-      {"tag": "sealing_jutsu", "coefficient": 0.4},
-      {"tag": "sage_mode", "coefficient": 0.35}
+      {
+        "tag": "fire_release",
+        "coefficient": 0.3
+      },
+      {
+        "tag": "sealing_jutsu",
+        "coefficient": 0.4
+      },
+      {
+        "tag": "sage_mode",
+        "coefficient": 0.35
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "male", "shinobi"],
+    "traits": [
+      "human",
+      "male",
+      "shinobi"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/naruto/orochimaru.png",
+    "image_path": "assets/characters/naruto/orochimaru.jpg",
     "short_description": "The Snake Sannin at his prime, master of forbidden jutsu who conquered death itself through body-hopping and terrorized the shinobi world for generations."
   },
   {
@@ -488,26 +1048,879 @@
     "name": "Tenten",
     "verse": "naruto",
     "arc_version": "Weapon Mistress – Fourth Shinobi War",
-    "power_level": 350000,
+    "power_level": 62000,
     "martial_ratio": 0.7,
-    "power_tags": ["weapon_summoning", "twin_rising_dragons", "bashosen_fan", "jidanda_staff", "sealing_scroll", "projectile"],
+    "power_tags": [
+      "weapon_summoning",
+      "twin_rising_dragons",
+      "bashosen_fan",
+      "jidanda_staff",
+      "sealing_scroll",
+      "projectile"
+    ],
     "strengths": [
-      {"tag": "long_range", "coefficient": 0.4, "description": "Unlimited weapon arsenal gives her long-range superiority"},
-      {"tag": "projectile", "coefficient": 0.35}
+      {
+        "tag": "long_range",
+        "coefficient": 0.4,
+        "description": "Unlimited weapon arsenal gives her long-range superiority"
+      },
+      {
+        "tag": "projectile",
+        "coefficient": 0.35
+      }
     ],
     "weaknesses": [
-      {"tag": "taijutsu", "coefficient": 0.3, "description": "Limited close-range defense once weapons are overwhelmed"},
-      {"tag": "overwhelming_ninjutsu", "coefficient": 0.35},
-      {"tag": "chakra_based_defense", "coefficient": 0.25}
+      {
+        "tag": "taijutsu",
+        "coefficient": 0.3,
+        "description": "Limited close-range defense once weapons are overwhelmed"
+      },
+      {
+        "tag": "overwhelming_ninjutsu",
+        "coefficient": 0.35
+      },
+      {
+        "tag": "chakra_based_defense",
+        "coefficient": 0.25
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "female", "shinobi", "weapon_specialist", "beautiful"],
+    "traits": [
+      "human",
+      "female",
+      "shinobi",
+      "weapon_specialist",
+      "beautiful"
+    ],
     "trait_weaknesses": [
-      {"trait": "undead_edo_tensei", "coefficient": 0.5, "description": "Tenten's physical weapons cannot permanently destroy Edo Tensei reincarnations — her entire arsenal becomes half as effective against the undying"}
+      {
+        "trait": "undead_edo_tensei",
+        "coefficient": 0.5,
+        "description": "Tenten's physical weapons cannot permanently destroy Edo Tensei reincarnations — her entire arsenal becomes half as effective against the undying"
+      }
     ],
     "trait_strengths": [],
-    "image_path": "assets/characters/naruto/tenten.png",
+    "image_path": "assets/characters/naruto/tenten.jpg",
     "short_description": "Konoha's weapon mistress who can summon an inexhaustible arsenal from her scrolls, wielding the legendary Sage Tools including the all-element Bashosen Fan."
+  },
+  {
+    "slug": "neji_hyuga",
+    "name": "Neji Hyuga",
+    "verse": "naruto",
+    "arc_version": "Byakugan Master – Fourth Shinobi War",
+    "power_level": 987293.441,
+    "martial_ratio": 0.85,
+    "power_tags": [
+      "byakugan",
+      "gentle_fist",
+      "eight_trigrams_sixty_four_palms",
+      "air_palm",
+      "rotation",
+      "tenketsu_sealing",
+      "chakra"
+    ],
+    "strengths": [
+      {
+        "tag": "taijutsu",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "genjutsu_immunity",
+        "coefficient": 0.3,
+        "description": "Byakugan's 359-degree vision provides limited protection against visual genjutsu"
+      },
+      {
+        "tag": "chakra_based_attacks",
+        "coefficient": 0.4,
+        "description": "Gentle Fist disrupts chakra-based defenses from the inside"
+      }
+    ],
+    "weaknesses": [
+      {
+        "tag": "long_range",
+        "coefficient": 0.25,
+        "description": "Limited long-range capabilities — excels at close to mid-range"
+      },
+      {
+        "tag": "overwhelming_ninjutsu",
+        "coefficient": 0.3
+      },
+      {
+        "tag": "genjutsu",
+        "coefficient": 0.3,
+        "description": "Despite Byakugan, high-level Sharingan genjutsu still threatens him"
+      }
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "traits": [
+      "human",
+      "male",
+      "shinobi",
+      "hyuga"
+    ],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/naruto/neji_hyuga.jpg",
+    "short_description": "The Hyuga clan's greatest genius whose 360-degree Byakugan and Gentle Fist target the chakra network directly, capable of sealing 64 tenketsu in a single flowing sequence."
+  },
+  {
+    "slug": "shikamaru_nara",
+    "name": "Shikamaru Nara",
+    "verse": "naruto",
+    "arc_version": "Shadow Possession – Fourth Shinobi War",
+    "power_level": 734821.221,
+    "martial_ratio": 0.35,
+    "power_tags": [
+      "shadow_possession",
+      "shadow_stitching",
+      "shadow_imitation",
+      "shadow_strangle",
+      "tactical_genius",
+      "ninjutsu"
+    ],
+    "strengths": [
+      {
+        "tag": "movement",
+        "coefficient": 0.5,
+        "description": "Shadow Possession completely freezes opponent movement"
+      },
+      {
+        "tag": "taijutsu",
+        "coefficient": 0.3,
+        "description": "Mirroring forces the opponent's own taijutsu to be reflected back"
+      }
+    ],
+    "weaknesses": [
+      {
+        "tag": "long_range",
+        "coefficient": 0.35,
+        "description": "Shadow techniques have range limits — aerial or long-range opponents escape easily"
+      },
+      {
+        "tag": "fire",
+        "coefficient": 0.3,
+        "description": "Flames break shadow techniques when they sever the shadow connection"
+      },
+      {
+        "tag": "light",
+        "coefficient": 0.4,
+        "description": "Bright light from multiple sources disrupts and breaks shadow manipulation"
+      },
+      {
+        "tag": "overwhelming_chakra",
+        "coefficient": 0.4,
+        "description": "Excessive chakra strength can break free from shadow hold"
+      }
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "traits": [
+      "human",
+      "male",
+      "shinobi",
+      "nara_clan"
+    ],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/naruto/shikamaru_nara.jpg",
+    "short_description": "The laziest genius in Konoha whose Shadow Possession can immobilize any opponent and whose 200-IQ tactical mind has outwitted enemies far above his raw power level."
+  },
+  {
+    "slug": "deidara_akatsuki",
+    "name": "Deidara",
+    "verse": "naruto",
+    "arc_version": "Akatsuki – S2 Detonation / C4 Karura",
+    "power_level": 1847293.664,
+    "martial_ratio": 0.25,
+    "power_tags": [
+      "explosive_clay",
+      "c4_karura",
+      "c2_dragon",
+      "c3_nuke",
+      "c1_c2_explosives",
+      "flight",
+      "earth_release",
+      "explosion_release"
+    ],
+    "strengths": [
+      {
+        "tag": "area_of_effect",
+        "coefficient": 0.5,
+        "description": "C3 and C4 cover massive areas making escape difficult"
+      },
+      {
+        "tag": "long_range",
+        "coefficient": 0.4
+      },
+      {
+        "tag": "tracking",
+        "coefficient": 0.35,
+        "description": "C2 Dragon's mini-clays track targets autonomously"
+      }
+    ],
+    "weaknesses": [
+      {
+        "tag": "speed",
+        "coefficient": 0.4,
+        "description": "Fast opponents (Minato-level teleporters) can avoid explosions entirely"
+      },
+      {
+        "tag": "taijutsu_close",
+        "coefficient": 0.5,
+        "description": "Extremely vulnerable to close-range taijutsu once explosives are dodged"
+      },
+      {
+        "tag": "sharingan",
+        "coefficient": 0.35,
+        "description": "Sharingan can see and predict his clay movements"
+      },
+      {
+        "tag": "wind_release",
+        "coefficient": 0.3,
+        "description": "Wind disperses his explosions or deflects clay birds"
+      }
+    ],
+    "cannot_win_against": [
+      "sasuke_rinnegan"
+    ],
+    "draw_conditions": [],
+    "traits": [
+      "human",
+      "male",
+      "shinobi",
+      "akatsuki"
+    ],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/naruto/deidara_akatsuki.jpg",
+    "short_description": "The Akatsuki bomber whose explosive clay art peaks with C4 Karura — microscopic clay particles that destroy the body from within — until Sasuke's Sharingan dissected every technique."
+  },
+  {
+    "slug": "sasori_akatsuki",
+    "name": "Sasori of the Red Sand",
+    "verse": "naruto",
+    "arc_version": "Akatsuki – Hiruko / Third Kazekage / 100-Puppet Army",
+    "power_level": 1934821.554,
+    "martial_ratio": 0.55,
+    "power_tags": [
+      "100_puppet_army",
+      "iron_sand_puppet",
+      "red_secret_technique",
+      "puppet_master",
+      "chakra_threads",
+      "poison_weapons",
+      "puppet_body"
+    ],
+    "strengths": [
+      {
+        "tag": "poison",
+        "coefficient": 0.7,
+        "description": "His poisons have no known antidote — even contact causes instant paralysis"
+      },
+      {
+        "tag": "multiple_targets",
+        "coefficient": 0.5,
+        "description": "100-puppet army overwhelms most opponents through sheer numbers"
+      },
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.4,
+        "description": "Puppet body feels no pain and cannot be harmed by conventional attacks"
+      }
+    ],
+    "weaknesses": [
+      {
+        "tag": "fire_release",
+        "coefficient": 0.6,
+        "description": "Puppets are wooden — fire destroys them rapidly"
+      },
+      {
+        "tag": "sealing_jutsu",
+        "coefficient": 0.45
+      },
+      {
+        "tag": "healing",
+        "coefficient": 0.5,
+        "description": "His poison's damage can be countered by sufficiently powerful medical ninjutsu"
+      },
+      {
+        "tag": "mother_chiyo_puppets",
+        "coefficient": 0.7,
+        "description": "Canon: Chiyo used her own Ten Puppet Collection directly against him, ultimately defeating him"
+      }
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "traits": [
+      "human",
+      "male",
+      "shinobi",
+      "akatsuki",
+      "puppet_body"
+    ],
+    "trait_weaknesses": [
+      {
+        "trait": "fire",
+        "coefficient": 0.35,
+        "description": "Puppet body and all wooden constructs are highly flammable"
+      }
+    ],
+    "trait_strengths": [],
+    "image_path": "assets/characters/naruto/sasori_akatsuki.jpg",
+    "short_description": "The Akatsuki's Red Sand puppet master who converted his own body into his greatest puppet, commanding 100 poisoned weapons with lethal patience — his art is eternal because he is eternal."
+  },
+  {
+    "slug": "konan_akatsuki",
+    "name": "Konan",
+    "verse": "naruto",
+    "arc_version": "Akatsuki – 600 Billion Paper Bombs",
+    "power_level": 2134821.331,
+    "martial_ratio": 0.3,
+    "power_tags": [
+      "paper_person_of_god",
+      "paper_clones",
+      "shikigami_dance",
+      "paper_bomb_600_billion",
+      "flight",
+      "water_release",
+      "wind_release"
+    ],
+    "strengths": [
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.5,
+        "description": "Paper body disperses physical blows"
+      },
+      {
+        "tag": "long_range",
+        "coefficient": 0.4
+      },
+      {
+        "tag": "taijutsu",
+        "coefficient": 0.4,
+        "description": "Paper transformation absorbs or deflects direct physical attacks"
+      }
+    ],
+    "weaknesses": [
+      {
+        "tag": "fire",
+        "coefficient": 0.7,
+        "description": "Paper is exceptionally vulnerable to fire — her primary hard counter"
+      },
+      {
+        "tag": "wind",
+        "coefficient": 0.35,
+        "description": "Strong wind disperses paper sheets"
+      },
+      {
+        "tag": "space_time_ninjutsu",
+        "coefficient": 0.6,
+        "description": "Canon: Tobi/Obito's Kamui phased through her 600 billion paper bombs — her greatest attack was nullified"
+      }
+    ],
+    "cannot_win_against": [
+      "obito_ten_tails"
+    ],
+    "draw_conditions": [],
+    "traits": [
+      "human",
+      "female",
+      "shinobi",
+      "akatsuki"
+    ],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/naruto/konan_akatsuki.jpg",
+    "short_description": "The Angel of Amegakure who transforms herself and the world around her into paper — her final technique, 600 billion exploding tags detonating over ten minutes, was designed to kill one specific god."
+  },
+  {
+    "slug": "kakuzu_akatsuki",
+    "name": "Kakuzu",
+    "verse": "naruto",
+    "arc_version": "Akatsuki – Five Hearts / Elemental Masks",
+    "power_level": 1734821.441,
+    "martial_ratio": 0.5,
+    "power_tags": [
+      "five_hearts",
+      "earth_grudge_fear",
+      "fire_mask",
+      "wind_mask",
+      "lightning_mask",
+      "water_mask",
+      "earth_mask",
+      "chakra_threads"
+    ],
+    "strengths": [
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.6,
+        "description": "Five hearts mean he must be killed five times — physical damage is largely irrelevant"
+      },
+      {
+        "tag": "slashing",
+        "coefficient": 0.5,
+        "description": "His body of earth-grudge threads repairs itself after cuts"
+      }
+    ],
+    "weaknesses": [
+      {
+        "tag": "lightning_release",
+        "coefficient": 0.5,
+        "description": "Raikiri and Lightning Release are his canonically established weakness"
+      },
+      {
+        "tag": "sealing_jutsu",
+        "coefficient": 0.4
+      },
+      {
+        "tag": "taijutsu_overwhelm",
+        "coefficient": 0.35,
+        "description": "Overwhelming speed prevents him from detaching hearts in time"
+      }
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "traits": [
+      "human",
+      "male",
+      "shinobi",
+      "akatsuki",
+      "multi_heart"
+    ],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/naruto/kakuzu_akatsuki.jpg",
+    "short_description": "The immortal bounty hunter of Akatsuki who sews stolen hearts into his body to survive death five times, each heart driving a masked elemental entity."
+  },
+  {
+    "slug": "hidan_akatsuki",
+    "name": "Hidan",
+    "verse": "naruto",
+    "arc_version": "Akatsuki – Jashin Immortality Ritual",
+    "power_level": 1247293.882,
+    "martial_ratio": 0.7,
+    "power_tags": [
+      "jashin_immortality",
+      "curse_ritual",
+      "death_mirroring",
+      "scythe",
+      "blood_curse"
+    ],
+    "strengths": [
+      {
+        "tag": "physical_attacks",
+        "coefficient": 1.0,
+        "description": "Jashin immortality — Hidan cannot be killed by any physical attack. He feels no pain from damage."
+      },
+      {
+        "tag": "slashing",
+        "coefficient": 0.8,
+        "description": "Bladed attacks and slashing are irrelevant to an immortal body"
+      },
+      {
+        "tag": "blunt_force",
+        "coefficient": 0.8
+      },
+      {
+        "tag": "poison",
+        "coefficient": 0.7,
+        "description": "His undying body does not succumb to poison normally"
+      }
+    ],
+    "weaknesses": [
+      {
+        "tag": "sealing_jutsu",
+        "coefficient": 0.6
+      },
+      {
+        "tag": "body_separation",
+        "coefficient": 0.5,
+        "description": "Severing and burying his body parts renders him defeated — he cannot die but also cannot regenerate severed limbs"
+      },
+      {
+        "tag": "fire_destruction",
+        "coefficient": 0.5,
+        "description": "Incineration of enough body mass disables him"
+      },
+      {
+        "tag": "chakra_disruption",
+        "coefficient": 0.4,
+        "description": "If unable to complete the blood ritual circle, his curse has no effect"
+      }
+    ],
+    "cannot_win_against": [
+      "shikamaru_nara"
+    ],
+    "draw_conditions": [],
+    "traits": [
+      "human",
+      "male",
+      "shinobi",
+      "akatsuki",
+      "immortal_jashin",
+      "undead_effective"
+    ],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/naruto/hidan_akatsuki.jpg",
+    "short_description": "The foul-mouthed Jashin cultist who cannot be killed by any conventional means — once he drinks your blood and draws his curse circle, whatever injures him kills you instead."
+  },
+  {
+    "slug": "kisame_hoshigaki",
+    "name": "Kisame Hoshigaki",
+    "verse": "naruto",
+    "arc_version": "Akatsuki – Samehada / Tailed-Beast Chakra",
+    "power_level": 3147293.664,
+    "martial_ratio": 0.6,
+    "power_tags": [
+      "samehada_sword",
+      "chakra_absorption_samehada",
+      "water_release",
+      "shark_techniques",
+      "tailed_beast_chakra",
+      "sea_shark_bomb",
+      "fusion_samehada"
+    ],
+    "strengths": [
+      {
+        "tag": "chakra",
+        "coefficient": 0.6,
+        "description": "Samehada absorbs chakra from anything it touches, draining opponents' power progressively"
+      },
+      {
+        "tag": "ninjutsu",
+        "coefficient": 0.45,
+        "description": "Samehada devours chakra-based ninjutsu attacks"
+      },
+      {
+        "tag": "water",
+        "coefficient": 0.5,
+        "description": "Creates massive water fields as his personal arena"
+      }
+    ],
+    "weaknesses": [
+      {
+        "tag": "lightning_release",
+        "coefficient": 0.4,
+        "description": "Raikiri and lightning techniques are effective in water environments he creates"
+      },
+      {
+        "tag": "overwhelming_taijutsu",
+        "coefficient": 0.3,
+        "description": "Physical taijutsu without chakra infusion bypasses Samehada's absorption"
+      },
+      {
+        "tag": "samehada_rejection",
+        "coefficient": 0.5,
+        "description": "Canon: Samehada rejected Kisame to join Killer B — his own sword can betray him"
+      }
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "traits": [
+      "human",
+      "male",
+      "shinobi",
+      "akatsuki",
+      "swordsman"
+    ],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/naruto/kisame_hoshigaki.jpg",
+    "short_description": "The Monster of the Hidden Mist whose tailed-beast level chakra reserves and chakra-devouring Samehada make prolonged fights his specialty — the longer the battle, the stronger he grows."
+  },
+  {
+    "slug": "choji_butterfly_mode",
+    "name": "Choji Akimichi",
+    "verse": "naruto",
+    "arc_version": "Butterfly Mode – Fourth Shinobi War",
+    "power_level": 1134821.772,
+    "martial_ratio": 0.85,
+    "power_tags": [
+      "butterfly_mode",
+      "caloric_wings",
+      "super_expansion",
+      "partial_expansion",
+      "spiky_human_boulder",
+      "earth_release",
+      "taijutsu"
+    ],
+    "strengths": [
+      {
+        "tag": "blunt_force",
+        "coefficient": 0.5,
+        "description": "Butterfly Mode Choji's punches register as near-planetary force"
+      },
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.45
+      }
+    ],
+    "weaknesses": [
+      {
+        "tag": "long_range",
+        "coefficient": 0.3,
+        "description": "His large form is an easier target for ranged attacks"
+      },
+      {
+        "tag": "speed",
+        "coefficient": 0.25,
+        "description": "Size comes at a cost to mobility — fast opponents kite him"
+      },
+      {
+        "tag": "stamina_drain",
+        "coefficient": 0.4,
+        "description": "Butterfly Mode burns calories at an extreme rate — limited duration"
+      }
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "traits": [
+      "human",
+      "male",
+      "shinobi",
+      "akimichi_clan"
+    ],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/naruto/choji_butterfly_mode.jpg",
+    "short_description": "Choji's Butterfly Mode channels pure caloric energy into glowing wings and fists of devastating force — a gentle giant transformed into one of the most powerful pure taijutsu users in the war."
+  },
+  {
+    "slug": "hinata_twin_lion_fists",
+    "name": "Hinata Hyuga",
+    "verse": "naruto",
+    "arc_version": "Gentle Step Twin Lion Fists – Fourth Shinobi War",
+    "power_level": 934821.664,
+    "martial_ratio": 0.82,
+    "power_tags": [
+      "byakugan",
+      "gentle_step_twin_lion_fists",
+      "protective_eight_trigrams",
+      "air_palm",
+      "tenketsu_sealing",
+      "chakra"
+    ],
+    "strengths": [
+      {
+        "tag": "chakra_based_attacks",
+        "coefficient": 0.45,
+        "description": "Twin Lion Fists absorb and negate chakra-based attacks on contact"
+      },
+      {
+        "tag": "taijutsu",
+        "coefficient": 0.4
+      }
+    ],
+    "weaknesses": [
+      {
+        "tag": "long_range",
+        "coefficient": 0.3,
+        "description": "Gentle Fist is a close-range art — she struggles against aerial or long-range fighters"
+      },
+      {
+        "tag": "overwhelming_ninjutsu",
+        "coefficient": 0.3
+      },
+      {
+        "tag": "genjutsu",
+        "coefficient": 0.35,
+        "description": "Less genjutsu-hardened than Neji despite identical Byakugan"
+      }
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "traits": [
+      "human",
+      "female",
+      "shinobi",
+      "hyuga",
+      "beautiful"
+    ],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/naruto/hinata_twin_lion_fists.jpg",
+    "short_description": "The Hyuga heiress who transformed from the clan's shy disappointment into a warrior who stood against Pain himself, her Twin Lion Fists devouring chakra on contact."
+  },
+  {
+    "slug": "tobirama_senju",
+    "name": "Tobirama Senju",
+    "verse": "naruto",
+    "arc_version": "Second Hokage – Edo Tensei Revival",
+    "power_level": 4234821.664,
+    "martial_ratio": 0.55,
+    "power_tags": [
+      "edo_tensei",
+      "flying_raijin_mark2",
+      "space_time_ninjutsu",
+      "water_release_ultimate",
+      "water_style_shark_dance",
+      "shadow_clone_inventor",
+      "taijutsu_speed",
+      "chakra"
+    ],
+    "strengths": [
+      {
+        "tag": "tracking",
+        "coefficient": 0.5,
+        "description": "Flying Raijin provides near-instant teleportation comparable to Minato's"
+      },
+      {
+        "tag": "water_attacks",
+        "coefficient": 0.4,
+        "description": "Creates water from nothing — Water Style master in any terrain"
+      },
+      {
+        "tag": "space_time",
+        "coefficient": 0.4
+      }
+    ],
+    "weaknesses": [
+      {
+        "tag": "genjutsu",
+        "coefficient": 0.3
+      },
+      {
+        "tag": "sealing_jutsu",
+        "coefficient": 0.35
+      },
+      {
+        "tag": "fire_release",
+        "coefficient": 0.25
+      }
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "traits": [
+      "human",
+      "male",
+      "shinobi",
+      "senju",
+      "undead_edo_tensei",
+      "hokage"
+    ],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/naruto/tobirama_senju.jpg",
+    "short_description": "The Second Hokage who invented Flying Raijin, Shadow Clones, and Edo Tensei — one of history's greatest tactical minds whose Water Style mastery and space-time jutsu make him extraordinarily dangerous."
+  },
+  {
+    "slug": "neji_byakugan",
+    "name": "Neji Hyuga",
+    "verse": "naruto",
+    "arc_version": "Byakugan Prodigy — War Arc",
+    "power_level": 987293,
+    "martial_ratio": 0.9,
+    "power_tags": [
+      "byakugan",
+      "gentle_fist",
+      "rotation",
+      "eight_trigrams_128_palms",
+      "byakugan_360"
+    ],
+    "strengths": [
+      {
+        "tag": "chakra",
+        "coefficient": 0.5,
+        "description": "Gentle Fist directly strikes chakra points, disrupting enemy chakra flow"
+      },
+      {
+        "tag": "taijutsu",
+        "coefficient": 0.4
+      },
+      {
+        "tag": "detection",
+        "coefficient": 0.5,
+        "description": "Byakugan gives near-360° vision and chakra network sight"
+      }
+    ],
+    "weaknesses": [
+      {
+        "tag": "long_range",
+        "coefficient": 0.3
+      },
+      {
+        "tag": "overwhelming_ninjutsu",
+        "coefficient": 0.35
+      },
+      {
+        "tag": "genjutsu",
+        "coefficient": 0.3
+      }
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "traits": [
+      "human",
+      "male",
+      "shinobi",
+      "hyuga"
+    ],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/naruto/neji_byakugan.jpg",
+    "short_description": "The Hyuga prodigy whose Byakugan sees all chakra networks. His Rotation — a perfect chakra sphere — is an impenetrable defence, and his 128-Palms can shut down any chakra pathway."
+  },
+  {
+    "slug": "shikamaru_shadow",
+    "name": "Shikamaru Nara",
+    "verse": "naruto",
+    "arc_version": "Shadow Stitching — War Arc",
+    "power_level": 734821,
+    "martial_ratio": 0.35,
+    "power_tags": [
+      "shadow_possession",
+      "shadow_stitching",
+      "shadow_neck_binding",
+      "shadow_imitation_shuriken",
+      "tactical_genius"
+    ],
+    "strengths": [
+      {
+        "tag": "speed",
+        "coefficient": 0.4,
+        "description": "Shadow techniques capture faster opponents once inside shadow range"
+      },
+      {
+        "tag": "reckless_combatant",
+        "coefficient": 0.5,
+        "description": "Reckless fighters are easier to bait into shadow range"
+      },
+      {
+        "tag": "movement",
+        "coefficient": 0.5,
+        "description": "Shadow Possession halts all movement on contact"
+      }
+    ],
+    "weaknesses": [
+      {
+        "tag": "long_range",
+        "coefficient": 0.4,
+        "description": "Shadow jutsu requires proximity and line-of-sight"
+      },
+      {
+        "tag": "light_manipulation",
+        "coefficient": 0.5,
+        "description": "Multiple strong light sources sever shadows"
+      },
+      {
+        "tag": "overwhelming_chakra",
+        "coefficient": 0.4
+      }
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "traits": [
+      "human",
+      "male",
+      "shinobi",
+      "strategist"
+    ],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/naruto/shikamaru_shadow.jpg",
+    "short_description": "The 200-IQ genius who calls every battle ten moves in advance. His Shadow Possession can freeze anyone who steps into range — and if you're frozen, he has already won."
   }
 ]

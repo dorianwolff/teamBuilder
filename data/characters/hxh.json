@@ -22,7 +22,7 @@
     "traits": ["human", "male", "nen_user", "enhancement_user"],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/hxh/gon_adult.png",
+    "image_path": "assets/characters/hxh/gon_adult.jpg",
     "short_description": "Gon's ultimate transformation sacrificing all future nen potential to fight at adult peak, achieving power that visibly unsettled Neferpitou."
   },
   {
@@ -47,7 +47,7 @@
     "traits": ["human", "male", "nen_user", "zoldyck", "assassin", "transmutation_user"],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/hxh/killua_godspeed.png",
+    "image_path": "assets/characters/hxh/killua_godspeed.jpg",
     "short_description": "Killua activating Godspeed, transmuting his Nen into lightning to move at electric speeds essentially invisible to Chimera Ant soldiers."
   },
   {
@@ -75,7 +75,7 @@
     "trait_strengths": [
       {"trait": "non_combatant", "coefficient": 0.5, "description": "Meruem has absolute zero hesitation against defenseless opponents — his ruthlessness amplifies his lethality"}
     ],
-    "image_path": "assets/characters/hxh/meruem_post_rose.png",
+    "image_path": "assets/characters/hxh/meruem_post_rose.jpg",
     "short_description": "The Chimera Ant King after surviving the Miniature Rose and absorbing Shaiapouf and Neferpitou's Nen, arguably the most powerful Nen user to ever live."
   },
   {
@@ -102,7 +102,7 @@
     "trait_strengths": [
       {"trait": "non_combatant", "coefficient": 0.4, "description": "A Royal Guard feels no hesitation whatsoever against defenseless prey"}
     ],
-    "image_path": "assets/characters/hxh/neferpitou.png",
+    "image_path": "assets/characters/hxh/neferpitou.jpg",
     "short_description": "Meruem's most powerful Royal Guard whose En stretches for kilometers and whose medical Nen can repair catastrophic injuries."
   },
   {
@@ -127,7 +127,7 @@
     "traits": ["human", "male", "nen_user", "enhancement_user"],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/hxh/netero.png",
+    "image_path": "assets/characters/hxh/netero.jpg",
     "short_description": "The Hunter Association Chairman whose decades of prayer-training produced a 100-armed Nen statue moving faster than sound, sacrificing himself to poison Meruem."
   },
   {
@@ -152,7 +152,7 @@
     "traits": ["human", "male", "nen_user", "zoldyck", "assassin", "transmutation_user"],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/hxh/zeno_zoldyck.png",
+    "image_path": "assets/characters/hxh/zeno_zoldyck.jpg",
     "short_description": "The patriarch of the Zoldyck family whose Dragon Dive summons a horde of Nen dragons devastating entire areas, a veteran assassin of unparalleled experience."
   },
   {
@@ -176,7 +176,7 @@
     "traits": ["human", "male", "nen_user", "zoldyck", "assassin", "emission_user"],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/hxh/silva_zoldyck.png",
+    "image_path": "assets/characters/hxh/silva_zoldyck.jpg",
     "short_description": "The towering head of the Zoldyck family, complete immunity to all poisons and massive silver Nen orbs that can crush targets with explosive force."
   },
   {
@@ -201,7 +201,7 @@
     "traits": ["human", "male", "nen_user", "zoldyck", "assassin", "manipulation_user"],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/hxh/illumi.png",
+    "image_path": "assets/characters/hxh/illumi.jpg",
     "short_description": "The eldest Zoldyck son whose needle-based manipulation Nen can control entire armies of puppets, a top-tier assassin who instills primal fear in targets."
   },
   {
@@ -226,7 +226,7 @@
     "traits": ["human", "male", "nen_user", "transmutation_user"],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/hxh/hisoka.png",
+    "image_path": "assets/characters/hxh/hisoka.jpg",
     "short_description": "The Magician with Bungee Gum, a deceptively simple transmutation that combines the properties of rubber and gum for unstoppable elastic attacks."
   },
   {
@@ -234,7 +234,7 @@
     "name": "Chrollo Lucilfer",
     "verse": "hxh",
     "arc_version": "Full Prep Bandit's Secret – Heaven's Arena",
-    "power_level": 3734821.3310,
+    "power_level": 5421047.3310,
     "martial_ratio": 0.6,
     "power_tags": ["bandits_secret_full", "stolen_nen_collection", "conjuration", "manipulation", "specialization", "gallery_fake", "indoor_fish"],
     "strengths": [
@@ -251,7 +251,7 @@
     "traits": ["human", "male", "nen_user", "phantom_troupe", "specialist_nen"],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/hxh/chrollo_full_prep.png",
+    "image_path": "assets/characters/hxh/chrollo_full_prep.jpg",
     "short_description": "The Phantom Troupe leader with full Bandit's Secret, able to wield every stolen ability simultaneously for overwhelming tactical flexibility."
   },
   {
@@ -278,7 +278,7 @@
     "trait_strengths": [
       {"trait": "phantom_troupe", "coefficient": 0.6, "description": "Kurapika's Emperor Time and Chain Jail were built exclusively to destroy the Phantom Troupe — every ability reaches peak efficiency against them"}
     ],
-    "image_path": "assets/characters/hxh/kurapika_emperor_time.png",
+    "image_path": "assets/characters/hxh/kurapika_emperor_time.jpg",
     "short_description": "Kurapika activating Emperor Time for 100% efficiency across all Nen categories, his Chain Jail unescapable by Spiders and his Judgment Chain lethal if conditions are broken."
   },
   {
@@ -302,7 +302,7 @@
     "traits": ["human", "male", "nen_user", "emission_user"],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/hxh/leorio.png",
+    "image_path": "assets/characters/hxh/leorio.jpg",
     "short_description": "The aspiring doctor who discovered his Emission-type Nen lets him throw a long-range physical punch, driven entirely by desire to help friends."
   },
   {
@@ -327,7 +327,7 @@
     "traits": ["human", "male", "nen_user", "phantom_troupe", "transmutation_user", "assassin"],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/hxh/feitan_rising_sun.png",
+    "image_path": "assets/characters/hxh/feitan_rising_sun.jpg",
     "short_description": "The Phantom Troupe's fastest member whose Pain Packer amplifies Rising Sun by how much damage he's taken, becoming a miniature sun that incinerates everything."
   },
   {
@@ -353,7 +353,7 @@
     "traits": ["human", "male", "nen_user", "conjuration_user"],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/hxh/knov.png",
+    "image_path": "assets/characters/hxh/knov.jpg",
     "short_description": "The Hunter whose conjured pocket dimensions make infiltration and extraction seamless, though his psyche was shattered by merely sensing Meruem's terrifying aura."
   },
   {
@@ -379,7 +379,7 @@
     "traits": ["human", "male", "nen_user", "manipulation_user", "emission_user"],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/hxh/morel.png",
+    "image_path": "assets/characters/hxh/morel.jpg",
     "short_description": "The veteran Hunter who fills entire areas with smoke to deploy an army of Nen puppets, one of the most experienced and tactically wise fighters in the Association."
   },
   {
@@ -402,7 +402,7 @@
     "traits": ["human", "female", "non_combatant", "specialist_nen", "beautiful"],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/hxh/komugi.png",
+    "image_path": "assets/characters/hxh/komugi.jpg",
     "short_description": "The world's greatest Gungi player who unknowingly channels a Nen Hatsu in her sleep, her pure genius touching the heart of the Chimera Ant King himself."
   },
   {
@@ -426,7 +426,132 @@
     "traits": ["human", "male", "nen_user", "zoldyck", "phantom_troupe", "assassin", "manipulation_user"],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/hxh/kalluto_zoldyck.png",
+    "image_path": "assets/characters/hxh/kalluto_zoldyck.jpg",
     "short_description": "The youngest Zoldyck who joined the Phantom Troupe to find his brother Killua, wielding paper-manipulation Nen with elegant and lethal precision."
+  },
+  {
+    "slug": "ging_freecss",
+    "name": "Ging Freecss",
+    "verse": "hxh",
+    "arc_version": "Double Star Hunter – Chimera Ant / Succession War Era",
+    "power_level": 4534821.6640,
+    "martial_ratio": 0.65,
+    "power_tags": ["nen_copy_return", "emission_specialist", "double_star_hunter", "en_mastery", "nen_versatility", "combat_instinct"],
+    "strengths": [
+      {"tag": "nen_attacks", "coefficient": 0.5, "description": "Ging can copy any Nen technique used on him and return it with equal force — including techniques from all types"},
+      {"tag": "versatility", "coefficient": 0.5, "description": "Mastery of multiple Nen types gives him an answer for almost any approach"},
+      {"tag": "detection", "coefficient": 0.4, "description": "En range and sensitivity described as exceptional even among Nen masters"}
+    ],
+    "weaknesses": [
+      {"tag": "direct_combat_pressure", "coefficient": 0.2, "description": "Ging avoids direct combat — his copy ability is reactive, not proactive"},
+      {"tag": "overwhelming_nen_mass", "coefficient": 0.3, "description": "Meruem-level raw aura output overwhelms his copy technique's capacity"}
+    ],
+    "cannot_win_against": ["meruem_post_rose"],
+    "draw_conditions": [],
+    "traits": ["human", "male", "nen_user", "double_star_hunter", "emission_user"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/hxh/ging_freecss.jpg",
+    "short_description": "One of the top five Nen users in the world — Gon's absent father — whose ability to return any attack used against him with precise amplification makes him nearly impossible to fight conventionally."
+  },
+  {
+    "slug": "kite_crazy_slots",
+    "name": "Kite",
+    "verse": "hxh",
+    "arc_version": "Crazy Slots – Chimera Ant Arc",
+    "power_level": 2347293.4410,
+    "martial_ratio": 0.7,
+    "power_tags": ["crazy_slots", "conjuration_weapon", "randomized_arsenal", "scythe_death_reaper", "nen_conjuration", "en_mastery"],
+    "strengths": [
+      {"tag": "versatility", "coefficient": 0.4, "description": "Crazy Slots randomizes weapon type — opponents cannot anticipate or prepare for the next weapon"},
+      {"tag": "surprise_attack", "coefficient": 0.45}
+    ],
+    "weaknesses": [
+      {"tag": "random_slot_limitation", "coefficient": 0.3, "description": "Weapon randomness is a liability against adaptive opponents — cannot choose the tool needed"},
+      {"tag": "overwhelming_royal_guard_nen", "coefficient": 0.7, "description": "Canon: Kite was killed/captured by Neferpitou despite activating Crazy Slots — power gap was too large"}
+    ],
+    "cannot_win_against": ["neferpitou"],
+    "draw_conditions": [],
+    "traits": ["human", "male", "nen_user", "conjuration_user", "hunter"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/hxh/kite_crazy_slots.jpg",
+    "short_description": "The legendary Hunter and Ging's student whose Crazy Slots conjures random weapons each use — including a scythe he personally refuses to summon because its power mandates he fight to the death."
+  },
+  {
+    "slug": "uvogin",
+    "name": "Uvogin",
+    "verse": "hxh",
+    "arc_version": "Phantom Troupe – Yorknew Arc",
+    "power_level": 2034821.3310,
+    "martial_ratio": 0.95,
+    "power_tags": ["enhancement_maximum", "big_bang_impact", "super_hardened_body", "uvo_scream", "nen_enhancement"],
+    "strengths": [
+      {"tag": "physical_attacks", "coefficient": 0.7, "description": "Enhancement-specialized body described as the hardest substance in HxH — bullets flatten against his skin"},
+      {"tag": "blunt_force", "coefficient": 0.65},
+      {"tag": "projectile", "coefficient": 0.6, "description": "Physical projectiles are completely ineffective against maximum enhancement"}
+    ],
+    "weaknesses": [
+      {"tag": "nen_binding", "coefficient": 0.6, "description": "Canon: Kurapika's Chain Jail immobilized him completely — he could not break free despite maximum strength"},
+      {"tag": "ranged_nen_specialist", "coefficient": 0.3, "description": "Lacks ranged options beyond his scream — ranged Nen fighters exploit his pure melee focus"},
+      {"tag": "genjutsu", "coefficient": 0.5, "description": "Pure brute — zero resistance to mental manipulation techniques"}
+    ],
+    "cannot_win_against": ["kurapika_emperor_time"],
+    "draw_conditions": [],
+    "traits": ["human", "male", "nen_user", "phantom_troupe", "enhancement_user"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/hxh/uvogin.jpg",
+    "short_description": "The Phantom Troupe's strongest pure fighter whose Enhancement Nen turns his fists into weapons that dwarf military ordinance — Big Bang Impact craters the earth while he himself is bulletproof."
+  },
+  {
+    "slug": "machi_komacine",
+    "name": "Machi Komacine",
+    "verse": "hxh",
+    "arc_version": "Phantom Troupe – Yorknew Arc",
+    "power_level": 1534821.5540,
+    "martial_ratio": 0.6,
+    "power_tags": ["nen_thread_transmutation", "puppet_thread", "nen_stitching", "distance_kill", "tracking_thread"],
+    "strengths": [
+      {"tag": "nen_thread_precision", "coefficient": 0.5, "description": "Nen threads are near-invisible and can cut through almost anything"},
+      {"tag": "healing", "coefficient": 0.6, "description": "Can reattach severed limbs with Nen thread — top-tier Nen medical ability"},
+      {"tag": "range", "coefficient": 0.4, "description": "Threads can span massive distances to reach and kill targets"}
+    ],
+    "weaknesses": [
+      {"tag": "overwhelming_physical_nen", "coefficient": 0.35, "description": "Raw power advantage allows breaking through thread constraints"},
+      {"tag": "detection", "coefficient": 0.3, "description": "En-users can sense thread placements before engaging"}
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "traits": ["human", "female", "nen_user", "phantom_troupe", "transmutation_user", "beautiful"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/hxh/machi_komacine.jpg",
+    "short_description": "One of the Phantom Troupe's most dangerous members — her transmuted Nen threads can restrain, cut, puppet, or heal at virtually any distance, making escape nearly impossible."
+  },
+  {
+    "slug": "nobunaga_hazama",
+    "name": "Nobunaga Hazama",
+    "verse": "hxh",
+    "arc_version": "Phantom Troupe – Yorknew Arc",
+    "power_level": 1734821.4410,
+    "martial_ratio": 0.88,
+    "power_tags": ["en_circle_sword", "sword_mastery", "enhancement_nen", "in_concealment", "nen_en"],
+    "strengths": [
+      {"tag": "close_range", "coefficient": 0.5, "description": "Within his En circle (4m radius), Nobunaga claims he can react to and cut anything — essentially a perfect domain"},
+      {"tag": "sword_speed", "coefficient": 0.5},
+      {"tag": "en_detection", "coefficient": 0.4, "description": "His En-enhanced sword range detects any movement within its perimeter"}
+    ],
+    "weaknesses": [
+      {"tag": "long_range", "coefficient": 0.5, "description": "Explicitly states he has no answer for long-range Nen specialists — fighting outside his En circle negates his primary advantage"},
+      {"tag": "overwhelming_nen_volume", "coefficient": 0.35}
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "traits": ["human", "male", "nen_user", "phantom_troupe", "enhancement_user", "swordsman"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/hxh/nobunaga_hazama.jpg",
+    "short_description": "The Phantom Troupe's sword master whose En-enhanced circle of death makes him unbeatable within 4 meters — and completely vulnerable to anyone who keeps their distance."
   }
 ]

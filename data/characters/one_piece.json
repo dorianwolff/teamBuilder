@@ -6,23 +6,61 @@
     "arc_version": "Gear 5 – Wano Arc",
     "power_level": 8234721.4521,
     "martial_ratio": 0.55,
-    "power_tags": ["rubber", "sun_god_nika", "haki_conqueror", "haki_armament", "haki_observation", "devil_fruit_awakening"],
+    "power_tags": [
+      "rubber",
+      "sun_god_nika",
+      "haki_conqueror",
+      "haki_armament",
+      "haki_observation",
+      "devil_fruit_awakening"
+    ],
     "strengths": [
-      {"tag": "lightning", "coefficient": 1.0, "description": "Rubber body completely nullifies lightning damage"},
-      {"tag": "blunt_force", "coefficient": 0.6, "description": "Rubber body absorbs blunt impacts"},
-      {"tag": "haki_conqueror", "coefficient": 0.4, "description": "Advanced conqueror haki provides partial resistance"}
+      {
+        "tag": "lightning",
+        "coefficient": 1.0,
+        "description": "Rubber body completely nullifies lightning damage"
+      },
+      {
+        "tag": "blunt_force",
+        "coefficient": 0.6,
+        "description": "Rubber body absorbs blunt impacts"
+      },
+      {
+        "tag": "haki_conqueror",
+        "coefficient": 0.4,
+        "description": "Advanced conqueror haki provides partial resistance"
+      }
     ],
     "weaknesses": [
-      {"tag": "sea_water", "coefficient": 0.4, "description": "Devil Fruit weakness to sea water"},
-      {"tag": "seastone", "coefficient": 0.9, "description": "Seastone cancels Devil Fruit powers"},
-      {"tag": "slashing", "coefficient": 0.2, "description": "Sharp blades can cut rubber"}
+      {
+        "tag": "sea_water",
+        "coefficient": 0.4,
+        "description": "Devil Fruit weakness to sea water"
+      },
+      {
+        "tag": "seastone",
+        "coefficient": 0.9,
+        "description": "Seastone cancels Devil Fruit powers"
+      },
+      {
+        "tag": "slashing",
+        "coefficient": 0.2,
+        "description": "Sharp blades can cut rubber"
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "male", "haki_user", "devil_fruit_user", "pirate", "rubber"],
+    "traits": [
+      "human",
+      "male",
+      "haki_user",
+      "devil_fruit_user",
+      "pirate",
+      "rubber"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/one_piece/luffy_gear5.png",
+    "image_path": "assets/characters/one_piece/luffy_gear5.jpg",
     "short_description": "Luffy in his awakened Devil Fruit form, embodying the Sun God Nika with reality-bending rubber powers and freedom to reshape the battlefield itself."
   },
   {
@@ -32,24 +70,62 @@
     "arc_version": "Gear 4 Snakeman – Whole Cake Island",
     "power_level": 3124893.7741,
     "martial_ratio": 0.65,
-    "power_tags": ["rubber", "haki_armament", "haki_observation", "gear_four", "speed_burst"],
+    "power_tags": [
+      "rubber",
+      "haki_armament",
+      "haki_observation",
+      "gear_four",
+      "speed_burst"
+    ],
     "strengths": [
-      {"tag": "lightning", "coefficient": 1.0, "description": "Rubber body completely nullifies lightning damage"},
-      {"tag": "blunt_force", "coefficient": 0.55, "description": "Rubber body absorbs blunt impacts"},
-      {"tag": "tracking", "coefficient": 0.3, "description": "Homing attacks evade tracking countermeasures"}
+      {
+        "tag": "lightning",
+        "coefficient": 1.0,
+        "description": "Rubber body completely nullifies lightning damage"
+      },
+      {
+        "tag": "blunt_force",
+        "coefficient": 0.55,
+        "description": "Rubber body absorbs blunt impacts"
+      },
+      {
+        "tag": "tracking",
+        "coefficient": 0.3,
+        "description": "Homing attacks evade tracking countermeasures"
+      }
     ],
     "weaknesses": [
-      {"tag": "sea_water", "coefficient": 0.4},
-      {"tag": "seastone", "coefficient": 0.9},
-      {"tag": "slashing", "coefficient": 0.2},
-      {"tag": "stamina_drain", "coefficient": 0.35, "description": "Gear 4 drains stamina rapidly"}
+      {
+        "tag": "sea_water",
+        "coefficient": 0.4
+      },
+      {
+        "tag": "seastone",
+        "coefficient": 0.9
+      },
+      {
+        "tag": "slashing",
+        "coefficient": 0.2
+      },
+      {
+        "tag": "stamina_drain",
+        "coefficient": 0.35,
+        "description": "Gear 4 drains stamina rapidly"
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "male", "haki_user", "devil_fruit_user", "pirate", "rubber"],
+    "traits": [
+      "human",
+      "male",
+      "haki_user",
+      "devil_fruit_user",
+      "pirate",
+      "rubber"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/one_piece/luffy_snakeman.png",
+    "image_path": "assets/characters/one_piece/luffy_snakeman.jpg",
     "short_description": "Luffy's speed-focused Gear 4 variant optimized for homing attacks and overwhelming velocity against agile opponents."
   },
   {
@@ -57,25 +133,53 @@
     "name": "Monkey D. Luffy",
     "verse": "one_piece",
     "arc_version": "Skypiea Arc",
-    "power_level": 382047.2210,
+    "power_level": 382047.221,
     "martial_ratio": 0.6,
-    "power_tags": ["rubber", "gear_one"],
+    "power_tags": [
+      "rubber",
+      "gear_one"
+    ],
     "strengths": [
-      {"tag": "lightning", "coefficient": 1.0, "description": "Rubber body completely immune to all lightning attacks"},
-      {"tag": "blunt_force", "coefficient": 0.4}
+      {
+        "tag": "lightning",
+        "coefficient": 1.0,
+        "description": "Rubber body completely immune to all lightning attacks"
+      },
+      {
+        "tag": "blunt_force",
+        "coefficient": 0.4
+      }
     ],
     "weaknesses": [
-      {"tag": "sea_water", "coefficient": 0.4},
-      {"tag": "seastone", "coefficient": 0.9},
-      {"tag": "slashing", "coefficient": 0.3},
-      {"tag": "fire", "coefficient": 0.2}
+      {
+        "tag": "sea_water",
+        "coefficient": 0.4
+      },
+      {
+        "tag": "seastone",
+        "coefficient": 0.9
+      },
+      {
+        "tag": "slashing",
+        "coefficient": 0.3
+      },
+      {
+        "tag": "fire",
+        "coefficient": 0.2
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "male", "devil_fruit_user", "pirate", "rubber"],
+    "traits": [
+      "human",
+      "male",
+      "devil_fruit_user",
+      "pirate",
+      "rubber"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/one_piece/luffy_skypiea.png",
+    "image_path": "assets/characters/one_piece/luffy_skypiea.jpg",
     "short_description": "Pre-Gear Luffy during the Skypiea arc, whose rubber body's lightning immunity proved decisive against the self-proclaimed god of that sky island."
   },
   {
@@ -83,23 +187,49 @@
     "name": "Gol D. Roger",
     "verse": "one_piece",
     "arc_version": "Peak – Pirate King Era",
-    "power_level": 8712043.9130,
+    "power_level": 8712043.913,
     "martial_ratio": 0.85,
-    "power_tags": ["haki_conqueror", "haki_armament", "haki_observation", "supreme_haki", "sword"],
+    "power_tags": [
+      "haki_conqueror",
+      "haki_armament",
+      "haki_observation",
+      "supreme_haki",
+      "sword"
+    ],
     "strengths": [
-      {"tag": "devil_fruit", "coefficient": 0.5, "description": "No Devil Fruit weakness, advanced Haki counters abilities"},
-      {"tag": "haki_conqueror", "coefficient": 0.5},
-      {"tag": "haki_armament", "coefficient": 0.4}
+      {
+        "tag": "devil_fruit",
+        "coefficient": 0.5,
+        "description": "No Devil Fruit weakness, advanced Haki counters abilities"
+      },
+      {
+        "tag": "haki_conqueror",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "haki_armament",
+        "coefficient": 0.4
+      }
     ],
     "weaknesses": [
-      {"tag": "illness", "coefficient": 0.6, "description": "Terminal illness reduced his physical prime"}
+      {
+        "tag": "illness",
+        "coefficient": 0.6,
+        "description": "Terminal illness reduced his physical prime"
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "male", "haki_user", "pirate", "swordsman"],
+    "traits": [
+      "human",
+      "male",
+      "haki_user",
+      "pirate",
+      "swordsman"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/one_piece/gold_d_roger.png",
+    "image_path": "assets/characters/one_piece/gold_d_roger.jpg",
     "short_description": "The Pirate King at his peak, wielding advanced Conqueror's Haki through his sword to challenge anyone on the seas."
   },
   {
@@ -107,24 +237,51 @@
     "name": "Edward Newgate",
     "verse": "one_piece",
     "arc_version": "Peak – Marineford War",
-    "power_level": 8534217.6640,
+    "power_level": 8534217.664,
     "martial_ratio": 0.75,
-    "power_tags": ["tremor_fruit", "quake", "haki_conqueror", "haki_armament", "haki_observation"],
+    "power_tags": [
+      "tremor_fruit",
+      "quake",
+      "haki_conqueror",
+      "haki_armament",
+      "haki_observation"
+    ],
     "strengths": [
-      {"tag": "blunt_force", "coefficient": 0.5},
-      {"tag": "haki_conqueror", "coefficient": 0.4},
-      {"tag": "shockwave", "coefficient": 0.6}
+      {
+        "tag": "blunt_force",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "haki_conqueror",
+        "coefficient": 0.4
+      },
+      {
+        "tag": "shockwave",
+        "coefficient": 0.6
+      }
     ],
     "weaknesses": [
-      {"tag": "illness", "coefficient": 0.5},
-      {"tag": "poison", "coefficient": 0.2}
+      {
+        "tag": "illness",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "poison",
+        "coefficient": 0.2
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "male", "haki_user", "devil_fruit_user", "pirate"],
+    "traits": [
+      "human",
+      "male",
+      "haki_user",
+      "devil_fruit_user",
+      "pirate"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/one_piece/whitebeard_peak.png",
+    "image_path": "assets/characters/one_piece/whitebeard_peak.jpg",
     "short_description": "The World's Strongest Man at Marineford, shaking the very fabric of the world with his Gura Gura no Mi despite fighting through terminal illness."
   },
   {
@@ -132,21 +289,42 @@
     "name": "Shanks",
     "verse": "one_piece",
     "arc_version": "Post-Timeskip – Wano",
-    "power_level": 8401832.5510,
+    "power_level": 8401832.551,
     "martial_ratio": 0.88,
-    "power_tags": ["haki_conqueror", "haki_armament", "haki_observation", "supreme_haki", "sword"],
+    "power_tags": [
+      "haki_conqueror",
+      "haki_armament",
+      "haki_observation",
+      "supreme_haki",
+      "sword"
+    ],
     "strengths": [
-      {"tag": "devil_fruit", "coefficient": 0.6},
-      {"tag": "haki_conqueror", "coefficient": 0.55},
-      {"tag": "aura_burst", "coefficient": 0.5}
+      {
+        "tag": "devil_fruit",
+        "coefficient": 0.6
+      },
+      {
+        "tag": "haki_conqueror",
+        "coefficient": 0.55
+      },
+      {
+        "tag": "aura_burst",
+        "coefficient": 0.5
+      }
     ],
     "weaknesses": [],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "male", "haki_user", "pirate", "swordsman"],
+    "traits": [
+      "human",
+      "male",
+      "haki_user",
+      "pirate",
+      "swordsman"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/one_piece/shanks.png",
+    "image_path": "assets/characters/one_piece/shanks.jpg",
     "short_description": "The Red-Haired Emperor who relies purely on Haki mastery with no Devil Fruit, considered by many the most complete fighter in the world."
   },
   {
@@ -154,23 +332,47 @@
     "name": "Dracule Mihawk",
     "verse": "one_piece",
     "arc_version": "World's Greatest Swordsman",
-    "power_level": 7893411.2270,
+    "power_level": 7893411.227,
     "martial_ratio": 0.92,
-    "power_tags": ["haki_armament", "haki_observation", "sword", "slashing", "supreme_cut"],
+    "power_tags": [
+      "haki_armament",
+      "haki_observation",
+      "sword",
+      "slashing",
+      "supreme_cut"
+    ],
     "strengths": [
-      {"tag": "slashing", "coefficient": 0.45},
-      {"tag": "haki_armament", "coefficient": 0.4}
+      {
+        "tag": "slashing",
+        "coefficient": 0.45
+      },
+      {
+        "tag": "haki_armament",
+        "coefficient": 0.4
+      }
     ],
     "weaknesses": [
-      {"tag": "long_range", "coefficient": 0.15},
-      {"tag": "intangible", "coefficient": 0.2}
+      {
+        "tag": "long_range",
+        "coefficient": 0.15
+      },
+      {
+        "tag": "intangible",
+        "coefficient": 0.2
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "male", "haki_user", "pirate", "swordsman"],
+    "traits": [
+      "human",
+      "male",
+      "haki_user",
+      "pirate",
+      "swordsman"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/one_piece/mihawk.png",
+    "image_path": "assets/characters/one_piece/mihawk.jpg",
     "short_description": "The world's greatest swordsman whose black blade Yoru and hawk-like Observation Haki make him unmatched in any cutting duel."
   },
   {
@@ -178,25 +380,57 @@
     "name": "Kaido",
     "verse": "one_piece",
     "arc_version": "Hybrid/Dragon Form – Onigashima",
-    "power_level": 8623904.8830,
+    "power_level": 8623904.883,
     "martial_ratio": 0.78,
-    "power_tags": ["azure_dragon", "dragon", "haki_conqueror", "haki_armament", "haki_observation", "fire", "thunder_bagua"],
+    "power_tags": [
+      "azure_dragon",
+      "dragon",
+      "haki_conqueror",
+      "haki_armament",
+      "haki_observation",
+      "fire",
+      "thunder_bagua"
+    ],
     "strengths": [
-      {"tag": "blunt_force", "coefficient": 0.7},
-      {"tag": "slashing", "coefficient": 0.5},
-      {"tag": "fire", "coefficient": 0.4},
-      {"tag": "haki_armament", "coefficient": 0.45}
+      {
+        "tag": "blunt_force",
+        "coefficient": 0.7
+      },
+      {
+        "tag": "slashing",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "fire",
+        "coefficient": 0.4
+      },
+      {
+        "tag": "haki_armament",
+        "coefficient": 0.45
+      }
     ],
     "weaknesses": [
-      {"tag": "sea_water", "coefficient": 0.35},
-      {"tag": "alcohol", "coefficient": 0.1}
+      {
+        "tag": "sea_water",
+        "coefficient": 0.35
+      },
+      {
+        "tag": "alcohol",
+        "coefficient": 0.1
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["oni", "male", "haki_user", "devil_fruit_user", "pirate"],
+    "traits": [
+      "oni",
+      "male",
+      "haki_user",
+      "devil_fruit_user",
+      "pirate"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/one_piece/kaido_hybrid.png",
+    "image_path": "assets/characters/one_piece/kaido_hybrid.jpg",
     "short_description": "The King of Beasts in his Hybrid Form, the most durable creature alive who has never lost a fair fight until the Wano Arc."
   },
   {
@@ -204,24 +438,52 @@
     "name": "Charlotte Linlin",
     "verse": "one_piece",
     "arc_version": "Full Power – Onigashima",
-    "power_level": 7934621.1190,
+    "power_level": 7934621.119,
     "martial_ratio": 0.65,
-    "power_tags": ["soul_soul_fruit", "lifespan_manipulation", "haki_conqueror", "haki_armament", "lightning", "fire"],
+    "power_tags": [
+      "soul_soul_fruit",
+      "lifespan_manipulation",
+      "haki_conqueror",
+      "haki_armament",
+      "lightning",
+      "fire"
+    ],
     "strengths": [
-      {"tag": "blunt_force", "coefficient": 0.55},
-      {"tag": "soul_attack", "coefficient": 0.5},
-      {"tag": "fear", "coefficient": 0.8}
+      {
+        "tag": "blunt_force",
+        "coefficient": 0.55
+      },
+      {
+        "tag": "soul_attack",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "fear",
+        "coefficient": 0.8
+      }
     ],
     "weaknesses": [
-      {"tag": "hunger_craving", "coefficient": 0.5},
-      {"tag": "childhood_memory", "coefficient": 0.6}
+      {
+        "tag": "hunger_craving",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "childhood_memory",
+        "coefficient": 0.6
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "female", "haki_user", "devil_fruit_user", "pirate"],
+    "traits": [
+      "human",
+      "female",
+      "haki_user",
+      "devil_fruit_user",
+      "pirate"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/one_piece/big_mom.png",
+    "image_path": "assets/characters/one_piece/big_mom.jpg",
     "short_description": "The Empress of Totto Land wielding soul-stealing powers amplified by weather homies, able to demand lifespans as payment."
   },
   {
@@ -229,23 +491,48 @@
     "name": "Roronoa Zoro",
     "verse": "one_piece",
     "arc_version": "Post-Wano – King of Hell Three Sword Style",
-    "power_level": 5847293.4410,
+    "power_level": 5847293.441,
     "martial_ratio": 0.9,
-    "power_tags": ["haki_conqueror", "haki_armament", "haki_observation", "sword", "slashing", "three_sword_style"],
+    "power_tags": [
+      "haki_conqueror",
+      "haki_armament",
+      "haki_observation",
+      "sword",
+      "slashing",
+      "three_sword_style"
+    ],
     "strengths": [
-      {"tag": "slashing", "coefficient": 0.4},
-      {"tag": "haki_conqueror", "coefficient": 0.35},
-      {"tag": "pain", "coefficient": 0.5}
+      {
+        "tag": "slashing",
+        "coefficient": 0.4
+      },
+      {
+        "tag": "haki_conqueror",
+        "coefficient": 0.35
+      },
+      {
+        "tag": "pain",
+        "coefficient": 0.5
+      }
     ],
     "weaknesses": [
-      {"tag": "directional_sense", "coefficient": 0.1}
+      {
+        "tag": "directional_sense",
+        "coefficient": 0.1
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "male", "haki_user", "pirate", "swordsman"],
+    "traits": [
+      "human",
+      "male",
+      "haki_user",
+      "pirate",
+      "swordsman"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/one_piece/zoro_post_wano.png",
+    "image_path": "assets/characters/one_piece/zoro_post_wano.jpg",
     "short_description": "Zoro after mastering Enma and awakening Conqueror's Haki, establishing himself as a true rival to the world's greatest swordsman."
   },
   {
@@ -253,25 +540,58 @@
     "name": "Sakazuki (Akainu)",
     "verse": "one_piece",
     "arc_version": "Fleet Admiral – Post-Timeskip",
-    "power_level": 5621047.8820,
+    "power_level": 5621047.882,
     "martial_ratio": 0.7,
-    "power_tags": ["magma_fruit", "logia", "magma", "heat", "haki_armament", "haki_observation"],
+    "power_tags": [
+      "magma_fruit",
+      "logia",
+      "magma",
+      "heat",
+      "haki_armament",
+      "haki_observation"
+    ],
     "strengths": [
-      {"tag": "fire", "coefficient": 0.7, "description": "Magma is hotter than fire and burns through it"},
-      {"tag": "logia_intangibility", "coefficient": 0.6},
-      {"tag": "ice", "coefficient": 0.4}
+      {
+        "tag": "fire",
+        "coefficient": 0.7,
+        "description": "Magma is hotter than fire and burns through it"
+      },
+      {
+        "tag": "logia_intangibility",
+        "coefficient": 0.6
+      },
+      {
+        "tag": "ice",
+        "coefficient": 0.4
+      }
     ],
     "weaknesses": [
-      {"tag": "sea_water", "coefficient": 0.35},
-      {"tag": "seastone", "coefficient": 0.9},
-      {"tag": "haki_armament", "coefficient": 0.3}
+      {
+        "tag": "sea_water",
+        "coefficient": 0.35
+      },
+      {
+        "tag": "seastone",
+        "coefficient": 0.9
+      },
+      {
+        "tag": "haki_armament",
+        "coefficient": 0.3
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "male", "haki_user", "devil_fruit_user", "marine"],
+    "traits": [
+      "human",
+      "male",
+      "haki_user",
+      "devil_fruit_user",
+      "marine",
+      "logia"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/one_piece/akainu.png",
+    "image_path": "assets/characters/one_piece/akainu.jpg",
     "short_description": "The Fleet Admiral whose absolute justice burns as hot as his magma, the man who scarred Shanks and killed Ace at Marineford."
   },
   {
@@ -279,26 +599,61 @@
     "name": "Kuzan (Aokiji)",
     "verse": "one_piece",
     "arc_version": "Post-Akainu Fight – Blackbeard Alliance",
-    "power_level": 5298473.3310,
+    "power_level": 5298473.331,
     "martial_ratio": 0.68,
-    "power_tags": ["ice_fruit", "logia", "ice", "freeze", "haki_armament", "haki_observation"],
+    "power_tags": [
+      "ice_fruit",
+      "logia",
+      "ice",
+      "freeze",
+      "haki_armament",
+      "haki_observation"
+    ],
     "strengths": [
-      {"tag": "water", "coefficient": 0.5},
-      {"tag": "logia_intangibility", "coefficient": 0.6}
+      {
+        "tag": "water",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "logia_intangibility",
+        "coefficient": 0.6
+      }
     ],
     "weaknesses": [
-      {"tag": "sea_water", "coefficient": 0.35},
-      {"tag": "seastone", "coefficient": 0.9},
-      {"tag": "magma", "coefficient": 0.4},
-      {"tag": "heat", "coefficient": 0.35},
-      {"tag": "haki_armament", "coefficient": 0.3}
+      {
+        "tag": "sea_water",
+        "coefficient": 0.35
+      },
+      {
+        "tag": "seastone",
+        "coefficient": 0.9
+      },
+      {
+        "tag": "magma",
+        "coefficient": 0.4
+      },
+      {
+        "tag": "heat",
+        "coefficient": 0.35
+      },
+      {
+        "tag": "haki_armament",
+        "coefficient": 0.3
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "male", "haki_user", "devil_fruit_user", "marine"],
+    "traits": [
+      "human",
+      "male",
+      "haki_user",
+      "devil_fruit_user",
+      "marine",
+      "logia"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/one_piece/aokiji.png",
+    "image_path": "assets/characters/one_piece/aokiji.jpg",
     "short_description": "The former Admiral with a frozen leg from his ten-day clash with Akainu, now operating under Blackbeard with unmatched ice control."
   },
   {
@@ -306,25 +661,58 @@
     "name": "Borsalino (Kizaru)",
     "verse": "one_piece",
     "arc_version": "Admiral – Marineford",
-    "power_level": 5534821.7730,
+    "power_level": 5534821.773,
     "martial_ratio": 0.55,
-    "power_tags": ["glint_glint_fruit", "logia", "light", "laser", "speed_of_light", "haki_armament", "haki_observation"],
+    "power_tags": [
+      "glint_glint_fruit",
+      "logia",
+      "light",
+      "laser",
+      "speed_of_light",
+      "haki_armament",
+      "haki_observation"
+    ],
     "strengths": [
-      {"tag": "logia_intangibility", "coefficient": 0.65},
-      {"tag": "tracking", "coefficient": 0.5}
+      {
+        "tag": "logia_intangibility",
+        "coefficient": 0.65
+      },
+      {
+        "tag": "tracking",
+        "coefficient": 0.5
+      }
     ],
     "weaknesses": [
-      {"tag": "sea_water", "coefficient": 0.35},
-      {"tag": "seastone", "coefficient": 0.9},
-      {"tag": "haki_armament", "coefficient": 0.3},
-      {"tag": "mirror", "coefficient": 0.5}
+      {
+        "tag": "sea_water",
+        "coefficient": 0.35
+      },
+      {
+        "tag": "seastone",
+        "coefficient": 0.9
+      },
+      {
+        "tag": "haki_armament",
+        "coefficient": 0.3
+      },
+      {
+        "tag": "mirror",
+        "coefficient": 0.5
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "male", "haki_user", "devil_fruit_user", "marine"],
+    "traits": [
+      "human",
+      "male",
+      "haki_user",
+      "devil_fruit_user",
+      "marine",
+      "logia"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/one_piece/kizaru.png",
+    "image_path": "assets/characters/one_piece/kizaru.jpg",
     "short_description": "The light-speed Admiral who moves at the speed of light and fires devastating laser beams, seemingly carefree but absolutely lethal."
   },
   {
@@ -334,24 +722,59 @@
     "arc_version": "First Division Commander – Marineford",
     "power_level": 3847291.4721,
     "martial_ratio": 0.6,
-    "power_tags": ["phoenix_fruit", "zoan", "fire", "blue_flame", "haki_armament", "haki_observation", "flight"],
+    "power_tags": [
+      "phoenix_fruit",
+      "zoan",
+      "fire",
+      "blue_flame",
+      "haki_armament",
+      "haki_observation",
+      "flight"
+    ],
     "strengths": [
-      {"tag": "fire", "coefficient": 0.7},
-      {"tag": "blunt_force", "coefficient": 0.6},
-      {"tag": "poison", "coefficient": 0.5},
-      {"tag": "slashing", "coefficient": 0.5}
+      {
+        "tag": "fire",
+        "coefficient": 0.7
+      },
+      {
+        "tag": "blunt_force",
+        "coefficient": 0.6
+      },
+      {
+        "tag": "poison",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "slashing",
+        "coefficient": 0.5
+      }
     ],
     "weaknesses": [
-      {"tag": "sea_water", "coefficient": 0.35},
-      {"tag": "seastone", "coefficient": 0.9},
-      {"tag": "stamina_drain", "coefficient": 0.4}
+      {
+        "tag": "sea_water",
+        "coefficient": 0.35
+      },
+      {
+        "tag": "seastone",
+        "coefficient": 0.9
+      },
+      {
+        "tag": "stamina_drain",
+        "coefficient": 0.4
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "male", "haki_user", "devil_fruit_user", "pirate"],
+    "traits": [
+      "human",
+      "male",
+      "haki_user",
+      "devil_fruit_user",
+      "pirate"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/one_piece/marco.png",
+    "image_path": "assets/characters/one_piece/marco.jpg",
     "short_description": "Whitebeard's right-hand man whose mythical Zoan Phoenix flames provide near-limitless regeneration, making him exceptionally hard to permanently injure."
   },
   {
@@ -359,26 +782,64 @@
     "name": "Portgas D. Ace",
     "verse": "one_piece",
     "arc_version": "Marineford War",
-    "power_level": 2934817.5540,
+    "power_level": 2934817.554,
     "martial_ratio": 0.55,
-    "power_tags": ["flame_flame_fruit", "logia", "fire", "haki_conqueror", "haki_armament", "haki_observation"],
+    "power_tags": [
+      "flame_flame_fruit",
+      "logia",
+      "fire",
+      "haki_conqueror",
+      "haki_armament",
+      "haki_observation"
+    ],
     "strengths": [
-      {"tag": "fire", "coefficient": 0.7},
-      {"tag": "logia_intangibility", "coefficient": 0.55},
-      {"tag": "ice", "coefficient": 0.2}
+      {
+        "tag": "fire",
+        "coefficient": 0.7
+      },
+      {
+        "tag": "logia_intangibility",
+        "coefficient": 0.55
+      },
+      {
+        "tag": "ice",
+        "coefficient": 0.2
+      }
     ],
     "weaknesses": [
-      {"tag": "sea_water", "coefficient": 0.4},
-      {"tag": "seastone", "coefficient": 0.9},
-      {"tag": "magma", "coefficient": 0.8, "description": "Magma overpowers and burns through fire"},
-      {"tag": "haki_armament", "coefficient": 0.3}
+      {
+        "tag": "sea_water",
+        "coefficient": 0.4
+      },
+      {
+        "tag": "seastone",
+        "coefficient": 0.9
+      },
+      {
+        "tag": "magma",
+        "coefficient": 0.8,
+        "description": "Magma overpowers and burns through fire"
+      },
+      {
+        "tag": "haki_armament",
+        "coefficient": 0.3
+      }
     ],
-    "cannot_win_against": ["akainu"],
+    "cannot_win_against": [
+      "akainu"
+    ],
     "draw_conditions": [],
-    "traits": ["human", "male", "haki_user", "devil_fruit_user", "pirate"],
+    "traits": [
+      "human",
+      "male",
+      "haki_user",
+      "devil_fruit_user",
+      "pirate",
+      "logia"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/one_piece/ace_marineford.png",
+    "image_path": "assets/characters/one_piece/ace_marineford.jpg",
     "short_description": "Whitebeard's adopted son and Fire Fist commander whose flame logia power was tragically extinguished by Akainu's superior magma at Marineford."
   },
   {
@@ -386,24 +847,55 @@
     "name": "Trafalgar D. Water Law",
     "verse": "one_piece",
     "arc_version": "Post-Wano – Awakened Op-Op Fruit",
-    "power_level": 2743829.1130,
+    "power_level": 2743829.113,
     "martial_ratio": 0.5,
-    "power_tags": ["op_op_fruit", "room", "shambles", "tact", "gamma_knife", "haki_armament", "haki_observation", "sword"],
+    "power_tags": [
+      "op_op_fruit",
+      "room",
+      "shambles",
+      "tact",
+      "gamma_knife",
+      "haki_armament",
+      "haki_observation",
+      "sword"
+    ],
     "strengths": [
-      {"tag": "physical_attacks", "coefficient": 0.4},
-      {"tag": "space_manipulation", "coefficient": 0.4}
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.4
+      },
+      {
+        "tag": "space_manipulation",
+        "coefficient": 0.4
+      }
     ],
     "weaknesses": [
-      {"tag": "sea_water", "coefficient": 0.4},
-      {"tag": "seastone", "coefficient": 0.9},
-      {"tag": "room_disruption", "coefficient": 0.5}
+      {
+        "tag": "sea_water",
+        "coefficient": 0.4
+      },
+      {
+        "tag": "seastone",
+        "coefficient": 0.9
+      },
+      {
+        "tag": "room_disruption",
+        "coefficient": 0.5
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "male", "haki_user", "devil_fruit_user", "pirate", "swordsman"],
+    "traits": [
+      "human",
+      "male",
+      "haki_user",
+      "devil_fruit_user",
+      "pirate",
+      "swordsman"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/one_piece/law_awakened.png",
+    "image_path": "assets/characters/one_piece/law_awakened.jpg",
     "short_description": "The Surgeon of Death with his awakened Op-Op Fruit allowing spatial restructuring beyond his ROOM, a tactical genius capable of defeating emperors."
   },
   {
@@ -411,27 +903,66 @@
     "name": "Sir Crocodile",
     "verse": "one_piece",
     "arc_version": "Desert Form – Alabasta Arc",
-    "power_level": 521473.8820,
+    "power_level": 521473.882,
     "martial_ratio": 0.5,
-    "power_tags": ["sand_sand_fruit", "logia", "sand", "desert_storm", "dehydration", "poison"],
+    "power_tags": [
+      "sand_sand_fruit",
+      "logia",
+      "sand",
+      "desert_storm",
+      "dehydration",
+      "poison"
+    ],
     "strengths": [
-      {"tag": "blunt_force", "coefficient": 0.5},
-      {"tag": "logia_intangibility", "coefficient": 0.6},
-      {"tag": "fire", "coefficient": 0.3}
+      {
+        "tag": "blunt_force",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "logia_intangibility",
+        "coefficient": 0.6
+      },
+      {
+        "tag": "fire",
+        "coefficient": 0.3
+      }
     ],
     "weaknesses": [
-      {"tag": "water", "coefficient": 0.7, "description": "Water wets sand and allows physical contact"},
-      {"tag": "blood", "coefficient": 0.6, "description": "Blood is a fluid that wets his sand"},
-      {"tag": "sea_water", "coefficient": 0.4},
-      {"tag": "seastone", "coefficient": 0.9},
-      {"tag": "haki_armament", "coefficient": 0.3}
+      {
+        "tag": "water",
+        "coefficient": 0.7,
+        "description": "Water wets sand and allows physical contact"
+      },
+      {
+        "tag": "blood",
+        "coefficient": 0.6,
+        "description": "Blood is a fluid that wets his sand"
+      },
+      {
+        "tag": "sea_water",
+        "coefficient": 0.4
+      },
+      {
+        "tag": "seastone",
+        "coefficient": 0.9
+      },
+      {
+        "tag": "haki_armament",
+        "coefficient": 0.3
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "male", "devil_fruit_user", "pirate"],
+    "traits": [
+      "human",
+      "male",
+      "devil_fruit_user",
+      "pirate",
+      "logia"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/one_piece/crocodile_desert.png",
+    "image_path": "assets/characters/one_piece/crocodile_desert.jpg",
     "short_description": "The former Warlord of the Desert at his Alabasta peak, capable of dehydrating anything he touches and conjuring massive sandstorms."
   },
   {
@@ -439,26 +970,61 @@
     "name": "Enel",
     "verse": "one_piece",
     "arc_version": "God of Skypiea",
-    "power_level": 521047.2190,
+    "power_level": 521047.219,
     "martial_ratio": 0.3,
-    "power_tags": ["rumble_rumble_fruit", "logia", "lightning", "observation_mantra", "electrical_resurrection"],
+    "power_tags": [
+      "rumble_rumble_fruit",
+      "logia",
+      "lightning",
+      "observation_mantra",
+      "electrical_resurrection"
+    ],
     "strengths": [
-      {"tag": "lightning", "coefficient": 0.8},
-      {"tag": "logia_intangibility", "coefficient": 0.7},
-      {"tag": "detection", "coefficient": 0.5}
+      {
+        "tag": "lightning",
+        "coefficient": 0.8
+      },
+      {
+        "tag": "logia_intangibility",
+        "coefficient": 0.7
+      },
+      {
+        "tag": "detection",
+        "coefficient": 0.5
+      }
     ],
     "weaknesses": [
-      {"tag": "rubber", "coefficient": 1.0, "description": "Rubber is a perfect insulator — lightning powers are completely nullified"},
-      {"tag": "sea_water", "coefficient": 0.4},
-      {"tag": "seastone", "coefficient": 0.9},
-      {"tag": "haki_armament", "coefficient": 0.3}
+      {
+        "tag": "rubber",
+        "coefficient": 1.0,
+        "description": "Rubber is a perfect insulator — lightning powers are completely nullified"
+      },
+      {
+        "tag": "sea_water",
+        "coefficient": 0.4
+      },
+      {
+        "tag": "seastone",
+        "coefficient": 0.9
+      },
+      {
+        "tag": "haki_armament",
+        "coefficient": 0.3
+      }
     ],
-    "cannot_win_against": ["luffy_skypiea"],
+    "cannot_win_against": [
+      "luffy_skypiea"
+    ],
     "draw_conditions": [],
-    "traits": ["human", "male", "devil_fruit_user"],
+    "traits": [
+      "human",
+      "male",
+      "devil_fruit_user",
+      "logia"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/one_piece/enel.png",
+    "image_path": "assets/characters/one_piece/enel.jpg",
     "short_description": "The self-proclaimed God of Skypiea whose 200-million-volt Rumble-Rumble Fruit and all-hearing Mantra make him nearly omniscient — undone only by Luffy's rubber immunity."
   },
   {
@@ -466,24 +1032,51 @@
     "name": "Nico Robin",
     "verse": "one_piece",
     "arc_version": "Post-Timeskip – Wano",
-    "power_level": 478293.4410,
+    "power_level": 478293.441,
     "martial_ratio": 0.7,
-    "power_tags": ["flower_flower_fruit", "body_bloom", "haki_armament", "clutch"],
+    "power_tags": [
+      "flower_flower_fruit",
+      "body_bloom",
+      "haki_armament",
+      "clutch"
+    ],
     "strengths": [
-      {"tag": "single_target", "coefficient": 0.3},
-      {"tag": "grapple", "coefficient": 0.5}
+      {
+        "tag": "single_target",
+        "coefficient": 0.3
+      },
+      {
+        "tag": "grapple",
+        "coefficient": 0.5
+      }
     ],
     "weaknesses": [
-      {"tag": "sea_water", "coefficient": 0.4},
-      {"tag": "seastone", "coefficient": 0.9},
-      {"tag": "area_of_effect", "coefficient": 0.2}
+      {
+        "tag": "sea_water",
+        "coefficient": 0.4
+      },
+      {
+        "tag": "seastone",
+        "coefficient": 0.9
+      },
+      {
+        "tag": "area_of_effect",
+        "coefficient": 0.2
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "female", "haki_user", "devil_fruit_user", "pirate", "beautiful"],
+    "traits": [
+      "human",
+      "female",
+      "haki_user",
+      "devil_fruit_user",
+      "pirate",
+      "beautiful"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/one_piece/robin_post_timeskip.png",
+    "image_path": "assets/characters/one_piece/robin_post_timeskip.jpg",
     "short_description": "The Straw Hat's archaeologist who blossoms body parts across any surface and snaps spines with giant demonic hands after her Wano power-up."
   },
   {
@@ -491,23 +1084,45 @@
     "name": "Nami",
     "verse": "one_piece",
     "arc_version": "Clima-Tact – Post-Wano",
-    "power_level": 48293.1120,
+    "power_level": 48293.112,
     "martial_ratio": 0.2,
-    "power_tags": ["clima_tact", "lightning", "weather_manipulation", "thunderbolt_tempo"],
+    "power_tags": [
+      "clima_tact",
+      "lightning",
+      "weather_manipulation",
+      "thunderbolt_tempo"
+    ],
     "strengths": [
-      {"tag": "weather", "coefficient": 0.4},
-      {"tag": "lightning", "coefficient": 0.3}
+      {
+        "tag": "weather",
+        "coefficient": 0.4
+      },
+      {
+        "tag": "lightning",
+        "coefficient": 0.3
+      }
     ],
     "weaknesses": [
-      {"tag": "close_range", "coefficient": 0.4},
-      {"tag": "overwhelming_power", "coefficient": 0.5}
+      {
+        "tag": "close_range",
+        "coefficient": 0.4
+      },
+      {
+        "tag": "overwhelming_power",
+        "coefficient": 0.5
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "female", "pirate", "beautiful"],
+    "traits": [
+      "human",
+      "female",
+      "pirate",
+      "beautiful"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/one_piece/nami_clima_tact.png",
+    "image_path": "assets/characters/one_piece/nami_clima_tact.jpg",
     "short_description": "The Straw Hat navigator whose Zeus-empowered Clima-Tact controls weather and summons devastating lightning strikes."
   },
   {
@@ -515,23 +1130,46 @@
     "name": "Usopp",
     "verse": "one_piece",
     "arc_version": "God Usopp – Dressrosa Arc",
-    "power_level": 52847.3310,
+    "power_level": 52847.331,
     "martial_ratio": 0.3,
-    "power_tags": ["sniping", "haki_observation", "pop_greens", "kuro_kabuto", "long_range"],
+    "power_tags": [
+      "sniping",
+      "haki_observation",
+      "pop_greens",
+      "kuro_kabuto",
+      "long_range"
+    ],
     "strengths": [
-      {"tag": "long_range", "coefficient": 0.4},
-      {"tag": "surprise_attack", "coefficient": 0.3}
+      {
+        "tag": "long_range",
+        "coefficient": 0.4
+      },
+      {
+        "tag": "surprise_attack",
+        "coefficient": 0.3
+      }
     ],
     "weaknesses": [
-      {"tag": "close_range", "coefficient": 0.5},
-      {"tag": "courage", "coefficient": 0.4}
+      {
+        "tag": "close_range",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "courage",
+        "coefficient": 0.4
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "male", "haki_user", "pirate"],
+    "traits": [
+      "human",
+      "male",
+      "haki_user",
+      "pirate"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/one_piece/usopp_god.png",
+    "image_path": "assets/characters/one_piece/usopp_god.jpg",
     "short_description": "God Usopp of Dressrosa, whose newly awakened Observation Haki and Pop Green arsenal make him the Straw Hats' deadliest long-range fighter."
   },
   {
@@ -539,25 +1177,53 @@
     "name": "Franky",
     "verse": "one_piece",
     "arc_version": "General Franky – Post-Timeskip",
-    "power_level": 387421.5540,
+    "power_level": 387421.554,
     "martial_ratio": 0.75,
-    "power_tags": ["cyborg", "cola_powered", "laser", "rocketry", "iron_armor"],
+    "power_tags": [
+      "cyborg",
+      "cola_powered",
+      "laser",
+      "rocketry",
+      "iron_armor"
+    ],
     "strengths": [
-      {"tag": "blunt_force", "coefficient": 0.5},
-      {"tag": "slashing", "coefficient": 0.45},
-      {"tag": "fire", "coefficient": 0.3}
+      {
+        "tag": "blunt_force",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "slashing",
+        "coefficient": 0.45
+      },
+      {
+        "tag": "fire",
+        "coefficient": 0.3
+      }
     ],
     "weaknesses": [
-      {"tag": "cola_deprivation", "coefficient": 0.6},
-      {"tag": "water", "coefficient": 0.2},
-      {"tag": "electricity", "coefficient": 0.3}
+      {
+        "tag": "cola_deprivation",
+        "coefficient": 0.6
+      },
+      {
+        "tag": "water",
+        "coefficient": 0.2
+      },
+      {
+        "tag": "electricity",
+        "coefficient": 0.3
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["cyborg", "male", "pirate"],
+    "traits": [
+      "cyborg",
+      "male",
+      "pirate"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/one_piece/franky_cyborg.png",
+    "image_path": "assets/characters/one_piece/franky_cyborg.jpg",
     "short_description": "The Straw Hat shipwright turned full cyborg, able to pilot his giant General Franky mech suit or fight hand-to-hand with cola-powered cannons."
   },
   {
@@ -565,25 +1231,58 @@
     "name": "Brook",
     "verse": "one_piece",
     "arc_version": "Soul King – Post-Wano",
-    "power_level": 412847.7720,
+    "power_level": 1834821.772,
     "martial_ratio": 0.65,
-    "power_tags": ["revive_revive_fruit", "soul_music", "ice_soul", "haki_armament", "sword", "undead"],
+    "power_tags": [
+      "revive_revive_fruit",
+      "soul_music",
+      "ice_soul",
+      "haki_armament",
+      "sword",
+      "undead"
+    ],
     "strengths": [
-      {"tag": "poison", "coefficient": 0.8, "description": "Already a skeleton — no flesh to poison"},
-      {"tag": "cold", "coefficient": 0.5},
-      {"tag": "fear", "coefficient": 0.6}
+      {
+        "tag": "poison",
+        "coefficient": 0.8,
+        "description": "Already a skeleton — no flesh to poison"
+      },
+      {
+        "tag": "cold",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "fear",
+        "coefficient": 0.6
+      }
     ],
     "weaknesses": [
-      {"tag": "sea_water", "coefficient": 0.35},
-      {"tag": "seastone", "coefficient": 0.9},
-      {"tag": "fire", "coefficient": 0.3}
+      {
+        "tag": "sea_water",
+        "coefficient": 0.35
+      },
+      {
+        "tag": "seastone",
+        "coefficient": 0.9
+      },
+      {
+        "tag": "fire",
+        "coefficient": 0.3
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["undead", "male", "haki_user", "devil_fruit_user", "pirate", "swordsman"],
+    "traits": [
+      "undead",
+      "male",
+      "haki_user",
+      "devil_fruit_user",
+      "pirate",
+      "swordsman"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/one_piece/brook_soul_king.png",
+    "image_path": "assets/characters/one_piece/brook_soul_king.jpg",
     "short_description": "The undying Soul King whose Revive-Revive Fruit and soul-imbued swordsmanship lets him manipulate ice and freeze enemies from within."
   },
   {
@@ -591,23 +1290,47 @@
     "name": "Jinbe",
     "verse": "one_piece",
     "arc_version": "Helmsman – Post-Wano",
-    "power_level": 2847293.2210,
+    "power_level": 2847293.221,
     "martial_ratio": 0.9,
-    "power_tags": ["fish_man_karate", "haki_armament", "haki_observation", "water_manipulation", "fish_man_judo"],
+    "power_tags": [
+      "fish_man_karate",
+      "haki_armament",
+      "haki_observation",
+      "water_manipulation",
+      "fish_man_judo"
+    ],
     "strengths": [
-      {"tag": "water", "coefficient": 0.6},
-      {"tag": "blunt_force", "coefficient": 0.4}
+      {
+        "tag": "water",
+        "coefficient": 0.6
+      },
+      {
+        "tag": "blunt_force",
+        "coefficient": 0.4
+      }
     ],
     "weaknesses": [
-      {"tag": "seastone", "coefficient": 0.3},
-      {"tag": "fire", "coefficient": 0.2}
+      {
+        "tag": "seastone",
+        "coefficient": 0.3
+      },
+      {
+        "tag": "fire",
+        "coefficient": 0.2
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["fish_man", "male", "haki_user", "pirate", "martial_artist"],
+    "traits": [
+      "fish_man",
+      "male",
+      "haki_user",
+      "pirate",
+      "martial_artist"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/one_piece/jinbe.png",
+    "image_path": "assets/characters/one_piece/jinbe.jpg",
     "short_description": "The Knight of the Sea whose fish-man karate can weaponize any water and whose steadfast loyalty made him the Straw Hats' helmsman."
   },
   {
@@ -615,23 +1338,46 @@
     "name": "Coby",
     "verse": "one_piece",
     "arc_version": "Post-Timeskip – SWORD Member",
-    "power_level": 423847.1130,
+    "power_level": 423847.113,
     "martial_ratio": 0.75,
-    "power_tags": ["haki_observation_advanced", "haki_armament", "rokushiki", "soru", "marine_arts"],
+    "power_tags": [
+      "haki_observation_advanced",
+      "haki_armament",
+      "rokushiki",
+      "soru",
+      "marine_arts"
+    ],
     "strengths": [
-      {"tag": "detection", "coefficient": 0.4},
-      {"tag": "speed", "coefficient": 0.3}
+      {
+        "tag": "detection",
+        "coefficient": 0.4
+      },
+      {
+        "tag": "speed",
+        "coefficient": 0.3
+      }
     ],
     "weaknesses": [
-      {"tag": "overwhelming_power", "coefficient": 0.4},
-      {"tag": "emotional_distraction", "coefficient": 0.3}
+      {
+        "tag": "overwhelming_power",
+        "coefficient": 0.4
+      },
+      {
+        "tag": "emotional_distraction",
+        "coefficient": 0.3
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "male", "haki_user", "marine"],
+    "traits": [
+      "human",
+      "male",
+      "haki_user",
+      "marine"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/one_piece/coby_post_timeskip.png",
+    "image_path": "assets/characters/one_piece/coby_post_timeskip.jpg",
     "short_description": "The hero of the Rocky Port Incident whose advanced Color of Observation lets him sense ill intent and halt even Blackbeard's rampage momentarily."
   },
   {
@@ -639,25 +1385,56 @@
     "name": "Smoker",
     "verse": "one_piece",
     "arc_version": "Vice Admiral – Post-Timeskip",
-    "power_level": 521847.3340,
+    "power_level": 521847.334,
     "martial_ratio": 0.6,
-    "power_tags": ["smoke_smoke_fruit", "logia", "smoke", "jitte_seastone", "haki_armament"],
+    "power_tags": [
+      "smoke_smoke_fruit",
+      "logia",
+      "smoke",
+      "jitte_seastone",
+      "haki_armament"
+    ],
     "strengths": [
-      {"tag": "logia_intangibility", "coefficient": 0.55},
-      {"tag": "grapple", "coefficient": 0.4}
+      {
+        "tag": "logia_intangibility",
+        "coefficient": 0.55
+      },
+      {
+        "tag": "grapple",
+        "coefficient": 0.4
+      }
     ],
     "weaknesses": [
-      {"tag": "wind", "coefficient": 0.5},
-      {"tag": "sea_water", "coefficient": 0.35},
-      {"tag": "haki_armament", "coefficient": 0.3},
-      {"tag": "fire", "coefficient": 0.4}
+      {
+        "tag": "wind",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "sea_water",
+        "coefficient": 0.35
+      },
+      {
+        "tag": "haki_armament",
+        "coefficient": 0.3
+      },
+      {
+        "tag": "fire",
+        "coefficient": 0.4
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "male", "haki_user", "devil_fruit_user", "marine"],
+    "traits": [
+      "human",
+      "male",
+      "haki_user",
+      "devil_fruit_user",
+      "marine",
+      "logia"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/one_piece/smoker.png",
+    "image_path": "assets/characters/one_piece/smoker.jpg",
     "short_description": "The relentless Marine Vice Admiral whose smoke logia and seastone jitte let him capture and immobilize Devil Fruit users effortlessly."
   },
   {
@@ -667,22 +1444,621 @@
     "arc_version": "Ifrit Jambe – Egghead Arc",
     "power_level": 3000000,
     "martial_ratio": 0.88,
-    "power_tags": ["ifrit_jambe", "haki_armament", "haki_observation", "diable_jambe", "sky_walk", "germa_enhancements", "fire"],
+    "power_tags": [
+      "ifrit_jambe",
+      "haki_armament",
+      "haki_observation",
+      "diable_jambe",
+      "sky_walk",
+      "germa_enhancements",
+      "fire"
+    ],
     "strengths": [
-      {"tag": "fire", "coefficient": 0.3, "description": "Ifrit Jambe burns hotter than most fire attacks"},
-      {"tag": "heat", "coefficient": 0.25}
+      {
+        "tag": "fire",
+        "coefficient": 0.3,
+        "description": "Ifrit Jambe burns hotter than most fire attacks"
+      },
+      {
+        "tag": "heat",
+        "coefficient": 0.25
+      }
     ],
     "weaknesses": [
-      {"tag": "slashing", "coefficient": 0.2}
+      {
+        "tag": "slashing",
+        "coefficient": 0.2
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "male", "pirate", "haki_user", "code_of_honor"],
+    "traits": [
+      "human",
+      "male",
+      "pirate",
+      "haki_user",
+      "code_of_honor"
+    ],
     "trait_weaknesses": [
-      {"trait": "female", "coefficient": 0.7, "description": "Sanji's Chivalric Code — his absolute honor forbids striking women, reducing his effective offense to a fraction against female opponents"}
+      {
+        "trait": "female",
+        "coefficient": 0.7,
+        "description": "Sanji's Chivalric Code — his absolute honor forbids striking women, reducing his effective offense to a fraction against female opponents"
+      }
     ],
     "trait_strengths": [],
-    "image_path": "assets/characters/one_piece/sanji_ifrit_jambe.png",
+    "image_path": "assets/characters/one_piece/sanji_ifrit_jambe.jpg",
     "short_description": "The Straw Hats' chef in his Egghead Arc peak form, his Germa-enhanced body wreathed in Ifrit Jambe hellfire — held back only by his absolute code against harming women."
+  },
+  {
+    "slug": "chopper_monster_point",
+    "name": "Tony Tony Chopper",
+    "verse": "one_piece",
+    "arc_version": "Monster Point – Wano Arc",
+    "power_level": 847293.441,
+    "martial_ratio": 0.82,
+    "power_tags": [
+      "rumble_ball_monster_point",
+      "zoan",
+      "brute_force",
+      "haki_armament",
+      "medical_genius"
+    ],
+    "strengths": [
+      {
+        "tag": "blunt_force",
+        "coefficient": 0.4,
+        "description": "Monstrous body absorbs blunt trauma"
+      },
+      {
+        "tag": "poison",
+        "coefficient": 0.5,
+        "description": "Medical expertise and Rumble Ball chemistry grant substantial poison resistance"
+      }
+    ],
+    "weaknesses": [
+      {
+        "tag": "sea_water",
+        "coefficient": 0.35
+      },
+      {
+        "tag": "seastone",
+        "coefficient": 0.9
+      },
+      {
+        "tag": "slashing",
+        "coefficient": 0.2
+      },
+      {
+        "tag": "haki_armament",
+        "coefficient": 0.25,
+        "description": "Post-Wano Monster Point lacks advanced Haki refinement — high-level Haki cuts through"
+      }
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "traits": [
+      "zoan_user",
+      "male",
+      "devil_fruit_user",
+      "pirate",
+      "haki_user",
+      "doctor"
+    ],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/one_piece/chopper_monster_point.jpg",
+    "short_description": "Chopper's post-timeskip Monster Point controlled with a single Rumble Ball — a towering beast combining monstrous physical power with the tactical mind of the Straw Hats' doctor."
+  },
+  {
+    "slug": "garp_marineford",
+    "name": "Monkey D. Garp",
+    "verse": "one_piece",
+    "arc_version": "Hero of the Marines – Marineford / Hachinosu",
+    "power_level": 7421047.882,
+    "martial_ratio": 0.95,
+    "power_tags": [
+      "haki_armament",
+      "haki_observation",
+      "haki_conqueror",
+      "fist_of_love",
+      "iron_fist",
+      "supreme_haki",
+      "cannonball"
+    ],
+    "strengths": [
+      {
+        "tag": "devil_fruit",
+        "coefficient": 0.5,
+        "description": "Pure Haki mastery bypasses most Devil Fruit defenses"
+      },
+      {
+        "tag": "blunt_force",
+        "coefficient": 0.45
+      },
+      {
+        "tag": "haki_armament",
+        "coefficient": 0.4
+      }
+    ],
+    "weaknesses": [
+      {
+        "tag": "long_range_barrage",
+        "coefficient": 0.15,
+        "description": "Purely melee-focused — sustained long-range bombardment is his biggest challenge"
+      },
+      {
+        "tag": "loved_ones_leverage",
+        "coefficient": 0.35,
+        "description": "His bond with family (Ace, Luffy, Coby) can be weaponized against him emotionally"
+      }
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "traits": [
+      "human",
+      "male",
+      "haki_user",
+      "marine",
+      "legendary"
+    ],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/one_piece/garp_marineford.jpg",
+    "short_description": "The Hero of the Marines who never ate a Devil Fruit, defeating legendary pirates with pure Haki-imbued fists — the man Roger himself acknowledged as his equal rival."
+  },
+  {
+    "slug": "bartolomeo_barrier",
+    "name": "Bartolomeo",
+    "verse": "one_piece",
+    "arc_version": "Barrier-Barrier Fruit – Post-Dressrosa",
+    "power_level": 743829.221,
+    "martial_ratio": 0.35,
+    "power_tags": [
+      "barrier_barrier_fruit",
+      "paramecia",
+      "barrier_crash",
+      "barrier_sword",
+      "haki_armament",
+      "haki_observation"
+    ],
+    "strengths": [
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.7,
+        "description": "Barriers completely stop non-Haki physical force"
+      },
+      {
+        "tag": "projectile",
+        "coefficient": 0.65,
+        "description": "Barriers deflect most ranged attacks"
+      },
+      {
+        "tag": "blunt_force",
+        "coefficient": 0.6
+      },
+      {
+        "tag": "slashing",
+        "coefficient": 0.5,
+        "description": "Barriers block slashing attacks lacking advanced Haki"
+      }
+    ],
+    "weaknesses": [
+      {
+        "tag": "sea_water",
+        "coefficient": 0.35
+      },
+      {
+        "tag": "seastone",
+        "coefficient": 0.9
+      },
+      {
+        "tag": "haki_armament",
+        "coefficient": 0.4,
+        "description": "Advanced Haki-coated attacks can break or bypass barriers"
+      },
+      {
+        "tag": "overwhelming_power",
+        "coefficient": 0.35,
+        "description": "Sufficiently powerful attacks shatter barriers"
+      }
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "traits": [
+      "human",
+      "male",
+      "devil_fruit_user",
+      "pirate",
+      "haki_user"
+    ],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/one_piece/bartolomeo_barrier.jpg",
+    "short_description": "The self-proclaimed Straw Hats' Number One Fan whose Barrier-Barrier Fruit creates indestructible Haki barriers, turning impenetrable defense into devastating offensive slams."
+  },
+  {
+    "slug": "bellamy_spring",
+    "name": "Bellamy",
+    "verse": "one_piece",
+    "arc_version": "Spring-Spring Fruit – Post-Dressrosa",
+    "power_level": 512847.441,
+    "martial_ratio": 0.75,
+    "power_tags": [
+      "spring_spring_fruit",
+      "paramecia",
+      "spring_hopper",
+      "haki_armament",
+      "haki_observation"
+    ],
+    "strengths": [
+      {
+        "tag": "speed",
+        "coefficient": 0.3,
+        "description": "Spring-powered charges are extremely difficult to track and dodge"
+      }
+    ],
+    "weaknesses": [
+      {
+        "tag": "sea_water",
+        "coefficient": 0.35
+      },
+      {
+        "tag": "seastone",
+        "coefficient": 0.9
+      },
+      {
+        "tag": "long_range",
+        "coefficient": 0.25,
+        "description": "Spring Hopper requires charging distance — long-range fighters can intercept mid-spring"
+      },
+      {
+        "tag": "haki_conqueror",
+        "coefficient": 0.4,
+        "description": "Overwhelming Conqueror's Haki disrupts his spring trajectory"
+      }
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "traits": [
+      "human",
+      "male",
+      "devil_fruit_user",
+      "pirate",
+      "haki_user"
+    ],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/one_piece/bellamy_spring.jpg",
+    "short_description": "The Hyena whose Spring-Spring Fruit turns his body into a coil of compressed power, launching himself at enemies with locomotive force — a fighter who finally found his own convictions."
+  },
+  {
+    "slug": "blackbeard",
+    "name": "Marshall D. Teach (Blackbeard)",
+    "verse": "one_piece",
+    "arc_version": "Dual Fruits – Egghead Aftermath",
+    "power_level": 8034821.664,
+    "martial_ratio": 0.6,
+    "power_tags": [
+      "yami_yami_no_mi",
+      "gura_gura_no_mi",
+      "darkness_fruit",
+      "tremor_fruit",
+      "quake",
+      "gravity_pull",
+      "haki_armament",
+      "haki_observation",
+      "devil_fruit_negation"
+    ],
+    "strengths": [
+      {
+        "tag": "logia_intangibility",
+        "coefficient": 0.8,
+        "description": "Darkness sucks in and nullifies all intangibility-based logia defenses"
+      },
+      {
+        "tag": "devil_fruit",
+        "coefficient": 0.6,
+        "description": "Yami Yami no Mi completely negates all Devil Fruit powers on contact"
+      },
+      {
+        "tag": "blunt_force",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "shockwave",
+        "coefficient": 0.6,
+        "description": "Can absorb tremors with his darkness then re-release them"
+      }
+    ],
+    "weaknesses": [
+      {
+        "tag": "sea_water",
+        "coefficient": 0.4
+      },
+      {
+        "tag": "seastone",
+        "coefficient": 0.9
+      },
+      {
+        "tag": "pain_amplification",
+        "coefficient": 0.3,
+        "description": "Yami Yami amplifies all damage he receives — he feels pain more than any normal Devil Fruit user"
+      },
+      {
+        "tag": "slashing",
+        "coefficient": 0.15
+      }
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "traits": [
+      "human",
+      "male",
+      "devil_fruit_user",
+      "pirate",
+      "haki_user",
+      "dual_fruit_user",
+      "devil_fruit_negator"
+    ],
+    "trait_weaknesses": [],
+    "trait_strengths": [
+      {
+        "trait": "logia",
+        "coefficient": 0.5,
+        "description": "Yami Yami no Mi's darkness nullifies logia intangibility — logia users lose their ultimate defence against him"
+      },
+      {
+        "trait": "devil_fruit_user",
+        "coefficient": 0.2,
+        "description": "Blackbeard can nullify any Devil Fruit power on touch, disrupting non-logia fruit users as well"
+      }
+    ],
+    "image_path": "assets/characters/one_piece/blackbeard.jpg",
+    "short_description": "The only man to ever hold two Devil Fruits — darkness that devours all powers and earthquakes that crack the world — Blackbeard's ambition made him a Yonko through cunning and terrifying power."
+  },
+  {
+    "slug": "shiryu_rain",
+    "name": "Shiryu of the Rain",
+    "verse": "one_piece",
+    "arc_version": "Blackbeard's Crew – Suke Suke no Mi",
+    "power_level": 1934821.441,
+    "martial_ratio": 0.75,
+    "power_tags": [
+      "suke_suke_no_mi",
+      "invisible_sword",
+      "haki_armament",
+      "haki_observation",
+      "sword",
+      "slashing"
+    ],
+    "strengths": [
+      {
+        "tag": "detection",
+        "coefficient": 0.5,
+        "description": "Invisibility is nearly impossible to counter without advanced Observation Haki"
+      },
+      {
+        "tag": "surprise_attack",
+        "coefficient": 0.6
+      }
+    ],
+    "weaknesses": [
+      {
+        "tag": "sea_water",
+        "coefficient": 0.35
+      },
+      {
+        "tag": "seastone",
+        "coefficient": 0.9
+      },
+      {
+        "tag": "haki_observation_advanced",
+        "coefficient": 0.6,
+        "description": "Advanced Color of Observation bypasses invisibility — his primary edge is neutralized"
+      },
+      {
+        "tag": "haki_armament",
+        "coefficient": 0.3
+      }
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "traits": [
+      "human",
+      "male",
+      "devil_fruit_user",
+      "pirate",
+      "haki_user",
+      "swordsman",
+      "assassin"
+    ],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/one_piece/shiryu_rain.jpg",
+    "short_description": "The former head jailer of Impel Down turned Blackbeard pirate, combining elite swordsmanship with total invisibility from his stolen Clear-Clear Fruit."
+  },
+  {
+    "slug": "monkey_d_dragon",
+    "name": "Monkey D. Dragon",
+    "verse": "one_piece",
+    "arc_version": "Revolutionary Army Supreme Commander",
+    "power_level": 7821047.331,
+    "martial_ratio": 0.7,
+    "power_tags": [
+      "wind_manipulation",
+      "storm_summon",
+      "haki_conqueror",
+      "haki_armament",
+      "haki_observation",
+      "weather_control",
+      "lightning_storm"
+    ],
+    "strengths": [
+      {
+        "tag": "fire",
+        "coefficient": 0.4,
+        "description": "Storm winds and rain suppress fire attacks"
+      },
+      {
+        "tag": "projectile",
+        "coefficient": 0.35,
+        "description": "Wind currents deflect most projectiles"
+      },
+      {
+        "tag": "haki_armament",
+        "coefficient": 0.4
+      }
+    ],
+    "weaknesses": [
+      {
+        "tag": "seastone",
+        "coefficient": 0.9,
+        "description": "If Devil Fruit is confirmed, seastone applies"
+      },
+      {
+        "tag": "sea_water",
+        "coefficient": 0.35
+      }
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "traits": [
+      "human",
+      "male",
+      "haki_user",
+      "revolutionary",
+      "legendary",
+      "devil_fruit_user"
+    ],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/one_piece/monkey_d_dragon.jpg",
+    "short_description": "The World's Most Wanted Man and father of Luffy — his storm-summoning power and Conqueror's Haki make him Yonko-adjacent, yet his full abilities remain the greatest mystery in One Piece."
+  },
+  {
+    "slug": "kid_awakened",
+    "name": "Eustass Kid",
+    "verse": "one_piece",
+    "arc_version": "Awakened Magnet-Magnet Fruit – Wano Arc",
+    "power_level": 2847293.993,
+    "martial_ratio": 0.6,
+    "power_tags": [
+      "magnet_magnet_fruit_awakened",
+      "paramecia_awakening",
+      "punk_rotten",
+      "metal_control",
+      "haki_armament",
+      "haki_observation"
+    ],
+    "strengths": [
+      {
+        "tag": "metal",
+        "coefficient": 0.6,
+        "description": "Magnetism controls and strips metal from opponents and environments"
+      },
+      {
+        "tag": "armor",
+        "coefficient": 0.5,
+        "description": "Metal armor pulled from surroundings provides mass shielding"
+      },
+      {
+        "tag": "blunt_force",
+        "coefficient": 0.3
+      }
+    ],
+    "weaknesses": [
+      {
+        "tag": "sea_water",
+        "coefficient": 0.35
+      },
+      {
+        "tag": "seastone",
+        "coefficient": 0.9
+      },
+      {
+        "tag": "energy_attacks",
+        "coefficient": 0.2,
+        "description": "Awakened magnetism is less effective against non-metallic energy attacks"
+      },
+      {
+        "tag": "haki_conqueror",
+        "coefficient": 0.35
+      }
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "traits": [
+      "human",
+      "male",
+      "devil_fruit_user",
+      "pirate",
+      "haki_user"
+    ],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/one_piece/kid_awakened.jpg",
+    "short_description": "The Kid Pirate captain whose awakened Magnet-Magnet Fruit reshapes metal across a battlefield, co-defeating Big Mom in one of Wano's most spectacular victories."
+  },
+  {
+    "slug": "bonney_distorted_future",
+    "name": "Jewelry Bonney",
+    "verse": "one_piece",
+    "arc_version": "Distorted Future Awakening – Egghead Arc",
+    "power_level": 1534821.772,
+    "martial_ratio": 0.45,
+    "power_tags": [
+      "distorted_future",
+      "age_manipulation_awakened",
+      "paramecia_awakening",
+      "liberated_nika_form",
+      "haki_armament",
+      "body_transformation"
+    ],
+    "strengths": [
+      {
+        "tag": "age_dependent_power",
+        "coefficient": 0.5,
+        "description": "Can de-age opponents to infancy or advance them to decrepit old age"
+      },
+      {
+        "tag": "transformation",
+        "coefficient": 0.4,
+        "description": "Distorted Future manifests hypothetical future versions of herself with impossible abilities"
+      }
+    ],
+    "weaknesses": [
+      {
+        "tag": "sea_water",
+        "coefficient": 0.35
+      },
+      {
+        "tag": "seastone",
+        "coefficient": 0.9
+      },
+      {
+        "tag": "overwhelming_force",
+        "coefficient": 0.4,
+        "description": "Raw power overwhelms her manipulative toolkit"
+      },
+      {
+        "tag": "haki_conqueror",
+        "coefficient": 0.45,
+        "description": "Conqueror's Haki resists age manipulation directly"
+      }
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "traits": [
+      "human",
+      "female",
+      "devil_fruit_user",
+      "pirate",
+      "haki_user"
+    ],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/one_piece/bonney_distorted_future.jpg",
+    "short_description": "Jewelry Bonney awakening her Distorted Future ability to manifest hypothetical future forms — including a Nika-inspired giant transformation — to protect her father Bartholomew Kuma."
   }
 ]

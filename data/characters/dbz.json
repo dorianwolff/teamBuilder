@@ -22,7 +22,7 @@
     "traits": ["saiyan", "male", "ki_user", "martial_artist"],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/dbz/goku_mui.png",
+    "image_path": "assets/characters/dbz/goku_mui.jpg",
     "short_description": "Goku mastering Ultra Instinct, his body moving autonomously to dodge and counter with godly precision beyond conscious thought."
   },
   {
@@ -47,7 +47,7 @@
     "traits": ["saiyan", "male", "ki_user", "martial_artist"],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/dbz/vegeta_ultra_ego.png",
+    "image_path": "assets/characters/dbz/vegeta_ultra_ego.jpg",
     "short_description": "Vegeta unleashing Ultra Ego, a form that grows stronger as he receives damage, embodying the destructive philosophy of the God of Destruction."
   },
   {
@@ -72,7 +72,7 @@
     "traits": ["god_of_destruction", "male", "ki_user", "divine"],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/dbz/beerus.png",
+    "image_path": "assets/characters/dbz/beerus.jpg",
     "short_description": "The God of Destruction of Universe 7 whose Hakai can erase existence itself, operating at a level so far above mortals he rarely fights seriously."
   },
   {
@@ -97,7 +97,7 @@
     "traits": ["angel", "male", "ki_user", "divine"],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/dbz/whis.png",
+    "image_path": "assets/characters/dbz/whis.jpg",
     "short_description": "The Angel attendant and trainer of Beerus who possesses perfected Ultra Instinct and the ability to rewind time, essentially untouchable by any mortal."
   },
   {
@@ -122,7 +122,7 @@
     "traits": ["alien", "male", "ki_user", "martial_artist", "pride_trooper"],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/dbz/jiren.png",
+    "image_path": "assets/characters/dbz/jiren.jpg",
     "short_description": "The Pride Trooper who surpassed the limits of a mortal, described as having a ki that rivals a God of Destruction purely through relentless training."
   },
   {
@@ -147,7 +147,7 @@
     "traits": ["saiyan", "male", "ki_user", "legendary_super_saiyan"],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/dbz/broly_dbs.png",
+    "image_path": "assets/characters/dbz/broly_dbs.jpg",
     "short_description": "The DBS Legendary Super Saiyan who fought Goku and Vegeta to a standstill before forcing them to fuse, his power multiplying the longer the battle continues."
   },
   {
@@ -172,7 +172,7 @@
     "traits": ["half_saiyan", "male", "ki_user", "martial_artist"],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/dbz/gohan_beast.png",
+    "image_path": "assets/characters/dbz/gohan_beast.jpg",
     "short_description": "Gohan's true awakening in Beast Form, unlocking a power even Cell Max could not withstand as his latent potential finally manifests fully."
   },
   {
@@ -197,7 +197,7 @@
     "traits": ["saiyan", "male", "ki_user", "martial_artist"],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/dbz/goku_ssb.png",
+    "image_path": "assets/characters/dbz/goku_ssb.jpg",
     "short_description": "Goku combining Super Saiyan with God ki for SSB, able to further stack Kaioken multipliers for explosive bursts beyond normal godly limits."
   },
   {
@@ -222,7 +222,7 @@
     "traits": ["saiyan", "male", "ki_user", "martial_artist"],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/dbz/vegeta_ssb_evolved.png",
+    "image_path": "assets/characters/dbz/vegeta_ssb_evolved.jpg",
     "short_description": "Vegeta breaking through the ceiling of SSB to create SSB Evolved, representing his own mastery of God ki distinct from imitation."
   },
   {
@@ -246,7 +246,7 @@
     "traits": ["alien", "male", "ki_user"],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/dbz/frieza_black.png",
+    "image_path": "assets/characters/dbz/frieza_black.jpg",
     "short_description": "Frieza after training in a time chamber equivalent, achieving Black Frieza form that one-shot both MUI Goku and Ultra Ego Vegeta."
   },
   {
@@ -270,7 +270,7 @@
     "traits": ["alien", "male", "ki_user"],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/dbz/frieza_golden.png",
+    "image_path": "assets/characters/dbz/frieza_golden.jpg",
     "short_description": "Frieza's evolved Golden form achieved through his first-ever dedicated training, powerful but draining due to his unfamiliarity with the transformation."
   },
   {
@@ -295,7 +295,7 @@
     "traits": ["android", "male", "ki_user", "saiyan_cells", "bio_weapon"],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/dbz/cell_perfect.png",
+    "image_path": "assets/characters/dbz/cell_perfect.jpg",
     "short_description": "The ultimate bio-weapon in Perfect Form, combining the cells of every great warrior to become the most complete fighter of his era."
   },
   {
@@ -321,7 +321,7 @@
     "traits": ["magical_being", "male", "ki_user"],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/dbz/majin_buu_pure.png",
+    "image_path": "assets/characters/dbz/majin_buu_pure.jpg",
     "short_description": "Pure Evil Buu stripped of all good influence, a near-unkillable magical entity whose rubber body regenerates from any injury."
   },
   {
@@ -346,7 +346,7 @@
     "traits": ["namekian", "male", "ki_user", "martial_artist"],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/dbz/piccolo_orange.png",
+    "image_path": "assets/characters/dbz/piccolo_orange.jpg",
     "short_description": "Piccolo after unlocking Orange Piccolo via Shenron, a transformation that elevates him to the level of the gods and rivals Gohan Beast in raw power."
   },
   {
@@ -371,7 +371,7 @@
     "traits": ["android", "male", "no_ki_signature"],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/dbz/android_17_top.png",
+    "image_path": "assets/characters/dbz/android_17_top.jpg",
     "short_description": "Android 17 as Tournament of Power MVP, his infinite energy core eliminating all stamina concerns while his barrier deflects devastating attacks."
   },
   {
@@ -397,7 +397,7 @@
     "traits": ["human", "male", "martial_artist", "non_ki_user", "world_champion", "comedy_tier"],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/dbz/mr_satan.png",
+    "image_path": "assets/characters/dbz/mr_satan.jpg",
     "short_description": "The self-proclaimed savior of Earth and World Martial Arts Champion who defeated Cell — entirely by accident — and whose heart ultimately helped save all of humanity."
   },
   {
@@ -405,7 +405,7 @@
     "name": "Yamcha",
     "verse": "dbz",
     "arc_version": "Baseball Veteran – Super Era",
-    "power_level": 12000,
+    "power_level": 185000,
     "martial_ratio": 0.8,
     "power_tags": ["wolf_fang_fist", "spirit_ball", "ki_blast", "baseball_reflexes"],
     "strengths": [
@@ -425,7 +425,7 @@
       {"trait": "female", "coefficient": 0.15, "description": "Yamcha's legendary bad luck with women — his concentration crumbles around female opponents"}
     ],
     "trait_strengths": [],
-    "image_path": "assets/characters/dbz/yamcha.png",
+    "image_path": "assets/characters/dbz/yamcha.jpg",
     "short_description": "Once a formidable desert bandit, now a beloved baseball player whose Wolf Fang Fist is comically outclassed by godly-ki fighters at every turn."
   },
   {
@@ -433,7 +433,7 @@
     "name": "Videl",
     "verse": "dbz",
     "arc_version": "Z Fighter – Great Saiyaman Saga",
-    "power_level": 8000,
+    "power_level": 18000,
     "martial_ratio": 0.9,
     "power_tags": ["martial_arts", "ki_sensing", "flight", "street_fighting"],
     "strengths": [
@@ -450,7 +450,110 @@
     "traits": ["human", "female", "martial_artist", "ki_user", "beautiful"],
     "trait_weaknesses": [],
     "trait_strengths": [],
-    "image_path": "assets/characters/dbz/videl.png",
+    "image_path": "assets/characters/dbz/videl.jpg",
     "short_description": "Satan City's crime-fighting hero and Gohan's future wife — a talented martial artist who learned to fly and holds her own among Z Fighters through sheer tenacity."
+  },
+  {
+    "slug": "android_18_super",
+    "name": "Android 18",
+    "verse": "dbz",
+    "arc_version": "Tournament Fighter – Super Era",
+    "power_level": 3521047.8820,
+    "martial_ratio": 0.8,
+    "power_tags": ["infinite_energy", "android_acrobatics", "energy_blast", "barrier", "ki_blast_unlimited", "no_ki_signature", "flight"],
+    "strengths": [
+      {"tag": "stamina_drain", "coefficient": 1.0, "description": "Infinite energy reactor — stamina drain has zero effect on an android"},
+      {"tag": "ki_sensing", "coefficient": 0.7, "description": "No ki signature makes her invisible to standard ki detection"},
+      {"tag": "barrier_protection", "coefficient": 0.4}
+    ],
+    "weaknesses": [
+      {"tag": "overwhelming_physical", "coefficient": 0.3},
+      {"tag": "hakai", "coefficient": 0.5},
+      {"tag": "godly_ki", "coefficient": 0.3, "description": "Godly ki attacks surpass her energy output ceiling"}
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "traits": ["android", "female", "no_ki_signature", "beautiful"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/dbz/android_18_super.jpg",
+    "short_description": "Krillin's wife and Tournament of Power competitor whose infinite energy core and precise martial arts make her one of the most reliably dangerous fighters across any ring — never tiring, never slowing."
+  },
+  {
+    "slug": "future_trunks_rage",
+    "name": "Future Trunks",
+    "verse": "dbz",
+    "arc_version": "Super Saiyan Rage – Future Trunks Arc",
+    "power_level": 7234821.5540,
+    "martial_ratio": 0.72,
+    "power_tags": ["super_saiyan_rage", "spirit_sword_trunks", "sword_mastery", "godly_ki_partial", "final_hope_slash", "flight", "ki_blast"],
+    "strengths": [
+      {"tag": "physical_attacks", "coefficient": 0.5},
+      {"tag": "energy_attacks", "coefficient": 0.5},
+      {"tag": "sword", "coefficient": 0.4, "description": "Trunks' Spirit Sword is a godly-ki infused energy blade that can cut through most attacks"}
+    ],
+    "weaknesses": [
+      {"tag": "stamina_drain", "coefficient": 0.3, "description": "SSJ Rage is an improvised hybrid form — less efficient than mastered god forms"},
+      {"tag": "overwhelming_godly_ki", "coefficient": 0.3},
+      {"tag": "hakai", "coefficient": 0.5}
+    ],
+    "cannot_win_against": ["whis", "beerus"],
+    "draw_conditions": [],
+    "traits": ["saiyan", "male", "ki_user", "martial_artist", "swordsman"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/dbz/future_trunks_rage.jpg",
+    "short_description": "The time-travelling Saiyan from a ruined future who powered through God-tier opponents on willpower alone — his Spirit Sword channeling the collected hope of humanity to match Merged Zamasu."
+  },
+  {
+    "slug": "hit_universe6",
+    "name": "Hit",
+    "verse": "dbz",
+    "arc_version": "Universe 6 Assassin – Tournament of Power",
+    "power_level": 8134821.2270,
+    "martial_ratio": 0.7,
+    "power_tags": ["time_skip", "pure_progress", "icy_glare", "assassination_arts", "time_manipulation", "flight", "godly_ki"],
+    "strengths": [
+      {"tag": "speed", "coefficient": 0.7, "description": "Time Skip removes him from the timeline — conventional speed tracking is irrelevant"},
+      {"tag": "physical_attacks", "coefficient": 0.6, "description": "His one-hit assassination strike targets vital points with time-skipped precision"},
+      {"tag": "detection", "coefficient": 0.5, "description": "Time Skip makes him impossible to react to normally"}
+    ],
+    "weaknesses": [
+      {"tag": "precognition", "coefficient": 0.5, "description": "Ultra Instinct and similar auto-response abilities can react within the time skip window"},
+      {"tag": "time_manipulation_counter", "coefficient": 0.5, "description": "Canon: Goku learned to move within Hit's time freeze — the ability becomes less effective as opponents adapt"},
+      {"tag": "overwhelming_ki", "coefficient": 0.3, "description": "Raw ki output at Jiren's level overwhelms Time Skip duration"}
+    ],
+    "cannot_win_against": ["whis"],
+    "draw_conditions": [],
+    "traits": ["alien", "male", "ki_user", "assassin"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/dbz/hit_universe6.jpg",
+    "short_description": "Universe 6's greatest assassin whose Time Skip pauses time itself for fractions of a second — long enough to end any fight — and who grows stronger in real time during every confrontation."
+  },
+  {
+    "slug": "krillin_super",
+    "name": "Krillin",
+    "verse": "dbz",
+    "arc_version": "Z Fighter – Super Era",
+    "power_level": 312047.4410,
+    "martial_ratio": 0.78,
+    "power_tags": ["destructo_disc", "solar_flare", "kamehameha", "ki_blast", "flight", "kienzan"],
+    "strengths": [
+      {"tag": "detection_evasion", "coefficient": 0.4, "description": "Solar Flare blinds ki-sensing opponents, including those with advanced senses"},
+      {"tag": "physical_attacks", "coefficient": 0.3, "description": "Destructo Disc can cut through opponents stronger than Krillin — it has no ki-power floor requirement"}
+    ],
+    "weaknesses": [
+      {"tag": "godly_ki", "coefficient": 0.9, "description": "Krillin's overall power level is far below the God tier — godly attacks are essentially one-shots"},
+      {"tag": "overwhelming_speed", "coefficient": 0.5},
+      {"tag": "energy_shields", "coefficient": 0.4, "description": "Destructo Disc effectiveness drops heavily against energy barrier users"}
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "traits": ["human", "male", "ki_user", "martial_artist"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/dbz/krillin_super.jpg",
+    "short_description": "Earth's strongest human and master of the Destructo Disc — the only ki blade that can cut through fighters far beyond his power level — who survives by outsmarting opponents rather than overpowering them."
   }
 ]
