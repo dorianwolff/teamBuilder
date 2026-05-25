@@ -260,11 +260,10 @@ function RankedTab({ supabase, user, profile, elo, delta, channelRef, requireAut
     setAssigned(verse)
     setIsSearching(true)
 
-    // Use delete + insert to avoid UNIQUE(user_id,status) 409
+    // Remove ALL prior queue entries (including stale 'matched' rows) to avoid UNIQUE constraint 409
     await supabase.from('matchmaking_queue')
       .delete()
       .eq('user_id', user!.id)
-      .in('status', ['waiting', 'cancelled'])
 
     const { error } = await supabase.from('matchmaking_queue')
       .insert({ user_id: user!.id, elo, verse, status: 'waiting' })

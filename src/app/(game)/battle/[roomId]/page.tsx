@@ -1,10 +1,10 @@
 'use client'
 
-import { useEffect, useState, use } from 'react'
+import { useEffect, useState, useRef, use } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import toast from 'react-hot-toast'
-import { Swords, Trophy, ChevronRight, Info, RotateCcw, Users } from 'lucide-react'
+import { Swords, Trophy, ChevronRight, Info, RotateCcw, Users, Flag, Loader2 } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import { useGameRoom } from '@/hooks/useGameRoom'
 import { useAuth } from '@/hooks/useAuth'
@@ -19,12 +19,11 @@ import type { BattleState, BattleRound } from '@/types/game'
 import type { Character, Verse } from '@/types/character'
 import { cn } from '@/lib/utils/cn'
 
-// ── Shared constants (mirrors solo page) ─────────────────────────────────────
+// ── Shared constants ──────────────────────────────────────────────────────────
 const STRIP_W       = 110
 const STRIP_H       = 154
 const STRIP_OVERLAP = 45
 
-// Row of face-down cards for the opponent (count only, no character data shown)
 function OppRemainingStrip({ count }: { count: number }) {
   return (
     <div className="flex justify-center">
@@ -55,14 +54,29 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
   const [submitting, setSubmitting]         = useState(false)
   const [resultModal, setResultModal]       = useState<BattleRound | null>(null)
   const [playingAgain, setPlayingAgain]     = useState(false)
+  const [rematchCountdown, setRematchCountdown] = useState<number | null>(null)
 
-  const battle = room?.battle_state as BattleState | null
-  const isA    = room?.player_a_id === user?.id
+  // Capture the full roster at battle start; characters get removed after each round
+  // so we store them here to look up which cards were played in result modals
+  const [allBattleChars, setAllBattleChars] = useState<Character[]>([])
+  const resettingRef = useRef(false)
 
+  const battle   = room?.battle_state as BattleState | null
+  const isA      = room?.player_a_id === user?.id
   const myState  = battle ? (isA ? battle.player_a : battle.player_b) : null
   const oppState = battle ? (isA ? battle.player_b : battle.player_a) : null
 
-  // Show round result modal when round resolves
+  // Capture all characters when battle first loads (before any are removed)
+  useEffect(() => {
+    if (!battle || allBattleChars.length > 0) return
+    setAllBattleChars([
+      ...battle.player_a.remaining_characters,
+      ...battle.player_b.remaining_characters,
+    ])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [!!battle])
+
+  // Show round result modal whenever a round resolves
   useEffect(() => {
     if (!battle) return
     const last = battle.rounds[battle.rounds.length - 1]
@@ -70,17 +84,53 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [battle?.rounds.length])
 
-  // Ranked: auto-redirect; Casual: wait for user action; Play Again: navigate
+  // Handle room status changes
   useEffect(() => {
-    if (room?.status === 'finished' && room.mode === 'ranked') {
+    if (!room) return
+    if (room.status === 'finished' && room.mode === 'ranked') {
       const t = setTimeout(() => router.push('/lobby'), 4000)
       return () => clearTimeout(t)
     }
-    if (room?.status === 'drafting') {
-      router.push(`/draft/${roomId}`)
+    if (room.status === 'drafting') router.push(`/draft/${roomId}`)
+    if (room.status === 'abandoned') {
+      toast.error('Match ended early')
+      router.push('/lobby')
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [room?.status])
+
+  // Player A detects when both players voted rematch and resets the game
+  useEffect(() => {
+    if (!battle?.rematch_votes || !room || room.mode !== 'casual' ||
+        room.status !== 'finished' || !isA || resettingRef.current) return
+    const votes = battle.rematch_votes
+    if (votes.includes(room.player_a_id) && votes.includes(room.player_b_id ?? '')) {
+      resettingRef.current = true
+      handlePlayAgainReset()
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [battle?.rematch_votes?.length])
+
+  // Countdown timer after voting Play Again — if opponent doesn't respond, redirect
+  useEffect(() => {
+    if (rematchCountdown === null) return
+    if (rematchCountdown <= 0) { router.push('/lobby'); return }
+    const t = setTimeout(() => setRematchCountdown(c => (c ?? 1) - 1), 1000)
+    return () => clearTimeout(t)
+  }, [rematchCountdown, router])
+
+  // Register beforeunload forfeit — fires when player closes tab/browser mid-game
+  useEffect(() => {
+    const gameOver = room?.status === 'finished' || room?.status === 'abandoned'
+    if (gameOver || !battle || !room) return
+    const oppId = isA ? room.player_b_id : room.player_a_id
+    if (!oppId) return
+    const payload = JSON.stringify({ roomId, winnerId: oppId })
+    const onUnload = () => navigator.sendBeacon?.('/api/abandon-match', payload)
+    window.addEventListener('beforeunload', onUnload)
+    return () => window.removeEventListener('beforeunload', onUnload)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [room?.status, !!battle, isA, roomId])
 
   // ── Confirm fighter selection ─────────────────────────────────────────────
 
@@ -91,7 +141,7 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
       const supabase = createClient()
       const updatedBattle: BattleState = {
         ...battle,
-        player_a: isA ? { ...battle.player_a, selected_character: selectedCharId, confirmed: true } : battle.player_a,
+        player_a: isA  ? { ...battle.player_a, selected_character: selectedCharId, confirmed: true } : battle.player_a,
         player_b: !isA ? { ...battle.player_b, selected_character: selectedCharId, confirmed: true } : battle.player_b,
       }
       const otherConfirmed = isA ? battle.player_b.confirmed : battle.player_a.confirmed
@@ -106,7 +156,6 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
         updates.winner_id   = finalBattle.winner_id
         updates.finished_at = new Date().toISOString()
 
-        // Discover all characters used in this match
         if (profile && myState) {
           await supabase.from('profiles').update({
             discovered_characters: Array.from(new Set([
@@ -130,7 +179,87 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
     }
   }
 
-  // ── Loading state ─────────────────────────────────────────────────────────
+  // ── Surrender ──────────────────────────────────────────────────────────────
+
+  async function handleSurrender() {
+    if (!user || !room) return
+    const oppId = isA ? room.player_b_id : room.player_a_id
+    if (!oppId) return
+    try {
+      const supabase = createClient()
+      await supabase.from('game_rooms').update({
+        status:      'finished',
+        winner_id:   oppId,
+        finished_at: new Date().toISOString(),
+      }).eq('id', roomId)
+    } catch {
+      toast.error('Surrender failed — try again')
+    }
+  }
+
+  // ── Play Again (coordinated) ───────────────────────────────────────────────
+
+  async function handlePlayAgainReset() {
+    if (!room?.player_b_id) return
+    try {
+      const supabase = createClient()
+      const { data: chars } = room.verse === 'all'
+        ? await supabase.from('characters').select('*')
+        : await supabase.from('characters').select('*').eq('verse', room.verse)
+      const draft = buildInitialDraftState(
+        roomId, room.player_a_id, room.player_b_id,
+        room.verse as Verse | 'all', (chars ?? []) as Character[],
+      )
+      await supabase.from('game_rooms').update({
+        status:       'drafting',
+        draft_state:  draft,
+        battle_state: null,
+        winner_id:    null,
+        elo_delta_a:  null,
+        elo_delta_b:  null,
+        started_at:   new Date().toISOString(),
+        finished_at:  null,
+      }).eq('id', roomId)
+      // Navigation triggered automatically by room.status === 'drafting' effect
+    } catch {
+      toast.error('Failed to restart — try again')
+      resettingRef.current = false
+      setPlayingAgain(false)
+    }
+  }
+
+  async function handleVotePlayAgain() {
+    if (!user || !battle || !room || playingAgain) return
+    setPlayingAgain(true)
+    try {
+      const supabase = createClient()
+      // Read fresh battle state to reduce race-condition window
+      const { data: fresh } = await supabase
+        .from('game_rooms')
+        .select('battle_state')
+        .eq('id', roomId)
+        .single()
+      const currentVotes = ((fresh?.battle_state as BattleState | null)?.rematch_votes) ?? []
+      const newVotes     = Array.from(new Set([...currentVotes, user.id]))
+      const bothVoted    = newVotes.includes(room.player_a_id) && newVotes.includes(room.player_b_id ?? '')
+
+      if (bothVoted && isA) {
+        resettingRef.current = true
+        await handlePlayAgainReset()
+      } else {
+        await supabase.from('game_rooms').update({
+          battle_state: { ...battle, rematch_votes: newVotes },
+        }).eq('id', roomId)
+        setRematchCountdown(30)
+        setPlayingAgain(false)
+      }
+    } catch {
+      toast.error('Failed — try again')
+      setPlayingAgain(false)
+    }
+  }
+
+  // ── Loading ────────────────────────────────────────────────────────────────
 
   if (!room || !battle || !myState || !oppState) {
     return (
@@ -145,18 +274,34 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
   const oppScore     = battle.scores[isA ? 'b' : 'a']
   const selectedChar = myState.remaining_characters.find(c => c.id === selectedCharId) ?? null
 
+  const rematchVotes = battle.rematch_votes ?? []
+  const iVoted       = rematchVotes.includes(user?.id ?? '')
+  const oppVoted     = rematchVotes.includes(isA ? (room.player_b_id ?? '') : room.player_a_id)
+
   return (
     <div className="h-screen flex flex-col overflow-hidden select-none bg-void-950">
 
-      {/* ── TOP: Opponent's remaining (face-down) ── */}
-      <div className="flex flex-col items-center px-4 pt-3 pb-2 border-b border-white/5 shrink-0">
-        <div className="flex items-center gap-1.5 mb-2">
-          <Users size={10} className="text-white/30" />
-          <p className="text-[10px] text-white/30 uppercase tracking-widest">
-            Opponent · {oppState.remaining_characters.length} remaining
-          </p>
+      {/* ── TOP: Opponent's remaining (face-down) + surrender ── */}
+      <div className="flex items-start px-4 pt-3 pb-2 border-b border-white/5 shrink-0 gap-2">
+        <div className="flex flex-col items-center flex-1">
+          <div className="flex items-center gap-1.5 mb-2">
+            <Users size={10} className="text-white/30" />
+            <p className="text-[10px] text-white/30 uppercase tracking-widest">
+              Opponent · {oppState.remaining_characters.length} remaining
+            </p>
+          </div>
+          <OppRemainingStrip count={oppState.remaining_characters.length} />
         </div>
-        <OppRemainingStrip count={oppState.remaining_characters.length} />
+
+        {!gameOver && (
+          <button
+            onClick={handleSurrender}
+            className="shrink-0 flex items-center gap-1 text-[10px] text-white/20 hover:text-crimson-400 transition-colors px-2 py-1.5 rounded-lg hover:bg-crimson-500/10"
+          >
+            <Flag size={10} />
+            <span className="hidden sm:inline">Surrender</span>
+          </button>
+        )}
       </div>
 
       {/* ── MIDDLE: Score + round dots + card preview ── */}
@@ -231,7 +376,6 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
         {myState.confirmed && (
           <p className="text-white/30 text-xs sm:hidden animate-pulse">Waiting for opponent…</p>
         )}
-
       </div>
 
       {/* ── BOTTOM: My hand + confirm button ── */}
@@ -288,7 +432,7 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
           <RoundResultModal
             round={resultModal}
             myUserId={user?.id ?? ''}
-            allChars={[...myState.remaining_characters, ...oppState.remaining_characters]}
+            allChars={allBattleChars}
             isA={isA}
             onClose={() => setResultModal(null)}
           />
@@ -332,44 +476,40 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
               {room.mode === 'ranked' ? (
                 <p className="text-white/40 text-sm mt-2">Returning to lobby…</p>
               ) : (
-                <div className="flex flex-col gap-3 mt-6 min-w-[200px]">
-                  <button
-                    disabled={playingAgain}
-                    onClick={async () => {
-                      if (!room.player_b_id) return
-                      setPlayingAgain(true)
-                      try {
-                        const supabase = createClient()
-                        const { data: chars } = room.verse === 'all'
-                          ? await supabase.from('characters').select('*')
-                          : await supabase.from('characters').select('*').eq('verse', room.verse)
-                        const draft = buildInitialDraftState(
-                          roomId, room.player_a_id, room.player_b_id,
-                          room.verse as Verse | 'all', (chars ?? []) as Character[],
-                        )
-                        await supabase.from('game_rooms').update({
-                          status:       'drafting',
-                          draft_state:  draft,
-                          battle_state: null,
-                          winner_id:    null,
-                          elo_delta_a:  null,
-                          elo_delta_b:  null,
-                          started_at:   new Date().toISOString(),
-                          finished_at:  null,
-                        }).eq('id', roomId)
-                        router.push(`/draft/${roomId}`)
-                      } catch {
-                        toast.error('Failed to restart — try again')
-                        setPlayingAgain(false)
-                      }
-                    }}
-                    className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-gold-500/15 text-gold-400 border border-gold-500/30 hover:bg-gold-500/25 transition-colors font-semibold disabled:opacity-50"
-                  >
-                    {playingAgain
-                      ? <><span className="animate-spin inline-block">⟳</span> Starting…</>
-                      : <><RotateCcw size={16} /> Play Again</>
-                    }
-                  </button>
+                <div className="flex flex-col gap-3 mt-6 min-w-[220px]">
+                  {iVoted ? (
+                    /* Voted — show waiting state with countdown */
+                    <div className="flex items-center justify-center gap-2 py-3 rounded-xl bg-gold-500/10 border border-gold-500/20 text-gold-400/80 text-sm">
+                      <Loader2 size={14} className="animate-spin shrink-0" />
+                      <span>
+                        Waiting for opponent
+                        {rematchCountdown !== null && (
+                          <span className="text-gold-400/50 ml-1">({rematchCountdown}s)</span>
+                        )}
+                      </span>
+                    </div>
+                  ) : (
+                    /* Not voted yet */
+                    <button
+                      disabled={playingAgain}
+                      onClick={handleVotePlayAgain}
+                      className={cn(
+                        'flex items-center justify-center gap-2 w-full py-3 rounded-xl border font-semibold transition-all disabled:opacity-50',
+                        oppVoted
+                          ? 'bg-gold-500/25 text-gold-400 border-gold-500/50'
+                          : 'bg-gold-500/15 text-gold-400 border-gold-500/30 hover:bg-gold-500/25',
+                      )}
+                    >
+                      {playingAgain ? (
+                        <><Loader2 size={14} className="animate-spin" /> Starting…</>
+                      ) : oppVoted ? (
+                        <><RotateCcw size={16} /> Opponent wants a rematch!</>
+                      ) : (
+                        <><RotateCcw size={16} /> Play Again</>
+                      )}
+                    </button>
+                  )}
+
                   <button
                     onClick={() => router.push('/lobby')}
                     className="w-full py-2.5 rounded-xl text-white/40 hover:text-white/70 transition-colors text-sm"
@@ -392,7 +532,6 @@ function RoundResultModal({
   round, myUserId, allChars, isA, onClose,
 }: { round: BattleRound; myUserId: string; allChars: Character[]; isA: boolean; onClose: () => void }) {
   const iWon    = round.winner_id === myUserId
-  // Reconstruct which characters were sent — they may no longer be in remaining
   const charA   = allChars.find(c => c.id === round.player_a_pick)
   const charB   = allChars.find(c => c.id === round.player_b_pick)
   const myChar  = isA ? charA : charB
@@ -421,12 +560,16 @@ function RoundResultModal({
       <div className="flex justify-center gap-8 text-sm font-mono mb-4">
         <div>
           <p className="text-white/30 text-xs mb-0.5">Your score</p>
-          <p className="text-white font-bold">{formatPowerLevel(isA ? round.effective_score_a : round.effective_score_b)}</p>
+          <p className="text-white font-bold">
+            {formatPowerLevel(isA ? round.effective_score_a : round.effective_score_b)}
+          </p>
         </div>
         <div className="text-white/20">vs</div>
         <div>
           <p className="text-white/30 text-xs mb-0.5">Their score</p>
-          <p className="text-white font-bold">{formatPowerLevel(isA ? round.effective_score_b : round.effective_score_a)}</p>
+          <p className="text-white font-bold">
+            {formatPowerLevel(isA ? round.effective_score_b : round.effective_score_a)}
+          </p>
         </div>
       </div>
 
@@ -446,7 +589,10 @@ function RoundResultModal({
   )
 }
 
-// ── Round resolution (mirrors solo logic) ────────────────────────────────────
+// ── Round resolution ──────────────────────────────────────────────────────────
+//
+// resolveBattle() always puts the WINNER's score in effective_score_a.
+// We normalize here so that effective_score_a always = player_a's actual score.
 
 function resolveCurrentRound(battle: BattleState): BattleState {
   const charAId = battle.player_a.selected_character!
@@ -454,9 +600,15 @@ function resolveCurrentRound(battle: BattleState): BattleState {
   const charA   = battle.player_a.remaining_characters.find(c => c.id === charAId)!
   const charB   = battle.player_b.remaining_characters.find(c => c.id === charBId)!
 
-  const result   = resolveBattle(charA, charB)
-  const winnerId = result.winner?.id === charA.id ? battle.player_a.user_id
-    : result.winner?.id === charB.id             ? battle.player_b.user_id
+  const result    = resolveBattle(charA, charB)
+  const charAWins = !result.is_draw && result.winner?.id === charA.id
+
+  // Normalize: score_a = player A's actual score, score_b = player B's actual score
+  const scoreA = charAWins || result.is_draw ? result.effective_score_a : result.effective_score_b
+  const scoreB = charAWins || result.is_draw ? result.effective_score_b : result.effective_score_a
+
+  const winnerId  = charAWins             ? battle.player_a.user_id
+    : !result.is_draw                     ? battle.player_b.user_id
     : null
 
   const newScores = {
@@ -472,8 +624,8 @@ function resolveCurrentRound(battle: BattleState): BattleState {
     player_a_pick:     charAId,
     player_b_pick:     charBId,
     winner_id:         winnerId,
-    effective_score_a: result.effective_score_a,
-    effective_score_b: result.effective_score_b,
+    effective_score_a: scoreA,
+    effective_score_b: scoreB,
     modifiers_applied: result.modifiers,
     resolved_at:       new Date().toISOString(),
     phase:             'result',

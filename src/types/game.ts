@@ -83,6 +83,7 @@ export interface BattleState {
   scores: { a: number; b: number }   // match points (max 3 each)
   phase: BattlePhase
   winner_id: string | null
+  rematch_votes?: string[]           // user IDs that voted to play again (casual only)
 }
 
 export interface BattlePlayerState {

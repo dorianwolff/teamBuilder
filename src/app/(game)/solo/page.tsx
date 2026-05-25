@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Swords, Bot, Trophy, ChevronRight, RotateCcw, Info } from 'lucide-react'
+import { Swords, Bot, Trophy, ChevronRight, RotateCcw, Info, Flag } from 'lucide-react'
 import toast from 'react-hot-toast'
 import { createClient } from '@/lib/supabase/client'
 import { useAuth } from '@/hooks/useAuth'
@@ -284,6 +284,13 @@ export default function SoloPage() {
     setAiHiddenSlugs(new Set())
   }
 
+  function handleSurrender() {
+    if (user && profile) saveResult('ai', playerTeam, aiTeam, profile)
+    setWinner('ai')
+    setResultRound(null)
+    setPhase('result')
+  }
+
   // ── Render ───────────────────────────────────────────────────────────────────
 
   if (phase === 'setup') {
@@ -305,6 +312,7 @@ export default function SoloPage() {
         setSelectedSlot={setSelectedSlot}
         onConfirm={handlePlayerPick}
         aiThinking={aiThinking}
+        onAbandon={resetGame}
       />
     )
   }
@@ -321,6 +329,7 @@ export default function SoloPage() {
           selectedCharId={selectedCharId}
           setSelectedCharId={setSelectedCharId}
           onConfirm={confirmBattlePick}
+          onSurrender={handleSurrender}
         />
         <Modal
           open={!!resultRound}
@@ -474,12 +483,13 @@ function TeamStrip({ cards, hiddenSlugs, total = DRAFT_ROUNDS, reversed = false 
 
 // ── Draft screen ──────────────────────────────────────────────────────────────
 
-function DraftScreen({ draft, selectedSlot, setSelectedSlot, onConfirm, aiThinking }: {
+function DraftScreen({ draft, selectedSlot, setSelectedSlot, onConfirm, aiThinking, onAbandon }: {
   draft: DraftState
   selectedSlot: number | null
   setSelectedSlot: (n: number | null) => void
   onConfirm: () => void
   aiThinking: boolean
+  onAbandon: () => void
 }) {
   const isMyTurn  = draft.current_picker_id === PLAYER_ID && !aiThinking
   const round     = draft.current_round
@@ -518,13 +528,22 @@ function DraftScreen({ draft, selectedSlot, setSelectedSlot, onConfirm, aiThinki
   return (
     <div className="h-screen flex flex-col overflow-hidden select-none bg-void-950">
 
-      {/* ── TOP: AI accumulated team ── */}
-      <div className="flex flex-col items-center px-4 pt-3 pb-2 border-b border-white/5 shrink-0">
-        <div className="flex items-center gap-1.5 mb-2">
-          <Bot size={10} className="text-white/30" />
-          <p className="text-[10px] text-white/30 uppercase tracking-widest">AI Team</p>
+      {/* ── TOP: AI accumulated team + abandon ── */}
+      <div className="flex items-start px-4 pt-3 pb-2 border-b border-white/5 shrink-0 gap-2">
+        <div className="flex flex-col items-center flex-1">
+          <div className="flex items-center gap-1.5 mb-2">
+            <Bot size={10} className="text-white/30" />
+            <p className="text-[10px] text-white/30 uppercase tracking-widest">AI Team</p>
+          </div>
+          <TeamStrip cards={aiCards} total={DRAFT_ROUNDS} />
         </div>
-        <TeamStrip cards={aiCards} total={DRAFT_ROUNDS} />
+        <button
+          onClick={onAbandon}
+          className="shrink-0 flex items-center gap-1 text-[10px] text-white/20 hover:text-crimson-400 transition-colors px-2 py-1.5 rounded-lg hover:bg-crimson-500/10"
+        >
+          <Flag size={10} />
+          <span className="hidden sm:inline">Abandon</span>
+        </button>
       </div>
 
       {/* ── MIDDLE: Round info + pair + confirm ── */}
@@ -604,27 +623,37 @@ function DraftScreen({ draft, selectedSlot, setSelectedSlot, onConfirm, aiThinki
 
 // ── Battle screen ─────────────────────────────────────────────────────────────
 
-function BattleScreen({ playerRemaining, aiRemaining, aiHiddenSlugs, scores, rounds, selectedCharId, setSelectedCharId, onConfirm }: {
+function BattleScreen({ playerRemaining, aiRemaining, aiHiddenSlugs, scores, rounds, selectedCharId, setSelectedCharId, onConfirm, onSurrender }: {
   playerRemaining: Character[]; aiRemaining: Character[]
   aiHiddenSlugs: Set<string>
   scores: { player: number; ai: number }; rounds: BattleRound[]
   selectedCharId: string | null; setSelectedCharId: (id: string | null) => void
   onConfirm: () => void
+  onSurrender: () => void
 }) {
   const selectedChar = playerRemaining.find(c => c.id === selectedCharId) ?? null
 
   return (
     <div className="h-screen flex flex-col overflow-hidden select-none bg-void-950">
 
-      {/* ── TOP: AI remaining fighters ── */}
-      <div className="flex flex-col items-center px-4 pt-3 pb-2 border-b border-white/5 shrink-0">
-        <div className="flex items-center gap-1.5 mb-2">
-          <Bot size={10} className="text-white/30" />
-          <p className="text-[10px] text-white/30 uppercase tracking-widest">
-            {AI_NAME} · {aiRemaining.length} remaining
-          </p>
+      {/* ── TOP: AI remaining fighters + surrender ── */}
+      <div className="flex items-start px-4 pt-3 pb-2 border-b border-white/5 shrink-0 gap-2">
+        <div className="flex flex-col items-center flex-1">
+          <div className="flex items-center gap-1.5 mb-2">
+            <Bot size={10} className="text-white/30" />
+            <p className="text-[10px] text-white/30 uppercase tracking-widest">
+              {AI_NAME} · {aiRemaining.length} remaining
+            </p>
+          </div>
+          <TeamStrip cards={aiRemaining} hiddenSlugs={aiHiddenSlugs} total={aiRemaining.length} />
         </div>
-        <TeamStrip cards={aiRemaining} hiddenSlugs={aiHiddenSlugs} total={aiRemaining.length} />
+        <button
+          onClick={onSurrender}
+          className="shrink-0 flex items-center gap-1 text-[10px] text-white/20 hover:text-crimson-400 transition-colors px-2 py-1.5 rounded-lg hover:bg-crimson-500/10"
+        >
+          <Flag size={10} />
+          <span className="hidden sm:inline">Surrender</span>
+        </button>
       </div>
 
       {/* ── MIDDLE: Score + round dots + card preview (desktop) ── */}

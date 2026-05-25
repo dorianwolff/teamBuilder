@@ -4,7 +4,7 @@ import { useEffect, useState, use } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import toast from 'react-hot-toast'
-import { Users, ChevronRight } from 'lucide-react'
+import { Users, ChevronRight, Flag } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import { useGameRoom } from '@/hooks/useGameRoom'
 import { useAuth } from '@/hooks/useAuth'
@@ -119,6 +119,7 @@ export default function DraftPage({ params }: { params: Promise<{ roomId: string
 
   const [selectedSlot, setSelectedSlot] = useState<number | null>(null)
   const [submitting, setSubmitting]     = useState(false)
+  const [opponentLeft, setOpponentLeft] = useState(false)
 
   const draft    = room?.draft_state as DraftState | null
   const myId     = user?.id
@@ -126,8 +127,12 @@ export default function DraftPage({ params }: { params: Promise<{ roomId: string
 
   // Navigate to battle when draft completes
   useEffect(() => {
-    if (room?.status === 'battling') router.push(`/battle/${roomId}`)
-  }, [room?.status, roomId, router])
+    if (!room) return
+    if (room.status === 'battling') router.push(`/battle/${roomId}`)
+    if (room.status === 'abandoned') { toast.error('Match ended'); router.push('/lobby') }
+    // Opponent (player_b) left — room reset to 'waiting'; player_a waits for a new challenger
+    if (room.status === 'waiting' && room.player_a_id === myId) setOpponentLeft(true)
+  }, [room?.status, roomId, router, myId, room?.player_a_id])
 
   async function handlePick() {
     if (selectedSlot === null || !user || !draft || !isMyTurn || submitting) return
@@ -148,6 +153,27 @@ export default function DraftPage({ params }: { params: Promise<{ roomId: string
     } finally {
       setSubmitting(false)
     }
+  }
+
+  // ── Abandon draft ─────────────────────────────────────────────────────────────
+
+  async function handleAbandon() {
+    if (!room || !user) return
+    const supabase   = createClient()
+    const amPlayerB  = room.player_b_id === user.id
+    if (amPlayerB) {
+      // Player B leaves → room goes back to waiting so Player A can get a new opponent
+      await supabase.from('game_rooms').update({
+        player_b_id: null,
+        status:      'waiting',
+        draft_state: null,
+        started_at:  null,
+      }).eq('id', room.id)
+    } else {
+      // Player A abandons → room is done
+      await supabase.from('game_rooms').update({ status: 'abandoned' }).eq('id', room.id)
+    }
+    router.push('/lobby')
   }
 
   // ── Loading state ────────────────────────────────────────────────────────────
@@ -181,13 +207,35 @@ export default function DraftPage({ params }: { params: Promise<{ roomId: string
   return (
     <div className="h-screen flex flex-col overflow-hidden select-none bg-void-950">
 
-      {/* ── TOP: Opponent's accumulated picks ── */}
-      <div className="flex flex-col items-center px-4 pt-3 pb-2 border-b border-white/5 shrink-0">
-        <div className="flex items-center gap-1.5 mb-2">
-          <Users size={10} className="text-white/30" />
-          <p className="text-[10px] text-white/30 uppercase tracking-widest">Opponent</p>
+      {/* ── Opponent left overlay ── */}
+      {opponentLeft && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
+          <div className="text-center p-8 rounded-2xl bg-void-900 border border-white/10 max-w-sm w-full">
+            <p className="text-lg font-semibold text-white mb-2">Opponent left the game</p>
+            <p className="text-sm text-white/40 mb-6">
+              Waiting for a new challenger to join your room…
+            </p>
+            <Button variant="ghost" onClick={() => router.push('/lobby')}>Back to Lobby</Button>
+          </div>
         </div>
-        <OppStrip cards={oppCards} total={DRAFT_ROUNDS} />
+      )}
+
+      {/* ── TOP: Opponent's accumulated picks + abandon ── */}
+      <div className="flex items-start px-4 pt-3 pb-2 border-b border-white/5 shrink-0 gap-2">
+        <div className="flex flex-col items-center flex-1">
+          <div className="flex items-center gap-1.5 mb-2">
+            <Users size={10} className="text-white/30" />
+            <p className="text-[10px] text-white/30 uppercase tracking-widest">Opponent</p>
+          </div>
+          <OppStrip cards={oppCards} total={DRAFT_ROUNDS} />
+        </div>
+        <button
+          onClick={handleAbandon}
+          className="shrink-0 flex items-center gap-1 text-[10px] text-white/20 hover:text-crimson-400 transition-colors px-2 py-1.5 rounded-lg hover:bg-crimson-500/10"
+        >
+          <Flag size={10} />
+          <span className="hidden sm:inline">Abandon</span>
+        </button>
       </div>
 
       {/* ── MIDDLE: Round info + pair + confirm ── */}
