@@ -2060,5 +2060,638 @@
     "trait_strengths": [],
     "image_path": "assets/characters/one_piece/bonney_distorted_future.jpg",
     "short_description": "Jewelry Bonney awakening her Distorted Future ability to manifest hypothetical future forms — including a Nika-inspired giant transformation — to protect her father Bartholomew Kuma."
+  },
+  {
+    "slug": "rayleigh",
+    "name": "Silvers Rayleigh",
+    "verse": "one_piece",
+    "arc_version": "Dark King — Post-Timeskip",
+    "power_level": 6734821,
+    "martial_ratio": 0.88,
+    "power_tags": [
+      "haki_mastery",
+      "conqueror_haki",
+      "observation_haki_advanced",
+      "armament_haki_advanced",
+      "roger_era_veteran",
+      "sword",
+      "speed"
+    ],
+    "strengths": [
+      {
+        "tag": "logia_intangibility",
+        "coefficient": 0.9,
+        "description": "Advanced Armament Haki coats attacks at the atomic level — logia bodies cannot remain intangible against it"
+      },
+      {
+        "tag": "devil_fruit",
+        "coefficient": 0.4,
+        "description": "Rayleigh trained under Roger who fought every DF user — extensive knowledge of Devil Fruit counters"
+      },
+      {
+        "tag": "illusion",
+        "coefficient": 0.5,
+        "description": "Advanced Observation Haki sees through deception and illusions"
+      }
+    ],
+    "weaknesses": [
+      {
+        "tag": "age_drain",
+        "coefficient": 0.3,
+        "description": "His extreme age means prolonged fights drain him faster than prime combatants"
+      },
+      {
+        "tag": "overwhelming_youth",
+        "coefficient": 0.2
+      }
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "traits": [
+      "human",
+      "male",
+      "haki_user",
+      "pirate",
+      "roger_crew",
+      "swordsman"
+    ],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/one_piece/rayleigh.jpg",
+    "short_description": "Roger's first mate and the 'Dark King' who taught Luffy Haki. His mastery of all three Haki types is described as far exceeding the Marine Admirals — even in old age."
+  },
+  {
+    "slug": "boa_hancock",
+    "name": "Boa Hancock",
+    "verse": "one_piece",
+    "arc_version": "Pirate Empress — Marineford",
+    "power_level": 2647293,
+    "martial_ratio": 0.7,
+    "power_tags": [
+      "love_love_fruit",
+      "petrification",
+      "conqueror_haki",
+      "armament_haki",
+      "kicking_mastery",
+      "snake_dance",
+      "perfume_femur"
+    ],
+    "strengths": [
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.5,
+        "description": "Infuses Haki into kicks that can shatter stone and petrified opponents alike"
+      },
+      {
+        "tag": "taijutsu",
+        "coefficient": 0.4,
+        "description": "Snake Princess martial art style overwhelms conventional close-range fighters"
+      }
+    ],
+    "weaknesses": [
+      {
+        "tag": "haki_conqueror",
+        "coefficient": 0.3,
+        "description": "Conqueror's Haki wielders are naturally resistant to her petrification aura"
+      },
+      {
+        "tag": "rubber",
+        "coefficient": 0.8,
+        "description": "Love-Love fruit cannot affect a pure-hearted rubber person — her trump card is useless"
+      },
+      {
+        "tag": "observation_haki_advanced",
+        "coefficient": 0.3
+      }
+    ],
+    "cannot_win_against": [
+      "luffy_gear5",
+      "luffy_snakeman"
+    ],
+    "draw_conditions": [],
+    "traits": [
+      "human",
+      "female",
+      "haki_user",
+      "devil_fruit_user",
+      "pirate",
+      "beautiful",
+      "warlord"
+    ],
+    "trait_weaknesses": [],
+    "trait_strengths": [
+      {
+        "trait": "male",
+        "coefficient": 0.25,
+        "description": "Her overwhelming beauty causes most male opponents to hesitate or be partially petrified"
+      }
+    ],
+    "image_path": "assets/characters/one_piece/boa_hancock.jpg",
+    "short_description": "The Pirate Empress whose Love-Love fruit turns anyone who finds her beautiful to stone. One of the strongest female characters in One Piece, with Conqueror's Haki and perfect Snake Dance martial arts."
+  },
+  {
+    "slug": "doflamingo",
+    "name": "Donquixote Doflamingo",
+    "verse": "one_piece",
+    "arc_version": "Heavenly Yaksha — Dressrosa Awakening",
+    "power_level": 2347293,
+    "martial_ratio": 0.65,
+    "power_tags": [
+      "string_string_fruit",
+      "birdcage",
+      "awakening_string",
+      "conqueror_haki",
+      "armament_haki",
+      "spider_web",
+      "parasite_strings",
+      "flap_thread"
+    ],
+    "strengths": [
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.45,
+        "description": "Strings slice through bone and steel — conventional strikes walk into cutting threads"
+      },
+      {
+        "tag": "slashing",
+        "coefficient": 0.35,
+        "description": "His own cutting strings can redirect and counter slashing attacks"
+      },
+      {
+        "tag": "speed",
+        "coefficient": 0.3,
+        "description": "String propulsion gives him sky-walking speed advantage"
+      }
+    ],
+    "weaknesses": [
+      {
+        "tag": "fire",
+        "coefficient": 0.5,
+        "description": "Fire burns through strings — Luffy's Red Hawk was specifically effective"
+      },
+      {
+        "tag": "overwhelming_haki",
+        "coefficient": 0.4,
+        "description": "Gear 4 Haki output eventually overpowers his strings"
+      },
+      {
+        "tag": "stamina_drain",
+        "coefficient": 0.35,
+        "description": "Birdcage activation is an enormous constant drain"
+      }
+    ],
+    "cannot_win_against": [
+      "luffy_gear5"
+    ],
+    "draw_conditions": [],
+    "traits": [
+      "human",
+      "male",
+      "haki_user",
+      "devil_fruit_user",
+      "pirate",
+      "conqueror",
+      "warlord"
+    ],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/one_piece/doflamingo.jpg",
+    "short_description": "The Heavenly Yaksha who controlled Dressrosa for a decade. His string awakening turns the entire battlefield into a cage of razors, and his Conqueror's Haki makes him a true king among pirates."
+  },
+  {
+    "slug": "vegapunk",
+    "name": "Dr. Vegapunk",
+    "verse": "one_piece",
+    "arc_version": "Genius of the Age — Egghead Island",
+    "power_level": 2000,
+    "martial_ratio": 0.1,
+    "power_tags": [
+      "genius_intellect",
+      "science_barrier",
+      "atlas_satellite",
+      "pacifista_programming"
+    ],
+    "strengths": [
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.6,
+        "description": "Personal shield generator deflects incoming attacks"
+      },
+      {
+        "tag": "taijutsu",
+        "coefficient": 0.4
+      }
+    ],
+    "weaknesses": [
+      {
+        "tag": "overwhelming_power",
+        "coefficient": 0.8,
+        "description": "No combat ability — any real fighter ends this instantly"
+      },
+      {
+        "tag": "speed",
+        "coefficient": 0.7
+      }
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "traits": [
+      "human",
+      "female",
+      "non_combatant",
+      "scientist",
+      "genius"
+    ],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/one_piece/vegapunk.jpg",
+    "short_description": "The greatest scientific mind in the world, centuries ahead of her era. Vegapunk created the Seraphim, reverse-engineered Devil Fruits, and solved the mysteries of the Void Century — but cannot fight."
+  },
+  {
+    "slug": "vinsmoke_reiju",
+    "name": "Vinsmoke Reiju",
+    "verse": "one_piece",
+    "arc_version": "Poison Pink — Whole Cake Island",
+    "power_level": 734821,
+    "martial_ratio": 0.75,
+    "power_tags": [
+      "raid_suit",
+      "poison_immunity",
+      "poison_gas",
+      "kicks_electric",
+      "genetically_enhanced",
+      "flight"
+    ],
+    "strengths": [
+      {
+        "tag": "poison",
+        "coefficient": 1.0,
+        "description": "Complete immunity — can consume any poison and weaponise it herself"
+      },
+      {
+        "tag": "gas_attacks",
+        "coefficient": 0.8
+      }
+    ],
+    "weaknesses": [
+      {
+        "tag": "armament_haki",
+        "coefficient": 0.4,
+        "description": "Advanced Haki-coated strikes bypass genetic enhancements"
+      },
+      {
+        "tag": "overwhelming_ninjutsu",
+        "coefficient": 0.35
+      }
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "traits": [
+      "human",
+      "female",
+      "genetically_enhanced",
+      "pirate",
+      "vinsmoke",
+      "beautiful"
+    ],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/one_piece/vinsmoke_reiju.jpg",
+    "short_description": "Poison Pink of the Vinsmoke family — the only sibling who retained her emotions. Genetically enhanced with complete poison immunity and mastery of toxic techniques."
+  },
+  {
+    "slug": "vinsmoke_ichiji",
+    "name": "Vinsmoke Ichiji",
+    "verse": "one_piece",
+    "arc_version": "Sparking Red — Whole Cake Island",
+    "power_level": 887293,
+    "martial_ratio": 0.8,
+    "power_tags": [
+      "raid_suit",
+      "genetic_enhancement",
+      "sparking_red_kick",
+      "light_speed_rush",
+      "exoskeleton"
+    ],
+    "strengths": [
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.5,
+        "description": "Genetic exoskeleton makes conventional strikes feel nothing"
+      },
+      {
+        "tag": "slashing",
+        "coefficient": 0.4,
+        "description": "Enhanced body stops most cutting attacks"
+      }
+    ],
+    "weaknesses": [
+      {
+        "tag": "armament_haki",
+        "coefficient": 0.5,
+        "description": "Advanced Armament Haki penetrates the genetic exoskeleton — his key weakness"
+      },
+      {
+        "tag": "haki_conqueror",
+        "coefficient": 0.3
+      }
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "traits": [
+      "human",
+      "male",
+      "genetically_enhanced",
+      "pirate",
+      "vinsmoke",
+      "emotionless"
+    ],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/one_piece/vinsmoke_ichiji.jpg",
+    "short_description": "Eldest Vinsmoke son, Sparking Red. Genetically engineered to feel no emotions and coated in a near-impenetrable exoskeleton — a weapon in human form whose light-speed rush overwhelms conventional fighters."
+  },
+  {
+    "slug": "vinsmoke_niji",
+    "name": "Vinsmoke Niji",
+    "verse": "one_piece",
+    "arc_version": "Electric Blue — Whole Cake Island",
+    "power_level": 887293,
+    "martial_ratio": 0.8,
+    "power_tags": [
+      "raid_suit",
+      "genetic_enhancement",
+      "electric_blue_speed",
+      "lightning_kicks",
+      "exoskeleton",
+      "fastest_vinsmoke"
+    ],
+    "strengths": [
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.5,
+        "description": "Genetic exoskeleton stops conventional strikes"
+      },
+      {
+        "tag": "speed",
+        "coefficient": 0.3,
+        "description": "The fastest Vinsmoke sibling, borderline impossible to pin down"
+      }
+    ],
+    "weaknesses": [
+      {
+        "tag": "armament_haki",
+        "coefficient": 0.5,
+        "description": "Advanced Haki penetrates the exoskeleton"
+      },
+      {
+        "tag": "rubber",
+        "coefficient": 0.7,
+        "description": "Electric attacks useless against rubber-type resistances"
+      }
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "traits": [
+      "human",
+      "male",
+      "genetically_enhanced",
+      "pirate",
+      "vinsmoke",
+      "emotionless"
+    ],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/one_piece/vinsmoke_niji.jpg",
+    "short_description": "Electric Blue Niji, the fastest Vinsmoke sibling. His lightning-speed kicks and electric techniques make him a living railgun — emotionless and utterly merciless."
+  },
+  {
+    "slug": "vinsmoke_yonji",
+    "name": "Vinsmoke Yonji",
+    "verse": "one_piece",
+    "arc_version": "Winch Green — Whole Cake Island",
+    "power_level": 712847,
+    "martial_ratio": 0.82,
+    "power_tags": [
+      "raid_suit",
+      "genetic_enhancement",
+      "brute_strength",
+      "winch_green",
+      "exoskeleton"
+    ],
+    "strengths": [
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.5,
+        "description": "Genetic exoskeleton"
+      }
+    ],
+    "weaknesses": [
+      {
+        "tag": "armament_haki",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "speed",
+        "coefficient": 0.3,
+        "description": "The least agile Vinsmoke sibling"
+      }
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "traits": [
+      "human",
+      "male",
+      "genetically_enhanced",
+      "pirate",
+      "vinsmoke",
+      "emotionless"
+    ],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/one_piece/vinsmoke_yonji.jpg",
+    "short_description": "Winch Green Yonji, the brawler of the Vinsmoke family. The most straightforwardly powerful Vinsmoke sibling in raw strength, though less technically refined than Ichiji or Niji."
+  },
+  {
+    "slug": "arlong",
+    "name": "Arlong",
+    "verse": "one_piece",
+    "arc_version": "Saw-Shark Fishman — Arlong Park",
+    "power_level": 187293,
+    "martial_ratio": 0.88,
+    "power_tags": [
+      "fishman_karate",
+      "saw_nose",
+      "underwater_combat",
+      "fishman_strength",
+      "shark_submerge"
+    ],
+    "strengths": [
+      {
+        "tag": "water",
+        "coefficient": 0.7,
+        "description": "Fishmen are ten times stronger in water — underwater he is nearly unkillable"
+      },
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.3,
+        "description": "Fishman body is far more resilient than human bone"
+      }
+    ],
+    "weaknesses": [
+      {
+        "tag": "sea_water",
+        "coefficient": 0.3,
+        "description": "Haki users and the sea itself weakens devil fruits — but Arlong has none"
+      },
+      {
+        "tag": "overwhelming_spirit",
+        "coefficient": 0.4,
+        "description": "Canonically defeated by a less-powerful Luffy through sheer determination"
+      }
+    ],
+    "cannot_win_against": [
+      "luffy_gear5",
+      "luffy_snakeman",
+      "luffy_skypiea"
+    ],
+    "draw_conditions": [],
+    "traits": [
+      "fishman",
+      "male",
+      "pirate",
+      "saw_shark"
+    ],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/one_piece/arlong.jpg",
+    "short_description": "The saw-shark fishman who enslaved Nami's village for years. Arlong's fishman physique makes him massively stronger than any human, and in water he is essentially invincible — one of the earliest iconic villains."
+  },
+  {
+    "slug": "buggy",
+    "name": "Buggy the Star Clown",
+    "verse": "one_piece",
+    "arc_version": "Cross Guild Era — Emperor",
+    "power_level": 312847,
+    "martial_ratio": 0.6,
+    "power_tags": [
+      "chop_chop_fruit",
+      "splitting_body",
+      "buggy_bomb",
+      "main_body_invincible",
+      "chop_chop_cannon",
+      "roger_era_veteran"
+    ],
+    "strengths": [
+      {
+        "tag": "slashing",
+        "coefficient": 1.0,
+        "description": "Chop-Chop Fruit — blades and cutting attacks literally cannot harm him"
+      },
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.8,
+        "description": "Cannot be hurt by conventional strikes — his body simply falls apart and reassembles"
+      },
+      {
+        "tag": "haki_armament",
+        "coefficient": 0.4,
+        "description": "Advanced Haki can still hurt him if aimed at his feet (he cannot fly them away)"
+      }
+    ],
+    "weaknesses": [
+      {
+        "tag": "sea_water",
+        "coefficient": 0.5,
+        "description": "Devil Fruit weakness — seawater immobilises him"
+      },
+      {
+        "tag": "wind",
+        "coefficient": 0.4,
+        "description": "Strong wind scatters his separated body parts"
+      },
+      {
+        "tag": "fire",
+        "coefficient": 0.5,
+        "description": "Can still be burned even while split"
+      }
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "traits": [
+      "human",
+      "male",
+      "devil_fruit_user",
+      "pirate",
+      "roger_crew",
+      "emperor"
+    ],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/one_piece/buggy.jpg",
+    "short_description": "The Star Clown who cannot be cut — his Chop-Chop Fruit makes blades literally useless against him. Somehow always survives everything and is now inexplicably a Yonko-level Emperor through sheer chaos."
+  },
+  {
+    "slug": "magellan",
+    "name": "Magellan",
+    "verse": "one_piece",
+    "arc_version": "Venom Demon — Impel Down",
+    "power_level": 1434821,
+    "martial_ratio": 0.5,
+    "power_tags": [
+      "venom_venom_fruit",
+      "hydra_venom",
+      "venom_demon_hell_judge",
+      "poison_prison",
+      "nerve_agent",
+      "corrosion"
+    ],
+    "strengths": [
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.6,
+        "description": "Direct contact with venom-coated body is fatal — touching Magellan is touching death"
+      },
+      {
+        "tag": "fire",
+        "coefficient": 0.3,
+        "description": "Venom Demon form partially resists fire"
+      },
+      {
+        "tag": "taijutsu",
+        "coefficient": 0.5,
+        "description": "Any contact strike poisons the attacker"
+      }
+    ],
+    "weaknesses": [
+      {
+        "tag": "poison_immunity",
+        "coefficient": 1.0,
+        "description": "Complete poison immunity nullifies his entire offence"
+      },
+      {
+        "tag": "fire_extreme",
+        "coefficient": 0.4,
+        "description": "Extreme heat can neutralise venom compounds"
+      },
+      {
+        "tag": "long_range",
+        "coefficient": 0.35,
+        "description": "Avoiding direct contact is the only way to survive him"
+      }
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "traits": [
+      "human",
+      "male",
+      "devil_fruit_user",
+      "marine",
+      "warden"
+    ],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/one_piece/magellan.jpg",
+    "short_description": "The Chief Warden of Impel Down. His Venom-Venom fruit lets him produce and control any poison — his Venom Demon form is capable of coating entire islands in lethal acid. Luffy needed a full immunity coat to survive."
   }
 ]

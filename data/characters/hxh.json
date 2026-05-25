@@ -4,22 +4,52 @@
     "name": "Gon Freecss",
     "verse": "hxh",
     "arc_version": "Adult Transformation – Chimera Ant Arc",
-    "power_level": 8234821.6640,
+    "power_level": 8234821.664,
     "martial_ratio": 0.65,
-    "power_tags": ["jajanken_rock_god", "enhancement", "adult_transformation", "unlimited_nen", "ren_massive"],
+    "power_tags": [
+      "jajanken_rock_god",
+      "enhancement",
+      "adult_transformation",
+      "unlimited_nen",
+      "ren_massive"
+    ],
     "strengths": [
-      {"tag": "nen_attacks", "coefficient": 0.5},
-      {"tag": "physical_attacks", "coefficient": 0.6},
-      {"tag": "power_output", "coefficient": 0.5}
+      {
+        "tag": "nen_attacks",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.6
+      },
+      {
+        "tag": "power_output",
+        "coefficient": 0.5
+      }
     ],
     "weaknesses": [
-      {"tag": "nen_loss_post_transformation", "coefficient": 1.0, "description": "After this form Gon loses all Nen — he is completely vulnerable if the fight extends past this peak"},
-      {"tag": "tactical_thinking", "coefficient": 0.3},
-      {"tag": "stamina_post_form", "coefficient": 0.9}
+      {
+        "tag": "nen_loss_post_transformation",
+        "coefficient": 1.0,
+        "description": "After this form Gon loses all Nen — he is completely vulnerable if the fight extends past this peak"
+      },
+      {
+        "tag": "tactical_thinking",
+        "coefficient": 0.3
+      },
+      {
+        "tag": "stamina_post_form",
+        "coefficient": 0.9
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "male", "nen_user", "enhancement_user"],
+    "traits": [
+      "human",
+      "male",
+      "nen_user",
+      "enhancement_user"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
     "image_path": "assets/characters/hxh/gon_adult.jpg",
@@ -30,21 +60,51 @@
     "name": "Killua Zoldyck",
     "verse": "hxh",
     "arc_version": "Godspeed – Chimera Ant Arc",
-    "power_level": 3234821.4410,
+    "power_level": 3234821.441,
     "martial_ratio": 0.75,
-    "power_tags": ["godspeed", "lightning_speed", "electricity_nen", "whirlwind", "rhythm_echo", "zoldyck_assassination_arts"],
+    "power_tags": [
+      "godspeed",
+      "lightning_speed",
+      "electricity_nen",
+      "whirlwind",
+      "rhythm_echo",
+      "zoldyck_assassination_arts"
+    ],
     "strengths": [
-      {"tag": "electricity", "coefficient": 0.7, "description": "Transmutes Nen into electricity — immune to external electrical attacks"},
-      {"tag": "speed", "coefficient": 0.5},
-      {"tag": "detection_evasion", "coefficient": 0.4}
+      {
+        "tag": "electricity",
+        "coefficient": 0.7,
+        "description": "Transmutes Nen into electricity — immune to external electrical attacks"
+      },
+      {
+        "tag": "speed",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "detection_evasion",
+        "coefficient": 0.4
+      }
     ],
     "weaknesses": [
-      {"tag": "overwhelming_nen", "coefficient": 0.3},
-      {"tag": "emotional_manipulation_alluka", "coefficient": 0.6}
+      {
+        "tag": "overwhelming_nen",
+        "coefficient": 0.3
+      },
+      {
+        "tag": "emotional_manipulation_alluka",
+        "coefficient": 0.6
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "male", "nen_user", "zoldyck", "assassin", "transmutation_user"],
+    "traits": [
+      "human",
+      "male",
+      "nen_user",
+      "zoldyck",
+      "assassin",
+      "transmutation_user"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
     "image_path": "assets/characters/hxh/killua_godspeed.jpg",
@@ -55,25 +115,59 @@
     "name": "Meruem",
     "verse": "hxh",
     "arc_version": "Post-Rose – Chimera Ant Arc",
-    "power_level": 9234821.2270,
+    "power_level": 9234821.227,
     "martial_ratio": 0.8,
-    "power_tags": ["nen_supreme", "conjuration_consumption", "aura_synthesis", "royal_guard_absorption"],
+    "power_tags": [
+      "nen_supreme",
+      "conjuration_consumption",
+      "aura_synthesis",
+      "royal_guard_absorption"
+    ],
     "strengths": [
-      {"tag": "nen_attacks", "coefficient": 0.8},
-      {"tag": "physical_attacks", "coefficient": 0.75},
-      {"tag": "intelligence", "coefficient": 0.5},
-      {"tag": "aura_pressure", "coefficient": 0.7}
+      {
+        "tag": "nen_attacks",
+        "coefficient": 0.8
+      },
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.75
+      },
+      {
+        "tag": "intelligence",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "aura_pressure",
+        "coefficient": 0.7
+      }
     ],
     "weaknesses": [
-      {"tag": "miniature_rose_poison", "coefficient": 0.8, "description": "The Miniature Rose's radiation fatally poisons him slowly"},
-      {"tag": "love_komugi", "coefficient": 0.5, "description": "His bond with Komugi makes him hesitate to act — a vulnerability of the heart"}
+      {
+        "tag": "miniature_rose_poison",
+        "coefficient": 0.8,
+        "description": "The Miniature Rose's radiation fatally poisons him slowly"
+      },
+      {
+        "tag": "love_komugi",
+        "coefficient": 0.5,
+        "description": "His bond with Komugi makes him hesitate to act — a vulnerability of the heart"
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["chimera_ant", "male", "nen_user", "chimera_ant_king"],
+    "traits": [
+      "chimera_ant",
+      "male",
+      "nen_user",
+      "chimera_ant_king"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [
-      {"trait": "non_combatant", "coefficient": 0.5, "description": "Meruem has absolute zero hesitation against defenseless opponents — his ruthlessness amplifies his lethality"}
+      {
+        "trait": "non_combatant",
+        "coefficient": 0.5,
+        "description": "Meruem has absolute zero hesitation against defenseless opponents — his ruthlessness amplifies his lethality"
+      }
     ],
     "image_path": "assets/characters/hxh/meruem_post_rose.jpg",
     "short_description": "The Chimera Ant King after surviving the Miniature Rose and absorbing Shaiapouf and Neferpitou's Nen, arguably the most powerful Nen user to ever live."
@@ -83,24 +177,56 @@
     "name": "Neferpitou",
     "verse": "hxh",
     "arc_version": "Royal Guard – Chimera Ant Arc",
-    "power_level": 6234821.3310,
+    "power_level": 6234821.331,
     "martial_ratio": 0.7,
-    "power_tags": ["nen_conjuration", "doctor_blythe", "terpsichora_puppetry", "en_massive", "combat_instinct"],
+    "power_tags": [
+      "nen_conjuration",
+      "doctor_blythe",
+      "terpsichora_puppetry",
+      "en_massive",
+      "combat_instinct"
+    ],
     "strengths": [
-      {"tag": "nen_attacks", "coefficient": 0.55},
-      {"tag": "physical_attacks", "coefficient": 0.6},
-      {"tag": "detection", "coefficient": 0.5}
+      {
+        "tag": "nen_attacks",
+        "coefficient": 0.55
+      },
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.6
+      },
+      {
+        "tag": "detection",
+        "coefficient": 0.5
+      }
     ],
     "weaknesses": [
-      {"tag": "dead_masters_control", "coefficient": 0.8, "description": "Uses remaining Nen to control own corpse — but the body acts without self-preservation"},
-      {"tag": "post_puppet_state", "coefficient": 0.9}
+      {
+        "tag": "dead_masters_control",
+        "coefficient": 0.8,
+        "description": "Uses remaining Nen to control own corpse — but the body acts without self-preservation"
+      },
+      {
+        "tag": "post_puppet_state",
+        "coefficient": 0.9
+      }
     ],
-    "cannot_win_against": ["meruem_post_rose"],
+    "cannot_win_against": [
+      "meruem_post_rose"
+    ],
     "draw_conditions": [],
-    "traits": ["chimera_ant", "nen_user", "royal_guard"],
+    "traits": [
+      "chimera_ant",
+      "nen_user",
+      "royal_guard"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [
-      {"trait": "non_combatant", "coefficient": 0.4, "description": "A Royal Guard feels no hesitation whatsoever against defenseless prey"}
+      {
+        "trait": "non_combatant",
+        "coefficient": 0.4,
+        "description": "A Royal Guard feels no hesitation whatsoever against defenseless prey"
+      }
     ],
     "image_path": "assets/characters/hxh/neferpitou.jpg",
     "short_description": "Meruem's most powerful Royal Guard whose En stretches for kilometers and whose medical Nen can repair catastrophic injuries."
@@ -110,21 +236,49 @@
     "name": "Isaac Netero",
     "verse": "hxh",
     "arc_version": "100-Type Guanyin Bodhisattva – Chimera Ant Arc",
-    "power_level": 5847293.8820,
+    "power_level": 5847293.882,
     "martial_ratio": 0.85,
-    "power_tags": ["hundred_type_guanyin_bodhisattva", "zero_hand", "speed_training_supreme", "enhancement_mastery", "miniature_rose_sacrifice"],
+    "power_tags": [
+      "hundred_type_guanyin_bodhisattva",
+      "zero_hand",
+      "speed_training_supreme",
+      "enhancement_mastery",
+      "miniature_rose_sacrifice"
+    ],
     "strengths": [
-      {"tag": "speed", "coefficient": 0.5},
-      {"tag": "nen_output", "coefficient": 0.5},
-      {"tag": "taijutsu_speed", "coefficient": 0.55}
+      {
+        "tag": "speed",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "nen_output",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "taijutsu_speed",
+        "coefficient": 0.55
+      }
     ],
     "weaknesses": [
-      {"tag": "overwhelming_nen_defense", "coefficient": 0.4},
-      {"tag": "old_age_stamina", "coefficient": 0.3}
+      {
+        "tag": "overwhelming_nen_defense",
+        "coefficient": 0.4
+      },
+      {
+        "tag": "old_age_stamina",
+        "coefficient": 0.3
+      }
     ],
-    "cannot_win_against": ["meruem_post_rose"],
+    "cannot_win_against": [
+      "meruem_post_rose"
+    ],
     "draw_conditions": [],
-    "traits": ["human", "male", "nen_user", "enhancement_user"],
+    "traits": [
+      "human",
+      "male",
+      "nen_user",
+      "enhancement_user"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
     "image_path": "assets/characters/hxh/netero.jpg",
@@ -135,21 +289,50 @@
     "name": "Zeno Zoldyck",
     "verse": "hxh",
     "arc_version": "Zoldyck Head – Chimera Ant Arc",
-    "power_level": 3547293.4410,
+    "power_level": 3547293.441,
     "martial_ratio": 0.8,
-    "power_tags": ["nen_emission", "dragon_head", "dragon_lance", "dragon_dive", "zoldyck_assassination_arts", "transmutation"],
+    "power_tags": [
+      "nen_emission",
+      "dragon_head",
+      "dragon_lance",
+      "dragon_dive",
+      "zoldyck_assassination_arts",
+      "transmutation"
+    ],
     "strengths": [
-      {"tag": "area_of_effect", "coefficient": 0.5},
-      {"tag": "nen_attacks", "coefficient": 0.45},
-      {"tag": "precision_killing", "coefficient": 0.5}
+      {
+        "tag": "area_of_effect",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "nen_attacks",
+        "coefficient": 0.45
+      },
+      {
+        "tag": "precision_killing",
+        "coefficient": 0.5
+      }
     ],
     "weaknesses": [
-      {"tag": "stamina_drain", "coefficient": 0.35},
-      {"tag": "overwhelming_nen", "coefficient": 0.3}
+      {
+        "tag": "stamina_drain",
+        "coefficient": 0.35
+      },
+      {
+        "tag": "overwhelming_nen",
+        "coefficient": 0.3
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "male", "nen_user", "zoldyck", "assassin", "transmutation_user"],
+    "traits": [
+      "human",
+      "male",
+      "nen_user",
+      "zoldyck",
+      "assassin",
+      "transmutation_user"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
     "image_path": "assets/characters/hxh/zeno_zoldyck.jpg",
@@ -160,20 +343,45 @@
     "name": "Silva Zoldyck",
     "verse": "hxh",
     "arc_version": "Zoldyck Patriarch – Current",
-    "power_level": 3134821.5540,
+    "power_level": 3134821.554,
     "martial_ratio": 0.85,
-    "power_tags": ["nen_emission", "silver_orbs", "transmutation", "zoldyck_assassination_arts"],
+    "power_tags": [
+      "nen_emission",
+      "silver_orbs",
+      "transmutation",
+      "zoldyck_assassination_arts"
+    ],
     "strengths": [
-      {"tag": "poison", "coefficient": 1.0, "description": "Complete immunity to all poisons — has fought and survived countless assassination attempts"},
-      {"tag": "physical_attacks", "coefficient": 0.4},
-      {"tag": "nen_attacks", "coefficient": 0.4}
+      {
+        "tag": "poison",
+        "coefficient": 1.0,
+        "description": "Complete immunity to all poisons — has fought and survived countless assassination attempts"
+      },
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.4
+      },
+      {
+        "tag": "nen_attacks",
+        "coefficient": 0.4
+      }
     ],
     "weaknesses": [
-      {"tag": "overwhelming_nen_beast", "coefficient": 0.3}
+      {
+        "tag": "overwhelming_nen_beast",
+        "coefficient": 0.3
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "male", "nen_user", "zoldyck", "assassin", "emission_user"],
+    "traits": [
+      "human",
+      "male",
+      "nen_user",
+      "zoldyck",
+      "assassin",
+      "emission_user"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
     "image_path": "assets/characters/hxh/silva_zoldyck.jpg",
@@ -184,21 +392,49 @@
     "name": "Illumi Zoldyck",
     "verse": "hxh",
     "arc_version": "Top Assassin – Yorknew Arc",
-    "power_level": 2847293.6640,
+    "power_level": 2847293.664,
     "martial_ratio": 0.7,
-    "power_tags": ["nen_manipulation", "needle_control", "puppet_army", "manipulation_nen", "zoldyck_assassination_arts"],
+    "power_tags": [
+      "nen_manipulation",
+      "needle_control",
+      "puppet_army",
+      "manipulation_nen",
+      "zoldyck_assassination_arts"
+    ],
     "strengths": [
-      {"tag": "detection", "coefficient": 0.4},
-      {"tag": "mind_control", "coefficient": 0.5},
-      {"tag": "surprise_attack", "coefficient": 0.45}
+      {
+        "tag": "detection",
+        "coefficient": 0.4
+      },
+      {
+        "tag": "mind_control",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "surprise_attack",
+        "coefficient": 0.45
+      }
     ],
     "weaknesses": [
-      {"tag": "overwhelming_nen_close", "coefficient": 0.3},
-      {"tag": "counter_manipulation", "coefficient": 0.35}
+      {
+        "tag": "overwhelming_nen_close",
+        "coefficient": 0.3
+      },
+      {
+        "tag": "counter_manipulation",
+        "coefficient": 0.35
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "male", "nen_user", "zoldyck", "assassin", "manipulation_user"],
+    "traits": [
+      "human",
+      "male",
+      "nen_user",
+      "zoldyck",
+      "assassin",
+      "manipulation_user"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
     "image_path": "assets/characters/hxh/illumi.jpg",
@@ -209,21 +445,47 @@
     "name": "Hisoka Morow",
     "verse": "hxh",
     "arc_version": "Bungee Gum – Heaven's Arena",
-    "power_level": 3421047.7720,
+    "power_level": 3421047.772,
     "martial_ratio": 0.75,
-    "power_tags": ["bungee_gum", "texture_surprise", "transmutation", "in_hidden_aura", "elastic_love"],
+    "power_tags": [
+      "bungee_gum",
+      "texture_surprise",
+      "transmutation",
+      "in_hidden_aura",
+      "elastic_love"
+    ],
     "strengths": [
-      {"tag": "nen_attacks", "coefficient": 0.4},
-      {"tag": "physical_attacks", "coefficient": 0.45},
-      {"tag": "trap_setting", "coefficient": 0.5}
+      {
+        "tag": "nen_attacks",
+        "coefficient": 0.4
+      },
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.45
+      },
+      {
+        "tag": "trap_setting",
+        "coefficient": 0.5
+      }
     ],
     "weaknesses": [
-      {"tag": "true_overwhelming_nen", "coefficient": 0.3},
-      {"tag": "ranged_specialization", "coefficient": 0.25}
+      {
+        "tag": "true_overwhelming_nen",
+        "coefficient": 0.3
+      },
+      {
+        "tag": "ranged_specialization",
+        "coefficient": 0.25
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "male", "nen_user", "transmutation_user"],
+    "traits": [
+      "human",
+      "male",
+      "nen_user",
+      "transmutation_user"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
     "image_path": "assets/characters/hxh/hisoka.jpg",
@@ -234,21 +496,50 @@
     "name": "Chrollo Lucilfer",
     "verse": "hxh",
     "arc_version": "Full Prep Bandit's Secret – Heaven's Arena",
-    "power_level": 5421047.3310,
+    "power_level": 5421047.331,
     "martial_ratio": 0.6,
-    "power_tags": ["bandits_secret_full", "stolen_nen_collection", "conjuration", "manipulation", "specialization", "gallery_fake", "indoor_fish"],
+    "power_tags": [
+      "bandits_secret_full",
+      "stolen_nen_collection",
+      "conjuration",
+      "manipulation",
+      "specialization",
+      "gallery_fake",
+      "indoor_fish"
+    ],
     "strengths": [
-      {"tag": "versatility", "coefficient": 0.5},
-      {"tag": "preparation", "coefficient": 0.5},
-      {"tag": "nen_theft", "coefficient": 0.45}
+      {
+        "tag": "versatility",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "preparation",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "nen_theft",
+        "coefficient": 0.45
+      }
     ],
     "weaknesses": [
-      {"tag": "speed_overwhelm", "coefficient": 0.3},
-      {"tag": "no_prep_time", "coefficient": 0.4}
+      {
+        "tag": "speed_overwhelm",
+        "coefficient": 0.3
+      },
+      {
+        "tag": "no_prep_time",
+        "coefficient": 0.4
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "male", "nen_user", "phantom_troupe", "specialist_nen"],
+    "traits": [
+      "human",
+      "male",
+      "nen_user",
+      "phantom_troupe",
+      "specialist_nen"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
     "image_path": "assets/characters/hxh/chrollo_full_prep.jpg",
@@ -259,24 +550,61 @@
     "name": "Kurapika",
     "verse": "hxh",
     "arc_version": "Emperor Time – Yorknew Arc",
-    "power_level": 4234821.4410,
+    "power_level": 4234821.441,
     "martial_ratio": 0.55,
-    "power_tags": ["emperor_time", "chain_jail", "dowsing_chain", "judgment_chain", "holy_chain", "scarlet_eyes", "specialist_nen"],
+    "power_tags": [
+      "emperor_time",
+      "chain_jail",
+      "dowsing_chain",
+      "judgment_chain",
+      "holy_chain",
+      "scarlet_eyes",
+      "specialist_nen"
+    ],
     "strengths": [
-      {"tag": "nen_binding", "coefficient": 0.8, "description": "Chain Jail is inescapable for members of the Phantom Troupe"},
-      {"tag": "spider_weakness", "coefficient": 1.0, "description": "All abilities achieve maximum efficiency against the Phantom Troupe"},
-      {"tag": "nen_defense", "coefficient": 0.45}
+      {
+        "tag": "nen_binding",
+        "coefficient": 0.8,
+        "description": "Chain Jail is inescapable for members of the Phantom Troupe"
+      },
+      {
+        "tag": "spider_weakness",
+        "coefficient": 1.0,
+        "description": "All abilities achieve maximum efficiency against the Phantom Troupe"
+      },
+      {
+        "tag": "nen_defense",
+        "coefficient": 0.45
+      }
     ],
     "weaknesses": [
-      {"tag": "lifespan_drain", "coefficient": 0.6, "description": "Emperor Time shortens his lifespan for every second used"},
-      {"tag": "non_spider_opponents", "coefficient": 0.3, "description": "Many abilities lose their unique edge outside of Spider-hunting context"}
+      {
+        "tag": "lifespan_drain",
+        "coefficient": 0.6,
+        "description": "Emperor Time shortens his lifespan for every second used"
+      },
+      {
+        "tag": "non_spider_opponents",
+        "coefficient": 0.3,
+        "description": "Many abilities lose their unique edge outside of Spider-hunting context"
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "male", "nen_user", "kurta_clan", "specialist_nen"],
+    "traits": [
+      "human",
+      "male",
+      "nen_user",
+      "kurta_clan",
+      "specialist_nen"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [
-      {"trait": "phantom_troupe", "coefficient": 0.6, "description": "Kurapika's Emperor Time and Chain Jail were built exclusively to destroy the Phantom Troupe — every ability reaches peak efficiency against them"}
+      {
+        "trait": "phantom_troupe",
+        "coefficient": 0.6,
+        "description": "Kurapika's Emperor Time and Chain Jail were built exclusively to destroy the Phantom Troupe — every ability reaches peak efficiency against them"
+      }
     ],
     "image_path": "assets/characters/hxh/kurapika_emperor_time.jpg",
     "short_description": "Kurapika activating Emperor Time for 100% efficiency across all Nen categories, his Chain Jail unescapable by Spiders and his Judgment Chain lethal if conditions are broken."
@@ -286,20 +614,42 @@
     "name": "Leorio Paradinight",
     "verse": "hxh",
     "arc_version": "Hunter – Chimera Ant Arc",
-    "power_level": 47293.2210,
+    "power_level": 47293.221,
     "martial_ratio": 0.6,
-    "power_tags": ["nen_emission", "remote_punch", "medical_knowledge", "resolve"],
+    "power_tags": [
+      "nen_emission",
+      "remote_punch",
+      "medical_knowledge",
+      "resolve"
+    ],
     "strengths": [
-      {"tag": "surprise_attack", "coefficient": 0.3},
-      {"tag": "determination", "coefficient": 0.3}
+      {
+        "tag": "surprise_attack",
+        "coefficient": 0.3
+      },
+      {
+        "tag": "determination",
+        "coefficient": 0.3
+      }
     ],
     "weaknesses": [
-      {"tag": "experienced_nen_user", "coefficient": 0.5},
-      {"tag": "close_combat_specialist", "coefficient": 0.4}
+      {
+        "tag": "experienced_nen_user",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "close_combat_specialist",
+        "coefficient": 0.4
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "male", "nen_user", "emission_user"],
+    "traits": [
+      "human",
+      "male",
+      "nen_user",
+      "emission_user"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
     "image_path": "assets/characters/hxh/leorio.jpg",
@@ -310,21 +660,51 @@
     "name": "Feitan Portor",
     "verse": "hxh",
     "arc_version": "Rising Sun – Chimera Ant Arc",
-    "power_level": 2934821.7720,
+    "power_level": 2934821.772,
     "martial_ratio": 0.75,
-    "power_tags": ["rising_sun", "pain_packer", "speed_specialization", "transmutation", "sword", "heat"],
+    "power_tags": [
+      "rising_sun",
+      "pain_packer",
+      "speed_specialization",
+      "transmutation",
+      "sword",
+      "heat"
+    ],
     "strengths": [
-      {"tag": "speed", "coefficient": 0.5},
-      {"tag": "heat_attack", "coefficient": 0.5},
-      {"tag": "pain_amplification", "coefficient": 0.5}
+      {
+        "tag": "speed",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "heat_attack",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "pain_amplification",
+        "coefficient": 0.5
+      }
     ],
     "weaknesses": [
-      {"tag": "rising_sun_self_damage", "coefficient": 0.4, "description": "Rising Sun requires taking significant damage first — and also damages Feitan"},
-      {"tag": "overwhelming_nen_defense", "coefficient": 0.35}
+      {
+        "tag": "rising_sun_self_damage",
+        "coefficient": 0.4,
+        "description": "Rising Sun requires taking significant damage first — and also damages Feitan"
+      },
+      {
+        "tag": "overwhelming_nen_defense",
+        "coefficient": 0.35
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "male", "nen_user", "phantom_troupe", "transmutation_user", "assassin"],
+    "traits": [
+      "human",
+      "male",
+      "nen_user",
+      "phantom_troupe",
+      "transmutation_user",
+      "assassin"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
     "image_path": "assets/characters/hxh/feitan_rising_sun.jpg",
@@ -335,22 +715,55 @@
     "name": "Knov",
     "verse": "hxh",
     "arc_version": "Hide and Seek – Chimera Ant Arc",
-    "power_level": 987293.5540,
+    "power_level": 987293.554,
     "martial_ratio": 0.4,
-    "power_tags": ["hide_and_seek", "dimensional_portals", "conjuration", "tactical_intel"],
+    "power_tags": [
+      "hide_and_seek",
+      "dimensional_portals",
+      "conjuration",
+      "tactical_intel"
+    ],
     "strengths": [
-      {"tag": "escape", "coefficient": 0.7},
-      {"tag": "infiltration", "coefficient": 0.6},
-      {"tag": "surprise_attack", "coefficient": 0.4}
+      {
+        "tag": "escape",
+        "coefficient": 0.7
+      },
+      {
+        "tag": "infiltration",
+        "coefficient": 0.6
+      },
+      {
+        "tag": "surprise_attack",
+        "coefficient": 0.4
+      }
     ],
     "weaknesses": [
-      {"tag": "overwhelming_en", "coefficient": 0.8, "description": "Large-scale En-detection ability causes him extreme panic"},
-      {"tag": "aura_pressure_extreme", "coefficient": 0.7, "description": "Sensing Meruem's aura caused permanent psychological damage"},
-      {"tag": "direct_combat", "coefficient": 0.5}
+      {
+        "tag": "overwhelming_en",
+        "coefficient": 0.8,
+        "description": "Large-scale En-detection ability causes him extreme panic"
+      },
+      {
+        "tag": "aura_pressure_extreme",
+        "coefficient": 0.7,
+        "description": "Sensing Meruem's aura caused permanent psychological damage"
+      },
+      {
+        "tag": "direct_combat",
+        "coefficient": 0.5
+      }
     ],
-    "cannot_win_against": ["meruem_post_rose", "neferpitou"],
+    "cannot_win_against": [
+      "meruem_post_rose",
+      "neferpitou"
+    ],
     "draw_conditions": [],
-    "traits": ["human", "male", "nen_user", "conjuration_user"],
+    "traits": [
+      "human",
+      "male",
+      "nen_user",
+      "conjuration_user"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
     "image_path": "assets/characters/hxh/knov.jpg",
@@ -361,22 +774,56 @@
     "name": "Morel Mackernasey",
     "verse": "hxh",
     "arc_version": "Deep Purple – Chimera Ant Arc",
-    "power_level": 1234821.4410,
+    "power_level": 1234821.441,
     "martial_ratio": 0.55,
-    "power_tags": ["deep_purple_smoke", "manipulation_nen", "smoke_puppet_army", "cloud_pipe", "nen_emission"],
+    "power_tags": [
+      "deep_purple_smoke",
+      "manipulation_nen",
+      "smoke_puppet_army",
+      "cloud_pipe",
+      "nen_emission"
+    ],
     "strengths": [
-      {"tag": "area_control", "coefficient": 0.55},
-      {"tag": "nen_output_volume", "coefficient": 0.45},
-      {"tag": "surprise_attack", "coefficient": 0.4}
+      {
+        "tag": "area_control",
+        "coefficient": 0.55
+      },
+      {
+        "tag": "nen_output_volume",
+        "coefficient": 0.45
+      },
+      {
+        "tag": "surprise_attack",
+        "coefficient": 0.4
+      }
     ],
     "weaknesses": [
-      {"tag": "wind", "coefficient": 0.5, "description": "Strong wind disperses his smoke puppets instantly"},
-      {"tag": "royal_guard_level", "coefficient": 0.7},
-      {"tag": "direct_overwhelm", "coefficient": 0.4}
+      {
+        "tag": "wind",
+        "coefficient": 0.5,
+        "description": "Strong wind disperses his smoke puppets instantly"
+      },
+      {
+        "tag": "royal_guard_level",
+        "coefficient": 0.7
+      },
+      {
+        "tag": "direct_overwhelm",
+        "coefficient": 0.4
+      }
     ],
-    "cannot_win_against": ["meruem_post_rose", "neferpitou"],
+    "cannot_win_against": [
+      "meruem_post_rose",
+      "neferpitou"
+    ],
     "draw_conditions": [],
-    "traits": ["human", "male", "nen_user", "manipulation_user", "emission_user"],
+    "traits": [
+      "human",
+      "male",
+      "nen_user",
+      "manipulation_user",
+      "emission_user"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
     "image_path": "assets/characters/hxh/morel.jpg",
@@ -389,17 +836,38 @@
     "arc_version": "Gungi Prodigy – Chimera Ant Arc",
     "power_level": 500,
     "martial_ratio": 0.02,
-    "power_tags": ["specialist_nen", "unconscious_hatsu", "gungi_genius"],
+    "power_tags": [
+      "specialist_nen",
+      "unconscious_hatsu",
+      "gungi_genius"
+    ],
     "strengths": [],
     "weaknesses": [
-      {"tag": "physical_attacks", "coefficient": 0.9, "description": "A fragile human girl with zero combat training"},
-      {"tag": "overwhelming_power", "coefficient": 0.95}
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.9,
+        "description": "A fragile human girl with zero combat training"
+      },
+      {
+        "tag": "overwhelming_power",
+        "coefficient": 0.95
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [
-      {"character_slug": "meruem_post_rose", "reason": "Meruem chose to spend his dying moments beside Komugi, playing Gungi — neither won nor lost in what mattered", "tag_color": "love"}
+      {
+        "character_slug": "meruem_post_rose",
+        "reason": "Meruem chose to spend his dying moments beside Komugi, playing Gungi — neither won nor lost in what mattered",
+        "tag_color": "love"
+      }
     ],
-    "traits": ["human", "female", "non_combatant", "specialist_nen", "beautiful"],
+    "traits": [
+      "human",
+      "female",
+      "non_combatant",
+      "specialist_nen",
+      "beautiful"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
     "image_path": "assets/characters/hxh/komugi.jpg",
@@ -412,18 +880,45 @@
     "arc_version": "Phantom Troupe Member – Chimera Ant Arc",
     "power_level": 180000,
     "martial_ratio": 0.6,
-    "power_tags": ["manipulation_nen", "paper_dance", "paper_manipulation", "confetti_blades", "zoldyck_assassination_arts"],
+    "power_tags": [
+      "manipulation_nen",
+      "paper_dance",
+      "paper_manipulation",
+      "confetti_blades",
+      "zoldyck_assassination_arts"
+    ],
     "strengths": [
-      {"tag": "detection", "coefficient": 0.3, "description": "Paper confetti sensors make him hard to sneak up on"},
-      {"tag": "tracking", "coefficient": 0.3}
+      {
+        "tag": "detection",
+        "coefficient": 0.3,
+        "description": "Paper confetti sensors make him hard to sneak up on"
+      },
+      {
+        "tag": "tracking",
+        "coefficient": 0.3
+      }
     ],
     "weaknesses": [
-      {"tag": "overwhelming_nen", "coefficient": 0.5},
-      {"tag": "close_combat_powerhouse", "coefficient": 0.4}
+      {
+        "tag": "overwhelming_nen",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "close_combat_powerhouse",
+        "coefficient": 0.4
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "male", "nen_user", "zoldyck", "phantom_troupe", "assassin", "manipulation_user"],
+    "traits": [
+      "human",
+      "male",
+      "nen_user",
+      "zoldyck",
+      "phantom_troupe",
+      "assassin",
+      "manipulation_user"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
     "image_path": "assets/characters/hxh/kalluto_zoldyck.jpg",
@@ -434,21 +929,56 @@
     "name": "Ging Freecss",
     "verse": "hxh",
     "arc_version": "Double Star Hunter – Chimera Ant / Succession War Era",
-    "power_level": 4534821.6640,
+    "power_level": 4534821.664,
     "martial_ratio": 0.65,
-    "power_tags": ["nen_copy_return", "emission_specialist", "double_star_hunter", "en_mastery", "nen_versatility", "combat_instinct"],
+    "power_tags": [
+      "nen_copy_return",
+      "emission_specialist",
+      "double_star_hunter",
+      "en_mastery",
+      "nen_versatility",
+      "combat_instinct"
+    ],
     "strengths": [
-      {"tag": "nen_attacks", "coefficient": 0.5, "description": "Ging can copy any Nen technique used on him and return it with equal force — including techniques from all types"},
-      {"tag": "versatility", "coefficient": 0.5, "description": "Mastery of multiple Nen types gives him an answer for almost any approach"},
-      {"tag": "detection", "coefficient": 0.4, "description": "En range and sensitivity described as exceptional even among Nen masters"}
+      {
+        "tag": "nen_attacks",
+        "coefficient": 0.5,
+        "description": "Ging can copy any Nen technique used on him and return it with equal force — including techniques from all types"
+      },
+      {
+        "tag": "versatility",
+        "coefficient": 0.5,
+        "description": "Mastery of multiple Nen types gives him an answer for almost any approach"
+      },
+      {
+        "tag": "detection",
+        "coefficient": 0.4,
+        "description": "En range and sensitivity described as exceptional even among Nen masters"
+      }
     ],
     "weaknesses": [
-      {"tag": "direct_combat_pressure", "coefficient": 0.2, "description": "Ging avoids direct combat — his copy ability is reactive, not proactive"},
-      {"tag": "overwhelming_nen_mass", "coefficient": 0.3, "description": "Meruem-level raw aura output overwhelms his copy technique's capacity"}
+      {
+        "tag": "direct_combat_pressure",
+        "coefficient": 0.2,
+        "description": "Ging avoids direct combat — his copy ability is reactive, not proactive"
+      },
+      {
+        "tag": "overwhelming_nen_mass",
+        "coefficient": 0.3,
+        "description": "Meruem-level raw aura output overwhelms his copy technique's capacity"
+      }
     ],
-    "cannot_win_against": ["meruem_post_rose"],
+    "cannot_win_against": [
+      "meruem_post_rose"
+    ],
     "draw_conditions": [],
-    "traits": ["human", "male", "nen_user", "double_star_hunter", "emission_user"],
+    "traits": [
+      "human",
+      "male",
+      "nen_user",
+      "double_star_hunter",
+      "emission_user"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
     "image_path": "assets/characters/hxh/ging_freecss.jpg",
@@ -459,20 +989,50 @@
     "name": "Kite",
     "verse": "hxh",
     "arc_version": "Crazy Slots – Chimera Ant Arc",
-    "power_level": 2347293.4410,
+    "power_level": 2347293.441,
     "martial_ratio": 0.7,
-    "power_tags": ["crazy_slots", "conjuration_weapon", "randomized_arsenal", "scythe_death_reaper", "nen_conjuration", "en_mastery"],
+    "power_tags": [
+      "crazy_slots",
+      "conjuration_weapon",
+      "randomized_arsenal",
+      "scythe_death_reaper",
+      "nen_conjuration",
+      "en_mastery"
+    ],
     "strengths": [
-      {"tag": "versatility", "coefficient": 0.4, "description": "Crazy Slots randomizes weapon type — opponents cannot anticipate or prepare for the next weapon"},
-      {"tag": "surprise_attack", "coefficient": 0.45}
+      {
+        "tag": "versatility",
+        "coefficient": 0.4,
+        "description": "Crazy Slots randomizes weapon type — opponents cannot anticipate or prepare for the next weapon"
+      },
+      {
+        "tag": "surprise_attack",
+        "coefficient": 0.45
+      }
     ],
     "weaknesses": [
-      {"tag": "random_slot_limitation", "coefficient": 0.3, "description": "Weapon randomness is a liability against adaptive opponents — cannot choose the tool needed"},
-      {"tag": "overwhelming_royal_guard_nen", "coefficient": 0.7, "description": "Canon: Kite was killed/captured by Neferpitou despite activating Crazy Slots — power gap was too large"}
+      {
+        "tag": "random_slot_limitation",
+        "coefficient": 0.3,
+        "description": "Weapon randomness is a liability against adaptive opponents — cannot choose the tool needed"
+      },
+      {
+        "tag": "overwhelming_royal_guard_nen",
+        "coefficient": 0.7,
+        "description": "Canon: Kite was killed/captured by Neferpitou despite activating Crazy Slots — power gap was too large"
+      }
     ],
-    "cannot_win_against": ["neferpitou"],
+    "cannot_win_against": [
+      "neferpitou"
+    ],
     "draw_conditions": [],
-    "traits": ["human", "male", "nen_user", "conjuration_user", "hunter"],
+    "traits": [
+      "human",
+      "male",
+      "nen_user",
+      "conjuration_user",
+      "hunter"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
     "image_path": "assets/characters/hxh/kite_crazy_slots.jpg",
@@ -483,22 +1043,59 @@
     "name": "Uvogin",
     "verse": "hxh",
     "arc_version": "Phantom Troupe – Yorknew Arc",
-    "power_level": 2034821.3310,
+    "power_level": 2034821.331,
     "martial_ratio": 0.95,
-    "power_tags": ["enhancement_maximum", "big_bang_impact", "super_hardened_body", "uvo_scream", "nen_enhancement"],
+    "power_tags": [
+      "enhancement_maximum",
+      "big_bang_impact",
+      "super_hardened_body",
+      "uvo_scream",
+      "nen_enhancement"
+    ],
     "strengths": [
-      {"tag": "physical_attacks", "coefficient": 0.7, "description": "Enhancement-specialized body described as the hardest substance in HxH — bullets flatten against his skin"},
-      {"tag": "blunt_force", "coefficient": 0.65},
-      {"tag": "projectile", "coefficient": 0.6, "description": "Physical projectiles are completely ineffective against maximum enhancement"}
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.7,
+        "description": "Enhancement-specialized body described as the hardest substance in HxH — bullets flatten against his skin"
+      },
+      {
+        "tag": "blunt_force",
+        "coefficient": 0.65
+      },
+      {
+        "tag": "projectile",
+        "coefficient": 0.6,
+        "description": "Physical projectiles are completely ineffective against maximum enhancement"
+      }
     ],
     "weaknesses": [
-      {"tag": "nen_binding", "coefficient": 0.6, "description": "Canon: Kurapika's Chain Jail immobilized him completely — he could not break free despite maximum strength"},
-      {"tag": "ranged_nen_specialist", "coefficient": 0.3, "description": "Lacks ranged options beyond his scream — ranged Nen fighters exploit his pure melee focus"},
-      {"tag": "genjutsu", "coefficient": 0.5, "description": "Pure brute — zero resistance to mental manipulation techniques"}
+      {
+        "tag": "nen_binding",
+        "coefficient": 0.6,
+        "description": "Canon: Kurapika's Chain Jail immobilized him completely — he could not break free despite maximum strength"
+      },
+      {
+        "tag": "ranged_nen_specialist",
+        "coefficient": 0.3,
+        "description": "Lacks ranged options beyond his scream — ranged Nen fighters exploit his pure melee focus"
+      },
+      {
+        "tag": "genjutsu",
+        "coefficient": 0.5,
+        "description": "Pure brute — zero resistance to mental manipulation techniques"
+      }
     ],
-    "cannot_win_against": ["kurapika_emperor_time"],
+    "cannot_win_against": [
+      "kurapika_emperor_time"
+    ],
     "draw_conditions": [],
-    "traits": ["human", "male", "nen_user", "phantom_troupe", "enhancement_user"],
+    "traits": [
+      "human",
+      "male",
+      "nen_user",
+      "phantom_troupe",
+      "enhancement_user"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
     "image_path": "assets/characters/hxh/uvogin.jpg",
@@ -509,21 +1106,54 @@
     "name": "Machi Komacine",
     "verse": "hxh",
     "arc_version": "Phantom Troupe – Yorknew Arc",
-    "power_level": 1534821.5540,
+    "power_level": 1534821.554,
     "martial_ratio": 0.6,
-    "power_tags": ["nen_thread_transmutation", "puppet_thread", "nen_stitching", "distance_kill", "tracking_thread"],
+    "power_tags": [
+      "nen_thread_transmutation",
+      "puppet_thread",
+      "nen_stitching",
+      "distance_kill",
+      "tracking_thread"
+    ],
     "strengths": [
-      {"tag": "nen_thread_precision", "coefficient": 0.5, "description": "Nen threads are near-invisible and can cut through almost anything"},
-      {"tag": "healing", "coefficient": 0.6, "description": "Can reattach severed limbs with Nen thread — top-tier Nen medical ability"},
-      {"tag": "range", "coefficient": 0.4, "description": "Threads can span massive distances to reach and kill targets"}
+      {
+        "tag": "nen_thread_precision",
+        "coefficient": 0.5,
+        "description": "Nen threads are near-invisible and can cut through almost anything"
+      },
+      {
+        "tag": "healing",
+        "coefficient": 0.6,
+        "description": "Can reattach severed limbs with Nen thread — top-tier Nen medical ability"
+      },
+      {
+        "tag": "range",
+        "coefficient": 0.4,
+        "description": "Threads can span massive distances to reach and kill targets"
+      }
     ],
     "weaknesses": [
-      {"tag": "overwhelming_physical_nen", "coefficient": 0.35, "description": "Raw power advantage allows breaking through thread constraints"},
-      {"tag": "detection", "coefficient": 0.3, "description": "En-users can sense thread placements before engaging"}
+      {
+        "tag": "overwhelming_physical_nen",
+        "coefficient": 0.35,
+        "description": "Raw power advantage allows breaking through thread constraints"
+      },
+      {
+        "tag": "detection",
+        "coefficient": 0.3,
+        "description": "En-users can sense thread placements before engaging"
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "female", "nen_user", "phantom_troupe", "transmutation_user", "beautiful"],
+    "traits": [
+      "human",
+      "female",
+      "nen_user",
+      "phantom_troupe",
+      "transmutation_user",
+      "beautiful"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
     "image_path": "assets/characters/hxh/machi_komacine.jpg",
@@ -534,24 +1164,404 @@
     "name": "Nobunaga Hazama",
     "verse": "hxh",
     "arc_version": "Phantom Troupe – Yorknew Arc",
-    "power_level": 1734821.4410,
+    "power_level": 1734821.441,
     "martial_ratio": 0.88,
-    "power_tags": ["en_circle_sword", "sword_mastery", "enhancement_nen", "in_concealment", "nen_en"],
+    "power_tags": [
+      "en_circle_sword",
+      "sword_mastery",
+      "enhancement_nen",
+      "in_concealment",
+      "nen_en"
+    ],
     "strengths": [
-      {"tag": "close_range", "coefficient": 0.5, "description": "Within his En circle (4m radius), Nobunaga claims he can react to and cut anything — essentially a perfect domain"},
-      {"tag": "sword_speed", "coefficient": 0.5},
-      {"tag": "en_detection", "coefficient": 0.4, "description": "His En-enhanced sword range detects any movement within its perimeter"}
+      {
+        "tag": "close_range",
+        "coefficient": 0.5,
+        "description": "Within his En circle (4m radius), Nobunaga claims he can react to and cut anything — essentially a perfect domain"
+      },
+      {
+        "tag": "sword_speed",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "en_detection",
+        "coefficient": 0.4,
+        "description": "His En-enhanced sword range detects any movement within its perimeter"
+      }
     ],
     "weaknesses": [
-      {"tag": "long_range", "coefficient": 0.5, "description": "Explicitly states he has no answer for long-range Nen specialists — fighting outside his En circle negates his primary advantage"},
-      {"tag": "overwhelming_nen_volume", "coefficient": 0.35}
+      {
+        "tag": "long_range",
+        "coefficient": 0.5,
+        "description": "Explicitly states he has no answer for long-range Nen specialists — fighting outside his En circle negates his primary advantage"
+      },
+      {
+        "tag": "overwhelming_nen_volume",
+        "coefficient": 0.35
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "male", "nen_user", "phantom_troupe", "enhancement_user", "swordsman"],
+    "traits": [
+      "human",
+      "male",
+      "nen_user",
+      "phantom_troupe",
+      "enhancement_user",
+      "swordsman"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
     "image_path": "assets/characters/hxh/nobunaga_hazama.jpg",
     "short_description": "The Phantom Troupe's sword master whose En-enhanced circle of death makes him unbeatable within 4 meters — and completely vulnerable to anyone who keeps their distance."
+  },
+  {
+    "slug": "phinks",
+    "name": "Phinks Magcub",
+    "verse": "hxh",
+    "arc_version": "Ripper Cyclotron — Troupe Enforcer",
+    "power_level": 1734821,
+    "martial_ratio": 0.92,
+    "power_tags": [
+      "ripper_cyclotron",
+      "enhancement_nen",
+      "arm_rotation",
+      "brute_force",
+      "combat_instinct"
+    ],
+    "strengths": [
+      {
+        "tag": "ninjutsu",
+        "coefficient": 0.4,
+        "description": "Enhancement Nen-coated body resists most energy-based jutsu"
+      },
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.3,
+        "description": "Enhanced body tanks incoming strikes to continue rotating for more power"
+      },
+      {
+        "tag": "speed",
+        "coefficient": 0.3,
+        "description": "Rotation builds kinetic energy faster than opponents can react"
+      }
+    ],
+    "weaknesses": [
+      {
+        "tag": "long_range",
+        "coefficient": 0.4,
+        "description": "His power requires physical rotation — ranged combat breaks his rhythm"
+      },
+      {
+        "tag": "nen_binding",
+        "coefficient": 0.5,
+        "description": "Any ability that pins or restricts arm movement negates Ripper Cyclotron entirely"
+      }
+    ],
+    "cannot_win_against": [
+      "kurapika_emperor_time"
+    ],
+    "draw_conditions": [],
+    "traits": [
+      "human",
+      "male",
+      "nen_user",
+      "phantom_troupe"
+    ],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/hxh/phinks.jpg",
+    "short_description": "Phantom Troupe's muscle who perfected a single technique: arm rotation. Each rotation multiplies strike power exponentially — given enough spins, a single punch destroys anything."
+  },
+  {
+    "slug": "bonolenov",
+    "name": "Bonolenov Ndongo",
+    "verse": "hxh",
+    "arc_version": "Battle Melody — Troupe Member",
+    "power_level": 1247293,
+    "martial_ratio": 0.5,
+    "power_tags": [
+      "battle_melody",
+      "conjuration_nen",
+      "body_holes_sound",
+      "copa_del_rey",
+      "mercury_song",
+      "nen_summoning"
+    ],
+    "strengths": [
+      {
+        "tag": "detection",
+        "coefficient": 0.4,
+        "description": "Sound-based aura disrupts sensory detection and observation abilities"
+      },
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.3,
+        "description": "Melody-conjured armour absorbs impact"
+      }
+    ],
+    "weaknesses": [
+      {
+        "tag": "silence",
+        "coefficient": 0.6,
+        "description": "Sound-based Nen requires being able to create melody — suppressing his sound disables everything"
+      },
+      {
+        "tag": "overwhelming_speed",
+        "coefficient": 0.4,
+        "description": "Extremely fast opponents can interrupt melody before it activates"
+      }
+    ],
+    "cannot_win_against": [
+      "kurapika_emperor_time"
+    ],
+    "draw_conditions": [],
+    "traits": [
+      "human",
+      "male",
+      "nen_user",
+      "phantom_troupe",
+      "ndongo_tribe"
+    ],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/hxh/bonolenov.jpg",
+    "short_description": "The Ndongo tribe warrior who uses holes in his own body as instruments — his Battle Melody Nen conjures weapons and armour through music, making him one of the most unusual fighters in the Troupe."
+  },
+  {
+    "slug": "kortopi",
+    "name": "Kortopi",
+    "verse": "hxh",
+    "arc_version": "Gallery Fake — Troupe Support",
+    "power_level": 284821,
+    "martial_ratio": 0.35,
+    "power_tags": [
+      "gallery_fake",
+      "copy_creation",
+      "nen_forgery",
+      "dimensional_copy",
+      "conjuration_nen"
+    ],
+    "strengths": [
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.3,
+        "description": "Copies of objects can confuse and misdirect attackers"
+      },
+      {
+        "tag": "detection",
+        "coefficient": 0.4,
+        "description": "Gallery Fake creates identical copies that fool even Nen-based detection briefly"
+      }
+    ],
+    "weaknesses": [
+      {
+        "tag": "overwhelming_power",
+        "coefficient": 0.7,
+        "description": "Direct combat is his weakest point — copies are illusions, not weapons"
+      },
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.0
+      },
+      {
+        "tag": "nen_advanced",
+        "coefficient": 0.4,
+        "description": "Master Nen users can feel the fake aura and identify copies immediately"
+      }
+    ],
+    "cannot_win_against": [
+      "kurapika_emperor_time",
+      "hisoka"
+    ],
+    "draw_conditions": [],
+    "traits": [
+      "human",
+      "male",
+      "nen_user",
+      "phantom_troupe"
+    ],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/hxh/kortopi.jpg",
+    "short_description": "The Troupe's copy specialist — his right hand can duplicate any object perfectly, including the copied objects' Nen properties. His power is support and deception, not direct combat."
+  },
+  {
+    "slug": "shalnark",
+    "name": "Shalnark",
+    "verse": "hxh",
+    "arc_version": "Black Voice — Troupe Manipulator",
+    "power_level": 1447293,
+    "martial_ratio": 0.55,
+    "power_tags": [
+      "black_voice",
+      "manipulation_nen",
+      "autopilot_mode",
+      "needle_pins",
+      "puppet_control",
+      "strategic_mind"
+    ],
+    "strengths": [
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.3,
+        "description": "Manipulated opponents fight for him — any physical attacker becomes a puppet"
+      },
+      {
+        "tag": "speed",
+        "coefficient": 0.4,
+        "description": "Autopilot mode pushes his own body past human limits at the cost of stamina"
+      },
+      {
+        "tag": "detection",
+        "coefficient": 0.5,
+        "description": "Strategic genius — his planning anticipates detection countermeasures"
+      }
+    ],
+    "weaknesses": [
+      {
+        "tag": "nen_binding",
+        "coefficient": 0.5,
+        "description": "If his phone (needle antenna) is destroyed, Black Voice fails"
+      },
+      {
+        "tag": "autopilot_backlash",
+        "coefficient": 0.6,
+        "description": "Autopilot exhausts his body completely — he is helpless after its use"
+      },
+      {
+        "tag": "long_range_piercing",
+        "coefficient": 0.4
+      }
+    ],
+    "cannot_win_against": [
+      "kurapika_emperor_time",
+      "hisoka"
+    ],
+    "draw_conditions": [],
+    "traits": [
+      "human",
+      "male",
+      "nen_user",
+      "phantom_troupe"
+    ],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/hxh/shalnark.jpg",
+    "short_description": "The Troupe's manipulator who can implant pins to control anyone like a puppet. In Autopilot mode, his own body exceeds its limits — a terrifying berserker who collapses when it ends."
+  },
+  {
+    "slug": "franklin",
+    "name": "Franklin Bordeau",
+    "verse": "hxh",
+    "arc_version": "Double Machine Gun — Troupe Enforcer",
+    "power_level": 1847293,
+    "martial_ratio": 0.7,
+    "power_tags": [
+      "double_machine_gun",
+      "emission_nen",
+      "aura_bullets",
+      "rapid_fire",
+      "massive_output"
+    ],
+    "strengths": [
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.3,
+        "description": "Massive body tanks conventional strikes while returning fire"
+      },
+      {
+        "tag": "close_range",
+        "coefficient": 0.4,
+        "description": "Point-blank aura bullet barrage is devastating at close range"
+      },
+      {
+        "tag": "chakra",
+        "coefficient": 0.3,
+        "description": "Nen-coated bullets disrupt chakra systems on impact"
+      }
+    ],
+    "weaknesses": [
+      {
+        "tag": "long_range",
+        "coefficient": 0.3,
+        "description": "Sustained long-range combat drains his aura faster than most Emission users"
+      },
+      {
+        "tag": "speed",
+        "coefficient": 0.35,
+        "description": "Not the fastest Troupe member — mobile opponents can dodge the barrage"
+      }
+    ],
+    "cannot_win_against": [
+      "kurapika_emperor_time"
+    ],
+    "draw_conditions": [],
+    "traits": [
+      "human",
+      "male",
+      "nen_user",
+      "phantom_troupe"
+    ],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/hxh/franklin.jpg",
+    "short_description": "The Troupe's walking artillery. Franklin cut off his own fingers to turn his hands into cannon barrels that fire Nen bullets — his Double Machine Gun overwhelms anyone in his range with sheer output."
+  },
+  {
+    "slug": "pakunoda",
+    "name": "Pakunoda",
+    "verse": "hxh",
+    "arc_version": "Memory Bullet — Troupe Emissary",
+    "power_level": 934821,
+    "martial_ratio": 0.45,
+    "power_tags": [
+      "memory_bullet",
+      "psychometry",
+      "memory_reading",
+      "nen_emission",
+      "conjuration_nen",
+      "telepathy_shot"
+    ],
+    "strengths": [
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.3,
+        "description": "Memory bullets fired at close range carry devastating Nen charges"
+      },
+      {
+        "tag": "detection",
+        "coefficient": 0.7,
+        "description": "Psychometry reads any memory of anyone she touches — zero deception possible"
+      }
+    ],
+    "weaknesses": [
+      {
+        "tag": "overwhelming_power",
+        "coefficient": 0.5,
+        "description": "Not a frontline fighter — her value is information, not combat"
+      },
+      {
+        "tag": "long_range",
+        "coefficient": 0.5,
+        "description": "Psychometry requires direct touch or close proximity"
+      }
+    ],
+    "cannot_win_against": [
+      "kurapika_emperor_time",
+      "hisoka"
+    ],
+    "draw_conditions": [],
+    "traits": [
+      "human",
+      "female",
+      "nen_user",
+      "phantom_troupe",
+      "beautiful"
+    ],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/hxh/pakunoda.jpg",
+    "short_description": "The Troupe's memory reader — her psychometry reveals every secret, and her Memory Bullets can fire memories directly into others' minds. She gave her life shooting the Troupe's memories of Kurapika to save Gon and Killua."
   }
 ]

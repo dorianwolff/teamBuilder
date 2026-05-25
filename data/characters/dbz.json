@@ -6,20 +6,54 @@
     "arc_version": "Ultra Instinct Mastered – Tournament of Power",
     "power_level": 9847293.4521,
     "martial_ratio": 0.75,
-    "power_tags": ["ultra_instinct", "godly_ki", "autonomous_movement", "kamehameha_god", "flight", "instant_transmission"],
+    "power_tags": [
+      "ultra_instinct",
+      "godly_ki",
+      "autonomous_movement",
+      "kamehameha_god",
+      "flight",
+      "instant_transmission"
+    ],
     "strengths": [
-      {"tag": "physical_attacks", "coefficient": 0.7, "description": "Autonomous dodging makes physical attacks nearly impossible to land"},
-      {"tag": "speed_blitz", "coefficient": 0.65},
-      {"tag": "energy_attacks", "coefficient": 0.5},
-      {"tag": "godly_ki", "coefficient": 0.5}
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.7,
+        "description": "Autonomous dodging makes physical attacks nearly impossible to land"
+      },
+      {
+        "tag": "speed_blitz",
+        "coefficient": 0.65
+      },
+      {
+        "tag": "energy_attacks",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "godly_ki",
+        "coefficient": 0.5
+      }
     ],
     "weaknesses": [
-      {"tag": "emotional_disruption", "coefficient": 0.3},
-      {"tag": "stamina_drain", "coefficient": 0.25}
+      {
+        "tag": "emotional_disruption",
+        "coefficient": 0.3
+      },
+      {
+        "tag": "stamina_drain",
+        "coefficient": 0.25
+      }
     ],
-    "cannot_win_against": ["whis", "beerus"],
+    "cannot_win_against": [
+      "whis",
+      "beerus"
+    ],
     "draw_conditions": [],
-    "traits": ["saiyan", "male", "ki_user", "martial_artist"],
+    "traits": [
+      "saiyan",
+      "male",
+      "ki_user",
+      "martial_artist"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
     "image_path": "assets/characters/dbz/goku_mui.jpg",
@@ -30,21 +64,53 @@
     "name": "Vegeta",
     "verse": "dbz",
     "arc_version": "Ultra Ego – Granolah Arc",
-    "power_level": 9621047.7730,
+    "power_level": 9621047.773,
     "martial_ratio": 0.78,
-    "power_tags": ["ultra_ego", "godly_ki", "hakai_destroyer", "big_bang_attack", "galick_gun", "flight", "pride"],
+    "power_tags": [
+      "ultra_ego",
+      "godly_ki",
+      "hakai_destroyer",
+      "big_bang_attack",
+      "galick_gun",
+      "flight",
+      "pride"
+    ],
     "strengths": [
-      {"tag": "damage_received", "coefficient": 0.6, "description": "Ultra Ego grows stronger when taking damage"},
-      {"tag": "destroyer_energy", "coefficient": 0.55},
-      {"tag": "physical_attacks", "coefficient": 0.5}
+      {
+        "tag": "damage_received",
+        "coefficient": 0.6,
+        "description": "Ultra Ego grows stronger when taking damage"
+      },
+      {
+        "tag": "destroyer_energy",
+        "coefficient": 0.55
+      },
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.5
+      }
     ],
     "weaknesses": [
-      {"tag": "stamina_overwhelm", "coefficient": 0.3},
-      {"tag": "speed_blitz", "coefficient": 0.2}
+      {
+        "tag": "stamina_overwhelm",
+        "coefficient": 0.3
+      },
+      {
+        "tag": "speed_blitz",
+        "coefficient": 0.2
+      }
     ],
-    "cannot_win_against": ["whis", "beerus"],
+    "cannot_win_against": [
+      "whis",
+      "beerus"
+    ],
     "draw_conditions": [],
-    "traits": ["saiyan", "male", "ki_user", "martial_artist"],
+    "traits": [
+      "saiyan",
+      "male",
+      "ki_user",
+      "martial_artist"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
     "image_path": "assets/characters/dbz/vegeta_ultra_ego.jpg",
@@ -55,21 +121,52 @@
     "name": "Beerus",
     "verse": "dbz",
     "arc_version": "God of Destruction – Battle of Gods",
-    "power_level": 9934821.2210,
+    "power_level": 9934821.221,
     "martial_ratio": 0.8,
-    "power_tags": ["hakai", "destroyer_energy", "godly_ki", "ultra_instinct_partial", "sphere_of_destruction", "flight", "sealing"],
+    "power_tags": [
+      "hakai",
+      "destroyer_energy",
+      "godly_ki",
+      "ultra_instinct_partial",
+      "sphere_of_destruction",
+      "flight",
+      "sealing"
+    ],
     "strengths": [
-      {"tag": "physical_attacks", "coefficient": 0.6},
-      {"tag": "energy_attacks", "coefficient": 0.65},
-      {"tag": "hakai_resistance", "coefficient": 0.8, "description": "Destroyer energy resists being destroyed"}
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.6
+      },
+      {
+        "tag": "energy_attacks",
+        "coefficient": 0.65
+      },
+      {
+        "tag": "hakai_resistance",
+        "coefficient": 0.8,
+        "description": "Destroyer energy resists being destroyed"
+      }
     ],
     "weaknesses": [
-      {"tag": "deep_sleep", "coefficient": 0.9},
-      {"tag": "food", "coefficient": 0.1}
+      {
+        "tag": "deep_sleep",
+        "coefficient": 0.9
+      },
+      {
+        "tag": "food",
+        "coefficient": 0.1
+      }
     ],
-    "cannot_win_against": ["whis"],
+    "cannot_win_against": [
+      "whis"
+    ],
     "draw_conditions": [],
-    "traits": ["god_of_destruction", "male", "ki_user", "divine"],
+    "traits": [
+      "god_of_destruction",
+      "male",
+      "ki_user",
+      "divine"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
     "image_path": "assets/characters/dbz/beerus.jpg",
@@ -80,21 +177,49 @@
     "name": "Whis",
     "verse": "dbz",
     "arc_version": "Angel Attendant – Universe 7",
-    "power_level": 9998472.8830,
+    "power_level": 9998472.883,
     "martial_ratio": 0.85,
-    "power_tags": ["angel_ki", "ultra_instinct_perfected", "time_rewind", "staff_of_omega", "godly_ki_supreme", "dimension_creation", "flight"],
+    "power_tags": [
+      "angel_ki",
+      "ultra_instinct_perfected",
+      "time_rewind",
+      "staff_of_omega",
+      "godly_ki_supreme",
+      "dimension_creation",
+      "flight"
+    ],
     "strengths": [
-      {"tag": "physical_attacks", "coefficient": 0.9},
-      {"tag": "energy_attacks", "coefficient": 0.9},
-      {"tag": "hakai", "coefficient": 0.7},
-      {"tag": "time_manipulation", "coefficient": 0.6}
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.9
+      },
+      {
+        "tag": "energy_attacks",
+        "coefficient": 0.9
+      },
+      {
+        "tag": "hakai",
+        "coefficient": 0.7
+      },
+      {
+        "tag": "time_manipulation",
+        "coefficient": 0.6
+      }
     ],
     "weaknesses": [
-      {"tag": "angel_law_violation", "coefficient": 0.5}
+      {
+        "tag": "angel_law_violation",
+        "coefficient": 0.5
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["angel", "male", "ki_user", "divine"],
+    "traits": [
+      "angel",
+      "male",
+      "ki_user",
+      "divine"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
     "image_path": "assets/characters/dbz/whis.jpg",
@@ -105,21 +230,53 @@
     "name": "Jiren",
     "verse": "dbz",
     "arc_version": "Full Power – Tournament of Power",
-    "power_level": 9721047.5540,
+    "power_level": 9721047.554,
     "martial_ratio": 0.85,
-    "power_tags": ["ki_concentration", "full_power_jiren", "heat_barrier", "energy_prison", "flight", "godly_ki"],
+    "power_tags": [
+      "ki_concentration",
+      "full_power_jiren",
+      "heat_barrier",
+      "energy_prison",
+      "flight",
+      "godly_ki"
+    ],
     "strengths": [
-      {"tag": "physical_attacks", "coefficient": 0.65},
-      {"tag": "energy_attacks", "coefficient": 0.6},
-      {"tag": "overwhelming_ki", "coefficient": 0.7}
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.65
+      },
+      {
+        "tag": "energy_attacks",
+        "coefficient": 0.6
+      },
+      {
+        "tag": "overwhelming_ki",
+        "coefficient": 0.7
+      }
     ],
     "weaknesses": [
-      {"tag": "emotional_support", "coefficient": 0.4, "description": "His philosophy of strength as the only truth is his mental vulnerability"},
-      {"tag": "trust_and_bonds", "coefficient": 0.35}
+      {
+        "tag": "emotional_support",
+        "coefficient": 0.4,
+        "description": "His philosophy of strength as the only truth is his mental vulnerability"
+      },
+      {
+        "tag": "trust_and_bonds",
+        "coefficient": 0.35
+      }
     ],
-    "cannot_win_against": ["whis", "beerus"],
+    "cannot_win_against": [
+      "whis",
+      "beerus"
+    ],
     "draw_conditions": [],
-    "traits": ["alien", "male", "ki_user", "martial_artist", "pride_trooper"],
+    "traits": [
+      "alien",
+      "male",
+      "ki_user",
+      "martial_artist",
+      "pride_trooper"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
     "image_path": "assets/characters/dbz/jiren.jpg",
@@ -130,21 +287,52 @@
     "name": "Broly",
     "verse": "dbz",
     "arc_version": "Legendary Super Saiyan – DBS Movie",
-    "power_level": 9512847.9930,
+    "power_level": 9512847.993,
     "martial_ratio": 0.9,
-    "power_tags": ["legendary_super_saiyan", "great_ape_ki", "berserker", "zenkai_unlimited", "energy_spiral", "flight"],
+    "power_tags": [
+      "legendary_super_saiyan",
+      "great_ape_ki",
+      "berserker",
+      "zenkai_unlimited",
+      "energy_spiral",
+      "flight"
+    ],
     "strengths": [
-      {"tag": "physical_attacks", "coefficient": 0.65},
-      {"tag": "energy_attacks", "coefficient": 0.55},
-      {"tag": "zenkai_healing", "coefficient": 0.8, "description": "Grows measurably stronger every second of combat"}
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.65
+      },
+      {
+        "tag": "energy_attacks",
+        "coefficient": 0.55
+      },
+      {
+        "tag": "zenkai_healing",
+        "coefficient": 0.8,
+        "description": "Grows measurably stronger every second of combat"
+      }
     ],
     "weaknesses": [
-      {"tag": "emotional_destabilization", "coefficient": 0.45},
-      {"tag": "teleportation", "coefficient": 0.25}
+      {
+        "tag": "emotional_destabilization",
+        "coefficient": 0.45
+      },
+      {
+        "tag": "teleportation",
+        "coefficient": 0.25
+      }
     ],
-    "cannot_win_against": ["whis", "beerus"],
+    "cannot_win_against": [
+      "whis",
+      "beerus"
+    ],
     "draw_conditions": [],
-    "traits": ["saiyan", "male", "ki_user", "legendary_super_saiyan"],
+    "traits": [
+      "saiyan",
+      "male",
+      "ki_user",
+      "legendary_super_saiyan"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
     "image_path": "assets/characters/dbz/broly_dbs.jpg",
@@ -155,21 +343,51 @@
     "name": "Gohan",
     "verse": "dbz",
     "arc_version": "Beast Form – Super Hero Movie",
-    "power_level": 8934821.6640,
+    "power_level": 8934821.664,
     "martial_ratio": 0.65,
-    "power_tags": ["beast_gohan", "hidden_potential_unlocked", "instinct_awakened", "kamehameha_beast", "flight", "godly_ki_partial"],
+    "power_tags": [
+      "beast_gohan",
+      "hidden_potential_unlocked",
+      "instinct_awakened",
+      "kamehameha_beast",
+      "flight",
+      "godly_ki_partial"
+    ],
     "strengths": [
-      {"tag": "physical_attacks", "coefficient": 0.55},
-      {"tag": "energy_attacks", "coefficient": 0.6},
-      {"tag": "rage_amplification", "coefficient": 0.5}
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.55
+      },
+      {
+        "tag": "energy_attacks",
+        "coefficient": 0.6
+      },
+      {
+        "tag": "rage_amplification",
+        "coefficient": 0.5
+      }
     ],
     "weaknesses": [
-      {"tag": "training_inconsistency", "coefficient": 0.3},
-      {"tag": "stamina_drain", "coefficient": 0.3}
+      {
+        "tag": "training_inconsistency",
+        "coefficient": 0.3
+      },
+      {
+        "tag": "stamina_drain",
+        "coefficient": 0.3
+      }
     ],
-    "cannot_win_against": ["whis", "beerus"],
+    "cannot_win_against": [
+      "whis",
+      "beerus"
+    ],
     "draw_conditions": [],
-    "traits": ["half_saiyan", "male", "ki_user", "martial_artist"],
+    "traits": [
+      "half_saiyan",
+      "male",
+      "ki_user",
+      "martial_artist"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
     "image_path": "assets/characters/dbz/gohan_beast.jpg",
@@ -180,21 +398,48 @@
     "name": "Son Goku",
     "verse": "dbz",
     "arc_version": "Super Saiyan Blue – Universe 6 Arc",
-    "power_level": 7821047.3310,
+    "power_level": 7821047.331,
     "martial_ratio": 0.72,
-    "power_tags": ["super_saiyan_blue", "godly_ki", "kaioken_ssb", "kamehameha_god", "instant_transmission", "flight"],
+    "power_tags": [
+      "super_saiyan_blue",
+      "godly_ki",
+      "kaioken_ssb",
+      "kamehameha_god",
+      "instant_transmission",
+      "flight"
+    ],
     "strengths": [
-      {"tag": "physical_attacks", "coefficient": 0.55},
-      {"tag": "energy_attacks", "coefficient": 0.5},
-      {"tag": "godly_ki", "coefficient": 0.4}
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.55
+      },
+      {
+        "tag": "energy_attacks",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "godly_ki",
+        "coefficient": 0.4
+      }
     ],
     "weaknesses": [
-      {"tag": "ki_drain_kaioken", "coefficient": 0.4},
-      {"tag": "overwhelming_godly_ki", "coefficient": 0.3}
+      {
+        "tag": "ki_drain_kaioken",
+        "coefficient": 0.4
+      },
+      {
+        "tag": "overwhelming_godly_ki",
+        "coefficient": 0.3
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["saiyan", "male", "ki_user", "martial_artist"],
+    "traits": [
+      "saiyan",
+      "male",
+      "ki_user",
+      "martial_artist"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
     "image_path": "assets/characters/dbz/goku_ssb.jpg",
@@ -205,21 +450,47 @@
     "name": "Vegeta",
     "verse": "dbz",
     "arc_version": "Super Saiyan Blue Evolved – Tournament of Power",
-    "power_level": 7634821.8820,
+    "power_level": 7634821.882,
     "martial_ratio": 0.74,
-    "power_tags": ["ssb_evolved", "godly_ki", "final_flash", "big_bang_attack_god", "flight"],
+    "power_tags": [
+      "ssb_evolved",
+      "godly_ki",
+      "final_flash",
+      "big_bang_attack_god",
+      "flight"
+    ],
     "strengths": [
-      {"tag": "physical_attacks", "coefficient": 0.5},
-      {"tag": "energy_attacks", "coefficient": 0.5},
-      {"tag": "godly_ki", "coefficient": 0.4}
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "energy_attacks",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "godly_ki",
+        "coefficient": 0.4
+      }
     ],
     "weaknesses": [
-      {"tag": "hakai_user", "coefficient": 0.3},
-      {"tag": "speed_blitz", "coefficient": 0.25}
+      {
+        "tag": "hakai_user",
+        "coefficient": 0.3
+      },
+      {
+        "tag": "speed_blitz",
+        "coefficient": 0.25
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["saiyan", "male", "ki_user", "martial_artist"],
+    "traits": [
+      "saiyan",
+      "male",
+      "ki_user",
+      "martial_artist"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
     "image_path": "assets/characters/dbz/vegeta_ssb_evolved.jpg",
@@ -230,20 +501,45 @@
     "name": "Frieza",
     "verse": "dbz",
     "arc_version": "Black Frieza – Post-Training",
-    "power_level": 9234821.4410,
+    "power_level": 9234821.441,
     "martial_ratio": 0.7,
-    "power_tags": ["black_frieza", "death_beam_black", "death_ball_black", "godly_ki", "ki_suppression", "flight"],
+    "power_tags": [
+      "black_frieza",
+      "death_beam_black",
+      "death_ball_black",
+      "godly_ki",
+      "ki_suppression",
+      "flight"
+    ],
     "strengths": [
-      {"tag": "physical_attacks", "coefficient": 0.55},
-      {"tag": "energy_attacks", "coefficient": 0.65},
-      {"tag": "ki_control", "coefficient": 0.5}
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.55
+      },
+      {
+        "tag": "energy_attacks",
+        "coefficient": 0.65
+      },
+      {
+        "tag": "ki_control",
+        "coefficient": 0.5
+      }
     ],
     "weaknesses": [
-      {"tag": "angel_ki", "coefficient": 0.5}
+      {
+        "tag": "angel_ki",
+        "coefficient": 0.5
+      }
     ],
-    "cannot_win_against": ["whis"],
+    "cannot_win_against": [
+      "whis"
+    ],
     "draw_conditions": [],
-    "traits": ["alien", "male", "ki_user"],
+    "traits": [
+      "alien",
+      "male",
+      "ki_user"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
     "image_path": "assets/characters/dbz/frieza_black.jpg",
@@ -254,20 +550,44 @@
     "name": "Frieza",
     "verse": "dbz",
     "arc_version": "Golden Frieza – Resurrection F",
-    "power_level": 7847293.1130,
+    "power_level": 7847293.113,
     "martial_ratio": 0.65,
-    "power_tags": ["golden_frieza", "death_beam", "death_ball", "godly_ki_partial", "ki_suppression", "flight"],
+    "power_tags": [
+      "golden_frieza",
+      "death_beam",
+      "death_ball",
+      "godly_ki_partial",
+      "ki_suppression",
+      "flight"
+    ],
     "strengths": [
-      {"tag": "physical_attacks", "coefficient": 0.5},
-      {"tag": "energy_attacks", "coefficient": 0.55}
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "energy_attacks",
+        "coefficient": 0.55
+      }
     ],
     "weaknesses": [
-      {"tag": "stamina_drain", "coefficient": 0.5, "description": "Unfamiliar transformation drains stamina rapidly"},
-      {"tag": "training_deficiency", "coefficient": 0.4}
+      {
+        "tag": "stamina_drain",
+        "coefficient": 0.5,
+        "description": "Unfamiliar transformation drains stamina rapidly"
+      },
+      {
+        "tag": "training_deficiency",
+        "coefficient": 0.4
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["alien", "male", "ki_user"],
+    "traits": [
+      "alien",
+      "male",
+      "ki_user"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
     "image_path": "assets/characters/dbz/frieza_golden.jpg",
@@ -278,21 +598,50 @@
     "name": "Cell",
     "verse": "dbz",
     "arc_version": "Perfect Form – Cell Games",
-    "power_level": 5934821.7720,
+    "power_level": 5934821.772,
     "martial_ratio": 0.7,
-    "power_tags": ["perfect_cell", "zenkai_cells", "kamehameha_solar", "regeneration", "absorption", "flight", "saiyan_cells"],
+    "power_tags": [
+      "perfect_cell",
+      "zenkai_cells",
+      "kamehameha_solar",
+      "regeneration",
+      "absorption",
+      "flight",
+      "saiyan_cells"
+    ],
     "strengths": [
-      {"tag": "physical_attacks", "coefficient": 0.55},
-      {"tag": "energy_attacks", "coefficient": 0.55},
-      {"tag": "regeneration", "coefficient": 0.7}
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.55
+      },
+      {
+        "tag": "energy_attacks",
+        "coefficient": 0.55
+      },
+      {
+        "tag": "regeneration",
+        "coefficient": 0.7
+      }
     ],
     "weaknesses": [
-      {"tag": "forced_reversion", "coefficient": 0.6},
-      {"tag": "emotional_triggers", "coefficient": 0.4}
+      {
+        "tag": "forced_reversion",
+        "coefficient": 0.6
+      },
+      {
+        "tag": "emotional_triggers",
+        "coefficient": 0.4
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["android", "male", "ki_user", "saiyan_cells", "bio_weapon"],
+    "traits": [
+      "android",
+      "male",
+      "ki_user",
+      "saiyan_cells",
+      "bio_weapon"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
     "image_path": "assets/characters/dbz/cell_perfect.jpg",
@@ -303,22 +652,52 @@
     "name": "Majin Buu",
     "verse": "dbz",
     "arc_version": "Pure Evil Buu – Buu Arc",
-    "power_level": 7234821.5540,
+    "power_level": 7234821.554,
     "martial_ratio": 0.7,
-    "power_tags": ["pure_evil_buu", "candy_beam", "regeneration_unlimited", "absorption", "flight", "magic_attack"],
+    "power_tags": [
+      "pure_evil_buu",
+      "candy_beam",
+      "regeneration_unlimited",
+      "absorption",
+      "flight",
+      "magic_attack"
+    ],
     "strengths": [
-      {"tag": "physical_attacks", "coefficient": 0.7},
-      {"tag": "energy_attacks", "coefficient": 0.6},
-      {"tag": "regeneration", "coefficient": 0.9, "description": "Can regenerate from a single atom — essentially unkillable by conventional means"},
-      {"tag": "absorption", "coefficient": 0.5}
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.7
+      },
+      {
+        "tag": "energy_attacks",
+        "coefficient": 0.6
+      },
+      {
+        "tag": "regeneration",
+        "coefficient": 0.9,
+        "description": "Can regenerate from a single atom — essentially unkillable by conventional means"
+      },
+      {
+        "tag": "absorption",
+        "coefficient": 0.5
+      }
     ],
     "weaknesses": [
-      {"tag": "sealing", "coefficient": 0.5},
-      {"tag": "overwhelming_energy", "coefficient": 0.3}
+      {
+        "tag": "sealing",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "overwhelming_energy",
+        "coefficient": 0.3
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["magical_being", "male", "ki_user"],
+    "traits": [
+      "magical_being",
+      "male",
+      "ki_user"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
     "image_path": "assets/characters/dbz/majin_buu_pure.jpg",
@@ -329,21 +708,48 @@
     "name": "Piccolo",
     "verse": "dbz",
     "arc_version": "Orange Piccolo – Super Hero Movie",
-    "power_level": 5234821.4410,
+    "power_level": 5234821.441,
     "martial_ratio": 0.7,
-    "power_tags": ["orange_piccolo", "special_beam_cannon_god", "regeneration", "giant_form", "namekian_ki", "flight"],
+    "power_tags": [
+      "orange_piccolo",
+      "special_beam_cannon_god",
+      "regeneration",
+      "giant_form",
+      "namekian_ki",
+      "flight"
+    ],
     "strengths": [
-      {"tag": "physical_attacks", "coefficient": 0.5},
-      {"tag": "energy_attacks", "coefficient": 0.5},
-      {"tag": "regeneration", "coefficient": 0.6}
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "energy_attacks",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "regeneration",
+        "coefficient": 0.6
+      }
     ],
     "weaknesses": [
-      {"tag": "hakai", "coefficient": 0.5},
-      {"tag": "overwhelming_godly_ki", "coefficient": 0.3}
+      {
+        "tag": "hakai",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "overwhelming_godly_ki",
+        "coefficient": 0.3
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["namekian", "male", "ki_user", "martial_artist"],
+    "traits": [
+      "namekian",
+      "male",
+      "ki_user",
+      "martial_artist"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
     "image_path": "assets/characters/dbz/piccolo_orange.jpg",
@@ -354,21 +760,49 @@
     "name": "Android 17",
     "verse": "dbz",
     "arc_version": "Ranger – Tournament of Power",
-    "power_level": 5021047.8820,
+    "power_level": 5021047.882,
     "martial_ratio": 0.75,
-    "power_tags": ["infinite_energy", "barrier", "android_acrobatics", "energy_rifle", "flight", "no_ki_signature"],
+    "power_tags": [
+      "infinite_energy",
+      "barrier",
+      "android_acrobatics",
+      "energy_rifle",
+      "flight",
+      "no_ki_signature"
+    ],
     "strengths": [
-      {"tag": "stamina_drain", "coefficient": 1.0, "description": "Infinite energy reactor — stamina drain has zero effect"},
-      {"tag": "ki_sensing", "coefficient": 0.7, "description": "No ki signature makes him invisible to ki sensing"},
-      {"tag": "barrier_protection", "coefficient": 0.5}
+      {
+        "tag": "stamina_drain",
+        "coefficient": 1.0,
+        "description": "Infinite energy reactor — stamina drain has zero effect"
+      },
+      {
+        "tag": "ki_sensing",
+        "coefficient": 0.7,
+        "description": "No ki signature makes him invisible to ki sensing"
+      },
+      {
+        "tag": "barrier_protection",
+        "coefficient": 0.5
+      }
     ],
     "weaknesses": [
-      {"tag": "overwhelming_physical", "coefficient": 0.3},
-      {"tag": "hakai", "coefficient": 0.5}
+      {
+        "tag": "overwhelming_physical",
+        "coefficient": 0.3
+      },
+      {
+        "tag": "hakai",
+        "coefficient": 0.5
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["android", "male", "no_ki_signature"],
+    "traits": [
+      "android",
+      "male",
+      "no_ki_signature"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
     "image_path": "assets/characters/dbz/android_17_top.jpg",
@@ -381,20 +815,51 @@
     "arc_version": "World Martial Arts Champion – Buu Arc",
     "power_level": 5000,
     "martial_ratio": 0.95,
-    "power_tags": ["martial_arts", "dynamite_kick", "megaton_punch", "showmanship"],
+    "power_tags": [
+      "martial_arts",
+      "dynamite_kick",
+      "megaton_punch",
+      "showmanship"
+    ],
     "strengths": [
-      {"tag": "psychological_warfare", "coefficient": 0.3},
-      {"tag": "luck", "coefficient": 0.4}
+      {
+        "tag": "psychological_warfare",
+        "coefficient": 0.3
+      },
+      {
+        "tag": "luck",
+        "coefficient": 0.4
+      }
     ],
     "weaknesses": [
-      {"tag": "ki_attack", "coefficient": 0.9, "description": "Cannot sense or withstand ki-based attacks in any meaningful way"},
-      {"tag": "flight", "coefficient": 0.5},
-      {"tag": "godly_ki", "coefficient": 1.0},
-      {"tag": "energy_attacks", "coefficient": 0.8}
+      {
+        "tag": "ki_attack",
+        "coefficient": 0.9,
+        "description": "Cannot sense or withstand ki-based attacks in any meaningful way"
+      },
+      {
+        "tag": "flight",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "godly_ki",
+        "coefficient": 1.0
+      },
+      {
+        "tag": "energy_attacks",
+        "coefficient": 0.8
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "male", "martial_artist", "non_ki_user", "world_champion", "comedy_tier"],
+    "traits": [
+      "human",
+      "male",
+      "martial_artist",
+      "non_ki_user",
+      "world_champion",
+      "comedy_tier"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
     "image_path": "assets/characters/dbz/mr_satan.jpg",
@@ -407,22 +872,58 @@
     "arc_version": "Baseball Veteran – Super Era",
     "power_level": 185000,
     "martial_ratio": 0.8,
-    "power_tags": ["wolf_fang_fist", "spirit_ball", "ki_blast", "baseball_reflexes"],
+    "power_tags": [
+      "wolf_fang_fist",
+      "spirit_ball",
+      "ki_blast",
+      "baseball_reflexes"
+    ],
     "strengths": [
-      {"tag": "surprise_attack", "coefficient": 0.2},
-      {"tag": "determination", "coefficient": 0.1}
+      {
+        "tag": "surprise_attack",
+        "coefficient": 0.2
+      },
+      {
+        "tag": "determination",
+        "coefficient": 0.1
+      }
     ],
     "weaknesses": [
-      {"tag": "energy_attacks", "coefficient": 0.6, "description": "His ki training is far below current-era fighters"},
-      {"tag": "godly_ki", "coefficient": 1.0},
-      {"tag": "overwhelming_physical", "coefficient": 0.5},
-      {"tag": "beautiful", "coefficient": 0.3, "description": "Yamcha gets nervous and flustered around beautiful women, breaking his concentration"}
+      {
+        "tag": "energy_attacks",
+        "coefficient": 0.6,
+        "description": "His ki training is far below current-era fighters"
+      },
+      {
+        "tag": "godly_ki",
+        "coefficient": 1.0
+      },
+      {
+        "tag": "overwhelming_physical",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "beautiful",
+        "coefficient": 0.3,
+        "description": "Yamcha gets nervous and flustered around beautiful women, breaking his concentration"
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "male", "ki_user", "martial_artist", "retired", "comedy_tier"],
+    "traits": [
+      "human",
+      "male",
+      "ki_user",
+      "martial_artist",
+      "retired",
+      "comedy_tier"
+    ],
     "trait_weaknesses": [
-      {"trait": "female", "coefficient": 0.15, "description": "Yamcha's legendary bad luck with women — his concentration crumbles around female opponents"}
+      {
+        "trait": "female",
+        "coefficient": 0.15,
+        "description": "Yamcha's legendary bad luck with women — his concentration crumbles around female opponents"
+      }
     ],
     "trait_strengths": [],
     "image_path": "assets/characters/dbz/yamcha.jpg",
@@ -435,19 +936,46 @@
     "arc_version": "Z Fighter – Great Saiyaman Saga",
     "power_level": 18000,
     "martial_ratio": 0.9,
-    "power_tags": ["martial_arts", "ki_sensing", "flight", "street_fighting"],
+    "power_tags": [
+      "martial_arts",
+      "ki_sensing",
+      "flight",
+      "street_fighting"
+    ],
     "strengths": [
-      {"tag": "surprise_attack", "coefficient": 0.2},
-      {"tag": "determination", "coefficient": 0.2}
+      {
+        "tag": "surprise_attack",
+        "coefficient": 0.2
+      },
+      {
+        "tag": "determination",
+        "coefficient": 0.2
+      }
     ],
     "weaknesses": [
-      {"tag": "ki_attack", "coefficient": 0.7, "description": "Her ki control is beginner-level compared to trained Z Fighters"},
-      {"tag": "godly_ki", "coefficient": 1.0},
-      {"tag": "overwhelming_speed", "coefficient": 0.4}
+      {
+        "tag": "ki_attack",
+        "coefficient": 0.7,
+        "description": "Her ki control is beginner-level compared to trained Z Fighters"
+      },
+      {
+        "tag": "godly_ki",
+        "coefficient": 1.0
+      },
+      {
+        "tag": "overwhelming_speed",
+        "coefficient": 0.4
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "female", "martial_artist", "ki_user", "beautiful"],
+    "traits": [
+      "human",
+      "female",
+      "martial_artist",
+      "ki_user",
+      "beautiful"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
     "image_path": "assets/characters/dbz/videl.jpg",
@@ -458,22 +986,56 @@
     "name": "Android 18",
     "verse": "dbz",
     "arc_version": "Tournament Fighter – Super Era",
-    "power_level": 3521047.8820,
+    "power_level": 3521047.882,
     "martial_ratio": 0.8,
-    "power_tags": ["infinite_energy", "android_acrobatics", "energy_blast", "barrier", "ki_blast_unlimited", "no_ki_signature", "flight"],
+    "power_tags": [
+      "infinite_energy",
+      "android_acrobatics",
+      "energy_blast",
+      "barrier",
+      "ki_blast_unlimited",
+      "no_ki_signature",
+      "flight"
+    ],
     "strengths": [
-      {"tag": "stamina_drain", "coefficient": 1.0, "description": "Infinite energy reactor — stamina drain has zero effect on an android"},
-      {"tag": "ki_sensing", "coefficient": 0.7, "description": "No ki signature makes her invisible to standard ki detection"},
-      {"tag": "barrier_protection", "coefficient": 0.4}
+      {
+        "tag": "stamina_drain",
+        "coefficient": 1.0,
+        "description": "Infinite energy reactor — stamina drain has zero effect on an android"
+      },
+      {
+        "tag": "ki_sensing",
+        "coefficient": 0.7,
+        "description": "No ki signature makes her invisible to standard ki detection"
+      },
+      {
+        "tag": "barrier_protection",
+        "coefficient": 0.4
+      }
     ],
     "weaknesses": [
-      {"tag": "overwhelming_physical", "coefficient": 0.3},
-      {"tag": "hakai", "coefficient": 0.5},
-      {"tag": "godly_ki", "coefficient": 0.3, "description": "Godly ki attacks surpass her energy output ceiling"}
+      {
+        "tag": "overwhelming_physical",
+        "coefficient": 0.3
+      },
+      {
+        "tag": "hakai",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "godly_ki",
+        "coefficient": 0.3,
+        "description": "Godly ki attacks surpass her energy output ceiling"
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["android", "female", "no_ki_signature", "beautiful"],
+    "traits": [
+      "android",
+      "female",
+      "no_ki_signature",
+      "beautiful"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
     "image_path": "assets/characters/dbz/android_18_super.jpg",
@@ -484,22 +1046,59 @@
     "name": "Future Trunks",
     "verse": "dbz",
     "arc_version": "Super Saiyan Rage – Future Trunks Arc",
-    "power_level": 7234821.5540,
+    "power_level": 7234821.554,
     "martial_ratio": 0.72,
-    "power_tags": ["super_saiyan_rage", "spirit_sword_trunks", "sword_mastery", "godly_ki_partial", "final_hope_slash", "flight", "ki_blast"],
+    "power_tags": [
+      "super_saiyan_rage",
+      "spirit_sword_trunks",
+      "sword_mastery",
+      "godly_ki_partial",
+      "final_hope_slash",
+      "flight",
+      "ki_blast"
+    ],
     "strengths": [
-      {"tag": "physical_attacks", "coefficient": 0.5},
-      {"tag": "energy_attacks", "coefficient": 0.5},
-      {"tag": "sword", "coefficient": 0.4, "description": "Trunks' Spirit Sword is a godly-ki infused energy blade that can cut through most attacks"}
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "energy_attacks",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "sword",
+        "coefficient": 0.4,
+        "description": "Trunks' Spirit Sword is a godly-ki infused energy blade that can cut through most attacks"
+      }
     ],
     "weaknesses": [
-      {"tag": "stamina_drain", "coefficient": 0.3, "description": "SSJ Rage is an improvised hybrid form — less efficient than mastered god forms"},
-      {"tag": "overwhelming_godly_ki", "coefficient": 0.3},
-      {"tag": "hakai", "coefficient": 0.5}
+      {
+        "tag": "stamina_drain",
+        "coefficient": 0.3,
+        "description": "SSJ Rage is an improvised hybrid form — less efficient than mastered god forms"
+      },
+      {
+        "tag": "overwhelming_godly_ki",
+        "coefficient": 0.3
+      },
+      {
+        "tag": "hakai",
+        "coefficient": 0.5
+      }
     ],
-    "cannot_win_against": ["whis", "beerus"],
+    "cannot_win_against": [
+      "whis",
+      "beerus"
+    ],
     "draw_conditions": [],
-    "traits": ["saiyan", "male", "ki_user", "martial_artist", "swordsman"],
+    "traits": [
+      "saiyan",
+      "male",
+      "ki_user",
+      "martial_artist",
+      "swordsman"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
     "image_path": "assets/characters/dbz/future_trunks_rage.jpg",
@@ -510,22 +1109,61 @@
     "name": "Hit",
     "verse": "dbz",
     "arc_version": "Universe 6 Assassin – Tournament of Power",
-    "power_level": 8134821.2270,
+    "power_level": 8134821.227,
     "martial_ratio": 0.7,
-    "power_tags": ["time_skip", "pure_progress", "icy_glare", "assassination_arts", "time_manipulation", "flight", "godly_ki"],
+    "power_tags": [
+      "time_skip",
+      "pure_progress",
+      "icy_glare",
+      "assassination_arts",
+      "time_manipulation",
+      "flight",
+      "godly_ki"
+    ],
     "strengths": [
-      {"tag": "speed", "coefficient": 0.7, "description": "Time Skip removes him from the timeline — conventional speed tracking is irrelevant"},
-      {"tag": "physical_attacks", "coefficient": 0.6, "description": "His one-hit assassination strike targets vital points with time-skipped precision"},
-      {"tag": "detection", "coefficient": 0.5, "description": "Time Skip makes him impossible to react to normally"}
+      {
+        "tag": "speed",
+        "coefficient": 0.7,
+        "description": "Time Skip removes him from the timeline — conventional speed tracking is irrelevant"
+      },
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.6,
+        "description": "His one-hit assassination strike targets vital points with time-skipped precision"
+      },
+      {
+        "tag": "detection",
+        "coefficient": 0.5,
+        "description": "Time Skip makes him impossible to react to normally"
+      }
     ],
     "weaknesses": [
-      {"tag": "precognition", "coefficient": 0.5, "description": "Ultra Instinct and similar auto-response abilities can react within the time skip window"},
-      {"tag": "time_manipulation_counter", "coefficient": 0.5, "description": "Canon: Goku learned to move within Hit's time freeze — the ability becomes less effective as opponents adapt"},
-      {"tag": "overwhelming_ki", "coefficient": 0.3, "description": "Raw ki output at Jiren's level overwhelms Time Skip duration"}
+      {
+        "tag": "precognition",
+        "coefficient": 0.5,
+        "description": "Ultra Instinct and similar auto-response abilities can react within the time skip window"
+      },
+      {
+        "tag": "time_manipulation_counter",
+        "coefficient": 0.5,
+        "description": "Canon: Goku learned to move within Hit's time freeze — the ability becomes less effective as opponents adapt"
+      },
+      {
+        "tag": "overwhelming_ki",
+        "coefficient": 0.3,
+        "description": "Raw ki output at Jiren's level overwhelms Time Skip duration"
+      }
     ],
-    "cannot_win_against": ["whis"],
+    "cannot_win_against": [
+      "whis"
+    ],
     "draw_conditions": [],
-    "traits": ["alien", "male", "ki_user", "assassin"],
+    "traits": [
+      "alien",
+      "male",
+      "ki_user",
+      "assassin"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
     "image_path": "assets/characters/dbz/hit_universe6.jpg",
@@ -536,24 +1174,326 @@
     "name": "Krillin",
     "verse": "dbz",
     "arc_version": "Z Fighter – Super Era",
-    "power_level": 312047.4410,
+    "power_level": 312047.441,
     "martial_ratio": 0.78,
-    "power_tags": ["destructo_disc", "solar_flare", "kamehameha", "ki_blast", "flight", "kienzan"],
+    "power_tags": [
+      "destructo_disc",
+      "solar_flare",
+      "kamehameha",
+      "ki_blast",
+      "flight",
+      "kienzan"
+    ],
     "strengths": [
-      {"tag": "detection_evasion", "coefficient": 0.4, "description": "Solar Flare blinds ki-sensing opponents, including those with advanced senses"},
-      {"tag": "physical_attacks", "coefficient": 0.3, "description": "Destructo Disc can cut through opponents stronger than Krillin — it has no ki-power floor requirement"}
+      {
+        "tag": "detection_evasion",
+        "coefficient": 0.4,
+        "description": "Solar Flare blinds ki-sensing opponents, including those with advanced senses"
+      },
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.3,
+        "description": "Destructo Disc can cut through opponents stronger than Krillin — it has no ki-power floor requirement"
+      }
     ],
     "weaknesses": [
-      {"tag": "godly_ki", "coefficient": 0.9, "description": "Krillin's overall power level is far below the God tier — godly attacks are essentially one-shots"},
-      {"tag": "overwhelming_speed", "coefficient": 0.5},
-      {"tag": "energy_shields", "coefficient": 0.4, "description": "Destructo Disc effectiveness drops heavily against energy barrier users"}
+      {
+        "tag": "godly_ki",
+        "coefficient": 0.9,
+        "description": "Krillin's overall power level is far below the God tier — godly attacks are essentially one-shots"
+      },
+      {
+        "tag": "overwhelming_speed",
+        "coefficient": 0.5
+      },
+      {
+        "tag": "energy_shields",
+        "coefficient": 0.4,
+        "description": "Destructo Disc effectiveness drops heavily against energy barrier users"
+      }
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
-    "traits": ["human", "male", "ki_user", "martial_artist"],
+    "traits": [
+      "human",
+      "male",
+      "ki_user",
+      "martial_artist"
+    ],
     "trait_weaknesses": [],
     "trait_strengths": [],
     "image_path": "assets/characters/dbz/krillin_super.jpg",
     "short_description": "Earth's strongest human and master of the Destructo Disc — the only ki blade that can cut through fighters far beyond his power level — who survives by outsmarting opponents rather than overpowering them."
+  },
+  {
+    "slug": "bulma",
+    "name": "Bulma",
+    "verse": "dbz",
+    "arc_version": "Genius Inventor — DBS Era",
+    "power_level": 500,
+    "martial_ratio": 0.1,
+    "power_tags": [
+      "genius_intellect",
+      "time_machine_inventor",
+      "dragon_radar",
+      "capsule_corp",
+      "scouter"
+    ],
+    "strengths": [
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.5,
+        "description": "Capsule Corp armour provides basic protection"
+      },
+      {
+        "tag": "surveillance",
+        "coefficient": 0.8,
+        "description": "Dragon Radar and scouter technology detects any power level from afar"
+      }
+    ],
+    "weaknesses": [
+      {
+        "tag": "overwhelming_power",
+        "coefficient": 0.9,
+        "description": "No combat ability whatsoever — one attack ends it"
+      },
+      {
+        "tag": "speed",
+        "coefficient": 0.8
+      }
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "traits": [
+      "human",
+      "female",
+      "non_combatant",
+      "genius",
+      "scientist",
+      "beautiful"
+    ],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/dbz/bulma.jpg",
+    "short_description": "The genius inventor who started it all — Bulma's Dragon Radar, time machine, and Capsule Corp technology changed history more than any warrior. She's the reason the Z Fighters have any edge at all."
+  },
+  {
+    "slug": "shenron",
+    "name": "Shenron",
+    "verse": "dbz",
+    "arc_version": "Eternal Dragon — Earth's Dragon Balls",
+    "power_level": 1000,
+    "martial_ratio": 0.0,
+    "power_tags": [
+      "wish_granting",
+      "eternal_dragon",
+      "divine_immunity",
+      "dragon_ball_manifestation"
+    ],
+    "strengths": [
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.8,
+        "description": "Divine dragon form deflects mundane attacks"
+      },
+      {
+        "tag": "ki",
+        "coefficient": 0.5,
+        "description": "Divine energy partially resists standard Ki blasts"
+      }
+    ],
+    "weaknesses": [
+      {
+        "tag": "overwhelming_power",
+        "coefficient": 1.0,
+        "description": "Shenron is a wish-granter, not a combatant — any serious fighter ends him instantly"
+      },
+      {
+        "tag": "ki_extreme",
+        "coefficient": 0.8,
+        "description": "Extreme Ki output (Black Smoke Shenron from overuse) corrupts his power"
+      }
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "traits": [
+      "divine_dragon",
+      "non_combatant",
+      "eternal",
+      "wish_granter"
+    ],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/dbz/shenron.jpg",
+    "short_description": "The Eternal Dragon summoned by the seven Dragon Balls. Shenron can grant any wish within his power — but he is a divine arbiter, not a fighter, and can be destroyed by any sufficiently powerful being."
+  },
+  {
+    "slug": "master_roshi",
+    "name": "Master Roshi",
+    "verse": "dbz",
+    "arc_version": "Max Power — Tournament of Power",
+    "power_level": 387293,
+    "martial_ratio": 0.88,
+    "power_tags": [
+      "kamehameha",
+      "max_power_form",
+      "martial_arts_mastery",
+      "turtle_hermit_style",
+      "mafuba",
+      "after_image"
+    ],
+    "strengths": [
+      {
+        "tag": "ki",
+        "coefficient": 0.4,
+        "description": "Invented the Kamehameha — understands Ki wave attacks better than almost anyone"
+      },
+      {
+        "tag": "taijutsu",
+        "coefficient": 0.5,
+        "description": "Centuries of martial arts mastery — his technique rivals fighters ten times his power level"
+      },
+      {
+        "tag": "genjutsu",
+        "coefficient": 0.5,
+        "description": "Ancient wisdom sees through illusions and mental tricks"
+      }
+    ],
+    "weaknesses": [
+      {
+        "tag": "overwhelming_ki",
+        "coefficient": 0.5,
+        "description": "Raw Ki output gap is simply too large against divine-tier fighters"
+      },
+      {
+        "tag": "speed_extreme",
+        "coefficient": 0.4,
+        "description": "Even Max Power form cannot match ultra-high-speed combatants"
+      }
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "traits": [
+      "human",
+      "male",
+      "ki_user",
+      "martial_artist",
+      "turtle_hermit",
+      "master"
+    ],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/dbz/master_roshi.jpg",
+    "short_description": "The Turtle Hermit who invented the Kamehameha and trained Goku and Krillin. In Max Power form, Master Roshi fights at levels that would destroy mountains — pure technique elevating a human body beyond its limits."
+  },
+  {
+    "slug": "tao_pai_pai",
+    "name": "Tao Pai Pai",
+    "verse": "dbz",
+    "arc_version": "Cyborg Assassin — Red Ribbon Remnant",
+    "power_level": 187293,
+    "martial_ratio": 0.85,
+    "power_tags": [
+      "do_don_ray",
+      "super_dodon_wave",
+      "cyborg_enhancements",
+      "pillar_throw",
+      "ki_beam",
+      "blade_arm"
+    ],
+    "strengths": [
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.35,
+        "description": "Cyborg enhancements reinforce his body against impact"
+      },
+      {
+        "tag": "ki",
+        "coefficient": 0.3,
+        "description": "Cyborg energy systems allow sustained Ki beam output"
+      }
+    ],
+    "weaknesses": [
+      {
+        "tag": "ki_extreme",
+        "coefficient": 0.5,
+        "description": "His cyborg power output cannot compete with trained Z-fighters"
+      },
+      {
+        "tag": "overwhelming_power",
+        "coefficient": 0.45
+      }
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "traits": [
+      "cyborg",
+      "male",
+      "ki_user",
+      "martial_artist",
+      "assassin"
+    ],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/dbz/tao_pai_pai.jpg",
+    "short_description": "The legendary assassin who killed General Blue with his tongue and was rebuilt as a cyborg after losing to Tien. His Do-Don Ray is a piercing energy beam from a finger — the first truly terrifying villain in Dragon Ball."
+  },
+  {
+    "slug": "tien_shinhan",
+    "name": "Tien Shinhan",
+    "verse": "dbz",
+    "arc_version": "Neo Tri-Beam — DBS Era",
+    "power_level": 347293,
+    "martial_ratio": 0.87,
+    "power_tags": [
+      "neo_tri_beam",
+      "ki_blast",
+      "four_witches_technique",
+      "solar_flare",
+      "stone_dodon_ray",
+      "tribeam_cannon"
+    ],
+    "strengths": [
+      {
+        "tag": "ki",
+        "coefficient": 0.4,
+        "description": "Neo Tri-Beam channels all life force into a beam that scales with sacrifice — briefly overwhelming Cell himself"
+      },
+      {
+        "tag": "speed",
+        "coefficient": 0.35,
+        "description": "Third eye grants minor precognitive advantage"
+      },
+      {
+        "tag": "detection",
+        "coefficient": 0.4,
+        "description": "Third eye sees in all directions simultaneously"
+      }
+    ],
+    "weaknesses": [
+      {
+        "tag": "ki_extreme",
+        "coefficient": 0.5,
+        "description": "Neo Tri-Beam drains life force — he cannot sustain it without dying"
+      },
+      {
+        "tag": "overwhelming_power",
+        "coefficient": 0.4
+      }
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "traits": [
+      "human",
+      "male",
+      "ki_user",
+      "martial_artist",
+      "crane_school",
+      "three_eyes"
+    ],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/dbz/tien_shinhan.jpg",
+    "short_description": "The three-eyed martial artist of the Crane School. His Neo Tri-Beam channels his own life force — he held Semi-Perfect Cell in place at the cost of his own health, one of the most heroic moments in Dragon Ball history."
   }
 ]

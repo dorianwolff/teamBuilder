@@ -3,7 +3,7 @@
 A multiplayer anime character draft & battle game. Two players draft characters from a hidden pool in alternating rounds, then battle head-to-head using a power system built on levels, martial ratios, keyword/technique tags, trait interactions, and hard canonical overrides.
 
 **Verses:** One Piece · Naruto · Dragon Ball Z/Super · Hunter x Hunter  
-**113 characters** across 4 verses, each with precise float power levels, full tag/strength/weakness data, and trait metadata.
+**138 characters** across 4 verses, each with precise float power levels, full tag/strength/weakness data, and trait metadata.
 
 ---
 
@@ -106,17 +106,20 @@ trait_modifier_A = 1.0
 
 | Trait | Who has it | How it's used |
 |---|---|---|
-| `phantom_troupe` | Chrollo, Feitan, Kalluto, Uvogin, Machi, Nobunaga | Kurapika +60% offense vs all Phantom Troupe members |
-| `akatsuki` | Deidara, Sasori, Konan, Kakuzu, Hidan, Kisame | Group identity (future interactions) |
-| `logia` | Akainu, Aokiji, Kizaru, Ace, Crocodile, Enel, Smoker | Blackbeard +40% offense vs all logia users |
-| `devil_fruit_user` | Most DF users (One Piece) | Blackbeard +20% offense; seastone vulnerability |
-| `undead_edo_tensei` | Madara, Hashirama, Minato, Itachi, Tobirama | Tenten −50% offense (her weapons are useless vs regenerating undead) |
-| `female` | Female characters | Sanji −70% offense (he literally cannot fight women) |
-| `immortal_jashin` | Hidan | Physical attacks, slashing, blunt force all largely ineffective |
-| `non_combatant` | Komugi | Meruem +50% offense — she is utterly defenceless |
+| `phantom_troupe` | Chrollo, Feitan, Kalluto, Uvogin, Machi, Nobunaga, Phinks, Bonolenov, Kortopi, Shalnark, Franklin, Pakunoda | Kurapika +60% offense vs all 12 Troupe members |
+| `akatsuki` | Deidara, Sasori, Konan, Kakuzu, Hidan, Kisame | Group identity — potential future interactions |
+| `logia` | Akainu, Aokiji, Kizaru, Ace, Crocodile, Enel, Smoker | Blackbeard +50% offense (darkness nullifies intangibility) |
+| `devil_fruit_user` | All DF users (One Piece) | Blackbeard +20% additional offense; Magellan's poison immunity fully countered |
+| `undead_edo_tensei` | Madara, Hashirama, Minato, Itachi, Tobirama | Tenten −50% offense (weapons useless against regenerating undead) |
+| `female` | Female characters | Sanji −70% offense (code of honour — cannot attack women) |
+| `immortal_jashin` | Hidan | Physical attacks, slashing, blunt force largely ineffective |
+| `non_combatant` | Komugi, Bulma, Vegapunk, Shenron | Meruem +50% offense vs Komugi; universal predator advantage |
 | `puppet_body` | Sasori | Fire-based opponents get +35% trait offensive bonus |
-| `beautiful` | Konan, Hinata, Android 18 | Interacts with Sanji's code-of-honour weakness |
+| `beautiful` | Konan, Hinata, Android 18, Boa Hancock, Vinsmoke Reiju, Pakunoda | Boa Hancock +25% offense vs `male` trait |
 | `no_ki_signature` | Android 17, Android 18 | Ki-sensing characters cannot read their power level |
+| `male` | Most male characters | Boa Hancock +25% offense; Sanji −70% offense absent |
+| `warlord` | Boa Hancock, Doflamingo, Crocodile, Magellan (ally) | Identity trait — former Marine-allied pirates |
+| `genetically_enhanced` | Vinsmoke Ichiji/Niji/Reiju/Yonji | Exoskeleton resists physical damage; `armament_haki` weakness |
 
 > **Difference from keywords:** keywords describe *techniques* — what a character does in a fight. Traits describe *what a character is* — which is why Sanji's Ifrit Jambe is among his most powerful techniques, but his `code_of_honor` trait still halves his offense against female opponents regardless.
 
@@ -239,7 +242,7 @@ Copy-paste each file into the editor and click **Run**.
 npm run seed
 ```
 
-Upserts all 113 characters and 49 power tags into the database.
+Upserts all 138 characters and 49 power tags into the database.
 
 > The seed script automatically detects whether migration `006_traits.sql` has been applied. If not, it seeds characters without trait data and prints the SQL you need to run. Re-run `npm run seed` after applying the migration.
 
@@ -305,59 +308,67 @@ A placeholder is shown automatically for any missing image.
 
 ### Full image file list
 
-**`public/assets/characters/one_piece/`** (36 files)
+**`public/assets/characters/one_piece/`** (47 files)
 ```
-luffy_gear5.jpg            luffy_snakeman.jpg         luffy_skypiea.jpg
-gold_d_roger.jpg           whitebeard_peak.jpg        shanks.jpg
-mihawk.jpg                 kaido_hybrid.jpg           big_mom.jpg
-zoro_post_wano.jpg         akainu.jpg                 aokiji.jpg
-kizaru.jpg                 marco.jpg                  ace_marineford.jpg
-law_awakened.jpg           crocodile_desert.jpg       enel.jpg
-robin_post_timeskip.jpg    nami_clima_tact.jpg        usopp_god.jpg
-franky_cyborg.jpg          brook_soul_king.jpg        jinbe.jpg
-coby_post_timeskip.jpg     smoker.jpg                 sanji_ifrit_jambe.jpg
-chopper_monster_point.jpg  garp_marineford.jpg        bartolomeo_barrier.jpg
-bellamy_spring.jpg         blackbeard.jpg             shiryu_rain.jpg
-monkey_d_dragon.jpg        kid_awakened.jpg           bonney_distorted_future.jpg
-```
-
-**`public/assets/characters/naruto/`** (33 files)
-```
-naruto_six_paths.jpg       sasuke_rinnegan.jpg        madara_six_paths.jpg
-kaguya.jpg                 hashirama_sage_mode.jpg    minato_kcm2.jpg
-nagato_pain.jpg            obito_ten_tails.jpg        itachi.jpg
-jiraiya_sage_mode.jpg      tsunade.jpg                kabuto_snake_sage.jpg
-guy_eight_gates.jpg        rock_lee_fifth_gate.jpg    kakashi_dual_sharingan.jpg
-sakura_post_war.jpg        gaara_kazekage.jpg         killer_b.jpg
-orochimaru.jpg             tenten.jpg                 neji_byakugan.jpg
-shikamaru_shadow.jpg       deidara_akatsuki.jpg       sasori_akatsuki.jpg
-konan_akatsuki.jpg         kakuzu_akatsuki.jpg        hidan_akatsuki.jpg
-kisame_hoshigaki.jpg       choji_butterfly_mode.jpg   hinata_twin_lion_fists.jpg
-tobirama_senju.jpg
+ace_marineford.jpg         akainu.jpg                 aokiji.jpg
+arlong.jpg                 bartolomeo_barrier.jpg     bellamy_spring.jpg
+big_mom.jpg                blackbeard.jpg             boa_hancock.jpg
+bonney_distorted_future.jpg brook_soul_king.jpg       buggy.jpg
+chopper_monster_point.jpg  coby_post_timeskip.jpg     crocodile_desert.jpg
+doflamingo.jpg             enel.jpg                   franky_cyborg.jpg
+garp_marineford.jpg        gold_d_roger.jpg           jinbe.jpg
+kaido_hybrid.jpg           kid_awakened.jpg           kizaru.jpg
+law_awakened.jpg           luffy_gear5.jpg            luffy_skypiea.jpg
+luffy_snakeman.jpg         magellan.jpg               marco.jpg
+mihawk.jpg                 monkey_d_dragon.jpg        nami_clima_tact.jpg
+rayleigh.jpg               robin_post_timeskip.jpg    sanji_ifrit_jambe.jpg
+shanks.jpg                 shiryu_rain.jpg            smoker.jpg
+usopp_god.jpg              vegapunk.jpg               vinsmoke_ichiji.jpg
+vinsmoke_niji.jpg          vinsmoke_reiju.jpg         vinsmoke_yonji.jpg
+whitebeard_peak.jpg        zoro_post_wano.jpg
 ```
 
-**`public/assets/characters/dbz/`** (22 files)
+**`public/assets/characters/naruto/`** (35 files)
 ```
-goku_mui.jpg               vegeta_ultra_ego.jpg       beerus.jpg
-whis.jpg                   jiren.jpg                  broly_dbs.jpg
-gohan_beast.jpg            goku_ssb.jpg               vegeta_ssb_evolved.jpg
-frieza_black.jpg           frieza_golden.jpg          cell_perfect.jpg
-majin_buu_pure.jpg         piccolo_orange.jpg         android_17_top.jpg
-mr_satan.jpg               yamcha.jpg                 videl.jpg
-android_18_super.jpg       future_trunks_rage.jpg     hit_universe6.jpg
-krillin_super.jpg
+choji_butterfly_mode.jpg   deidara_akatsuki.jpg       gaara_kazekage.jpg
+guy_eight_gates.jpg        hashirama_sage_mode.jpg    hidan_akatsuki.jpg
+hinata_twin_lion_fists.jpg hiruzen_sarutobi.jpg       itachi.jpg
+jiraiya_sage_mode.jpg      kabuto_snake_sage.jpg      kaguya.jpg
+kakashi_dual_sharingan.jpg kakuzu_akatsuki.jpg        kankuro_puppet.jpg
+killer_b.jpg               kisame_hoshigaki.jpg       konan_akatsuki.jpg
+madara_six_paths.jpg       minato_kcm2.jpg            nagato_pain.jpg
+naruto_six_paths.jpg       neji_byakugan.jpg          obito_ten_tails.jpg
+orochimaru.jpg             raikage_a.jpg              rock_lee_fifth_gate.jpg
+sakura_post_war.jpg        sasori_akatsuki.jpg        sasuke_rinnegan.jpg
+shikamaru_shadow.jpg       temari.jpg                 tenten.jpg
+tobirama_senju.jpg         tsunade.jpg
 ```
 
-**`public/assets/characters/hxh/`** (22 files)
+**`public/assets/characters/dbz/`** (27 files)
 ```
-gon_adult.jpg              killua_godspeed.jpg        meruem_post_rose.jpg
-neferpitou.jpg             netero.jpg                 zeno_zoldyck.jpg
-silva_zoldyck.jpg          illumi.jpg                 hisoka.jpg
-chrollo_full_prep.jpg      kurapika_emperor_time.jpg  leorio.jpg
-feitan_rising_sun.jpg      knov.jpg                   morel.jpg
-komugi.jpg                 kalluto_zoldyck.jpg        ging_freecss.jpg
-kite_crazy_slots.jpg       uvogin.jpg                 machi_komacine.jpg
-nobunaga_hazama.jpg
+android_17_top.jpg         android_18_super.jpg       beerus.jpg
+broly_dbs.jpg              bulma.jpg                  cell_perfect.jpg
+frieza_black.jpg           frieza_golden.jpg          future_trunks_rage.jpg
+gohan_beast.jpg            goku_mui.jpg               goku_ssb.jpg
+hit_universe6.jpg          jiren.jpg                  krillin_super.jpg
+majin_buu_pure.jpg         master_roshi.jpg           mr_satan.jpg
+piccolo_orange.jpg         shenron.jpg                tao_pai_pai.jpg
+tien_shinhan.jpg           vegeta_ssb_evolved.jpg     vegeta_ultra_ego.jpg
+videl.jpg                  whis.jpg                   yamcha.jpg
+```
+
+**`public/assets/characters/hxh/`** (28 files)
+```
+bonolenov.jpg              chrollo_full_prep.jpg      feitan_rising_sun.jpg
+franklin.jpg               ging_freecss.jpg           gon_adult.jpg
+hisoka.jpg                 illumi.jpg                 kalluto_zoldyck.jpg
+killua_godspeed.jpg        kite_crazy_slots.jpg       knov.jpg
+komugi.jpg                 kortopi.jpg                kurapika_emperor_time.jpg
+leorio.jpg                 machi_komacine.jpg         meruem_post_rose.jpg
+morel.jpg                  neferpitou.jpg             netero.jpg
+nobunaga_hazama.jpg        pakunoda.jpg               phinks.jpg
+shalnark.jpg               silva_zoldyck.jpg          uvogin.jpg
+zeno_zoldyck.jpg
 ```
 
 ---
@@ -393,7 +404,7 @@ src/
 │   │   ├── solo/            # Full draft + battle vs AI (client-side only)
 │   │   ├── draft/[roomId]/  # 5-round draft (multiplayer, Realtime)
 │   │   └── battle/[roomId]/ # Best-of-5 battle (multiplayer, Realtime)
-│   ├── encyclopedia/        # All 113 characters — locked until discovered in-game
+│   ├── encyclopedia/        # All 138 characters — locked until discovered in-game
 │   └── page.tsx             # Landing page
 ├── components/
 │   ├── game/
@@ -438,10 +449,10 @@ src/
 
 data/
 ├── characters/
-│   ├── one_piece.json       # 36 characters
-│   ├── naruto.json          # 33 characters
-│   ├── dbz.json             # 22 characters
-│   └── hxh.json             # 22 characters
+│   ├── one_piece.json       # 47 characters
+│   ├── naruto.json          # 35 characters
+│   ├── dbz.json             # 27 characters
+│   └── hxh.json             # 28 characters  (12 Phantom Troupe members)
 └── tags.json                # 49 power tag definitions
 
 scripts/

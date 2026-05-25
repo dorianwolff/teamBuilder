@@ -1105,129 +1105,6 @@
     "short_description": "Konoha's weapon mistress who can summon an inexhaustible arsenal from her scrolls, wielding the legendary Sage Tools including the all-element Bashosen Fan."
   },
   {
-    "slug": "neji_hyuga",
-    "name": "Neji Hyuga",
-    "verse": "naruto",
-    "arc_version": "Byakugan Master – Fourth Shinobi War",
-    "power_level": 987293.441,
-    "martial_ratio": 0.85,
-    "power_tags": [
-      "byakugan",
-      "gentle_fist",
-      "eight_trigrams_sixty_four_palms",
-      "air_palm",
-      "rotation",
-      "tenketsu_sealing",
-      "chakra"
-    ],
-    "strengths": [
-      {
-        "tag": "taijutsu",
-        "coefficient": 0.5
-      },
-      {
-        "tag": "genjutsu_immunity",
-        "coefficient": 0.3,
-        "description": "Byakugan's 359-degree vision provides limited protection against visual genjutsu"
-      },
-      {
-        "tag": "chakra_based_attacks",
-        "coefficient": 0.4,
-        "description": "Gentle Fist disrupts chakra-based defenses from the inside"
-      }
-    ],
-    "weaknesses": [
-      {
-        "tag": "long_range",
-        "coefficient": 0.25,
-        "description": "Limited long-range capabilities — excels at close to mid-range"
-      },
-      {
-        "tag": "overwhelming_ninjutsu",
-        "coefficient": 0.3
-      },
-      {
-        "tag": "genjutsu",
-        "coefficient": 0.3,
-        "description": "Despite Byakugan, high-level Sharingan genjutsu still threatens him"
-      }
-    ],
-    "cannot_win_against": [],
-    "draw_conditions": [],
-    "traits": [
-      "human",
-      "male",
-      "shinobi",
-      "hyuga"
-    ],
-    "trait_weaknesses": [],
-    "trait_strengths": [],
-    "image_path": "assets/characters/naruto/neji_hyuga.jpg",
-    "short_description": "The Hyuga clan's greatest genius whose 360-degree Byakugan and Gentle Fist target the chakra network directly, capable of sealing 64 tenketsu in a single flowing sequence."
-  },
-  {
-    "slug": "shikamaru_nara",
-    "name": "Shikamaru Nara",
-    "verse": "naruto",
-    "arc_version": "Shadow Possession – Fourth Shinobi War",
-    "power_level": 734821.221,
-    "martial_ratio": 0.35,
-    "power_tags": [
-      "shadow_possession",
-      "shadow_stitching",
-      "shadow_imitation",
-      "shadow_strangle",
-      "tactical_genius",
-      "ninjutsu"
-    ],
-    "strengths": [
-      {
-        "tag": "movement",
-        "coefficient": 0.5,
-        "description": "Shadow Possession completely freezes opponent movement"
-      },
-      {
-        "tag": "taijutsu",
-        "coefficient": 0.3,
-        "description": "Mirroring forces the opponent's own taijutsu to be reflected back"
-      }
-    ],
-    "weaknesses": [
-      {
-        "tag": "long_range",
-        "coefficient": 0.35,
-        "description": "Shadow techniques have range limits — aerial or long-range opponents escape easily"
-      },
-      {
-        "tag": "fire",
-        "coefficient": 0.3,
-        "description": "Flames break shadow techniques when they sever the shadow connection"
-      },
-      {
-        "tag": "light",
-        "coefficient": 0.4,
-        "description": "Bright light from multiple sources disrupts and breaks shadow manipulation"
-      },
-      {
-        "tag": "overwhelming_chakra",
-        "coefficient": 0.4,
-        "description": "Excessive chakra strength can break free from shadow hold"
-      }
-    ],
-    "cannot_win_against": [],
-    "draw_conditions": [],
-    "traits": [
-      "human",
-      "male",
-      "shinobi",
-      "nara_clan"
-    ],
-    "trait_weaknesses": [],
-    "trait_strengths": [],
-    "image_path": "assets/characters/naruto/shikamaru_nara.jpg",
-    "short_description": "The laziest genius in Konoha whose Shadow Possession can immobilize any opponent and whose 200-IQ tactical mind has outwitted enemies far above his raw power level."
-  },
-  {
     "slug": "deidara_akatsuki",
     "name": "Deidara",
     "verse": "naruto",
@@ -1551,7 +1428,7 @@
       }
     ],
     "cannot_win_against": [
-      "shikamaru_nara"
+      "shikamaru_shadow"
     ],
     "draw_conditions": [],
     "traits": [
@@ -1922,5 +1799,264 @@
     "trait_strengths": [],
     "image_path": "assets/characters/naruto/shikamaru_shadow.jpg",
     "short_description": "The 200-IQ genius who calls every battle ten moves in advance. His Shadow Possession can freeze anyone who steps into range — and if you're frozen, he has already won."
+  },
+  {
+    "slug": "temari",
+    "name": "Temari",
+    "verse": "naruto",
+    "arc_version": "Wind Mistress — War Arc",
+    "power_level": 847293,
+    "martial_ratio": 0.4,
+    "power_tags": [
+      "wind_release",
+      "giant_fan",
+      "sand_tsunami",
+      "summoning_kamatari",
+      "cyclone_scythe",
+      "vacuum_wave",
+      "long_range_mastery"
+    ],
+    "strengths": [
+      {
+        "tag": "fire_release",
+        "coefficient": 0.5,
+        "description": "Wind fuels fire — but her scale of wind simply overpowers fire ninjutsu at range"
+      },
+      {
+        "tag": "shadow_possession",
+        "coefficient": 0.6,
+        "description": "Massive wind waves destroy shadows before Shikamaru can extend them"
+      },
+      {
+        "tag": "earth_release",
+        "coefficient": 0.4,
+        "description": "Wind erosion tears through earthen defences"
+      }
+    ],
+    "weaknesses": [
+      {
+        "tag": "close_range",
+        "coefficient": 0.5,
+        "description": "Her fan requires distance — when opponents close in, she loses her biggest advantage"
+      },
+      {
+        "tag": "water_release",
+        "coefficient": 0.4,
+        "description": "Water dampens her wind jutsu's cutting power"
+      }
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "traits": [
+      "human",
+      "female",
+      "shinobi",
+      "sand_village",
+      "wind_user",
+      "beautiful"
+    ],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/naruto/temari.jpg",
+    "short_description": "The Wind Mistress of the Sand Village whose giant fan commands tornados powerful enough to flatten forests. At range, almost nothing can close the distance against her sustained wind barrage."
+  },
+  {
+    "slug": "kankuro_puppet",
+    "name": "Kankuro",
+    "verse": "naruto",
+    "arc_version": "Advanced Puppeteer — War Arc",
+    "power_level": 634821,
+    "martial_ratio": 0.55,
+    "power_tags": [
+      "puppet_master",
+      "crow",
+      "black_ant",
+      "salamander",
+      "karasu_trio",
+      "chakra_threads",
+      "poison_weapons"
+    ],
+    "strengths": [
+      {
+        "tag": "poison",
+        "coefficient": 0.6,
+        "description": "Multiple poison delivery systems — blades, gas, contact; rivals Sasori's arsenal"
+      },
+      {
+        "tag": "physical_attacks",
+        "coefficient": 0.5,
+        "description": "Puppets take all physical damage while he directs from safety"
+      },
+      {
+        "tag": "taijutsu",
+        "coefficient": 0.5,
+        "description": "Puppets overwhelm close-range fighters with mechanical precision"
+      }
+    ],
+    "weaknesses": [
+      {
+        "tag": "fire_release",
+        "coefficient": 0.5,
+        "description": "Fire burns puppets — identical weakness to Sasori"
+      },
+      {
+        "tag": "overwhelming_speed",
+        "coefficient": 0.4,
+        "description": "Extremely fast opponents can reach him before his puppets intercept"
+      },
+      {
+        "tag": "chakra_drain",
+        "coefficient": 0.4,
+        "description": "Puppet control requires sustained chakra output"
+      }
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "traits": [
+      "human",
+      "male",
+      "shinobi",
+      "sand_village"
+    ],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/naruto/kankuro_puppet.jpg",
+    "short_description": "The Sand Village's premier puppeteer who pilots three custom puppets simultaneously — Crow, Black Ant, and Salamander form a coordinated triad that can fight any number of opponents from complete safety."
+  },
+  {
+    "slug": "hiruzen_sarutobi",
+    "name": "Hiruzen Sarutobi",
+    "verse": "naruto",
+    "arc_version": "God of Shinobi — Third Hokage",
+    "power_level": 1734821,
+    "martial_ratio": 0.6,
+    "power_tags": [
+      "all_five_elements",
+      "reaper_death_seal",
+      "shadow_clone",
+      "staff_weapon",
+      "adamantine_staff",
+      "enma_summon",
+      "yin_yang",
+      "monkey_king"
+    ],
+    "strengths": [
+      {
+        "tag": "fire_release",
+        "coefficient": 0.4
+      },
+      {
+        "tag": "water_release",
+        "coefficient": 0.4
+      },
+      {
+        "tag": "lightning_release",
+        "coefficient": 0.4
+      },
+      {
+        "tag": "earth_release",
+        "coefficient": 0.4
+      },
+      {
+        "tag": "wind_release",
+        "coefficient": 0.4
+      },
+      {
+        "tag": "ninjutsu",
+        "coefficient": 0.5,
+        "description": "The Professor who memorised every jutsu in Konoha — virtually no technique surprises him"
+      }
+    ],
+    "weaknesses": [
+      {
+        "tag": "overwhelming_chakra",
+        "coefficient": 0.4,
+        "description": "His age means his chakra reserves are vastly reduced from his prime"
+      },
+      {
+        "tag": "youth_speed",
+        "coefficient": 0.35,
+        "description": "Old age has reduced his speed significantly from prime form"
+      }
+    ],
+    "cannot_win_against": [
+      "orochimaru"
+    ],
+    "draw_conditions": [],
+    "traits": [
+      "human",
+      "male",
+      "shinobi",
+      "hokage",
+      "konoha",
+      "master"
+    ],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/naruto/hiruzen_sarutobi.jpg",
+    "short_description": "The God of Shinobi — the Third Hokage mastered every ninjutsu in Konoha's archives and can use all five nature types. His Reaper Death Seal cost him his life to seal Orochimaru's arms, ending their battle."
+  },
+  {
+    "slug": "raikage_a",
+    "name": "Fourth Raikage",
+    "verse": "naruto",
+    "arc_version": "Lightning Armor — Kage Summit",
+    "power_level": 2134821,
+    "martial_ratio": 0.95,
+    "power_tags": [
+      "lightning_armor",
+      "lariat",
+      "guillotine_drop",
+      "double_lariat",
+      "fastest_without_sharingan",
+      "lightning_chakra_mode",
+      "raikage_authority"
+    ],
+    "strengths": [
+      {
+        "tag": "taijutsu",
+        "coefficient": 0.4,
+        "description": "Lightning Armor makes him faster than any conventional taijutsu fighter"
+      },
+      {
+        "tag": "speed",
+        "coefficient": 0.5,
+        "description": "One of the fastest characters in the verse — his lightning-enhanced speed lets him dodge even Kage-level attacks"
+      },
+      {
+        "tag": "genjutsu",
+        "coefficient": 0.7,
+        "description": "His speed is so extreme that genjutsu requires visual contact he never grants"
+      }
+    ],
+    "weaknesses": [
+      {
+        "tag": "lightning_release",
+        "coefficient": 0.6,
+        "description": "Lightning Armor itself is electricity — conducts and amplifies opponent's lightning"
+      },
+      {
+        "tag": "overwhelming_ninjutsu",
+        "coefficient": 0.35
+      },
+      {
+        "tag": "sealing_jutsu",
+        "coefficient": 0.4
+      }
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "traits": [
+      "human",
+      "male",
+      "shinobi",
+      "kage",
+      "cloud_village",
+      "lightning_user"
+    ],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/naruto/raikage_a.jpg",
+    "short_description": "The fastest man in the shinobi world without the Sharingan. The Fourth Raikage's Lightning Armor makes him functionally untouchable to most opponents — his Lariat decapitates opponents regardless of their defences."
   }
 ]
