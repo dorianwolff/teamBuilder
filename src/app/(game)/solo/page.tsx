@@ -354,6 +354,9 @@ export default function SoloPage() {
           <BattleAnimationSequence
             charA={animCharA}
             charB={animCharB}
+            round={pendingAnimRound}
+            playerAId={PLAYER_ID}
+            playerBId={AI_ID}
             isPlayerA
             onComplete={() => handleAnimComplete(pendingAnimRound, isGameOver)}
           />

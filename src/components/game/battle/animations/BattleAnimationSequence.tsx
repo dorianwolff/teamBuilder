@@ -1,62 +1,122 @@
 'use client'
 
 /**
- * BattleAnimationSequence
+ * BattleAnimationSequence — v2
  *
- * Full-screen cinematic overlay that plays before a round result is shown.
- * Flow: overlay in → char A entrance → char A technique → char B entrance →
- *       char B technique → clash flash → overlay out → onComplete()
+ * Cinematic overlay for round resolution.
  *
- * Uses async/await + Promises instead of nested timeouts.
+ * Sequence:
+ *   1.  Overlay fade in
+ *   2.  MY card enters first (isPlayerA → charA; else charB)
+ *   3.  Opponent's card enters
+ *   4.  VS badge
+ *   5.  CLASH (perfectly centred via inset-x-0 flex justify-center)
+ *   6.  Technique A — label floats ABOVE charA's card, effect fires left→right
+ *   7.  Technique B — label floats ABOVE charB's card, effect fires right→left
+ *   8.  Number reveal — both scores count up from 0; winner grows/green, loser shrinks/red
+ *   9.  Result pause
+ *   10. Overlay outro → onComplete()
+ *
+ * Props added in v2:
+ *   - round      — full BattleRound for scores + modifiers
+ *   - playerAId  — to determine winner side
+ *   - playerBId  — same
  */
 
 import { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { resolveAnimProfile } from '@/data/animations'
 import { AuraGlow, AuraParticles } from './AuraGlow'
-import { TechniqueLabel } from './TechniqueLabel'
 import { EffectOverlay } from './EffectOverlay'
+import { NumberReveal } from './NumberReveal'
+import { cn } from '@/lib/utils/cn'
 import type { Character } from '@/types/character'
-import type { TechniqueAnim } from '@/types/animation'
+import type { BattleRound } from '@/types/game'
+import type { TechniqueAnim, AnimationType } from '@/types/animation'
 
-// ─── helpers ─────────────────────────────────────────────────────────────────
+// ─── Helpers ──────────────────────────────────────────────────────────────────
 
 const delay = (ms: number) => new Promise<void>(r => setTimeout(r, ms))
 
-// ─── types ────────────────────────────────────────────────────────────────────
+// ─── Types ────────────────────────────────────────────────────────────────────
 
-interface BattleAnimationSequenceProps {
+export interface BattleAnimationSequenceProps {
   charA: Character
   charB: Character
-  /** Whether the current viewer is Player A (determines label sides) */
+  /** Full resolved round — provides scores, modifiers, winner */
+  round: BattleRound
+  /** user_id of player A */
+  playerAId: string
+  /** user_id of player B */
+  playerBId: string
+  /** True when the current viewer is Player A */
   isPlayerA: boolean
   onComplete: () => void
 }
 
-// State flags that drive visibility of each layer
 interface AnimState {
-  overlayIn:      boolean
-  portraitA:      boolean
-  auraA:          boolean
-  techniqueA:     boolean
-  effectA:        boolean
-  portraitB:      boolean
-  auraB:          boolean
-  techniqueB:     boolean
-  effectB:        boolean
-  clash:          boolean
-  overlayOut:     boolean
+  overlayIn:    boolean
+  portraitA:    boolean
+  auraA:        boolean
+  portraitB:    boolean
+  auraB:        boolean
+  vsShow:       boolean
+  clash:        boolean
+  techniqueA:   boolean
+  effectA:      boolean
+  techniqueB:   boolean
+  effectB:      boolean
+  numberReveal: boolean
+  revealResult: boolean
+  overlayOut:   boolean
 }
 
 const INIT: AnimState = {
-  overlayIn: false, portraitA: false, auraA: false, techniqueA: false, effectA: false,
-  portraitB: false, auraB: false,     techniqueB: false, effectB: false,
-  clash: false, overlayOut: false,
+  overlayIn: false, portraitA: false, auraA: false,
+  portraitB: false, auraB: false, vsShow: false,
+  clash: false, techniqueA: false, effectA: false,
+  techniqueB: false, effectB: false,
+  numberReveal: false, revealResult: false, overlayOut: false,
 }
 
-// ─── sub-components ───────────────────────────────────────────────────────────
+// ─── Technique text styles ────────────────────────────────────────────────────
 
-/** Character portrait card with aura, particles, and combat physics */
+const TYPE_STYLES: Partial<Record<AnimationType, string>> = {
+  ki_aura:              'font-black tracking-tight uppercase',
+  ki_beam:              'font-black tracking-tight uppercase',
+  sharingan:            'font-bold tracking-widest italic',
+  genjutsu:             'font-bold tracking-widest italic',
+  nen_aura:             'font-black tracking-wide',
+  chain_jail:           'font-black tracking-wide',
+  haki_burst:           'font-black tracking-widest uppercase',
+  time_stop:            'font-light tracking-[0.3em] uppercase',
+  sword:                'font-bold italic tracking-tight',
+  divine:               'font-light tracking-[0.25em] uppercase',
+  shadow:               'font-bold tracking-widest italic',
+  darkness:             'font-black tracking-widest uppercase',
+  gear5:                'font-black tracking-tight uppercase',
+  chidori:              'font-black tracking-tight uppercase',
+  kamui:                'font-bold tracking-[0.2em] italic',
+  eight_gates:          'font-black tracking-widest uppercase',
+  gentle_fist:          'font-light tracking-[0.3em] uppercase',
+  rasengan:             'font-black tracking-tight uppercase',
+  bijuu:                'font-black tracking-widest uppercase',
+  physical:             'font-black tracking-tight uppercase',
+  elemental_fire:       'font-black tracking-tight uppercase',
+  elemental_lightning:  'font-black tracking-tight uppercase',
+  elemental_wind:       'font-black tracking-tight uppercase',
+  explosion:            'font-black tracking-widest uppercase',
+}
+
+// ─── CharPortrait ─────────────────────────────────────────────────────────────
+
+/**
+ * A character portrait with:
+ * - Entrance animation (slides in from side)
+ * - Aura glow + particles
+ * - Technique label positioned ABOVE the card (not overlapping)
+ * - Combat physics (lean, shake, damage flash)
+ */
 function CharPortrait({
   character,
   side,
@@ -67,6 +127,8 @@ function CharPortrait({
   isAttacking = false,
   isReceiving = false,
   isClash = false,
+  technique,
+  showLabel = false,
 }: {
   character: Character
   side: 'left' | 'right'
@@ -77,17 +139,22 @@ function CharPortrait({
   isAttacking?: boolean
   isReceiving?: boolean
   isClash?: boolean
+  technique?: TechniqueAnim | null
+  showLabel?: boolean
 }) {
-  const xEnter    = side === 'left' ? -80 : 80
-  // When attacking, lean toward the center
-  const attackX   = side === 'left' ? 24 : -24
+  const xEnter  = side === 'left' ? -80 : 80
+  const attackX = side === 'left' ? 24 : -24
 
   return (
     <AnimatePresence>
       {visible && (
         <motion.div
-          className={`absolute top-1/2 -translate-y-1/2 flex flex-col items-center
-            ${side === 'left' ? 'left-4 sm:left-10 md:left-16' : 'right-4 sm:right-10 md:right-16'}`}
+          className={cn(
+            'absolute top-1/2 -translate-y-1/2 flex flex-col items-center',
+            side === 'left'
+              ? 'left-4 sm:left-10 md:left-16'
+              : 'right-4 sm:right-10 md:right-16',
+          )}
           initial={{ opacity: 0, x: xEnter, scale: 0.7 }}
           animate={{
             opacity: 1,
@@ -98,7 +165,7 @@ function CharPortrait({
           exit={{ opacity: 0, x: xEnter * 0.4, scale: 0.9 }}
           transition={{ type: 'spring', stiffness: 260, damping: 20 }}
         >
-          {/* Shake wrapper — vibrates when receiving hit */}
+          {/* Shake wrapper — shakes on receive / clash */}
           <motion.div
             animate={
               isClash
@@ -114,15 +181,66 @@ function CharPortrait({
                   ? { duration: 0.45, repeat: Infinity, repeatDelay: 0.15 }
                   : { duration: 0.2 }
             }
-            className="flex flex-col items-center"
+            className="relative flex flex-col items-center"
           >
-            <div className="relative w-28 h-36 sm:w-36 sm:h-48 md:w-44 md:h-60 rounded-2xl overflow-hidden shadow-2xl">
-              {/* Aura behind portrait */}
-              {showAura && (
-                <AuraGlow color={color} intensity="high" pulse />
+            {/* ── Technique label — floats ABOVE the card ── */}
+            <AnimatePresence>
+              {showLabel && technique && (
+                <motion.div
+                  className={cn(
+                    'absolute bottom-full mb-4 left-1/2 -translate-x-1/2 z-40',
+                    'flex flex-col items-center gap-0.5 text-center',
+                    'w-max max-w-[160px] sm:max-w-[220px] md:max-w-[290px]',
+                  )}
+                  initial={{ opacity: 0, y: 14, scale: 0.85 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: -10, scale: 0.9 }}
+                  transition={{ type: 'spring', stiffness: 340, damping: 24 }}
+                >
+                  {/* Background glow */}
+                  <motion.div
+                    className="absolute inset-0 rounded-2xl blur-2xl pointer-events-none"
+                    style={{ background: `${technique.color}55` }}
+                    animate={{ opacity: [0.5, 0.9, 0.5] }}
+                    transition={{ duration: 1, repeat: Infinity }}
+                  />
+                  {/* Technique name */}
+                  <motion.p
+                    className={cn(
+                      'relative text-xl sm:text-2xl md:text-3xl lg:text-4xl leading-tight drop-shadow-lg',
+                      TYPE_STYLES[technique.type] ?? 'font-bold',
+                    )}
+                    style={{ color: technique.color }}
+                    animate={{
+                      textShadow: [
+                        `0 0 8px ${technique.color}88`,
+                        `0 0 24px ${technique.color}cc`,
+                        `0 0 8px ${technique.color}88`,
+                      ],
+                    }}
+                    transition={{ duration: 0.8, repeat: Infinity }}
+                  >
+                    {technique.name}
+                  </motion.p>
+                  {/* Flavour text */}
+                  {technique.flavour && (
+                    <motion.p
+                      className="relative text-[10px] sm:text-xs text-white/60 font-normal tracking-wide"
+                      initial={{ opacity: 0, y: 4 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.35 }}
+                    >
+                      {technique.flavour}
+                    </motion.p>
+                  )}
+                </motion.div>
               )}
+            </AnimatePresence>
 
-              {/* Portrait — uses the API route, same as PlayingCard */}
+            {/* ── Card portrait ── */}
+            <div className="relative w-28 h-36 sm:w-36 sm:h-48 md:w-44 md:h-60 rounded-2xl overflow-hidden shadow-2xl">
+              {showAura && <AuraGlow color={color} intensity="high" pulse />}
+
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={`/api/character-img/${character.verse}/${character.slug}`}
@@ -130,7 +248,7 @@ function CharPortrait({
                 className="object-cover object-top w-full h-full relative z-10"
               />
 
-              {/* Color overlay tint */}
+              {/* Colour tint overlay */}
               <motion.div
                 className="absolute inset-0 z-20 pointer-events-none"
                 style={{ background: `${color}22`, mixBlendMode: 'screen' }}
@@ -138,7 +256,7 @@ function CharPortrait({
                 transition={{ duration: 1.2, repeat: Infinity }}
               />
 
-              {/* Damage darkening when receiving */}
+              {/* Damage flash when receiving */}
               {isReceiving && (
                 <motion.div
                   className="absolute inset-0 z-30 pointer-events-none rounded-2xl bg-black"
@@ -158,7 +276,7 @@ function CharPortrait({
               {character.name}
             </motion.p>
 
-            {/* Particles on entrance */}
+            {/* Entrance particles */}
             {showParticles && (
               <div className="absolute inset-0 pointer-events-none">
                 <AuraParticles color={color} count={10} />
@@ -171,7 +289,8 @@ function CharPortrait({
   )
 }
 
-/** Central clash flash */
+// ─── ClashEffect ──────────────────────────────────────────────────────────────
+
 function ClashEffect({ visible }: { visible: boolean }) {
   return (
     <AnimatePresence>
@@ -179,31 +298,36 @@ function ClashEffect({ visible }: { visible: boolean }) {
         <>
           {/* White flash */}
           <motion.div
-            className="absolute inset-0 bg-white pointer-events-none"
+            className="absolute inset-0 bg-white pointer-events-none z-50"
             initial={{ opacity: 0 }}
             animate={{ opacity: [0, 1, 0.5, 0.8, 0] }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.7, times: [0, 0.1, 0.3, 0.5, 1] }}
           />
+
           {/* Impact rings */}
           {[0, 1, 2].map(i => (
             <motion.div
               key={i}
-              className="absolute top-1/2 left-1/2 rounded-full border-2 border-gold-400 pointer-events-none"
+              className="absolute top-1/2 left-1/2 rounded-full border-2 pointer-events-none z-40"
+              style={{ borderColor: '#fbbf24' }}
               initial={{ width: 0, height: 0, x: '-50%', y: '-50%', opacity: 1 }}
               animate={{ width: 200 + i * 120, height: 200 + i * 120, x: '-50%', y: '-50%', opacity: 0 }}
               transition={{ duration: 0.8, delay: i * 0.1 }}
             />
           ))}
-          {/* Clash burst text */}
+
+          {/* CLASH text — centred with inset-x-0 + flex justify-center (no translate trick) */}
           <motion.div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-40"
+            className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-center pointer-events-none z-40"
             initial={{ opacity: 0, scale: 0.3 }}
             animate={{ opacity: [0, 1, 1, 0], scale: [0.3, 1.5, 1.2, 0.8] }}
             transition={{ duration: 0.9, times: [0, 0.2, 0.6, 1] }}
           >
-            <p className="text-3xl sm:text-5xl font-black text-white tracking-widest drop-shadow-2xl"
-               style={{ textShadow: '0 0 20px #fbbf24, 0 0 50px #f59e0b, 0 0 80px #ffffff' }}>
+            <p
+              className="text-4xl sm:text-6xl md:text-7xl font-black text-white tracking-widest drop-shadow-2xl"
+              style={{ textShadow: '0 0 20px #fbbf24, 0 0 50px #f59e0b, 0 0 80px #ffffff' }}
+            >
               CLASH
             </p>
           </motion.div>
@@ -213,15 +337,22 @@ function ClashEffect({ visible }: { visible: boolean }) {
   )
 }
 
-// ─── main component ───────────────────────────────────────────────────────────
+// ─── Main component ───────────────────────────────────────────────────────────
 
 export function BattleAnimationSequence({
-  charA, charB, isPlayerA, onComplete,
+  charA,
+  charB,
+  round,
+  playerAId,
+  isPlayerA,
+  onComplete,
 }: BattleAnimationSequenceProps) {
-  const [s, setS] = useState<AnimState>(INIT)
-  const [techniqueA, setTechniqueA] = useState<TechniqueAnim | null>(null)
-  const [techniqueB, setTechniqueB] = useState<TechniqueAnim | null>(null)
-  const ran = useRef(false)
+  const [s, setS]                       = useState<AnimState>(INIT)
+  const [techniqueA, setTechniqueA]     = useState<TechniqueAnim | null>(null)
+  const [techniqueB, setTechniqueB]     = useState<TechniqueAnim | null>(null)
+  const ran                             = useRef(false)
+
+  const winnerIsA = round.winner_id === playerAId
 
   useEffect(() => {
     if (ran.current) return
@@ -235,41 +366,53 @@ export function BattleAnimationSequence({
     setTechniqueB(tB)
 
     async function run() {
-      // ── 1. Overlay fades in ──────────────────────────────────────────────────
+      // ── 1. Overlay fade in ────────────────────────────────────────────────
       setS(p => ({ ...p, overlayIn: true }))
       await delay(500)
 
-      // ── 2. Character A entrance ──────────────────────────────────────────────
-      setS(p => ({ ...p, portraitA: true, auraA: true }))
-      await delay(600)
+      // ── 2. MY card enters first ───────────────────────────────────────────
+      if (isPlayerA) {
+        setS(p => ({ ...p, portraitA: true, auraA: true }))
+        await delay(750)
+        setS(p => ({ ...p, portraitB: true, auraB: true }))
+      } else {
+        setS(p => ({ ...p, portraitB: true, auraB: true }))
+        await delay(750)
+        setS(p => ({ ...p, portraitA: true, auraA: true }))
+      }
+      await delay(750)
 
-      // ── 3. Char A technique ──────────────────────────────────────────────────
-      setS(p => ({ ...p, techniqueA: true, effectA: true }))
-      await delay(2200)
-
-      // ── 4. Fade out A's technique, keep portrait ─────────────────────────────
-      setS(p => ({ ...p, techniqueA: false, effectA: false }))
-      await delay(300)
-
-      // ── 5. Character B entrance ──────────────────────────────────────────────
-      setS(p => ({ ...p, portraitB: true, auraB: true }))
-      await delay(600)
-
-      // ── 6. Char B technique ──────────────────────────────────────────────────
-      setS(p => ({ ...p, techniqueB: true, effectB: true }))
-      await delay(2200)
-
-      // ── 7. Fade out B's technique ────────────────────────────────────────────
-      setS(p => ({ ...p, techniqueB: false, effectB: false }))
-      await delay(300)
-
-      // ── 8. Clash ─────────────────────────────────────────────────────────────
-      setS(p => ({ ...p, clash: true }))
+      // ── 3. VS badge ───────────────────────────────────────────────────────
+      setS(p => ({ ...p, vsShow: true }))
       await delay(1000)
-      setS(p => ({ ...p, clash: false }))
-      await delay(200)
 
-      // ── 9. Overlay fades out ─────────────────────────────────────────────────
+      // ── 4. CLASH ──────────────────────────────────────────────────────────
+      setS(p => ({ ...p, vsShow: false, clash: true }))
+      await delay(950)
+      setS(p => ({ ...p, clash: false }))
+      await delay(400)
+
+      // ── 5. Technique A  (effect fires left → right toward charB) ─────────
+      setS(p => ({ ...p, techniqueA: true, effectA: true }))
+      await delay(2500)
+      setS(p => ({ ...p, techniqueA: false, effectA: false }))
+      await delay(400)
+
+      // ── 6. Technique B  (effect fires right → left toward charA) ─────────
+      setS(p => ({ ...p, techniqueB: true, effectB: true }))
+      await delay(2500)
+      setS(p => ({ ...p, techniqueB: false, effectB: false }))
+      await delay(400)
+
+      // ── 7. Number reveal (count from 0 → final scores) ───────────────────
+      setS(p => ({ ...p, numberReveal: true }))
+      await delay(2900) // slightly longer than NumberReveal's 2400 ms duration
+
+      // ── 8. Show winner/loser result state ─────────────────────────────────
+      setS(p => ({ ...p, revealResult: true }))
+      await delay(1600)
+
+      // ── 9. Outro ──────────────────────────────────────────────────────────
       setS(p => ({
         ...p,
         overlayOut: true,
@@ -278,18 +421,12 @@ export function BattleAnimationSequence({
       }))
       await delay(600)
 
-      // ── Done ─────────────────────────────────────────────────────────────────
       onComplete()
     }
 
     run()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
-  // Determine label sides relative to viewer
-  // Player A's character is always on left visually; their label is on left
-  const sideA: 'left' | 'right' = 'left'
-  const sideB: 'left' | 'right' = 'right'
 
   return (
     <AnimatePresence>
@@ -301,7 +438,7 @@ export function BattleAnimationSequence({
           transition={{ duration: 0.5 }}
           style={{ background: 'radial-gradient(ellipse at center, #0d0d1a 0%, #000000 100%)' }}
         >
-          {/* Ambient background pulse */}
+          {/* Ambient colour wash from both technique colours */}
           <motion.div
             className="absolute inset-0 pointer-events-none"
             animate={{ opacity: [0.08, 0.18, 0.08] }}
@@ -313,10 +450,10 @@ export function BattleAnimationSequence({
             }}
           />
 
-          {/* ── Character A ───────────────────────────────────────────── */}
+          {/* ── Char A (always left) ─────────────────────────────────────── */}
           <CharPortrait
             character={charA}
-            side={sideA}
+            side="left"
             showAura={s.auraA}
             showParticles={s.auraA}
             color={techniqueA?.color ?? '#f97316'}
@@ -324,34 +461,14 @@ export function BattleAnimationSequence({
             isAttacking={s.techniqueA}
             isReceiving={s.techniqueB}
             isClash={s.clash}
+            technique={techniqueA}
+            showLabel={s.techniqueA}
           />
 
-          {/* Char A effect overlay */}
-          {s.effectA && techniqueA && (
-            <EffectOverlay
-              type={techniqueA.type}
-              color={techniqueA.color}
-              secondaryColor={techniqueA.secondaryColor}
-              side={sideA}
-            />
-          )}
-
-          {/* Char A technique label */}
-          {techniqueA && (
-            <TechniqueLabel
-              name={techniqueA.name}
-              type={techniqueA.type}
-              color={techniqueA.color}
-              flavour={techniqueA.flavour}
-              visible={s.techniqueA}
-              side={sideA}
-            />
-          )}
-
-          {/* ── Character B ───────────────────────────────────────────── */}
+          {/* ── Char B (always right) ─────────────────────────────────────── */}
           <CharPortrait
             character={charB}
-            side={sideB}
+            side="right"
             showAura={s.auraB}
             showParticles={s.auraB}
             color={techniqueB?.color ?? '#3b82f6'}
@@ -359,59 +476,91 @@ export function BattleAnimationSequence({
             isAttacking={s.techniqueB}
             isReceiving={s.techniqueA}
             isClash={s.clash}
+            technique={techniqueB}
+            showLabel={s.techniqueB}
           />
 
-          {/* Char B effect overlay */}
+          {/* ── Effect overlays ─────────────────────────────────────────────── */}
+          {s.effectA && techniqueA && (
+            <EffectOverlay
+              type={techniqueA.type}
+              color={techniqueA.color}
+              secondaryColor={techniqueA.secondaryColor}
+              side="left"
+            />
+          )}
           {s.effectB && techniqueB && (
             <EffectOverlay
               type={techniqueB.type}
               color={techniqueB.color}
               secondaryColor={techniqueB.secondaryColor}
-              side={sideB}
+              side="right"
             />
           )}
 
-          {/* Char B technique label */}
-          {techniqueB && (
-            <TechniqueLabel
-              name={techniqueB.name}
-              type={techniqueB.type}
-              color={techniqueB.color}
-              flavour={techniqueB.flavour}
-              visible={s.techniqueB}
-              side={sideB}
-            />
-          )}
-
-          {/* ── VS badge ─────────────────────────────────────────────── */}
+          {/* ── VS badge ─────────────────────────────────────────────────────── */}
           <AnimatePresence>
-            {(s.portraitA && s.portraitB) && !s.clash && (
+            {s.vsShow && (
               <motion.div
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 pointer-events-none"
+                className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-center z-30 pointer-events-none"
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 1.2 }}
+                exit={{ opacity: 0, scale: 1.5 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 20 }}
               >
-                <div className="flex flex-col items-center gap-1">
-                  <p className="text-3xl sm:text-5xl font-black text-white/90 drop-shadow-2xl tracking-widest"
-                     style={{ textShadow: '0 0 20px rgba(255,255,255,0.5)' }}>
-                    VS
-                  </p>
-                </div>
+                <p
+                  className="text-3xl sm:text-5xl font-black text-white/90 drop-shadow-2xl tracking-widest"
+                  style={{ textShadow: '0 0 20px rgba(255,255,255,0.5)' }}
+                >
+                  VS
+                </p>
               </motion.div>
             )}
           </AnimatePresence>
 
-          {/* ── Clash ────────────────────────────────────────────────── */}
+          {/* ── Clash ─────────────────────────────────────────────────────────── */}
           <ClashEffect visible={s.clash} />
+
+          {/* ── Number reveal section ─────────────────────────────────────────── */}
+          <AnimatePresence>
+            {s.numberReveal && (
+              <motion.div
+                className="absolute inset-x-0 bottom-8 sm:bottom-12 flex justify-center items-end gap-8 sm:gap-16 md:gap-28 z-20 px-4"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10 }}
+                transition={{ duration: 0.4 }}
+              >
+                <NumberReveal
+                  targetScore={round.effective_score_a}
+                  baseScore={charA.power_level}
+                  modifiers={round.modifiers_applied}
+                  isPlayerA={true}
+                  isWinner={winnerIsA}
+                  charName={charA.name}
+                  active={s.numberReveal}
+                  revealResult={s.revealResult}
+                />
+                <NumberReveal
+                  targetScore={round.effective_score_b}
+                  baseScore={charB.power_level}
+                  modifiers={round.modifiers_applied}
+                  isPlayerA={false}
+                  isWinner={!winnerIsA}
+                  charName={charB.name}
+                  active={s.numberReveal}
+                  revealResult={s.revealResult}
+                />
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           {/* Skip hint */}
           <motion.p
-            className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/20 text-xs pointer-events-none"
+            className="absolute bottom-2 inset-x-0 text-center text-white/15 text-xs pointer-events-none"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1 }}
+            transition={{ delay: 1.5 }}
           >
             Animation playing…
           </motion.p>

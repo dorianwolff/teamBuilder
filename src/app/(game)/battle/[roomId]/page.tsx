@@ -113,9 +113,14 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
   // Derive combined confirmed state (local optimistic + server confirmed)
   const uiConfirmed = localConfirmed || (myState?.confirmed ?? false)
 
-  // Countdown from local timer
+  // Countdown from local timer.
+  // Guard: also verify the deadline is actually in the past to prevent the
+  // spurious "expired" frame that fires when localTimerEndsAt is first set
+  // (useCountdown initialises to 0 before its effect runs).
   const myTimeLeft   = useCountdown(localTimerEndsAt)
-  const timerExpired = localTimerEndsAt !== null && myTimeLeft === 0
+  const timerExpired = localTimerEndsAt !== null
+    && myTimeLeft === 0
+    && new Date(localTimerEndsAt).getTime() <= Date.now()
 
   // ── Keep fresh ref to latest confirm fn (avoids stale closures in auto-submit)
   const confirmFnRef = useRef<((charId: string) => void) | null>(null)
@@ -143,17 +148,15 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [!!battle])
 
-  // Extend timer +5 s each time a new round begins (rounds 2, 3 …)
+  // Fresh timer for every new round: round 1 gets TIMER_INITIAL_S,
+  // round 2 gets TIMER_INITIAL_S + TIMER_BONUS_S, etc.
   useEffect(() => {
     if (!battle) return
     if (battle.current_round <= prevRoundRef.current) return
     prevRoundRef.current = battle.current_round
-    setLocalTimerEndsAt(prev => {
-      if (!prev) return null
-      const base = Math.max(Date.now(), new Date(prev).getTime())
-      return new Date(base + TIMER_BONUS_S * 1000).toISOString()
-    })
-    console.log('[Timer] +5 s for round', battle.current_round)
+    const newSeconds = TIMER_INITIAL_S + (battle.current_round - 1) * TIMER_BONUS_S
+    setLocalTimerEndsAt(new Date(Date.now() + newSeconds * 1000).toISOString())
+    console.log('[Timer] fresh timer for round', battle.current_round, '—', newSeconds, 's')
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [battle?.current_round])
 
@@ -450,8 +453,6 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
   }
 
   const gameOver     = room.status === 'finished'
-  const myScore      = battle.scores[isA ? 'a' : 'b']
-  const oppScore     = battle.scores[isA ? 'b' : 'a']
   const selectedChar = myState.remaining_characters.find(c => c.id === selectedCharId) ?? null
 
   const rematchVotes = battle.rematch_votes ?? []
@@ -461,6 +462,17 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
   // Characters for the pre-result animation
   const animCharA = animRound ? allBattleChars.find(c => c.id === animRound.player_a_pick) ?? null : null
   const animCharB = animRound ? allBattleChars.find(c => c.id === animRound.player_b_pick) ?? null : null
+
+  // Defer score display during animation: show scores as they were BEFORE the round
+  // so the result isn't spoiled by a preemptive score update on the main page.
+  const displayScoreA = animRound?.winner_id
+    ? battle.scores.a - (animRound.winner_id === room.player_a_id ? 1 : 0)
+    : battle.scores.a
+  const displayScoreB = animRound?.winner_id
+    ? battle.scores.b - (animRound.winner_id === room.player_b_id ? 1 : 0)
+    : battle.scores.b
+  const myScore  = isA ? displayScoreA : displayScoreB
+  const oppScore = isA ? displayScoreB : displayScoreA
 
   // Show timer only while actively selecting (not confirmed, not game over)
   const showTimer = !gameOver && localTimerEndsAt !== null && !uiConfirmed && battle.phase === 'selecting'
@@ -634,6 +646,9 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
         <BattleAnimationSequence
           charA={animCharA}
           charB={animCharB}
+          round={animRound}
+          playerAId={room.player_a_id}
+          playerBId={room.player_b_id!}
           isPlayerA={isA}
           onComplete={() => {
             setResultModal(animRound)

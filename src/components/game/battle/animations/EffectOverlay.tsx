@@ -103,7 +103,7 @@ function KiAuraEffect({ color, secondaryColor, side }: EffectProps) {
   )
 }
 
-// ── Sharingan / Genjutsu ──────────────────────────────────────────────────────
+// ── Sharingan (spinning tomoe eye) ───────────────────────────────────────────
 function SharinganEffect({ color, side }: EffectProps) {
   const cx = side === 'left' ? '25%' : '75%'
   return (
@@ -163,6 +163,155 @@ function SharinganEffect({ color, side }: EffectProps) {
           style={{ top: `${20 + i * 15}%`, background: `linear-gradient(to right, transparent, ${color}55, transparent)` }}
           initial={{ scaleX: 0 }} animate={{ scaleX: [0, 1, 0] }}
           transition={{ duration: 0.8, delay: 0.3 + i * 0.05 }}
+        />
+      ))}
+    </div>
+  )
+}
+
+// ── Genjutsu — Itachi crows + blood-moon Tsukuyomi ───────────────────────────
+function GenjutsuEffect({ color, side }: EffectProps) {
+  const cx = side === 'left' ? '25%' : '75%'
+
+  // Pre-computed crow config (stable between renders — no Math.random in JSX)
+  const crows = [
+    { y: 8,  delay: 0.0,  scale: 0.7, fromRight: false, speed: 1.8 },
+    { y: 18, delay: 0.25, scale: 1.0, fromRight: true,  speed: 2.0 },
+    { y: 28, delay: 0.5,  scale: 0.6, fromRight: false, speed: 1.5 },
+    { y: 38, delay: 0.1,  scale: 0.9, fromRight: false, speed: 2.2 },
+    { y: 45, delay: 0.7,  scale: 1.1, fromRight: true,  speed: 1.6 },
+    { y: 55, delay: 0.4,  scale: 0.75,fromRight: false, speed: 1.9 },
+    { y: 63, delay: 0.9,  scale: 0.85,fromRight: true,  speed: 2.1 },
+    { y: 72, delay: 0.2,  scale: 1.0, fromRight: false, speed: 1.7 },
+    { y: 80, delay: 0.6,  scale: 0.6, fromRight: true,  speed: 2.3 },
+    { y: 88, delay: 0.15, scale: 0.9, fromRight: false, speed: 1.4 },
+    { y: 14, delay: 1.0,  scale: 1.2, fromRight: true,  speed: 1.8 },
+    { y: 50, delay: 1.2,  scale: 0.7, fromRight: false, speed: 2.0 },
+    { y: 33, delay: 1.4,  scale: 0.8, fromRight: true,  speed: 1.6 },
+    { y: 68, delay: 1.1,  scale: 1.0, fromRight: false, speed: 2.2 },
+    { y: 22, delay: 1.6,  scale: 0.65,fromRight: true,  speed: 1.5 },
+    { y: 76, delay: 1.3,  scale: 0.9, fromRight: false, speed: 1.9 },
+  ]
+
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {/* Blood-moon genjutsu backdrop */}
+      <motion.div
+        className="absolute inset-0"
+        style={{ background: `radial-gradient(circle at ${cx} 38%, ${color}55 0%, #120006 65%)` }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: [0, 1, 0.8] }}
+        transition={{ duration: 1.5 }}
+      />
+
+      {/* Full-screen dark tint that creeps in */}
+      <motion.div
+        className="absolute inset-0 bg-black"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: [0, 0, 0.45, 0.35] }}
+        transition={{ duration: 2.5, times: [0, 0.3, 0.8, 1] }}
+      />
+
+      {/* Sharingan eye */}
+      <motion.div
+        className="absolute"
+        style={{
+          top: '22%',
+          [side === 'left' ? 'left' : 'right']: '12%',
+          transform: 'translate(-50%, -50%)',
+        }}
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: [0, 1.3, 1], opacity: [0, 1, 0.9] }}
+        transition={{ duration: 0.6 }}
+      >
+        <div className="relative w-16 h-16 sm:w-24 sm:h-24">
+          <div
+            className="absolute inset-0 rounded-full border-4"
+            style={{
+              borderColor: color,
+              background: `radial-gradient(circle, #0f0005 30%, ${color} 70%)`,
+            }}
+          />
+          <motion.div
+            className="absolute inset-0 rounded-full"
+            animate={{ rotate: 360 }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: 'linear' }}
+          >
+            {[0, 120, 240].map(deg => (
+              <div
+                key={deg}
+                className="absolute top-1/2 left-1/2 w-2.5 h-2.5 rounded-full"
+                style={{
+                  background: color,
+                  transform: `rotate(${deg}deg) translateY(-9px) translate(-50%, -50%)`,
+                }}
+              />
+            ))}
+          </motion.div>
+          <motion.div
+            className="absolute -inset-5 rounded-full blur-2xl"
+            style={{ background: `${color}55` }}
+            animate={{ opacity: [0.4, 1, 0.4] }}
+            transition={{ duration: 0.9, repeat: Infinity }}
+          />
+        </div>
+      </motion.div>
+
+      {/* Crow silhouettes — SVG bird shapes flying across */}
+      {crows.map((crow, i) => (
+        <motion.div
+          key={i}
+          className="absolute pointer-events-none"
+          style={{ top: `${crow.y}%` }}
+          initial={{ x: crow.fromRight ? '110vw' : '-110vw', opacity: 0 }}
+          animate={{
+            x: crow.fromRight ? '-110vw' : '110vw',
+            opacity: [0, 0.9, 0.9, 0.8, 0],
+          }}
+          transition={{
+            x:       { duration: crow.speed, delay: crow.delay, ease: 'linear' },
+            opacity: { duration: crow.speed, delay: crow.delay,
+                       times: [0, 0.06, 0.75, 0.92, 1] },
+          }}
+        >
+          <svg
+            width={Math.round(34 * crow.scale)}
+            height={Math.round(20 * crow.scale)}
+            viewBox="0 0 40 22"
+            style={{
+              fill: '#08000f',
+              filter: `drop-shadow(0 0 3px ${color}bb)`,
+              transform: crow.fromRight ? 'scaleX(-1)' : 'none',
+            }}
+          >
+            {/*
+              Bird silhouette: two arched wings meeting at a small body in the centre.
+              Outer points sweep out and down; tips curl slightly upward.
+            */}
+            <path d="
+              M20 11
+              C 16 8 10 7 6  9  C 3 10  0 12  0 14
+              C 5 11 12 10 20 12
+              C 28 10 35 11 40 14
+              C 40 12 37 10 34 9  C 30 7 24 8 20 11
+              Z
+            " />
+          </svg>
+        </motion.div>
+      ))}
+
+      {/* World-distortion lines */}
+      {[20, 38, 56, 72].map((yPct, i) => (
+        <motion.div
+          key={i}
+          className="absolute h-px w-full"
+          style={{
+            top: `${yPct}%`,
+            background: `linear-gradient(to right, transparent, ${color}44, transparent)`,
+          }}
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: [0, 1, 0] }}
+          transition={{ duration: 1, delay: 0.5 + i * 0.1 }}
         />
       ))}
     </div>
@@ -761,8 +910,8 @@ export function EffectOverlay({ type, color, secondaryColor, side }: { type: Ani
   switch (type) {
     case 'ki_beam':           return <KiBeamEffect {...props} />
     case 'ki_aura':           return <KiAuraEffect {...props} />
-    case 'sharingan':
-    case 'genjutsu':          return <SharinganEffect {...props} />
+    case 'sharingan':          return <SharinganEffect {...props} />
+    case 'genjutsu':           return <GenjutsuEffect {...props} />
     case 'byakugan':          return <ByakuganEffect {...props} />
     case 'shadow':            return <ShadowEffect {...props} />
     case 'nen_aura':          return <NenAuraEffect {...props} />
