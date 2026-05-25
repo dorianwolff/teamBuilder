@@ -1,17 +1,19 @@
 'use client'
 
-import { useEffect, useState, useRef, use } from 'react'
+import { useEffect, useState, useRef, use, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import toast from 'react-hot-toast'
-import { Swords, Trophy, ChevronRight, Info, RotateCcw, Users, Flag, Loader2 } from 'lucide-react'
+import { Swords, Trophy, ChevronRight, Info, RotateCcw, Users, Flag, Loader2, Timer } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import { useGameRoom } from '@/hooks/useGameRoom'
 import { useAuth } from '@/hooks/useAuth'
+import { useCountdown } from '@/hooks/useTimer'
 import { PlayingCard, FaceDownCard } from '@/components/game/PlayingCard'
 import { CardHand } from '@/components/game/CardHand'
 import { Button } from '@/components/ui/Button'
 import { Modal } from '@/components/ui/Modal'
+import { BattleAnimationSequence } from '@/components/game/battle/animations/BattleAnimationSequence'
 import { buildInitialDraftState } from '@/lib/game/draft'
 import { resolveBattle } from '@/lib/game/battle'
 import { computeElo } from '@/lib/game/elo'
@@ -19,6 +21,10 @@ import { formatPowerLevel, formatEloDelta } from '@/lib/utils/format'
 import type { BattleState, BattleRound } from '@/types/game'
 import type { Character, Verse } from '@/types/character'
 import { cn } from '@/lib/utils/cn'
+
+// ── Timer constants ───────────────────────────────────────────────────────────
+const TIMER_INITIAL_S = 20   // seconds when battle begins
+const TIMER_BONUS_S   = 5    // seconds added per round
 
 // ── Shared constants ──────────────────────────────────────────────────────────
 const STRIP_W       = 110
@@ -43,6 +49,34 @@ function OppRemainingStrip({ count }: { count: number }) {
   )
 }
 
+// ── Timer display ─────────────────────────────────────────────────────────────
+
+function TimerBadge({ seconds, label }: { seconds: number; label: string }) {
+  const urgent  = seconds <= 5 && seconds > 0
+  const warning = seconds <= 10 && seconds > 5
+  const expired = seconds === 0
+
+  return (
+    <div className="flex flex-col items-center gap-0.5">
+      <p className="text-[9px] text-white/30 uppercase tracking-widest">{label}</p>
+      <motion.div
+        className={cn(
+          'flex items-center gap-1 px-2 py-0.5 rounded-full font-mono font-bold text-sm',
+          expired  ? 'bg-crimson-600/30 text-crimson-400'  :
+          urgent   ? 'bg-crimson-600/20 text-crimson-300'  :
+          warning  ? 'bg-gold-500/20    text-gold-300'     :
+                     'bg-white/5        text-white/60',
+        )}
+        animate={urgent ? { scale: [1, 1.08, 1] } : {}}
+        transition={{ duration: 0.4, repeat: urgent ? Infinity : 0 }}
+      >
+        <Timer size={10} />
+        <span>{seconds}s</span>
+      </motion.div>
+    </div>
+  )
+}
+
 // ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function BattlePage({ params }: { params: Promise<{ roomId: string }> }) {
@@ -54,18 +88,24 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
   const [selectedCharId, setSelectedCharId] = useState<string | null>(null)
   const [submitting, setSubmitting]         = useState(false)
   const [resultModal, setResultModal]       = useState<BattleRound | null>(null)
+  const [animRound,   setAnimRound]         = useState<BattleRound | null>(null)
   const [playingAgain, setPlayingAgain]     = useState(false)
   const [rematchCountdown, setRematchCountdown] = useState<number | null>(null)
 
   // Capture the full roster at battle start; characters get removed after each round
-  // so we store them here to look up which cards were played in result modals
   const [allBattleChars, setAllBattleChars] = useState<Character[]>([])
-  const resettingRef = useRef(false)
+  const resettingRef     = useRef(false)
+  const autoSubmittedRef = useRef(false)
 
   const battle   = room?.battle_state as BattleState | null
   const isA      = room?.player_a_id === user?.id
   const myState  = battle ? (isA ? battle.player_a : battle.player_b) : null
   const oppState = battle ? (isA ? battle.player_b : battle.player_a) : null
+
+  // Per-player timers
+  const myTimerEndsAt  = isA ? (battle?.timer_a_ends_at ?? null) : (battle?.timer_b_ends_at ?? null)
+  const myTimeLeft     = useCountdown(myTimerEndsAt)
+  const timerExpired   = myTimerEndsAt !== null && myTimeLeft === 0
 
   // Capture all characters when battle first loads (before any are removed)
   useEffect(() => {
@@ -77,11 +117,46 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [!!battle])
 
-  // Show round result modal whenever a round resolves
+  // Player A initialises timers when battle starts (if not yet set)
+  useEffect(() => {
+    if (!battle || !isA || battle.timer_a_ends_at || !room) return
+    const endsAt = new Date(Date.now() + TIMER_INITIAL_S * 1000).toISOString()
+    const supabase = createClient()
+    supabase.from('game_rooms').update({
+      battle_state: {
+        ...battle,
+        timer_a_ends_at: endsAt,
+        timer_b_ends_at: endsAt,
+      },
+    }).eq('id', roomId)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [battle?.timer_a_ends_at, isA])
+
+  // Reset auto-submit guard on every new round
+  useEffect(() => {
+    autoSubmittedRef.current = false
+  }, [battle?.current_round])
+
+  // Auto-submit a random character when my timer expires
+  useEffect(() => {
+    if (!timerExpired) return
+    if (!battle || myState?.confirmed || submitting || autoSubmittedRef.current) return
+    if (battle.phase !== 'selecting') return
+    const chars = myState?.remaining_characters ?? []
+    if (!chars.length) return
+    autoSubmittedRef.current = true
+    const random = chars[Math.floor(Math.random() * chars.length)]
+    doConfirmSelection(random.id)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [timerExpired])
+
+  // Show animation then round result modal whenever a round resolves
   useEffect(() => {
     if (!battle) return
     const last = battle.rounds[battle.rounds.length - 1]
-    if (last?.phase === 'result' && !resultModal) setResultModal(last)
+    if (last?.phase === 'result' && !resultModal && !animRound) {
+      setAnimRound(last)
+    }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [battle?.rounds.length])
 
@@ -112,7 +187,7 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [battle?.rematch_votes?.length])
 
-  // Countdown timer after voting Play Again — if opponent doesn't respond, redirect
+  // Countdown after voting Play Again
   useEffect(() => {
     if (rematchCountdown === null) return
     if (rematchCountdown <= 0) { router.push('/lobby'); return }
@@ -120,7 +195,7 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
     return () => clearTimeout(t)
   }, [rematchCountdown, router])
 
-  // Register beforeunload forfeit — fires when player closes tab/browser mid-game
+  // Forfeit on tab close
   useEffect(() => {
     const gameOver = room?.status === 'finished' || room?.status === 'abandoned'
     if (gameOver || !battle || !room) return
@@ -135,15 +210,15 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
 
   // ── Confirm fighter selection ─────────────────────────────────────────────
 
-  async function confirmSelection() {
-    if (!selectedCharId || !user || !battle || submitting) return
+  const doConfirmSelection = useCallback(async (charId: string) => {
+    if (!user || !battle || submitting) return
     setSubmitting(true)
     try {
       const supabase = createClient()
       const updatedBattle: BattleState = {
         ...battle,
-        player_a: isA  ? { ...battle.player_a, selected_character: selectedCharId, confirmed: true } : battle.player_a,
-        player_b: !isA ? { ...battle.player_b, selected_character: selectedCharId, confirmed: true } : battle.player_b,
+        player_a: isA  ? { ...battle.player_a, selected_character: charId, confirmed: true } : battle.player_a,
+        player_b: !isA ? { ...battle.player_b, selected_character: charId, confirmed: true } : battle.player_b,
       }
       const otherConfirmed = isA ? battle.player_b.confirmed : battle.player_a.confirmed
       let finalBattle = updatedBattle
@@ -158,27 +233,24 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
         updates.winner_id   = finalBattle.winner_id
         updates.finished_at = new Date().toISOString()
 
-        const isWinner   = finalBattle.winner_id === user.id
-        // All characters that appeared in this battle — used for discovery
-        const allSlugs   = allBattleChars.map(c => c.slug)
-        const oppId      = isA ? room.player_b_id! : room.player_a_id
+        const isWinner = finalBattle.winner_id === user.id
+        const allSlugs = allBattleChars.map(c => c.slug)
+        const oppId    = isA ? room.player_b_id! : room.player_a_id
 
-        // Fetch opponent's full profile so we can update their stats + ELO
         const { data: oppData } = await supabase
           .from('profiles')
           .select('elo, games_played, games_won, games_lost, discovered_characters')
           .eq('id', oppId)
           .single()
 
-        // ── Ranked: compute ELO deltas ───────────────────────────────────────
         let myNewElo  = profile.elo
         let oppNewElo = (oppData?.elo ?? profile.elo)
 
         if (room.mode === 'ranked' && oppData) {
-          const scoreA  = (finalBattle.winner_id === room.player_a_id ? 1 : 0) as 0 | 1
+          const scoreA    = (finalBattle.winner_id === room.player_a_id ? 1 : 0) as 0 | 1
           const eloResult = computeElo(
-            isA ? profile.elo    : oppData.elo,   // player A elo
-            isA ? oppData.elo    : profile.elo,   // player B elo
+            isA ? profile.elo    : oppData.elo,
+            isA ? oppData.elo    : profile.elo,
             scoreA,
             isA ? profile.games_played  : oppData.games_played,
             isA ? oppData.games_played  : profile.games_played,
@@ -189,7 +261,6 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
           oppNewElo = isA ? eloResult.new_elo_b : eloResult.new_elo_a
         }
 
-        // ── Update my profile ───────────────────────────────────────────────
         await supabase.from('profiles').update({
           discovered_characters: Array.from(new Set([
             ...(profile.discovered_characters ?? []),
@@ -201,7 +272,6 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
           games_lost:   !isWinner ? profile.games_lost + 1 : profile.games_lost,
         }).eq('id', user.id)
 
-        // ── Update opponent's profile ───────────────────────────────────────
         if (oppData) {
           const oppIsWinner = finalBattle.winner_id === oppId
           await supabase.from('profiles').update({
@@ -225,6 +295,12 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
     } finally {
       setSubmitting(false)
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user, battle, submitting, isA, allBattleChars, profile, room, roomId])
+
+  async function confirmSelection() {
+    if (!selectedCharId) return
+    await doConfirmSelection(selectedCharId)
   }
 
   // ── Surrender ──────────────────────────────────────────────────────────────
@@ -268,7 +344,6 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
         started_at:   new Date().toISOString(),
         finished_at:  null,
       }).eq('id', roomId)
-      // Navigation triggered automatically by room.status === 'drafting' effect
     } catch {
       toast.error('Failed to restart — try again')
       resettingRef.current = false
@@ -281,7 +356,6 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
     setPlayingAgain(true)
     try {
       const supabase = createClient()
-      // Read fresh battle state to reduce race-condition window
       const { data: fresh } = await supabase
         .from('game_rooms')
         .select('battle_state')
@@ -326,13 +400,17 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
   const iVoted       = rematchVotes.includes(user?.id ?? '')
   const oppVoted     = rematchVotes.includes(isA ? (room.player_b_id ?? '') : room.player_a_id)
 
+  // Characters for the animation overlay
+  const animCharA = animRound ? allBattleChars.find(c => c.id === animRound.player_a_pick) ?? null : null
+  const animCharB = animRound ? allBattleChars.find(c => c.id === animRound.player_b_pick) ?? null : null
+
   return (
     <div className="h-screen flex flex-col overflow-hidden select-none bg-void-950">
 
-      {/* ── TOP: Opponent's remaining (face-down) + surrender ── */}
+      {/* ── TOP: Opponent's remaining (face-down) + surrender + opp timer ── */}
       <div className="flex items-start px-4 pt-3 pb-2 border-b border-white/5 shrink-0 gap-2">
-        <div className="flex flex-col items-center flex-1">
-          <div className="flex items-center gap-1.5 mb-2">
+        <div className="flex flex-col items-center flex-1 gap-2">
+          <div className="flex items-center gap-1.5">
             <Users size={10} className="text-white/30" />
             <p className="text-[10px] text-white/30 uppercase tracking-widest">
               Opponent · {oppState.remaining_characters.length} remaining
@@ -352,8 +430,29 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
         )}
       </div>
 
-      {/* ── MIDDLE: Score + round dots + card preview ── */}
+      {/* ── MIDDLE: Score + timer + round dots + card preview ── */}
       <div className="flex-1 flex flex-col items-center justify-center gap-3 px-4 min-h-0">
+
+        {/* Timer row (only shown when timers are active and game is in progress) */}
+        {!gameOver && myTimerEndsAt && battle.phase === 'selecting' && (
+          <AnimatePresence>
+            <motion.div
+              className="flex items-center gap-6"
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+            >
+              {myState.confirmed ? (
+                <div className="text-[10px] text-white/30 flex items-center gap-1">
+                  <Timer size={10} />
+                  <span>Locked in — waiting…</span>
+                </div>
+              ) : (
+                <TimerBadge seconds={myTimeLeft} label="Your time" />
+              )}
+            </motion.div>
+          </AnimatePresence>
+        )}
 
         {/* Score */}
         <div className="flex items-center gap-8 sm:gap-16">
@@ -470,6 +569,19 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
         </div>
       </div>
 
+      {/* ── Battle animation sequence (plays before result modal) ── */}
+      {animRound && animCharA && animCharB && (
+        <BattleAnimationSequence
+          charA={animCharA}
+          charB={animCharB}
+          isPlayerA={isA}
+          onComplete={() => {
+            setResultModal(animRound)
+            setAnimRound(null)
+          }}
+        />
+      )}
+
       {/* ── Round result modal ── */}
       <Modal
         open={!!resultModal}
@@ -526,7 +638,6 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
               ) : (
                 <div className="flex flex-col gap-3 mt-6 min-w-[220px]">
                   {iVoted ? (
-                    /* Voted — show waiting state with countdown */
                     <div className="flex items-center justify-center gap-2 py-3 rounded-xl bg-gold-500/10 border border-gold-500/20 text-gold-400/80 text-sm">
                       <Loader2 size={14} className="animate-spin shrink-0" />
                       <span>
@@ -537,7 +648,6 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
                       </span>
                     </div>
                   ) : (
-                    /* Not voted yet */
                     <button
                       disabled={playingAgain}
                       onClick={handleVotePlayAgain}
@@ -638,9 +748,6 @@ function RoundResultModal({
 }
 
 // ── Round resolution ──────────────────────────────────────────────────────────
-//
-// resolveBattle() always puts the WINNER's score in effective_score_a.
-// We normalize here so that effective_score_a always = player_a's actual score.
 
 function resolveCurrentRound(battle: BattleState): BattleState {
   const charAId = battle.player_a.selected_character!
@@ -651,7 +758,6 @@ function resolveCurrentRound(battle: BattleState): BattleState {
   const result    = resolveBattle(charA, charB)
   const charAWins = !result.is_draw && result.winner?.id === charA.id
 
-  // Normalize: score_a = player A's actual score, score_b = player B's actual score
   const scoreA = charAWins || result.is_draw ? result.effective_score_a : result.effective_score_b
   const scoreB = charAWins || result.is_draw ? result.effective_score_b : result.effective_score_a
 
@@ -680,6 +786,14 @@ function resolveCurrentRound(battle: BattleState): BattleState {
     timer_ends_at:     new Date().toISOString(),
   }
 
+  // Extend per-player timers by TIMER_BONUS_S for the next round
+  const extendTimer = (endsAt: string | null): string | null => {
+    if (gameWinner) return null   // game is over, no need for timers
+    const now  = Date.now()
+    const base = Math.max(now, new Date(endsAt ?? 0).getTime())
+    return new Date(base + TIMER_BONUS_S * 1000).toISOString()
+  }
+
   return {
     ...battle,
     rounds:        [...battle.rounds, newRound],
@@ -697,7 +811,9 @@ function resolveCurrentRound(battle: BattleState): BattleState {
       selected_character:   null,
       confirmed:            false,
     },
-    winner_id: gameWinner,
-    phase:     gameWinner ? 'complete' : 'selecting',
+    winner_id:        gameWinner,
+    phase:            gameWinner ? 'complete' : 'selecting',
+    timer_a_ends_at:  extendTimer(battle.timer_a_ends_at),
+    timer_b_ends_at:  extendTimer(battle.timer_b_ends_at),
   }
 }

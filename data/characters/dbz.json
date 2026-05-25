@@ -398,7 +398,7 @@
     "name": "Son Goku",
     "verse": "dbz",
     "arc_version": "Super Saiyan Blue – Universe 6 Arc",
-    "power_level": 7821047.331,
+    "power_level": 7834293,
     "martial_ratio": 0.72,
     "power_tags": [
       "super_saiyan_blue",
@@ -501,7 +501,7 @@
     "name": "Frieza",
     "verse": "dbz",
     "arc_version": "Black Frieza – Post-Training",
-    "power_level": 9234821.441,
+    "power_level": 9189293,
     "martial_ratio": 0.7,
     "power_tags": [
       "black_frieza",
@@ -1046,7 +1046,7 @@
     "name": "Future Trunks",
     "verse": "dbz",
     "arc_version": "Super Saiyan Rage – Future Trunks Arc",
-    "power_level": 7234821.554,
+    "power_level": 7189847,
     "martial_ratio": 0.72,
     "power_tags": [
       "super_saiyan_rage",
@@ -1391,7 +1391,7 @@
     "name": "Tao Pai Pai",
     "verse": "dbz",
     "arc_version": "Cyborg Assassin — Red Ribbon Remnant",
-    "power_level": 187293,
+    "power_level": 183847,
     "martial_ratio": 0.85,
     "power_tags": [
       "do_don_ray",

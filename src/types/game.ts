@@ -84,6 +84,9 @@ export interface BattleState {
   phase: BattlePhase
   winner_id: string | null
   rematch_votes?: string[]           // user IDs that voted to play again (casual only)
+  /** Per-player chess-clock timers — ISO timestamps when each player's time runs out */
+  timer_a_ends_at: string | null
+  timer_b_ends_at: string | null
 }
 
 export interface BattlePlayerState {
