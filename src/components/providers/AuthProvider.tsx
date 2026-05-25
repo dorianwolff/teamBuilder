@@ -12,7 +12,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const supabase = createClient()
 
     async function fetchProfile(userId: string) {
-      console.log('[Auth] fetchProfile →', userId)
       const { data, error } = await supabase
         .from('profiles')
         .select('*')
@@ -24,25 +23,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         return
       }
       if (!data) {
-        console.warn('[Auth] no profile row found for', userId)
+        console.warn('[Auth] no profile row for', userId)
         return
       }
-      console.log('[Auth] profile loaded → username:', data.username, '| elo:', data.elo)
       setProfile(data as unknown as UserProfile)
     }
 
-    // Use onAuthStateChange exclusively — INITIAL_SESSION fires synchronously
-    // from cookie storage with no network call, so loading resolves immediately.
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
-      console.log('[Auth] event:', event, session ? `uid=${session.user.id}` : 'null')
       setUser(session?.user ?? null)
-
-      // Resolve loading immediately — we know the auth state, profile loads async
-      if (event === 'INITIAL_SESSION') {
-        setLoading(false)
-        console.log('[Auth] loading = false')
-      }
-
+      if (event === 'INITIAL_SESSION') setLoading(false)
       if (session?.user) {
         fetchProfile(session.user.id).catch(err => console.error('[Auth] unexpected error:', err))
       } else {

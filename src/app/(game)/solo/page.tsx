@@ -14,6 +14,7 @@ import { Modal } from '@/components/ui/Modal'
 import { buildDraftPool, applyPick, DRAFT_ROUNDS, getVisiblePool } from '@/lib/game/draft'
 import { resolveBattle } from '@/lib/game/battle'
 import { aiDraftPick, aiBattlePick, AI_ID, AI_NAME, type AiDifficulty } from '@/lib/game/ai'
+import { BattleAnimationSequence } from '@/components/game/battle/animations/BattleAnimationSequence'
 import { formatPowerLevel } from '@/lib/utils/format'
 import type { Character, Verse } from '@/types/character'
 import type { DraftState, DraftPoolSlot, BattleRound } from '@/types/game'
@@ -66,6 +67,11 @@ export default function SoloPage() {
   const [resultRound, setResultRound]             = useState<BattleRound | null>(null)
   const [winner, setWinner]                       = useState<'player' | 'ai' | null>(null)
   const [aiHiddenSlugs, setAiHiddenSlugs]         = useState<Set<string>>(new Set())
+
+  // Pre-result animation state
+  const [pendingAnimRound, setPendingAnimRound]   = useState<BattleRound | null>(null)
+  const [animCharA, setAnimCharA]                 = useState<Character | null>(null)
+  const [animCharB, setAnimCharB]                 = useState<Character | null>(null)
 
   // ── Start game ──────────────────────────────────────────────────────────────
 
@@ -195,28 +201,23 @@ export default function SoloPage() {
   function confirmBattlePick() {
     if (!selectedCharId) return
 
-    const playerChar  = playerRemaining.find(c => c.id === selectedCharId)!
-    const aiChar      = aiBattlePick({
+    const playerChar = playerRemaining.find(c => c.id === selectedCharId)!
+    const aiChar     = aiBattlePick({
       aiRemaining,
       difficulty,
       scores,
       playerRemaining: difficulty === 'hard' ? playerRemaining : undefined,
     })
-    const result      = resolveBattle(playerChar, aiChar)
+    const result         = resolveBattle(playerChar, aiChar)
     const playerWinsRound = !result.is_draw && result.winner?.id === playerChar.id
 
-    // makeWin always stores winner's score as effective_score_a (loser's as b).
-    // makeDraw keeps charA (= playerChar) as a. Normalise: a = player, b = AI.
     const playerScore = playerWinsRound || result.is_draw
-      ? result.effective_score_a
-      : result.effective_score_b
+      ? result.effective_score_a : result.effective_score_b
     const aiScore = playerWinsRound || result.is_draw
-      ? result.effective_score_b
-      : result.effective_score_a
+      ? result.effective_score_b : result.effective_score_a
 
-    const roundNum = rounds.length + 1
     const newRound: BattleRound = {
-      round_number:      roundNum,
+      round_number:      rounds.length + 1,
       player_a_pick:     playerChar.id,
       player_b_pick:     aiChar.id,
       winner_id:         playerWinsRound ? PLAYER_ID : (!result.is_draw ? AI_ID : null),
@@ -232,28 +233,39 @@ export default function SoloPage() {
       player: scores.player + (playerWinsRound ? 1 : 0),
       ai:     scores.ai    + (!result.is_draw && !playerWinsRound ? 1 : 0),
     }
-
-    const newRounds  = [...rounds, newRound]
     const gameWinner: 'player' | 'ai' | null =
       newScores.player >= 3 ? 'player' : newScores.ai >= 3 ? 'ai' : null
 
-    setRounds(newRounds)
+    // Apply state changes immediately so the UI is up to date when animation ends
+    setRounds(prev => [...prev, newRound])
     setScores(newScores)
     setPlayerRemaining(prev => prev.filter(c => c.id !== playerChar.id))
     setAiRemaining(prev => prev.filter(c => c.id !== aiChar.id))
     setSelectedCharId(null)
-    setResultRound(newRound)
 
     if (gameWinner) {
       setWinner(gameWinner)
-      if (user && profile) {
-        saveResult(gameWinner, playerTeam, aiTeam, profile)
-      }
-      setTimeout(() => {
-        setResultRound(null)
-        setPhase('result')
-      }, 2500)
+      if (user && profile) saveResult(gameWinner, playerTeam, aiTeam, profile)
     }
+
+    // Play animation first, THEN show result modal (and game-over phase if needed)
+    setAnimCharA(playerChar)
+    setAnimCharB(aiChar)
+    setPendingAnimRound(newRound)
+  }
+
+  function handleAnimComplete(round: BattleRound, isGameOver: boolean) {
+    setPendingAnimRound(null)
+    setAnimCharA(null)
+    setAnimCharB(null)
+    setResultRound(round)
+    // Game-over transition happens when the result modal is closed (see JSX)
+    if (!isGameOver) return
+    // Auto-close modal after 2.5 s for game-over rounds
+    setTimeout(() => {
+      setResultRound(null)
+      setPhase('result')
+    }, 2500)
   }
 
   async function saveResult(
@@ -282,6 +294,9 @@ export default function SoloPage() {
     setRounds([])
     setResultRound(null)
     setAiHiddenSlugs(new Set())
+    setPendingAnimRound(null)
+    setAnimCharA(null)
+    setAnimCharB(null)
   }
 
   function handleSurrender() {
@@ -318,6 +333,7 @@ export default function SoloPage() {
   }
 
   if (phase === 'battle') {
+    const isGameOver = winner !== null
     return (
       <>
         <BattleScreen
@@ -330,10 +346,25 @@ export default function SoloPage() {
           setSelectedCharId={setSelectedCharId}
           onConfirm={confirmBattlePick}
           onSurrender={handleSurrender}
+          animating={!!pendingAnimRound}
         />
+
+        {/* Pre-result animation — player is charA (left), AI is charB (right) */}
+        {pendingAnimRound && animCharA && animCharB && (
+          <BattleAnimationSequence
+            charA={animCharA}
+            charB={animCharB}
+            isPlayerA
+            onComplete={() => handleAnimComplete(pendingAnimRound, isGameOver)}
+          />
+        )}
+
         <Modal
           open={!!resultRound}
-          onClose={() => setResultRound(null)}
+          onClose={() => {
+            setResultRound(null)
+            if (isGameOver) setPhase('result')
+          }}
           title={`Round ${resultRound?.round_number} Result`}
         >
           {resultRound && (
@@ -341,7 +372,10 @@ export default function SoloPage() {
               round={resultRound}
               playerChar={playerTeam.find(c => c.id === resultRound.player_a_pick) ?? playerTeam[0]}
               aiChar={aiTeam.find(c => c.id === resultRound.player_b_pick) ?? aiTeam[0]}
-              onClose={() => setResultRound(null)}
+              onClose={() => {
+                setResultRound(null)
+                if (isGameOver) setPhase('result')
+              }}
             />
           )}
         </Modal>
@@ -623,13 +657,14 @@ function DraftScreen({ draft, selectedSlot, setSelectedSlot, onConfirm, aiThinki
 
 // ── Battle screen ─────────────────────────────────────────────────────────────
 
-function BattleScreen({ playerRemaining, aiRemaining, aiHiddenSlugs, scores, rounds, selectedCharId, setSelectedCharId, onConfirm, onSurrender }: {
+function BattleScreen({ playerRemaining, aiRemaining, aiHiddenSlugs, scores, rounds, selectedCharId, setSelectedCharId, onConfirm, onSurrender, animating }: {
   playerRemaining: Character[]; aiRemaining: Character[]
   aiHiddenSlugs: Set<string>
   scores: { player: number; ai: number }; rounds: BattleRound[]
   selectedCharId: string | null; setSelectedCharId: (id: string | null) => void
   onConfirm: () => void
   onSurrender: () => void
+  animating?: boolean
 }) {
   const selectedChar = playerRemaining.find(c => c.id === selectedCharId) ?? null
 
@@ -740,7 +775,7 @@ function BattleScreen({ playerRemaining, aiRemaining, aiHiddenSlugs, scores, rou
         {/* Fixed-height slot so layout doesn't shift when button appears */}
         <div className="h-11 flex items-center justify-center">
           <AnimatePresence>
-            {selectedCharId && (
+            {selectedCharId && !animating && (
               <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 6 }}>
                 <Button variant="gold" size="lg" onClick={onConfirm} className="shadow-gold-glow px-8 sm:px-12">
                   Battle <ChevronRight size={16} />
