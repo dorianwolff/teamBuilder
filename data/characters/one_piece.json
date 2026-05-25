@@ -19,6 +19,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["human", "male", "haki_user", "devil_fruit_user", "pirate", "rubber"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/one_piece/luffy_gear5.png",
     "short_description": "Luffy in his awakened Devil Fruit form, embodying the Sun God Nika with reality-bending rubber powers and freedom to reshape the battlefield itself."
   },
@@ -43,6 +46,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["human", "male", "haki_user", "devil_fruit_user", "pirate", "rubber"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/one_piece/luffy_snakeman.png",
     "short_description": "Luffy's speed-focused Gear 4 variant optimized for homing attacks and overwhelming velocity against agile opponents."
   },
@@ -66,6 +72,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["human", "male", "devil_fruit_user", "pirate", "rubber"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/one_piece/luffy_skypiea.png",
     "short_description": "Pre-Gear Luffy during the Skypiea arc, whose rubber body's lightning immunity proved decisive against the self-proclaimed god of that sky island."
   },
@@ -87,6 +96,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["human", "male", "haki_user", "pirate", "swordsman"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/one_piece/gold_d_roger.png",
     "short_description": "The Pirate King at his peak, wielding advanced Conqueror's Haki through his sword to challenge anyone on the seas."
   },
@@ -109,6 +121,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["human", "male", "haki_user", "devil_fruit_user", "pirate"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/one_piece/whitebeard_peak.png",
     "short_description": "The World's Strongest Man at Marineford, shaking the very fabric of the world with his Gura Gura no Mi despite fighting through terminal illness."
   },
@@ -128,6 +143,9 @@
     "weaknesses": [],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["human", "male", "haki_user", "pirate", "swordsman"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/one_piece/shanks.png",
     "short_description": "The Red-Haired Emperor who relies purely on Haki mastery with no Devil Fruit, considered by many the most complete fighter in the world."
   },
@@ -149,6 +167,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["human", "male", "haki_user", "pirate", "swordsman"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/one_piece/mihawk.png",
     "short_description": "The world's greatest swordsman whose black blade Yoru and hawk-like Observation Haki make him unmatched in any cutting duel."
   },
@@ -172,6 +193,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["oni", "male", "haki_user", "devil_fruit_user", "pirate"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/one_piece/kaido_hybrid.png",
     "short_description": "The King of Beasts in his Hybrid Form, the most durable creature alive who has never lost a fair fight until the Wano Arc."
   },
@@ -194,6 +218,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["human", "female", "haki_user", "devil_fruit_user", "pirate"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/one_piece/big_mom.png",
     "short_description": "The Empress of Totto Land wielding soul-stealing powers amplified by weather homies, able to demand lifespans as payment."
   },
@@ -215,6 +242,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["human", "male", "haki_user", "pirate", "swordsman"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/one_piece/zoro_post_wano.png",
     "short_description": "Zoro after mastering Enma and awakening Conqueror's Haki, establishing himself as a true rival to the world's greatest swordsman."
   },
@@ -238,6 +268,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["human", "male", "haki_user", "devil_fruit_user", "marine"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/one_piece/akainu.png",
     "short_description": "The Fleet Admiral whose absolute justice burns as hot as his magma, the man who scarred Shanks and killed Ace at Marineford."
   },
@@ -262,6 +295,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["human", "male", "haki_user", "devil_fruit_user", "marine"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/one_piece/aokiji.png",
     "short_description": "The former Admiral with a frozen leg from his ten-day clash with Akainu, now operating under Blackbeard with unmatched ice control."
   },
@@ -285,6 +321,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["human", "male", "haki_user", "devil_fruit_user", "marine"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/one_piece/kizaru.png",
     "short_description": "The light-speed Admiral who moves at the speed of light and fires devastating laser beams, seemingly carefree but absolutely lethal."
   },
@@ -309,6 +348,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["human", "male", "haki_user", "devil_fruit_user", "pirate"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/one_piece/marco.png",
     "short_description": "Whitebeard's right-hand man whose mythical Zoan Phoenix flames provide near-limitless regeneration, making him exceptionally hard to permanently injure."
   },
@@ -333,6 +375,9 @@
     ],
     "cannot_win_against": ["akainu"],
     "draw_conditions": [],
+    "traits": ["human", "male", "haki_user", "devil_fruit_user", "pirate"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/one_piece/ace_marineford.png",
     "short_description": "Whitebeard's adopted son and Fire Fist commander whose flame logia power was tragically extinguished by Akainu's superior magma at Marineford."
   },
@@ -355,6 +400,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["human", "male", "haki_user", "devil_fruit_user", "pirate", "swordsman"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/one_piece/law_awakened.png",
     "short_description": "The Surgeon of Death with his awakened Op-Op Fruit allowing spatial restructuring beyond his ROOM, a tactical genius capable of defeating emperors."
   },
@@ -380,6 +428,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["human", "male", "devil_fruit_user", "pirate"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/one_piece/crocodile_desert.png",
     "short_description": "The former Warlord of the Desert at his Alabasta peak, capable of dehydrating anything he touches and conjuring massive sandstorms."
   },
@@ -404,6 +455,9 @@
     ],
     "cannot_win_against": ["luffy_skypiea"],
     "draw_conditions": [],
+    "traits": ["human", "male", "devil_fruit_user"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/one_piece/enel.png",
     "short_description": "The self-proclaimed God of Skypiea whose 200-million-volt Rumble-Rumble Fruit and all-hearing Mantra make him nearly omniscient — undone only by Luffy's rubber immunity."
   },
@@ -426,6 +480,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["human", "female", "haki_user", "devil_fruit_user", "pirate", "beautiful"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/one_piece/robin_post_timeskip.png",
     "short_description": "The Straw Hat's archaeologist who blossoms body parts across any surface and snaps spines with giant demonic hands after her Wano power-up."
   },
@@ -447,6 +504,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["human", "female", "pirate", "beautiful"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/one_piece/nami_clima_tact.png",
     "short_description": "The Straw Hat navigator whose Zeus-empowered Clima-Tact controls weather and summons devastating lightning strikes."
   },
@@ -468,6 +528,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["human", "male", "haki_user", "pirate"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/one_piece/usopp_god.png",
     "short_description": "God Usopp of Dressrosa, whose newly awakened Observation Haki and Pop Green arsenal make him the Straw Hats' deadliest long-range fighter."
   },
@@ -491,6 +554,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["cyborg", "male", "pirate"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/one_piece/franky_cyborg.png",
     "short_description": "The Straw Hat shipwright turned full cyborg, able to pilot his giant General Franky mech suit or fight hand-to-hand with cola-powered cannons."
   },
@@ -514,6 +580,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["undead", "male", "haki_user", "devil_fruit_user", "pirate", "swordsman"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/one_piece/brook_soul_king.png",
     "short_description": "The undying Soul King whose Revive-Revive Fruit and soul-imbued swordsmanship lets him manipulate ice and freeze enemies from within."
   },
@@ -535,6 +604,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["fish_man", "male", "haki_user", "pirate", "martial_artist"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/one_piece/jinbe.png",
     "short_description": "The Knight of the Sea whose fish-man karate can weaponize any water and whose steadfast loyalty made him the Straw Hats' helmsman."
   },
@@ -556,6 +628,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["human", "male", "haki_user", "marine"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/one_piece/coby_post_timeskip.png",
     "short_description": "The hero of the Rocky Port Incident whose advanced Color of Observation lets him sense ill intent and halt even Blackbeard's rampage momentarily."
   },
@@ -579,7 +654,35 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["human", "male", "haki_user", "devil_fruit_user", "marine"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/one_piece/smoker.png",
     "short_description": "The relentless Marine Vice Admiral whose smoke logia and seastone jitte let him capture and immobilize Devil Fruit users effortlessly."
+  },
+  {
+    "slug": "sanji_ifrit_jambe",
+    "name": "Sanji",
+    "verse": "one_piece",
+    "arc_version": "Ifrit Jambe – Egghead Arc",
+    "power_level": 3000000,
+    "martial_ratio": 0.88,
+    "power_tags": ["ifrit_jambe", "haki_armament", "haki_observation", "diable_jambe", "sky_walk", "germa_enhancements", "fire"],
+    "strengths": [
+      {"tag": "fire", "coefficient": 0.3, "description": "Ifrit Jambe burns hotter than most fire attacks"},
+      {"tag": "heat", "coefficient": 0.25}
+    ],
+    "weaknesses": [
+      {"tag": "slashing", "coefficient": 0.2}
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "traits": ["human", "male", "pirate", "haki_user", "code_of_honor"],
+    "trait_weaknesses": [
+      {"trait": "female", "coefficient": 0.7, "description": "Sanji's Chivalric Code — his absolute honor forbids striking women, reducing his effective offense to a fraction against female opponents"}
+    ],
+    "trait_strengths": [],
+    "image_path": "assets/characters/one_piece/sanji_ifrit_jambe.png",
+    "short_description": "The Straw Hats' chef in his Egghead Arc peak form, his Germa-enhanced body wreathed in Ifrit Jambe hellfire — held back only by his absolute code against harming women."
   }
 ]

@@ -19,6 +19,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["human", "male", "nen_user", "enhancement_user"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/hxh/gon_adult.png",
     "short_description": "Gon's ultimate transformation sacrificing all future nen potential to fight at adult peak, achieving power that visibly unsettled Neferpitou."
   },
@@ -41,6 +44,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["human", "male", "nen_user", "zoldyck", "assassin", "transmutation_user"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/hxh/killua_godspeed.png",
     "short_description": "Killua activating Godspeed, transmuting his Nen into lightning to move at electric speeds essentially invisible to Chimera Ant soldiers."
   },
@@ -64,6 +70,11 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["chimera_ant", "male", "nen_user", "chimera_ant_king"],
+    "trait_weaknesses": [],
+    "trait_strengths": [
+      {"trait": "non_combatant", "coefficient": 0.5, "description": "Meruem has absolute zero hesitation against defenseless opponents — his ruthlessness amplifies his lethality"}
+    ],
     "image_path": "assets/characters/hxh/meruem_post_rose.png",
     "short_description": "The Chimera Ant King after surviving the Miniature Rose and absorbing Shaiapouf and Neferpitou's Nen, arguably the most powerful Nen user to ever live."
   },
@@ -86,6 +97,11 @@
     ],
     "cannot_win_against": ["meruem_post_rose"],
     "draw_conditions": [],
+    "traits": ["chimera_ant", "nen_user", "royal_guard"],
+    "trait_weaknesses": [],
+    "trait_strengths": [
+      {"trait": "non_combatant", "coefficient": 0.4, "description": "A Royal Guard feels no hesitation whatsoever against defenseless prey"}
+    ],
     "image_path": "assets/characters/hxh/neferpitou.png",
     "short_description": "Meruem's most powerful Royal Guard whose En stretches for kilometers and whose medical Nen can repair catastrophic injuries."
   },
@@ -108,6 +124,9 @@
     ],
     "cannot_win_against": ["meruem_post_rose"],
     "draw_conditions": [],
+    "traits": ["human", "male", "nen_user", "enhancement_user"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/hxh/netero.png",
     "short_description": "The Hunter Association Chairman whose decades of prayer-training produced a 100-armed Nen statue moving faster than sound, sacrificing himself to poison Meruem."
   },
@@ -130,6 +149,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["human", "male", "nen_user", "zoldyck", "assassin", "transmutation_user"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/hxh/zeno_zoldyck.png",
     "short_description": "The patriarch of the Zoldyck family whose Dragon Dive summons a horde of Nen dragons devastating entire areas, a veteran assassin of unparalleled experience."
   },
@@ -151,6 +173,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["human", "male", "nen_user", "zoldyck", "assassin", "emission_user"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/hxh/silva_zoldyck.png",
     "short_description": "The towering head of the Zoldyck family, complete immunity to all poisons and massive silver Nen orbs that can crush targets with explosive force."
   },
@@ -173,6 +198,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["human", "male", "nen_user", "zoldyck", "assassin", "manipulation_user"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/hxh/illumi.png",
     "short_description": "The eldest Zoldyck son whose needle-based manipulation Nen can control entire armies of puppets, a top-tier assassin who instills primal fear in targets."
   },
@@ -195,6 +223,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["human", "male", "nen_user", "transmutation_user"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/hxh/hisoka.png",
     "short_description": "The Magician with Bungee Gum, a deceptively simple transmutation that combines the properties of rubber and gum for unstoppable elastic attacks."
   },
@@ -217,6 +248,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["human", "male", "nen_user", "phantom_troupe", "specialist_nen"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/hxh/chrollo_full_prep.png",
     "short_description": "The Phantom Troupe leader with full Bandit's Secret, able to wield every stolen ability simultaneously for overwhelming tactical flexibility."
   },
@@ -239,6 +273,11 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["human", "male", "nen_user", "kurta_clan", "specialist_nen"],
+    "trait_weaknesses": [],
+    "trait_strengths": [
+      {"trait": "phantom_troupe", "coefficient": 0.6, "description": "Kurapika's Emperor Time and Chain Jail were built exclusively to destroy the Phantom Troupe — every ability reaches peak efficiency against them"}
+    ],
     "image_path": "assets/characters/hxh/kurapika_emperor_time.png",
     "short_description": "Kurapika activating Emperor Time for 100% efficiency across all Nen categories, his Chain Jail unescapable by Spiders and his Judgment Chain lethal if conditions are broken."
   },
@@ -260,6 +299,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["human", "male", "nen_user", "emission_user"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/hxh/leorio.png",
     "short_description": "The aspiring doctor who discovered his Emission-type Nen lets him throw a long-range physical punch, driven entirely by desire to help friends."
   },
@@ -282,6 +324,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["human", "male", "nen_user", "phantom_troupe", "transmutation_user", "assassin"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/hxh/feitan_rising_sun.png",
     "short_description": "The Phantom Troupe's fastest member whose Pain Packer amplifies Rising Sun by how much damage he's taken, becoming a miniature sun that incinerates everything."
   },
@@ -305,6 +350,9 @@
     ],
     "cannot_win_against": ["meruem_post_rose", "neferpitou"],
     "draw_conditions": [],
+    "traits": ["human", "male", "nen_user", "conjuration_user"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/hxh/knov.png",
     "short_description": "The Hunter whose conjured pocket dimensions make infiltration and extraction seamless, though his psyche was shattered by merely sensing Meruem's terrifying aura."
   },
@@ -328,7 +376,57 @@
     ],
     "cannot_win_against": ["meruem_post_rose", "neferpitou"],
     "draw_conditions": [],
+    "traits": ["human", "male", "nen_user", "manipulation_user", "emission_user"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/hxh/morel.png",
     "short_description": "The veteran Hunter who fills entire areas with smoke to deploy an army of Nen puppets, one of the most experienced and tactically wise fighters in the Association."
+  },
+  {
+    "slug": "komugi",
+    "name": "Komugi",
+    "verse": "hxh",
+    "arc_version": "Gungi Prodigy – Chimera Ant Arc",
+    "power_level": 500,
+    "martial_ratio": 0.02,
+    "power_tags": ["specialist_nen", "unconscious_hatsu", "gungi_genius"],
+    "strengths": [],
+    "weaknesses": [
+      {"tag": "physical_attacks", "coefficient": 0.9, "description": "A fragile human girl with zero combat training"},
+      {"tag": "overwhelming_power", "coefficient": 0.95}
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [
+      {"character_slug": "meruem_post_rose", "reason": "Meruem chose to spend his dying moments beside Komugi, playing Gungi — neither won nor lost in what mattered", "tag_color": "love"}
+    ],
+    "traits": ["human", "female", "non_combatant", "specialist_nen", "beautiful"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/hxh/komugi.png",
+    "short_description": "The world's greatest Gungi player who unknowingly channels a Nen Hatsu in her sleep, her pure genius touching the heart of the Chimera Ant King himself."
+  },
+  {
+    "slug": "kalluto_zoldyck",
+    "name": "Kalluto Zoldyck",
+    "verse": "hxh",
+    "arc_version": "Phantom Troupe Member – Chimera Ant Arc",
+    "power_level": 180000,
+    "martial_ratio": 0.6,
+    "power_tags": ["manipulation_nen", "paper_dance", "paper_manipulation", "confetti_blades", "zoldyck_assassination_arts"],
+    "strengths": [
+      {"tag": "detection", "coefficient": 0.3, "description": "Paper confetti sensors make him hard to sneak up on"},
+      {"tag": "tracking", "coefficient": 0.3}
+    ],
+    "weaknesses": [
+      {"tag": "overwhelming_nen", "coefficient": 0.5},
+      {"tag": "close_combat_powerhouse", "coefficient": 0.4}
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "traits": ["human", "male", "nen_user", "zoldyck", "phantom_troupe", "assassin", "manipulation_user"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/hxh/kalluto_zoldyck.png",
+    "short_description": "The youngest Zoldyck who joined the Phantom Troupe to find his brother Killua, wielding paper-manipulation Nen with elegant and lethal precision."
   }
 ]

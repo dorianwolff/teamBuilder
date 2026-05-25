@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
-import { Swords, BookOpen, LogOut } from 'lucide-react'
+import { Swords, BookOpen, LogOut, Trophy } from 'lucide-react'
 import { cn } from '@/lib/utils/cn'
 import { useAuth } from '@/hooks/useAuth'
 import { formatElo } from '@/lib/utils/format'
@@ -10,7 +10,8 @@ import { getEloTier, ELO_TIER_COLORS } from '@/types/user'
 import { createClient } from '@/lib/supabase/client'
 
 const NAV_LINKS = [
-  { href: '/lobby', label: 'Play',        icon: Swords },
+  { href: '/lobby',        label: 'Play',         icon: Swords   },
+  { href: '/leaderboard',  label: 'Leaderboard',  icon: Trophy   },
   { href: '/encyclopedia', label: 'Encyclopedia', icon: BookOpen },
 ]
 

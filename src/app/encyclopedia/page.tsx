@@ -103,7 +103,9 @@ export default function EncyclopediaPage() {
     else { setSortKey(key); setSortDir('desc') }
   }
 
-  const totalDiscovered = discoveredSlugs.length
+  // Only count slugs that match a known character (removes stale/renamed slugs)
+  const knownSlugs      = new Set(characters.map(c => c.slug))
+  const totalDiscovered = discoveredSlugs.filter(s => knownSlugs.has(s)).length
   const totalInGame     = characters.length
 
   return (
@@ -295,6 +297,65 @@ function CharacterDetail({ character }: { character: Character }) {
             </p>
           </div>
         </div>
+
+        {/* Traits */}
+        {(character.traits ?? []).length > 0 && (
+          <div>
+            <SectionTitle>Traits</SectionTitle>
+            <div className="flex flex-wrap gap-1">
+              {(character.traits ?? []).map(trait => (
+                <span key={trait}
+                  className="px-2 py-0.5 rounded-full text-[11px] font-medium bg-white/5 text-white/50 border border-white/10 capitalize">
+                  {trait.replace(/_/g, ' ')}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Trait weaknesses */}
+        {(character.trait_weaknesses ?? []).length > 0 && (
+          <div>
+            <SectionTitle>Code / Trait Weaknesses</SectionTitle>
+            <div className="space-y-1">
+              {(character.trait_weaknesses ?? []).map(tw => (
+                <div key={tw.trait} className="text-xs py-0.5">
+                  <div className="flex items-center justify-between">
+                    <span className="text-amber-400 capitalize font-medium">vs {tw.trait.replace(/_/g, ' ')}</span>
+                    <span className="text-white/35 font-mono tabular-nums">
+                      -{Math.round(tw.coefficient * 100)}% offense
+                    </span>
+                  </div>
+                  {tw.description && (
+                    <p className="text-white/30 text-[10px] mt-0.5 italic">{tw.description}</p>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Trait strengths */}
+        {(character.trait_strengths ?? []).length > 0 && (
+          <div>
+            <SectionTitle>Trait Advantages</SectionTitle>
+            <div className="space-y-1">
+              {(character.trait_strengths ?? []).map(ts => (
+                <div key={ts.trait} className="text-xs py-0.5">
+                  <div className="flex items-center justify-between">
+                    <span className="text-emerald-400 capitalize font-medium">vs {ts.trait.replace(/_/g, ' ')}</span>
+                    <span className="text-white/35 font-mono tabular-nums">
+                      +{Math.round(ts.coefficient * 100)}% offense
+                    </span>
+                  </div>
+                  {ts.description && (
+                    <p className="text-white/30 text-[10px] mt-0.5 italic">{ts.description}</p>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Ability types */}
         {character.power_tags.length > 0 && (

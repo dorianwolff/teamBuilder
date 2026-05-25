@@ -19,6 +19,9 @@
     ],
     "cannot_win_against": ["whis", "beerus"],
     "draw_conditions": [],
+    "traits": ["saiyan", "male", "ki_user", "martial_artist"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/dbz/goku_mui.png",
     "short_description": "Goku mastering Ultra Instinct, his body moving autonomously to dodge and counter with godly precision beyond conscious thought."
   },
@@ -41,6 +44,9 @@
     ],
     "cannot_win_against": ["whis", "beerus"],
     "draw_conditions": [],
+    "traits": ["saiyan", "male", "ki_user", "martial_artist"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/dbz/vegeta_ultra_ego.png",
     "short_description": "Vegeta unleashing Ultra Ego, a form that grows stronger as he receives damage, embodying the destructive philosophy of the God of Destruction."
   },
@@ -63,6 +69,9 @@
     ],
     "cannot_win_against": ["whis"],
     "draw_conditions": [],
+    "traits": ["god_of_destruction", "male", "ki_user", "divine"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/dbz/beerus.png",
     "short_description": "The God of Destruction of Universe 7 whose Hakai can erase existence itself, operating at a level so far above mortals he rarely fights seriously."
   },
@@ -85,6 +94,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["angel", "male", "ki_user", "divine"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/dbz/whis.png",
     "short_description": "The Angel attendant and trainer of Beerus who possesses perfected Ultra Instinct and the ability to rewind time, essentially untouchable by any mortal."
   },
@@ -107,6 +119,9 @@
     ],
     "cannot_win_against": ["whis", "beerus"],
     "draw_conditions": [],
+    "traits": ["alien", "male", "ki_user", "martial_artist", "pride_trooper"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/dbz/jiren.png",
     "short_description": "The Pride Trooper who surpassed the limits of a mortal, described as having a ki that rivals a God of Destruction purely through relentless training."
   },
@@ -129,6 +144,9 @@
     ],
     "cannot_win_against": ["whis", "beerus"],
     "draw_conditions": [],
+    "traits": ["saiyan", "male", "ki_user", "legendary_super_saiyan"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/dbz/broly_dbs.png",
     "short_description": "The DBS Legendary Super Saiyan who fought Goku and Vegeta to a standstill before forcing them to fuse, his power multiplying the longer the battle continues."
   },
@@ -151,6 +169,9 @@
     ],
     "cannot_win_against": ["whis", "beerus"],
     "draw_conditions": [],
+    "traits": ["half_saiyan", "male", "ki_user", "martial_artist"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/dbz/gohan_beast.png",
     "short_description": "Gohan's true awakening in Beast Form, unlocking a power even Cell Max could not withstand as his latent potential finally manifests fully."
   },
@@ -173,6 +194,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["saiyan", "male", "ki_user", "martial_artist"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/dbz/goku_ssb.png",
     "short_description": "Goku combining Super Saiyan with God ki for SSB, able to further stack Kaioken multipliers for explosive bursts beyond normal godly limits."
   },
@@ -195,6 +219,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["saiyan", "male", "ki_user", "martial_artist"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/dbz/vegeta_ssb_evolved.png",
     "short_description": "Vegeta breaking through the ceiling of SSB to create SSB Evolved, representing his own mastery of God ki distinct from imitation."
   },
@@ -216,6 +243,9 @@
     ],
     "cannot_win_against": ["whis"],
     "draw_conditions": [],
+    "traits": ["alien", "male", "ki_user"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/dbz/frieza_black.png",
     "short_description": "Frieza after training in a time chamber equivalent, achieving Black Frieza form that one-shot both MUI Goku and Ultra Ego Vegeta."
   },
@@ -237,6 +267,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["alien", "male", "ki_user"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/dbz/frieza_golden.png",
     "short_description": "Frieza's evolved Golden form achieved through his first-ever dedicated training, powerful but draining due to his unfamiliarity with the transformation."
   },
@@ -259,6 +292,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["android", "male", "ki_user", "saiyan_cells", "bio_weapon"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/dbz/cell_perfect.png",
     "short_description": "The ultimate bio-weapon in Perfect Form, combining the cells of every great warrior to become the most complete fighter of his era."
   },
@@ -282,6 +318,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["magical_being", "male", "ki_user"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/dbz/majin_buu_pure.png",
     "short_description": "Pure Evil Buu stripped of all good influence, a near-unkillable magical entity whose rubber body regenerates from any injury."
   },
@@ -304,6 +343,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["namekian", "male", "ki_user", "martial_artist"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/dbz/piccolo_orange.png",
     "short_description": "Piccolo after unlocking Orange Piccolo via Shenron, a transformation that elevates him to the level of the gods and rivals Gohan Beast in raw power."
   },
@@ -326,7 +368,89 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["android", "male", "no_ki_signature"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/dbz/android_17_top.png",
     "short_description": "Android 17 as Tournament of Power MVP, his infinite energy core eliminating all stamina concerns while his barrier deflects devastating attacks."
+  },
+  {
+    "slug": "mr_satan",
+    "name": "Mr. Satan",
+    "verse": "dbz",
+    "arc_version": "World Martial Arts Champion – Buu Arc",
+    "power_level": 5000,
+    "martial_ratio": 0.95,
+    "power_tags": ["martial_arts", "dynamite_kick", "megaton_punch", "showmanship"],
+    "strengths": [
+      {"tag": "psychological_warfare", "coefficient": 0.3},
+      {"tag": "luck", "coefficient": 0.4}
+    ],
+    "weaknesses": [
+      {"tag": "ki_attack", "coefficient": 0.9, "description": "Cannot sense or withstand ki-based attacks in any meaningful way"},
+      {"tag": "flight", "coefficient": 0.5},
+      {"tag": "godly_ki", "coefficient": 1.0},
+      {"tag": "energy_attacks", "coefficient": 0.8}
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "traits": ["human", "male", "martial_artist", "non_ki_user", "world_champion", "comedy_tier"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/dbz/mr_satan.png",
+    "short_description": "The self-proclaimed savior of Earth and World Martial Arts Champion who defeated Cell — entirely by accident — and whose heart ultimately helped save all of humanity."
+  },
+  {
+    "slug": "yamcha",
+    "name": "Yamcha",
+    "verse": "dbz",
+    "arc_version": "Baseball Veteran – Super Era",
+    "power_level": 12000,
+    "martial_ratio": 0.8,
+    "power_tags": ["wolf_fang_fist", "spirit_ball", "ki_blast", "baseball_reflexes"],
+    "strengths": [
+      {"tag": "surprise_attack", "coefficient": 0.2},
+      {"tag": "determination", "coefficient": 0.1}
+    ],
+    "weaknesses": [
+      {"tag": "energy_attacks", "coefficient": 0.6, "description": "His ki training is far below current-era fighters"},
+      {"tag": "godly_ki", "coefficient": 1.0},
+      {"tag": "overwhelming_physical", "coefficient": 0.5},
+      {"tag": "beautiful", "coefficient": 0.3, "description": "Yamcha gets nervous and flustered around beautiful women, breaking his concentration"}
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "traits": ["human", "male", "ki_user", "martial_artist", "retired", "comedy_tier"],
+    "trait_weaknesses": [
+      {"trait": "female", "coefficient": 0.15, "description": "Yamcha's legendary bad luck with women — his concentration crumbles around female opponents"}
+    ],
+    "trait_strengths": [],
+    "image_path": "assets/characters/dbz/yamcha.png",
+    "short_description": "Once a formidable desert bandit, now a beloved baseball player whose Wolf Fang Fist is comically outclassed by godly-ki fighters at every turn."
+  },
+  {
+    "slug": "videl",
+    "name": "Videl",
+    "verse": "dbz",
+    "arc_version": "Z Fighter – Great Saiyaman Saga",
+    "power_level": 8000,
+    "martial_ratio": 0.9,
+    "power_tags": ["martial_arts", "ki_sensing", "flight", "street_fighting"],
+    "strengths": [
+      {"tag": "surprise_attack", "coefficient": 0.2},
+      {"tag": "determination", "coefficient": 0.2}
+    ],
+    "weaknesses": [
+      {"tag": "ki_attack", "coefficient": 0.7, "description": "Her ki control is beginner-level compared to trained Z Fighters"},
+      {"tag": "godly_ki", "coefficient": 1.0},
+      {"tag": "overwhelming_speed", "coefficient": 0.4}
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "traits": ["human", "female", "martial_artist", "ki_user", "beautiful"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
+    "image_path": "assets/characters/dbz/videl.png",
+    "short_description": "Satan City's crime-fighting hero and Gohan's future wife — a talented martial artist who learned to fly and holds her own among Z Fighters through sheer tenacity."
   }
 ]

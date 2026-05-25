@@ -14,6 +14,7 @@ import { Button } from '@/components/ui/Button'
 import { Modal } from '@/components/ui/Modal'
 import { buildInitialDraftState } from '@/lib/game/draft'
 import { resolveBattle } from '@/lib/game/battle'
+import { computeElo } from '@/lib/game/elo'
 import { formatPowerLevel, formatEloDelta } from '@/lib/utils/format'
 import type { BattleState, BattleRound } from '@/types/game'
 import type { Character, Verse } from '@/types/character'
@@ -151,21 +152,68 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
       }
 
       const updates: Record<string, unknown> = { battle_state: finalBattle }
-      if (finalBattle.winner_id) {
+
+      if (finalBattle.winner_id && profile && room) {
         updates.status      = 'finished'
         updates.winner_id   = finalBattle.winner_id
         updates.finished_at = new Date().toISOString()
 
-        if (profile && myState) {
+        const isWinner   = finalBattle.winner_id === user.id
+        // All characters that appeared in this battle — used for discovery
+        const allSlugs   = allBattleChars.map(c => c.slug)
+        const oppId      = isA ? room.player_b_id! : room.player_a_id
+
+        // Fetch opponent's full profile so we can update their stats + ELO
+        const { data: oppData } = await supabase
+          .from('profiles')
+          .select('elo, games_played, games_won, games_lost, discovered_characters')
+          .eq('id', oppId)
+          .single()
+
+        // ── Ranked: compute ELO deltas ───────────────────────────────────────
+        let myNewElo  = profile.elo
+        let oppNewElo = (oppData?.elo ?? profile.elo)
+
+        if (room.mode === 'ranked' && oppData) {
+          const scoreA  = (finalBattle.winner_id === room.player_a_id ? 1 : 0) as 0 | 1
+          const eloResult = computeElo(
+            isA ? profile.elo    : oppData.elo,   // player A elo
+            isA ? oppData.elo    : profile.elo,   // player B elo
+            scoreA,
+            isA ? profile.games_played  : oppData.games_played,
+            isA ? oppData.games_played  : profile.games_played,
+          )
+          updates.elo_delta_a = eloResult.delta_a
+          updates.elo_delta_b = eloResult.delta_b
+          myNewElo  = isA ? eloResult.new_elo_a : eloResult.new_elo_b
+          oppNewElo = isA ? eloResult.new_elo_b : eloResult.new_elo_a
+        }
+
+        // ── Update my profile ───────────────────────────────────────────────
+        await supabase.from('profiles').update({
+          discovered_characters: Array.from(new Set([
+            ...(profile.discovered_characters ?? []),
+            ...allSlugs,
+          ])),
+          elo:          myNewElo,
+          games_played: profile.games_played + 1,
+          games_won:    isWinner  ? profile.games_won  + 1 : profile.games_won,
+          games_lost:   !isWinner ? profile.games_lost + 1 : profile.games_lost,
+        }).eq('id', user.id)
+
+        // ── Update opponent's profile ───────────────────────────────────────
+        if (oppData) {
+          const oppIsWinner = finalBattle.winner_id === oppId
           await supabase.from('profiles').update({
             discovered_characters: Array.from(new Set([
-              ...(profile.discovered_characters ?? []),
-              ...myState.remaining_characters.map(c => c.slug),
+              ...((oppData.discovered_characters as string[]) ?? []),
+              ...allSlugs,
             ])),
-            games_played: profile.games_played + 1,
-            games_won:    finalBattle.winner_id === user.id ? profile.games_won + 1  : profile.games_won,
-            games_lost:   finalBattle.winner_id !== user.id ? profile.games_lost + 1 : profile.games_lost,
-          }).eq('id', user.id)
+            elo:          oppNewElo,
+            games_played: oppData.games_played + 1,
+            games_won:    oppIsWinner  ? oppData.games_won  + 1 : oppData.games_won,
+            games_lost:   !oppIsWinner ? oppData.games_lost + 1 : oppData.games_lost,
+          }).eq('id', oppId)
         }
       }
 

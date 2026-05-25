@@ -19,6 +19,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["human", "male", "shinobi", "jinchuriki", "sage_mode_user"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/naruto/naruto_six_paths.png",
     "short_description": "Naruto at his zenith wielding all nine tailed-beast chakras and Six Paths power gifted by the Sage of Six Paths, capable of flight and truth-seeking balls."
   },
@@ -41,6 +44,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["human", "male", "shinobi", "uchiha"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/naruto/sasuke_rinnegan.png",
     "short_description": "Sasuke after receiving the Rinnegan from the Sage of Six Paths, wielding space-time teleportation and the colossal Indra Susanoo."
   },
@@ -64,6 +70,9 @@
     ],
     "cannot_win_against": ["kaguya"],
     "draw_conditions": [],
+    "traits": ["human", "male", "shinobi", "uchiha", "undead_edo_tensei", "ten_tails_jinchuriki"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/naruto/madara_six_paths.png",
     "short_description": "Madara as the Ten-Tails jinchuriki with Six Paths power, using invisible Limbo clones and truth-seeking balls to dominate all five Kage simultaneously."
   },
@@ -87,6 +96,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["otsutsuki", "female", "goddess", "beautiful"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/naruto/kaguya.png",
     "short_description": "The progenitor of chakra herself, mother of the Sage of Six Paths, capable of dimensional manipulation and the instant-kill Ash Killing Bones technique."
   },
@@ -110,6 +122,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["human", "male", "shinobi", "senju", "undead_edo_tensei", "sage_mode_user"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/naruto/hashirama_sage_mode.png",
     "short_description": "The God of Shinobi in Sage Mode, whose Wood Style and cellular regeneration make him the only person who ever defeated Madara in fair combat."
   },
@@ -132,6 +147,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["human", "male", "shinobi", "jinchuriki", "undead_edo_tensei", "sage_mode_user"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/naruto/minato_kcm2.png",
     "short_description": "The Yellow Flash with both Toad Sage Mode and Nine-Tails Chakra Mode, combining unmatched teleportation speed with Bijuu-enhanced power."
   },
@@ -155,6 +173,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["human", "male", "shinobi", "rinnegan_user"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/naruto/nagato_pain.png",
     "short_description": "Nagato commanding six corpse-puppets as the Six Paths of Pain, able to repel anything with Shinra Tensei and create miniature moons with Chibaku Tensei."
   },
@@ -177,6 +198,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["human", "male", "shinobi", "uchiha", "ten_tails_jinchuriki"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/naruto/obito_ten_tails.png",
     "short_description": "Obito as the Ten-Tails jinchuriki, combining his intangible Kamui with the raw devastation of the primal beast's power."
   },
@@ -200,6 +224,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["human", "male", "shinobi", "uchiha", "undead_edo_tensei"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/naruto/itachi.png",
     "short_description": "The Uchiha prodigy whose Perfect Susanoo wields the unstoppable Totsuka Blade and the all-blocking Yata Mirror, making him nearly untouchable in direct combat."
   },
@@ -221,6 +248,9 @@
     ],
     "cannot_win_against": ["nagato_pain"],
     "draw_conditions": [],
+    "traits": ["human", "male", "shinobi", "sage_mode_user"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/naruto/jiraiya_sage_mode.png",
     "short_description": "The Toad Sage whose perfected Sage Mode amplifies all techniques to godly levels, falling only to his own student Nagato's Six Paths of Pain."
   },
@@ -244,6 +274,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["human", "female", "shinobi", "senju", "beautiful"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/naruto/tsunade.png",
     "short_description": "The legendary Sannin and Hokage whose Byakugou Seal enables near-immortal regeneration and earth-shattering taijutsu powered by chakra-enhanced strength."
   },
@@ -265,6 +298,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["human", "male", "shinobi", "sage_mode_user"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/naruto/kabuto_snake_sage.png",
     "short_description": "Kabuto having surpassed Orochimaru through Snake Sage Mode, combining perfect regeneration, enhanced senses, and control over the entire Edo Tensei army."
   },
@@ -288,6 +324,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["human", "male", "shinobi", "martial_artist"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/naruto/guy_eight_gates.png",
     "short_description": "Might Guy at the Eighth Gate of Death, achieving speed and force that forced Madara Uchiha to call him the strongest taijutsu user he had ever faced."
   },
@@ -310,6 +349,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["human", "male", "shinobi", "martial_artist"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/naruto/rock_lee_fifth_gate.png",
     "short_description": "The taijutsu prodigy who could never mold chakra, opening the Fifth Gate to move faster than the Sharingan can track during the Chunin Exams."
   },
@@ -332,6 +374,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["human", "male", "shinobi"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/naruto/kakashi_dual_sharingan.png",
     "short_description": "Kakashi briefly wielding both Sharingan eyes gifted by Obito's spirit, achieving perfect Kamui mastery to face Kaguya herself."
   },
@@ -355,6 +400,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["human", "female", "shinobi", "beautiful"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/naruto/sakura_post_war.png",
     "short_description": "Sakura having mastered the Byakugou Seal, surpassing Tsunade in medical ninjutsu while delivering earth-shattering punches."
   },
@@ -379,6 +427,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["human", "male", "shinobi", "jinchuriki"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/naruto/gaara_kazekage.png",
     "short_description": "The Fifth Kazekage whose sand-based absolute defense and long-range crushing attacks make him virtually untouchable in open combat."
   },
@@ -401,6 +452,9 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["human", "male", "shinobi", "jinchuriki"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/naruto/killer_b.png",
     "short_description": "The perfect Jinchuriki of the Eight-Tails who achieved complete harmony with Gyuki, combining rapper swagger with devastating bijuu-mode combat power."
   },
@@ -423,7 +477,37 @@
     ],
     "cannot_win_against": [],
     "draw_conditions": [],
+    "traits": ["human", "male", "shinobi"],
+    "trait_weaknesses": [],
+    "trait_strengths": [],
     "image_path": "assets/characters/naruto/orochimaru.png",
     "short_description": "The Snake Sannin at his prime, master of forbidden jutsu who conquered death itself through body-hopping and terrorized the shinobi world for generations."
+  },
+  {
+    "slug": "tenten",
+    "name": "Tenten",
+    "verse": "naruto",
+    "arc_version": "Weapon Mistress – Fourth Shinobi War",
+    "power_level": 350000,
+    "martial_ratio": 0.7,
+    "power_tags": ["weapon_summoning", "twin_rising_dragons", "bashosen_fan", "jidanda_staff", "sealing_scroll", "projectile"],
+    "strengths": [
+      {"tag": "long_range", "coefficient": 0.4, "description": "Unlimited weapon arsenal gives her long-range superiority"},
+      {"tag": "projectile", "coefficient": 0.35}
+    ],
+    "weaknesses": [
+      {"tag": "taijutsu", "coefficient": 0.3, "description": "Limited close-range defense once weapons are overwhelmed"},
+      {"tag": "overwhelming_ninjutsu", "coefficient": 0.35},
+      {"tag": "chakra_based_defense", "coefficient": 0.25}
+    ],
+    "cannot_win_against": [],
+    "draw_conditions": [],
+    "traits": ["human", "female", "shinobi", "weapon_specialist", "beautiful"],
+    "trait_weaknesses": [
+      {"trait": "undead_edo_tensei", "coefficient": 0.5, "description": "Tenten's physical weapons cannot permanently destroy Edo Tensei reincarnations — her entire arsenal becomes half as effective against the undying"}
+    ],
+    "trait_strengths": [],
+    "image_path": "assets/characters/naruto/tenten.png",
+    "short_description": "Konoha's weapon mistress who can summon an inexhaustible arsenal from her scrolls, wielding the legendary Sage Tools including the all-element Bashosen Fan."
   }
 ]

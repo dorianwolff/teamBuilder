@@ -160,23 +160,83 @@ export function resolveBattle(charA: Character, charB: Character): BattleResult 
     }
   }
 
-  // ── Final effective scores ────────────────────────────────────────────────
+  // ── Raw effective scores (before trait modifiers) ────────────────────────
   const effectiveA = martialA + powerA * powerModifierA
   const effectiveB = martialB + powerB * powerModifierB
 
-  if (effectiveA > effectiveB) {
-    return makeWin(charA, charB, effectiveA, effectiveB, modifiers,
-      `${charA.name} prevails with an effective power of ${formatScore(effectiveA)} vs ${formatScore(effectiveB)}.`)
+  // ── Trait-based engagement modifiers ─────────────────────────────────────
+  // trait_weaknesses: when the OPPONENT has this trait, this char's offense ↓
+  // trait_strengths:  when the OPPONENT has this trait, this char's offense ↑
+  let traitModA = 1.0
+  for (const trait of (charB.traits ?? [])) {
+    const tw = (charA.trait_weaknesses ?? []).find(w => w.trait === trait)
+    if (tw) {
+      traitModA -= tw.coefficient
+      modifiers.push({
+        source: 'weakness',
+        tag: trait,
+        description: tw.description ?? `${charA.name}'s engagement is hampered against opponents with trait: ${trait}`,
+        score_delta_a: -(effectiveA * tw.coefficient),
+        score_delta_b: 0,
+      })
+    }
+    const ts = (charA.trait_strengths ?? []).find(s => s.trait === trait)
+    if (ts) {
+      traitModA += ts.coefficient
+      modifiers.push({
+        source: 'strength',
+        tag: trait,
+        description: ts.description ?? `${charA.name}'s effectiveness is boosted against opponents with trait: ${trait}`,
+        score_delta_a: effectiveA * ts.coefficient,
+        score_delta_b: 0,
+      })
+    }
   }
-  if (effectiveB > effectiveA) {
-    return makeWin(charB, charA, effectiveB, effectiveA, modifiers,
-      `${charB.name} prevails with an effective power of ${formatScore(effectiveB)} vs ${formatScore(effectiveA)}.`)
+  traitModA = Math.max(0, traitModA)
+
+  let traitModB = 1.0
+  for (const trait of (charA.traits ?? [])) {
+    const tw = (charB.trait_weaknesses ?? []).find(w => w.trait === trait)
+    if (tw) {
+      traitModB -= tw.coefficient
+      modifiers.push({
+        source: 'weakness',
+        tag: trait,
+        description: tw.description ?? `${charB.name}'s engagement is hampered against opponents with trait: ${trait}`,
+        score_delta_a: 0,
+        score_delta_b: -(effectiveB * tw.coefficient),
+      })
+    }
+    const ts = (charB.trait_strengths ?? []).find(s => s.trait === trait)
+    if (ts) {
+      traitModB += ts.coefficient
+      modifiers.push({
+        source: 'strength',
+        tag: trait,
+        description: ts.description ?? `${charB.name}'s effectiveness is boosted against opponents with trait: ${trait}`,
+        score_delta_a: 0,
+        score_delta_b: effectiveB * ts.coefficient,
+      })
+    }
+  }
+  traitModB = Math.max(0, traitModB)
+
+  const finalA = effectiveA * traitModA
+  const finalB = effectiveB * traitModB
+
+  if (finalA > finalB) {
+    return makeWin(charA, charB, finalA, finalB, modifiers,
+      `${charA.name} prevails with an effective power of ${formatScore(finalA)} vs ${formatScore(finalB)}.`)
+  }
+  if (finalB > finalA) {
+    return makeWin(charB, charA, finalB, finalA, modifiers,
+      `${charB.name} prevails with an effective power of ${formatScore(finalB)} vs ${formatScore(finalA)}.`)
   }
 
   // Exact tie (astronomically rare with floats) — random
   const tieWinner = Math.random() < 0.5 ? charA : charB
   const tieLoser  = tieWinner === charA ? charB : charA
-  return makeWin(tieWinner, tieLoser, effectiveA, effectiveB, modifiers,
+  return makeWin(tieWinner, tieLoser, finalA, finalB, modifiers,
     `Scores were exactly equal — ${tieWinner.name} wins the toss.`)
 }
 
