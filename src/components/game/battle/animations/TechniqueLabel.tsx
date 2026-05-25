@@ -27,6 +27,10 @@ const TYPE_STYLES: Partial<Record<AnimationType, string>> = {
   shadow:             'font-bold tracking-widest italic',
   darkness:           'font-black tracking-widest uppercase',
   gear5:              'font-black tracking-tight uppercase',
+  chidori:            'font-black tracking-tight uppercase',
+  kamui:              'font-bold tracking-[0.2em] italic',
+  eight_gates:        'font-black tracking-widest uppercase',
+  gentle_fist:        'font-light tracking-[0.3em] uppercase',
 }
 
 export function TechniqueLabel({ name, type, color, flavour, visible, side }: TechniqueLabelProps) {
@@ -57,7 +61,7 @@ export function TechniqueLabel({ name, type, color, flavour, visible, side }: Te
           {/* Name */}
           <motion.p
             className={cn(
-              'relative text-2xl sm:text-3xl md:text-4xl leading-tight drop-shadow-lg',
+              'relative text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight drop-shadow-lg',
               TYPE_STYLES[type] ?? 'font-bold',
             )}
             style={{ color }}

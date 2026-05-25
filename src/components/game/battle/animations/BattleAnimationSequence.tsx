@@ -12,7 +12,6 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import Image from 'next/image'
 import { resolveAnimProfile } from '@/data/animations'
 import { AuraGlow, AuraParticles } from './AuraGlow'
 import { TechniqueLabel } from './TechniqueLabel'
@@ -57,7 +56,7 @@ const INIT: AnimState = {
 
 // ─── sub-components ───────────────────────────────────────────────────────────
 
-/** Character portrait card with aura and particles */
+/** Character portrait card with aura, particles, and combat physics */
 function CharPortrait({
   character,
   side,
@@ -65,6 +64,9 @@ function CharPortrait({
   showParticles,
   color,
   visible,
+  isAttacking = false,
+  isReceiving = false,
+  isClash = false,
 }: {
   character: Character
   side: 'left' | 'right'
@@ -72,8 +74,13 @@ function CharPortrait({
   showParticles: boolean
   color: string
   visible: boolean
+  isAttacking?: boolean
+  isReceiving?: boolean
+  isClash?: boolean
 }) {
-  const xEnter = side === 'left' ? -80 : 80
+  const xEnter    = side === 'left' ? -80 : 80
+  // When attacking, lean toward the center
+  const attackX   = side === 'left' ? 24 : -24
 
   return (
     <AnimatePresence>
@@ -82,50 +89,82 @@ function CharPortrait({
           className={`absolute top-1/2 -translate-y-1/2 flex flex-col items-center
             ${side === 'left' ? 'left-4 sm:left-10 md:left-16' : 'right-4 sm:right-10 md:right-16'}`}
           initial={{ opacity: 0, x: xEnter, scale: 0.7 }}
-          animate={{ opacity: 1, x: 0, scale: 1 }}
+          animate={{
+            opacity: 1,
+            x: isAttacking ? attackX : 0,
+            scale: isAttacking ? 1.08 : isReceiving ? 0.94 : 1,
+            rotate: isAttacking ? (side === 'left' ? 4 : -4) : 0,
+          }}
           exit={{ opacity: 0, x: xEnter * 0.4, scale: 0.9 }}
-          transition={{ type: 'spring', stiffness: 280, damping: 22 }}
+          transition={{ type: 'spring', stiffness: 260, damping: 20 }}
         >
-          <div className="relative w-28 h-36 sm:w-36 sm:h-48 md:w-44 md:h-60 rounded-2xl overflow-hidden shadow-2xl">
-            {/* Aura behind portrait */}
-            {showAura && (
-              <AuraGlow color={color} intensity="high" pulse />
-            )}
-
-            {/* Portrait */}
-            <Image
-              src={`/images/characters/${character.image_path}`}
-              alt={character.name}
-              fill
-              className="object-cover object-top relative z-10"
-              sizes="(max-width: 640px) 112px, (max-width: 768px) 144px, 176px"
-            />
-
-            {/* Color overlay tint */}
-            <motion.div
-              className="absolute inset-0 z-20 pointer-events-none"
-              style={{ background: `${color}22`, mixBlendMode: 'screen' }}
-              animate={{ opacity: [0.3, 0.6, 0.3] }}
-              transition={{ duration: 1.2, repeat: Infinity }}
-            />
-          </div>
-
-          {/* Name tag */}
-          <motion.p
-            className="mt-2 text-xs sm:text-sm font-bold text-white/80 text-center drop-shadow-lg max-w-[120px] sm:max-w-none leading-tight"
-            initial={{ opacity: 0, y: 4 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
+          {/* Shake wrapper — vibrates when receiving hit */}
+          <motion.div
+            animate={
+              isClash
+                ? { x: [0, -7, 7, -5, 5, -3, 3, 0] }
+                : isReceiving
+                  ? { x: [0, -4, 4, -3, 3, -2, 2, 0] }
+                  : { x: 0 }
+            }
+            transition={
+              isClash
+                ? { duration: 0.35, repeat: Infinity }
+                : isReceiving
+                  ? { duration: 0.45, repeat: Infinity, repeatDelay: 0.15 }
+                  : { duration: 0.2 }
+            }
+            className="flex flex-col items-center"
           >
-            {character.name}
-          </motion.p>
+            <div className="relative w-28 h-36 sm:w-36 sm:h-48 md:w-44 md:h-60 rounded-2xl overflow-hidden shadow-2xl">
+              {/* Aura behind portrait */}
+              {showAura && (
+                <AuraGlow color={color} intensity="high" pulse />
+              )}
 
-          {/* Particles on entrance */}
-          {showParticles && (
-            <div className="absolute inset-0 pointer-events-none">
-              <AuraParticles color={color} count={10} />
+              {/* Portrait — uses the API route, same as PlayingCard */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={`/api/character-img/${character.verse}/${character.slug}`}
+                alt={character.name}
+                className="object-cover object-top w-full h-full relative z-10"
+              />
+
+              {/* Color overlay tint */}
+              <motion.div
+                className="absolute inset-0 z-20 pointer-events-none"
+                style={{ background: `${color}22`, mixBlendMode: 'screen' }}
+                animate={{ opacity: [0.3, 0.6, 0.3] }}
+                transition={{ duration: 1.2, repeat: Infinity }}
+              />
+
+              {/* Damage darkening when receiving */}
+              {isReceiving && (
+                <motion.div
+                  className="absolute inset-0 z-30 pointer-events-none rounded-2xl bg-black"
+                  animate={{ opacity: [0.15, 0.4, 0.15] }}
+                  transition={{ duration: 0.45, repeat: Infinity }}
+                />
+              )}
             </div>
-          )}
+
+            {/* Name tag */}
+            <motion.p
+              className="mt-2 text-xs sm:text-sm font-bold text-white/80 text-center drop-shadow-lg max-w-[120px] sm:max-w-none leading-tight"
+              initial={{ opacity: 0, y: 4 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+            >
+              {character.name}
+            </motion.p>
+
+            {/* Particles on entrance */}
+            {showParticles && (
+              <div className="absolute inset-0 pointer-events-none">
+                <AuraParticles color={color} count={10} />
+              </div>
+            )}
+          </motion.div>
         </motion.div>
       )}
     </AnimatePresence>
@@ -156,16 +195,16 @@ function ClashEffect({ visible }: { visible: boolean }) {
               transition={{ duration: 0.8, delay: i * 0.1 }}
             />
           ))}
-          {/* Clash text */}
+          {/* Clash burst text */}
           <motion.div
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-40"
             initial={{ opacity: 0, scale: 0.3 }}
-            animate={{ opacity: [0, 1, 1, 0], scale: [0.3, 1.4, 1.2, 0.8] }}
+            animate={{ opacity: [0, 1, 1, 0], scale: [0.3, 1.5, 1.2, 0.8] }}
             transition={{ duration: 0.9, times: [0, 0.2, 0.6, 1] }}
           >
-            <p className="text-4xl sm:text-6xl font-black text-white drop-shadow-2xl"
-               style={{ textShadow: '0 0 30px #fbbf24, 0 0 60px #f59e0b' }}>
-              ⚔
+            <p className="text-3xl sm:text-5xl font-black text-white tracking-widest drop-shadow-2xl"
+               style={{ textShadow: '0 0 20px #fbbf24, 0 0 50px #f59e0b, 0 0 80px #ffffff' }}>
+              CLASH
             </p>
           </motion.div>
         </>
@@ -282,6 +321,9 @@ export function BattleAnimationSequence({
             showParticles={s.auraA}
             color={techniqueA?.color ?? '#f97316'}
             visible={s.portraitA}
+            isAttacking={s.techniqueA}
+            isReceiving={s.techniqueB}
+            isClash={s.clash}
           />
 
           {/* Char A effect overlay */}
@@ -314,6 +356,9 @@ export function BattleAnimationSequence({
             showParticles={s.auraB}
             color={techniqueB?.color ?? '#3b82f6'}
             visible={s.portraitB}
+            isAttacking={s.techniqueB}
+            isReceiving={s.techniqueA}
+            isClash={s.clash}
           />
 
           {/* Char B effect overlay */}

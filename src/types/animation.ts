@@ -37,6 +37,10 @@ export type AnimationType =
   | 'poison'         // Magellan / Sasori venom cloud
   | 'sand'           // Gaara's sand manipulation
   | 'divine'         // Kaguya, Shenron, divine-tier power
+  | 'chidori'        // Lightning palm — 1000 birds (Kakashi / Sasuke / Raikage)
+  | 'kamui'          // Dimensional vortex — Obito / Kakashi Mangekyo
+  | 'eight_gates'    // Gate of Death / inner-gate aura burst (Guy / Rock Lee)
+  | 'gentle_fist'    // Byakugan chakra network + 64-palm strikes (Hyuga clan)
 
 /** A single technique that can be shown in the pre-battle animation */
 export interface TechniqueAnim {

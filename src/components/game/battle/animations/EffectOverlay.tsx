@@ -7,6 +7,7 @@
 
 import { motion } from 'framer-motion'
 import type { AnimationType } from '@/types/animation'
+import { ChidoriEffect, KamuiEffect, EightGatesEffect, GentleFistEffect } from './NarutoEffects'
 
 interface EffectProps {
   color: string
@@ -789,6 +790,10 @@ export function EffectOverlay({ type, color, secondaryColor, side }: { type: Ani
     case 'rasengan':
     case 'bijuu':             return <RasenganEffect {...props} />
     case 'sand':              return <SandEffect {...props} />
+    case 'chidori':           return <ChidoriEffect {...props} />
+    case 'kamui':             return <KamuiEffect {...props} />
+    case 'eight_gates':       return <EightGatesEffect {...props} />
+    case 'gentle_fist':       return <GentleFistEffect {...props} />
     default:                  return <PhysicalEffect {...props} />
   }
 }

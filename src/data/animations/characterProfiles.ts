@@ -76,81 +76,254 @@ export const CHARACTER_PROFILES: Record<string, CharacterAnimProfile> = {
   },
 
   // ── Naruto ──────────────────────────────────────────────────────────────────
+
+  // Six Paths Sage Art — a rasengan grown to planetary scale,
+  // thrown with the truth-seeking balls as a rasenshuriken array
   naruto_six_paths: {
     slug: 'naruto_six_paths', auraColor: '#f97316',
-    techniques: [{ name: 'Six Paths Sage Mode — Truth-Seeking Ball!!!', type: 'bijuu', color: '#f97316', secondaryColor: '#fbbf24', duration: 3500, flavour: 'The child of prophecy' }],
+    techniques: [{ name: 'Six Paths Sage Art — Ultra-Big Ball Rasenshuriken!!!', type: 'rasengan', color: '#f97316', secondaryColor: '#fbbf24', duration: 3500, flavour: 'The child of prophecy' }],
   },
+
+  // Indra's Arrow — charged with all of Susanoo's lightning,
+  // fired as a single all-destroying bolt
   sasuke_rinnegan: {
     slug: 'sasuke_rinnegan', auraColor: '#6d28d9',
-    techniques: [{ name: 'Rinnegan — Indra\'s Arrow!!!', type: 'sharingan', color: '#6d28d9', secondaryColor: '#a855f7', duration: 3500, flavour: 'The final technique' }],
+    techniques: [{ name: "Indra's Arrow — Perfect Susanoo!!!", type: 'chidori', color: '#6d28d9', secondaryColor: '#38bdf8', duration: 3500, flavour: 'The destined rival — his final arrow' }],
   },
+
+  // Infinite Tsukuyomi — casts the moon's reflection through the
+  // Rinne Sharingan to trap all life in an eternal dream
   madara_six_paths: {
     slug: 'madara_six_paths', auraColor: '#6d28d9',
-    techniques: [{ name: 'Infinite Tsukuyomi!!!', type: 'sharingan', color: '#6d28d9', secondaryColor: '#1e1b4b', duration: 3800, flavour: 'An eternal dream for all mankind' }],
+    techniques: [{ name: 'Infinite Tsukuyomi!!!', type: 'genjutsu', color: '#6d28d9', secondaryColor: '#1e1b4b', duration: 3800, flavour: 'An eternal dream for all of mankind' }],
   },
+
+  // Expansive Truth-Seeking Ball — primordial chakra refined by the
+  // rabbit goddess herself, the origin of all ninjutsu
   kaguya: {
     slug: 'kaguya', auraColor: '#ffffff',
-    techniques: [{ name: 'Expansive Truth-Seeking Ball!!!', type: 'divine', color: '#ffffff', secondaryColor: '#e0f2fe', duration: 4000, flavour: 'The mother of all chakra' }],
+    techniques: [{ name: 'Expansive Truth-Seeking Ball!!!', type: 'divine', color: '#ffffff', secondaryColor: '#e0f2fe', duration: 4000, flavour: 'The mother of all chakra — begin anew' }],
   },
+
+  // Sage Art: Wood Style — draws on senjutsu to produce a Buddha
+  // statue of several thousand hands, each capable of crushing mountains
   hashirama_sage_mode: {
     slug: 'hashirama_sage_mode', auraColor: '#4ade80',
-    techniques: [{ name: 'Wood Style — Thousand-Hand Buddha!!!', type: 'elemental_wind', color: '#4ade80', secondaryColor: '#86efac', duration: 3400, flavour: 'The first and greatest Hokage' }],
+    techniques: [{ name: 'Sage Art — Wood Style: True Several Thousand Hands!!!', type: 'divine', color: '#4ade80', secondaryColor: '#86efac', duration: 3400, flavour: 'The God of Shinobi — none have surpassed him' }],
   },
+
+  // Tsukuyomi — Itachi traps the victim in his Sharingan eye for what
+  // feels like three days of torture, all in a fraction of a second
   itachi: {
     slug: 'itachi', auraColor: '#6d28d9',
-    techniques: [{ name: 'Izanami — Eternal Tsukuyomi Loop', type: 'sharingan', color: '#6d28d9', secondaryColor: '#1e1b4b', duration: 3200, flavour: 'Accept yourself and it ends' }],
+    techniques: [{ name: "Tsukuyomi — Three Days of Hell", type: 'genjutsu', color: '#6d28d9', secondaryColor: '#1e1b4b', duration: 3200, flavour: "A world of three days — lived in a single second" }],
   },
+
+  // Night Guy — Gate of Death removes every limit; the leg strike
+  // moves faster than light and leaves only the bones intact
   guy_eight_gates: {
-    slug: 'guy_eight_gates', auraColor: '#4ade80',
-    techniques: [{ name: 'Evening Elephant — Night Guy!!!', type: 'physical', color: '#4ade80', secondaryColor: '#86efac', duration: 3200, flavour: 'The 8th gate — sunset of youth' }],
+    slug: 'guy_eight_gates', auraColor: '#ef4444',
+    techniques: [{ name: 'Night Guy — Gate of Death!!!', type: 'eight_gates', color: '#ef4444', secondaryColor: '#fca5a5', duration: 3200, flavour: 'The 8th Gate — even his bones will turn to ash' }],
   },
+
+  // Reverse Lotus — Fifth Gate unlocks explosive speed; Lee wraps
+  // the opponent in bandages and drives them into the earth
   rock_lee_fifth_gate: {
     slug: 'rock_lee_fifth_gate', auraColor: '#4ade80',
-    techniques: [{ name: 'Fifth Gate — Reverse Lotus!!!', type: 'physical', color: '#4ade80', secondaryColor: '#a3e635', duration: 2800, flavour: 'A genius of hard work' }],
+    techniques: [{ name: 'Reverse Lotus — Fifth Inner Gate!!!', type: 'eight_gates', color: '#4ade80', secondaryColor: '#86efac', duration: 2800, flavour: 'A genius of hard work — the springtime of youth' }],
   },
+
+  // Kamui Raikiri — Kakashi merges his Chidori with Kamui warp,
+  // creating a lightning blade that phases through and destroys on contact
   kakashi_dual_sharingan: {
     slug: 'kakashi_dual_sharingan', auraColor: '#6d28d9',
-    techniques: [{ name: 'Kamui Raikiri — Lightning God!!!', type: 'elemental_lightning', color: '#6d28d9', secondaryColor: '#38bdf8', duration: 3000, flavour: 'One thousand jutsu' }],
+    techniques: [{ name: 'Kamui Raikiri — Lightning Blade God!!!', type: 'chidori', color: '#6d28d9', secondaryColor: '#38bdf8', duration: 3000, flavour: 'One thousand jutsu — one thousand lightning birds' }],
   },
+
+  // Flying Raijin — Minato's space-time kunai marks allow him to
+  // teleport instantaneously to any location; he solves entire wars alone
   minato_kcm2: {
     slug: 'minato_kcm2', auraColor: '#fbbf24',
-    techniques: [{ name: 'Flying Raijin — God Technique!!!', type: 'elemental_lightning', color: '#fbbf24', secondaryColor: '#f97316', duration: 3200, flavour: 'Faster than any eye can follow' }],
+    techniques: [{ name: 'Flying Raijin — God Technique!!!', type: 'chidori', color: '#fbbf24', secondaryColor: '#f97316', duration: 3200, flavour: 'Faster than the eye — the Yellow Flash of Konoha' }],
   },
+
+  // Kamui — Obito can absorb anything, anyone, into his right eye's
+  // personal dimension, making him untouchable
   obito_ten_tails: {
-    slug: 'obito_ten_tails', auraColor: '#1e293b',
-    techniques: [{ name: 'Kamui — Dimensional Rift!!!', type: 'shadow', color: '#1e293b', secondaryColor: '#334155', duration: 3000, flavour: 'Nothing exists in this world anymore' }],
+    slug: 'obito_ten_tails', auraColor: '#6d28d9',
+    techniques: [{ name: 'Kamui — Dimensional Absorption!!!', type: 'kamui', color: '#6d28d9', secondaryColor: '#1e1b4b', duration: 3000, flavour: "Nothing in this world can touch me" }],
   },
+
+  // Shadow Possession — Shikamaru's ninjutsu forces the target to
+  // mirror his every movement; your shadow becomes your prison
   shikamaru_shadow: {
     slug: 'shikamaru_shadow', auraColor: '#1e293b',
-    techniques: [{ name: 'Shadow Possession!!!', type: 'shadow', color: '#1e293b', secondaryColor: '#334155', duration: 2800, flavour: 'Your shadow... is mine' }],
+    techniques: [{ name: 'Shadow Possession!!!', type: 'shadow', color: '#1e293b', secondaryColor: '#334155', duration: 2800, flavour: 'Your shadow… is mine' }],
   },
+
+  // 600 Billion Paper Bombs — Konan converts her body into 600 billion
+  // bombs that detonate for 10 continuous minutes; even Madara struggled
   konan_akatsuki: {
-    slug: 'konan_akatsuki', auraColor: '#f0f9ff',
-    techniques: [{ name: '600 Billion Paper Bombs!!!', type: 'paper', color: '#f0f9ff', secondaryColor: '#e0f2fe', duration: 3500, flavour: '10 minutes of non-stop detonation' }],
+    slug: 'konan_akatsuki', auraColor: '#e0f2fe',
+    techniques: [{ name: '600 Billion Paper Bombs!!!', type: 'paper', color: '#e0f2fe', secondaryColor: '#bfdbfe', duration: 3500, flavour: '10 minutes of non-stop detonation — an angel of death' }],
   },
+
+  // Jashin Ritual — Hidan draws a curse circle with his own blood;
+  // any damage he receives is mirrored onto the victim
   hidan_akatsuki: {
     slug: 'hidan_akatsuki', auraColor: '#dc2626',
-    techniques: [{ name: 'Jashin Ritual — Curse!', type: 'shadow', color: '#7f1d1d', secondaryColor: '#dc2626', duration: 2800, flavour: 'Your pain is my delight' }],
+    techniques: [{ name: 'Jashin Ritual — Curse Technique!', type: 'shadow', color: '#7f1d1d', secondaryColor: '#dc2626', duration: 2800, flavour: 'Your pain is my delight — Jashin-sama commands' }],
   },
+
+  // Samehada Fusion — Kisame merges with his sword Samehada to become
+  // a shark-man hybrid that devours all chakra
   kisame_hoshigaki: {
     slug: 'kisame_hoshigaki', auraColor: '#38bdf8',
-    techniques: [{ name: 'Samehada Fusion — Shark Bomb!!!', type: 'elemental_water', color: '#0369a1', secondaryColor: '#38bdf8', duration: 3000, flavour: 'Samehada drinks your chakra' }],
+    techniques: [{ name: 'Samehada Fusion — Great Shark Bomb!!!', type: 'elemental_water', color: '#0369a1', secondaryColor: '#38bdf8', duration: 3000, flavour: 'Samehada drinks your chakra — then swallows you whole' }],
   },
+
+  // Flying Raijin Level 2 — Tobirama invented the technique Minato
+  // later mastered; his version trades perfection for raw speed
   tobirama_senju: {
     slug: 'tobirama_senju', auraColor: '#38bdf8',
-    techniques: [{ name: 'Flying Raijin Level 2!!!', type: 'elemental_lightning', color: '#38bdf8', secondaryColor: '#bfdbfe', duration: 3000, flavour: 'The inventor of teleportation' }],
+    techniques: [{ name: 'Flying Raijin — Level 2!!!', type: 'chidori', color: '#38bdf8', secondaryColor: '#bfdbfe', duration: 3000, flavour: 'The inventor of Flying Raijin — and the Reaper Death Seal' }],
   },
+
+  // Lightning Armor — Double Lariat — A wraps his whole body in lightning
+  // chakra to reach a speed that even Sharingan users cannot follow;
+  // the double lariat with Killer B decapitates anyone in range
   raikage_a: {
     slug: 'raikage_a', auraColor: '#facc15',
-    techniques: [{ name: 'Lightning Armor — Lariat!!!', type: 'elemental_lightning', color: '#facc15', secondaryColor: '#fef08a', duration: 2800, flavour: 'The fastest man without the Sharingan' }],
+    techniques: [{ name: 'Lightning Armor — Double Lariat!!!', type: 'chidori', color: '#facc15', secondaryColor: '#fef08a', duration: 2800, flavour: 'The fastest man alive — without the Sharingan' }],
   },
+
+  // Chibaku Tensei — Nagato uses the Rinnegan's Deva Path to compress
+  // matter into a miniature moon that crushes everything underneath
   nagato_pain: {
     slug: 'nagato_pain', auraColor: '#6d28d9',
-    techniques: [{ name: 'Almighty Push!!!', type: 'nen_aura', color: '#6d28d9', secondaryColor: '#a855f7', duration: 3200, flavour: 'The Six Paths of Pain' }],
+    techniques: [{ name: 'Chibaku Tensei — Planetary Devastation!!!', type: 'divine', color: '#6d28d9', secondaryColor: '#a855f7', duration: 3400, flavour: 'I am God — Pain is the only path to peace' }],
   },
+
+  // Sand Burial — Gaara's absolute defence; he can crush an enemy inside
+  // a sphere of sand, aided by Shukaku's iron sand for extra density
   gaara_kazekage: {
     slug: 'gaara_kazekage', auraColor: '#d97706',
-    techniques: [{ name: 'Sand Burial — Absolute Defence!!!', type: 'elemental_sand', color: '#d97706', secondaryColor: '#f59e0b', duration: 2800, flavour: 'The sand loves me alone' }],
+    techniques: [{ name: 'Sand Burial — Shukaku Iron Sand!!!', type: 'sand', color: '#d97706', secondaryColor: '#f59e0b', duration: 2800, flavour: 'The sand loves me alone — no one escapes it' }],
+  },
+
+  // Jiraiya Sage Mode — drawing in natural energy, Jiraiya summons boss
+  // toads and fires a multi-sphere Rasengan array at the target
+  jiraiya_sage_mode: {
+    slug: 'jiraiya_sage_mode', auraColor: '#f97316',
+    techniques: [{ name: 'Sage Mode — Spiraling Serial Spheres!!!', type: 'rasengan', color: '#f97316', secondaryColor: '#fbbf24', duration: 3200, flavour: "The Toad Sage — father of the Rasengan itself" }],
+  },
+
+  // Creation Rebirth — Tsunade's Strength of a Hundred Seal releases
+  // a lifetime of stored chakra; she becomes essentially unkillable
+  tsunade: {
+    slug: 'tsunade', auraColor: '#ec4899',
+    techniques: [{ name: 'Strength of a Hundred — Creation Rebirth!!!', type: 'physical', color: '#ec4899', secondaryColor: '#f0abfc', duration: 2800, flavour: 'The Fifth Hokage — the world\'s greatest medical ninja' }],
+  },
+
+  // Snake Sage Mode — Kabuto merges with Orochimaru's cells and masters
+  // white snake sage mode, granting him flawless regeneration
+  kabuto_snake_sage: {
+    slug: 'kabuto_snake_sage', auraColor: '#84cc16',
+    techniques: [{ name: 'Snake Sage Mode — White Snake Rebirth!!!', type: 'poison', color: '#84cc16', secondaryColor: '#d9f99d', duration: 3000, flavour: "He became something greater than Orochimaru himself" }],
+  },
+
+  // Yin Seal Release — Sakura stores chakra her entire life in the
+  // diamond-shaped seal on her forehead; when released, she becomes
+  // near-immortal and can reduce mountains with a single punch
+  sakura_post_war: {
+    slug: 'sakura_post_war', auraColor: '#f0abfc',
+    techniques: [{ name: 'Yin Seal Release — Hundred Healings!!!', type: 'physical', color: '#ec4899', secondaryColor: '#f0abfc', duration: 2800, flavour: 'A seal that stores a lifetime of chakra — she never runs out' }],
+  },
+
+  // Killer B & Gyuki — B can partially manifest his Eight-Tails bijuu,
+  // or go full Bijuu Mode; his lariat with the Raikage ended wars
+  killer_b: {
+    slug: 'killer_b', auraColor: '#7c3aed',
+    techniques: [{ name: 'Eight-Tails Bijuu Mode — Lariat!!!', type: 'bijuu', color: '#7c3aed', secondaryColor: '#a78bfa', duration: 3200, flavour: 'Gyuki speaks — the Eight-Tails agrees' }],
+  },
+
+  // Summoning: Impure World Reincarnation — Orochimaru sacrifices
+  // living bodies to drag the dead back from the afterlife; he craves
+  // every jutsu ever created
+  orochimaru: {
+    slug: 'orochimaru', auraColor: '#15803d',
+    techniques: [{ name: 'Summoning — Eight Branches Giant Serpent!!!', type: 'poison', color: '#15803d', secondaryColor: '#4ade80', duration: 3000, flavour: 'I desire every jutsu ever created — starting with immortality' }],
+  },
+
+  // Twin Rising Dragons — Tenten summons every weapon in her arsenal
+  // from twin scrolls; a storm of ten thousand blades
+  tenten: {
+    slug: 'tenten', auraColor: '#dc2626',
+    techniques: [{ name: 'Twin Rising Dragons — Ten Thousand Weapons!!!', type: 'sword', color: '#dc2626', secondaryColor: '#fca5a5', duration: 2800, flavour: 'Every weapon ever forged — falling at once' }],
+  },
+
+  // C4 Karura — Deidara's masterpiece: a giant clay clone that
+  // detonates into nano-scale bombs entering through the pores,
+  // destroying at a cellular level — "art is an explosion"
+  deidara_akatsuki: {
+    slug: 'deidara_akatsuki', auraColor: '#fbbf24',
+    techniques: [{ name: 'C4 Karura — Cellular Destruction!!!', type: 'explosion', color: '#fbbf24', secondaryColor: '#f59e0b', duration: 3200, flavour: "Art is an explosion — and I am the greatest artist" }],
+  },
+
+  // Iron Sand: World Order — Sasori's Third Kazekage puppet floods
+  // the battlefield with Iron Sand magnetically shaped into lances
+  sasori_akatsuki: {
+    slug: 'sasori_akatsuki', auraColor: '#7f1d1d',
+    techniques: [{ name: 'Iron Sand — World Order!!!', type: 'puppet', color: '#7f1d1d', secondaryColor: '#dc2626', duration: 3200, flavour: 'I am the world\'s greatest puppeteer — my art is eternal' }],
+  },
+
+  // Earth Grudge Fear — Kakuzu's black threads tear out hearts and
+  // incorporate them; he wields five elemental affinities at once
+  kakuzu_akatsuki: {
+    slug: 'kakuzu_akatsuki', auraColor: '#1e293b',
+    techniques: [{ name: 'Earth Grudge Fear — Five Heart Assault!!!', type: 'chain_jail', color: '#1e293b', secondaryColor: '#475569', duration: 3000, flavour: 'Five stolen hearts — five elemental natures at once' }],
+  },
+
+  // Butterfly Mode — Akimichi clan's final technique; caloric energy
+  // converts fat to chakra, manifesting gigantic wings of pure power
+  choji_butterfly_mode: {
+    slug: 'choji_butterfly_mode', auraColor: '#c026d3',
+    techniques: [{ name: 'Butterfly Mode — Caloric Blitz!!!', type: 'ki_aura', color: '#c026d3', secondaryColor: '#e879f9', duration: 2800, flavour: 'The wings of the Akimichi — pure conversion of life into power' }],
+  },
+
+  // Gentle Step Twin Lion Fists — Hinata shapes her chakra into two
+  // lion heads; one touch annihilates the enemy's chakra network entirely
+  hinata_twin_lion_fists: {
+    slug: 'hinata_twin_lion_fists', auraColor: '#93c5fd',
+    techniques: [{ name: 'Gentle Step — Twin Lion Fists!!!', type: 'gentle_fist', color: '#93c5fd', secondaryColor: '#dbeafe', duration: 2800, flavour: 'The Byakugan sees all — every tenketsu laid bare' }],
+  },
+
+  // Eight Trigrams 128 Palms — Neji's mastery of Gentle Fist: striking
+  // every major tenketsu point in a precise sequential burst
+  neji_byakugan: {
+    slug: 'neji_byakugan', auraColor: '#dbeafe',
+    techniques: [{ name: 'Eight Trigrams — 128 Palms!!!', type: 'gentle_fist', color: '#dbeafe', secondaryColor: '#e0f2fe', duration: 2800, flavour: 'Fate is absolute — and your chakra has run out' }],
+  },
+
+  // Wind Style: Vacuum Great Explosion — Temari's giant war fan
+  // channels chakra into vacuum blades that scythe entire battlefields
+  temari: {
+    slug: 'temari', auraColor: '#a3e635',
+    techniques: [{ name: 'Wind Style — Vacuum Great Explosion!!!', type: 'elemental_wind', color: '#a3e635', secondaryColor: '#d9f99d', duration: 2800, flavour: 'One swing destroys the battlefield — Suna\'s deadliest fan' }],
+  },
+
+  // Black Secret Technique: Salamander — Kankuro deploys his three
+  // puppets to cage and poison the target with puppet-master precision
+  kankuro_puppet: {
+    slug: 'kankuro_puppet', auraColor: '#78716c',
+    techniques: [{ name: 'Black Secret Technique — Salamander!!!', type: 'puppet', color: '#78716c', secondaryColor: '#a8a29e', duration: 2800, flavour: 'The puppeteer\'s strings are invisible until it is too late' }],
+  },
+
+  // Reaper Death Seal — Hiruzen summons the Death God itself;
+  // the Shinigami tears out both souls — the user pays with their life
+  hiruzen_sarutobi: {
+    slug: 'hiruzen_sarutobi', auraColor: '#f8fafc',
+    techniques: [{ name: 'Reaper Death Seal — Dead Demon Consuming!!!', type: 'divine', color: '#f8fafc', secondaryColor: '#e2e8f0', duration: 3600, flavour: 'The Professor — the God of Shinobi does not hesitate to die' }],
   },
 
   // ── Dragon Ball ─────────────────────────────────────────────────────────────

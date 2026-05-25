@@ -96,8 +96,9 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
 
   // Capture the full roster at battle start; characters get removed after each round
   const [allBattleChars, setAllBattleChars] = useState<Character[]>([])
-  const resettingRef     = useRef(false)
-  const autoSubmittedRef = useRef(false)
+  const resettingRef      = useRef(false)
+  const autoSubmittedRef  = useRef(false)
+  const profileUpdatedRef = useRef(false)
 
   // ── Local chess-clock timer (not synced to DB — no race conditions) ──────────
   const [localTimerEndsAt, setLocalTimerEndsAt] = useState<string | null>(null)
@@ -162,7 +163,9 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
     setLocalConfirmed(false)
   }, [battle?.current_round])
 
-  // Auto-submit a random character when the local timer expires
+  // Auto-submit a random character when the local timer expires.
+  // Also depends on battle.phase so it re-fires if phase becomes 'selecting'
+  // while timerExpired is already true (edge-case: timer hits 0 mid-transition).
   useEffect(() => {
     if (!timerExpired) return
     if (uiConfirmed || submitting || autoSubmittedRef.current) return
@@ -174,7 +177,7 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
     console.log('[Timer] expired — auto-submitting', random.name)
     confirmFnRef.current?.(random.id)
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [timerExpired])
+  }, [timerExpired, battle?.phase])
 
   // Show animation then result modal whenever a round resolves
   useEffect(() => {
@@ -199,6 +202,50 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
       toast.error('Match ended early')
       router.push('/lobby')
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [room?.status])
+
+  // ── ELO + stats update (runs on BOTH clients when the game finishes) ─────────
+  // Each player updates only their own profile row — RLS compliant.
+  // We re-fetch the profile fresh to avoid any stale-closure ELO issues.
+  useEffect(() => {
+    if (!room || !user) return
+    if (room.status !== 'finished') return
+    if (profileUpdatedRef.current) return
+    profileUpdatedRef.current = true
+
+    ;(async () => {
+      const supabase = createClient()
+      const isWinner = room.winner_id === user.id
+
+      const { data: freshProfile } = await supabase
+        .from('profiles')
+        .select('elo, games_played, games_won, games_lost, discovered_characters')
+        .eq('id', user.id)
+        .single()
+
+      if (!freshProfile) return
+
+      const allSlugs = allBattleChars.map(c => c.slug)
+      const myDelta  = room.mode === 'ranked'
+        ? (isA ? (room.elo_delta_a ?? 0) : (room.elo_delta_b ?? 0))
+        : 0
+
+      const { error } = await supabase.from('profiles').update({
+        elo:          freshProfile.elo + myDelta,
+        games_played: freshProfile.games_played + 1,
+        games_won:    isWinner  ? freshProfile.games_won  + 1 : freshProfile.games_won,
+        games_lost:   !isWinner ? freshProfile.games_lost + 1 : freshProfile.games_lost,
+        ...(allSlugs.length > 0 ? {
+          discovered_characters: Array.from(new Set([
+            ...((freshProfile.discovered_characters as string[]) ?? []),
+            ...allSlugs,
+          ])),
+        } : {}),
+      }).eq('id', user.id)
+
+      if (error) console.error('[Profile] update error:', error.message)
+    })().catch(err => console.error('[Profile] unexpected error:', err))
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [room?.status])
 
@@ -263,62 +310,34 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
 
       const updates: Record<string, unknown> = { battle_state: finalBattle }
 
-      if (finalBattle.winner_id && profile && room) {
+      if (finalBattle.winner_id && room) {
         updates.status      = 'finished'
         updates.winner_id   = finalBattle.winner_id
         updates.finished_at = new Date().toISOString()
 
-        const isWinner = finalBattle.winner_id === user.id
-        const allSlugs = allBattleChars.map(c => c.slug)
-        const oppId    = isA ? room.player_b_id! : room.player_a_id
+        // Compute ELO deltas and store them in game_rooms so both players
+        // can read their own delta and update their own profile via the
+        // profileUpdatedRef effect (RLS prevents updating anyone else's row)
+        if (room.mode === 'ranked' && profile) {
+          const oppId = isA ? room.player_b_id! : room.player_a_id
+          const { data: oppData } = await supabase
+            .from('profiles')
+            .select('elo, games_played')
+            .eq('id', oppId)
+            .single()
 
-        const { data: oppData } = await supabase
-          .from('profiles')
-          .select('elo, games_played, games_won, games_lost, discovered_characters')
-          .eq('id', oppId)
-          .single()
-
-        let myNewElo  = profile.elo
-        let oppNewElo = (oppData?.elo ?? profile.elo)
-
-        if (room.mode === 'ranked' && oppData) {
-          const scoreA    = (finalBattle.winner_id === room.player_a_id ? 1 : 0) as 0 | 1
-          const eloResult = computeElo(
-            isA ? profile.elo    : oppData.elo,
-            isA ? oppData.elo    : profile.elo,
-            scoreA,
-            isA ? profile.games_played  : oppData.games_played,
-            isA ? oppData.games_played  : profile.games_played,
-          )
-          updates.elo_delta_a = eloResult.delta_a
-          updates.elo_delta_b = eloResult.delta_b
-          myNewElo  = isA ? eloResult.new_elo_a : eloResult.new_elo_b
-          oppNewElo = isA ? eloResult.new_elo_b : eloResult.new_elo_a
-        }
-
-        await supabase.from('profiles').update({
-          discovered_characters: Array.from(new Set([
-            ...(profile.discovered_characters ?? []),
-            ...allSlugs,
-          ])),
-          elo:          myNewElo,
-          games_played: profile.games_played + 1,
-          games_won:    isWinner  ? profile.games_won  + 1 : profile.games_won,
-          games_lost:   !isWinner ? profile.games_lost + 1 : profile.games_lost,
-        }).eq('id', user.id)
-
-        if (oppData) {
-          const oppIsWinner = finalBattle.winner_id === oppId
-          await supabase.from('profiles').update({
-            discovered_characters: Array.from(new Set([
-              ...((oppData.discovered_characters as string[]) ?? []),
-              ...allSlugs,
-            ])),
-            elo:          oppNewElo,
-            games_played: oppData.games_played + 1,
-            games_won:    oppIsWinner  ? oppData.games_won  + 1 : oppData.games_won,
-            games_lost:   !oppIsWinner ? oppData.games_lost + 1 : oppData.games_lost,
-          }).eq('id', oppId)
+          if (oppData) {
+            const scoreA    = (finalBattle.winner_id === room.player_a_id ? 1 : 0) as 0 | 1
+            const eloResult = computeElo(
+              isA ? profile.elo         : oppData.elo,
+              isA ? oppData.elo         : profile.elo,
+              scoreA,
+              isA ? profile.games_played : oppData.games_played,
+              isA ? oppData.games_played : profile.games_played,
+            )
+            updates.elo_delta_a = eloResult.delta_a
+            updates.elo_delta_b = eloResult.delta_b
+          }
         }
       }
 
