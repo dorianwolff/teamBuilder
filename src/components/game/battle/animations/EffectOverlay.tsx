@@ -8,6 +8,7 @@
 import { motion } from 'framer-motion'
 import type { AnimationType } from '@/types/animation'
 import { ChidoriEffect, KamuiEffect, EightGatesEffect, GentleFistEffect } from './NarutoEffects'
+import { ConquerorsHakiEffect, AsuraEffect, DiableJambeEffect, GuraGuraEffect } from './OnePieceEffects'
 
 interface EffectProps {
   color: string
@@ -943,6 +944,11 @@ export function EffectOverlay({ type, color, secondaryColor, side }: { type: Ani
     case 'kamui':             return <KamuiEffect {...props} />
     case 'eight_gates':       return <EightGatesEffect {...props} />
     case 'gentle_fist':       return <GentleFistEffect {...props} />
+    // ── One Piece ──────────────────────────────────────────────────────────
+    case 'conquerors_haki':   return <ConquerorsHakiEffect {...props} />
+    case 'asura':             return <AsuraEffect {...props} />
+    case 'diable_jambe':      return <DiableJambeEffect {...props} />
+    case 'gura_gura':         return <GuraGuraEffect {...props} />
     default:                  return <PhysicalEffect {...props} />
   }
 }

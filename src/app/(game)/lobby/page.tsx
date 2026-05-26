@@ -274,7 +274,54 @@ function RankedTab({ supabase, user, profile, elo, delta, channelRef, requireAut
       return
     }
 
-    // ── Realtime: detect when we're matched as player_b ──────────────────────
+    // ── Helper: wait for the room to be fully ready before navigating ────────
+    // Player A writes draft_state + status='drafting' atomically.
+    // Player B must NOT navigate until that update is visible — otherwise B
+    // arrives at the draft page before the draft_state exists.
+    async function waitForDraftReady(roomId: string) {
+      // Immediate check — Player A may have already finished setting up
+      const { data: existingRoom } = await supabase
+        .from('game_rooms')
+        .select('status')
+        .eq('id', roomId)
+        .single()
+
+      if (existingRoom?.status === 'drafting') {
+        clearChannel()
+        router.push(`/draft/${roomId}`)
+        return
+      }
+
+      // Subscribe to the room — navigate as soon as status becomes 'drafting'
+      const waitCh = supabase
+        .channel(`wait-draft:${roomId}:${user!.id}`)
+        .on(
+          'postgres_changes',
+          { event: 'UPDATE', schema: 'public', table: 'game_rooms', filter: `id=eq.${roomId}` },
+          (pl: { new: { status: string } }) => {
+            if (pl.new.status === 'drafting') {
+              waitCh.unsubscribe()
+              clearChannel()
+              router.push(`/draft/${roomId}`)
+            }
+          },
+        )
+        .subscribe()
+
+      // Safety timeout: navigate after 20 s to prevent infinite waiting
+      // (Player A might have navigated already without the realtime firing)
+      setTimeout(() => {
+        waitCh.unsubscribe()
+        if (isSearchingRef.current) {
+          console.warn('[Ranked] Draft not confirmed ready after 20 s — navigating anyway')
+          clearChannel()
+          router.push(`/draft/${roomId}`)
+        }
+      }, 20_000)
+    }
+
+    // ── Realtime: detect when we're matched as Player B ──────────────────────
+    // Don't navigate immediately — wait until Player A has written the draft.
     clearChannel()
     channelRef.current = supabase
       .channel(`mm:${user!.id}`)
@@ -284,45 +331,71 @@ function RankedTab({ supabase, user, profile, elo, delta, channelRef, requireAut
         async (payload: { new: { status: string; room_id: string | null } }) => {
           if (payload.new.status === 'matched' && payload.new.room_id) {
             if (pollRef.current) clearInterval(pollRef.current)
-            router.push(`/draft/${payload.new.room_id}`)
+            // Wait for the room's draft_state to be written before navigating
+            await waitForDraftReady(payload.new.room_id)
           }
         },
       )
       .subscribe()
 
-    // ── Polling: we try to FIND an opponent ourselves every 5 s ──────────────
+    // ── Polling: we try to FIND an opponent ourselves (Player A role) ─────────
     async function poll() {
       if (!isSearchingRef.current) return
-      const { data: roomId } = await supabase.rpc('ranked_find_match', {
+      const { data: roomId, error: rpcErr } = await supabase.rpc('ranked_find_match', {
         p_user_id: user!.id,
         p_elo:     elo,
         p_verse:   verse,
       })
+      if (rpcErr) {
+        console.error('[Ranked] ranked_find_match error:', rpcErr.message)
+        return
+      }
       if (roomId) {
         if (pollRef.current) clearInterval(pollRef.current)
-        // We're player_a — initialize draft state then navigate
+        isSearchingRef.current = false
         try {
-          const { data: room } = await supabase
+          const { data: room, error: roomErr } = await supabase
             .from('game_rooms')
             .select('player_a_id, player_b_id, verse')
             .eq('id', roomId)
             .single()
-          if (room) {
-            const chars = await loadCharsForVerse(supabase, room.verse)
-            const draft = buildInitialDraftState(roomId, room.player_a_id, room.player_b_id!, room.verse as Verse | 'all', chars)
-            await supabase.from('game_rooms').update({ draft_state: draft }).eq('id', roomId)
+          if (roomErr || !room || !room.player_b_id) {
+            throw roomErr ?? new Error('Room or Player B not found')
           }
-        } catch { /* non-fatal */ }
-        router.push(`/draft/${roomId}`)
+          const chars = await loadCharsForVerse(supabase, room.verse)
+          const draft = buildInitialDraftState(
+            roomId, room.player_a_id, room.player_b_id,
+            room.verse as Verse | 'all', chars,
+          )
+          // Atomic update: write draft_state AND set status='drafting' in one call.
+          // This is what Player B's waitForDraftReady subscription listens for.
+          const { error: updateErr } = await supabase
+            .from('game_rooms')
+            .update({
+              draft_state: draft,
+              status:      'drafting',
+              started_at:  new Date().toISOString(),
+            })
+            .eq('id', roomId)
+          if (updateErr) throw updateErr
+
+          clearChannel()
+          router.push(`/draft/${roomId}`)
+        } catch (err: unknown) {
+          console.error('[Ranked] Match initialisation failed:', err)
+          toast.error('Match setup failed — please try searching again')
+          isSearchingRef.current = true  // allow retrying
+          setIsSearching(false)
+        }
       }
     }
 
-    // Use a ref so the interval closure always reads the latest flag
+    // Use a plain object ref so the interval closure reads the latest flag
     const isSearchingRef = { current: true }
     poll() // immediate first attempt
     pollRef.current = setInterval(poll, 5000)
 
-    // Store for cleanup
+    // Store for cleanup in cancelSearch
     ;(pollRef as unknown as { _stopRef?: { current: boolean } })._stopRef = isSearchingRef
   }
 

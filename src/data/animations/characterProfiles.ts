@@ -6,73 +6,215 @@ import type { CharacterAnimProfile } from '@/types/animation'
  */
 export const CHARACTER_PROFILES: Record<string, CharacterAnimProfile> = {
   // ── One Piece ──────────────────────────────────────────────────────────────
+
+  // Gear 5 awakening — Luffy's devil fruit reveals its true form: Joy Boy / the Sun God Nika.
+  // Reality becomes rubber, the user fights with the "ridiculous power" of pure freedom.
   luffy_gear5: {
     slug: 'luffy_gear5', auraColor: '#fef9c3',
-    techniques: [{ name: 'Gear 5 — Joy Boy Awakens!!!', type: 'gear5', color: '#f8fafc', secondaryColor: '#fef9c3', duration: 3800, flavour: 'The most ridiculous power in the world' }],
+    techniques: [{ name: 'Gear 5 — Joy Boy Awakens!!!', type: 'gear5', color: '#f8fafc', secondaryColor: '#fef9c3', duration: 3800, flavour: 'The most ridiculous power in the world — I am Joy Boy!' }],
   },
+
+  // Gear 4 Snakeman — compressed Haki, endless redirecting Python strikes
   luffy_snakeman: {
     slug: 'luffy_snakeman', auraColor: '#f97316',
-    techniques: [{ name: 'Gear 4 — Snakeman!', type: 'ki_aura', color: '#f97316', secondaryColor: '#fbbf24', duration: 2800, flavour: 'Python — unending pursuit' }],
+    techniques: [{ name: 'Gear 4 — Snakeman: King Cobra!!!', type: 'ki_aura', color: '#f97316', secondaryColor: '#fbbf24', duration: 2800, flavour: 'Python — my fists chase you to the ends of the earth' }],
   },
+
+  // Luffy early arc — pure rubber, pure heart, Gum-Gum Pistol
   luffy_skypiea: {
     slug: 'luffy_skypiea', auraColor: '#fbbf24',
-    techniques: [{ name: 'Gum-Gum Pistol!', type: 'physical', color: '#fbbf24', duration: 2000 }],
+    techniques: [{ name: 'Gum-Gum Pistol!!!', type: 'physical', color: '#fbbf24', duration: 2000, flavour: 'I\'m going to be King of the Pirates!' }],
   },
+
+  // Gol D. Roger — The Pirate King's Conqueror's Haki imbued into a single slash.
+  // Divine Departure: the same technique Shanks used to stop Kaido
   gold_d_roger: {
     slug: 'gold_d_roger', auraColor: '#fbbf24',
-    techniques: [{ name: "Conqueror's Haki — Divine Departure!", type: 'haki_burst', color: '#fbbf24', secondaryColor: '#f59e0b', duration: 3200, flavour: 'The King of Pirates' }],
+    techniques: [{ name: "Conqueror's Haki — Divine Departure!!!", type: 'conquerors_haki', color: '#1e1b1f', secondaryColor: '#fbbf24', duration: 3600, flavour: 'I\'m not going to die, partner — laugh!' }],
   },
+
+  // Shanks — the benchmark of Conqueror's Haki. His Haki alone caused a tsunami
+  // and knocked out Vice Admirals. Matched Roger's at age 13.
   shanks: {
     slug: 'shanks', auraColor: '#dc2626',
-    techniques: [{ name: "Conqueror's Haki — World Destroyer!", type: 'haki_burst', color: '#1e293b', secondaryColor: '#dc2626', duration: 3200, flavour: 'Mountains carved by Haki' }],
+    techniques: [{ name: "Conqueror's Haki — Heaven-Split!!!", type: 'conquerors_haki', color: '#0a0a0f', secondaryColor: '#dc2626', duration: 3600, flavour: 'Mountains carved by pure will — the sky parts for me' }],
   },
+
+  // Whitebeard's Gura Gura no Mi — his fists crack the air itself.
+  // He split the Marineford plaza in two and tilted the world's axis.
   whitebeard_peak: {
     slug: 'whitebeard_peak', auraColor: '#e0f2fe',
-    techniques: [{ name: 'Gura Gura no Mi — World-Shaker!!!', type: 'haki_burst', color: '#ffffff', secondaryColor: '#bfdbfe', duration: 3400, flavour: 'One fist cracks the sky' }],
+    techniques: [{ name: 'Gura Gura no Mi — World-Shaker!!!', type: 'gura_gura', color: '#e0f2fe', secondaryColor: '#ffffff', duration: 3600, flavour: 'One fist cracks the sky — the strongest man who ever lived' }],
   },
+
+  // Kaido — Conqueror's Haki-imbued Thunder Bagua; a single swing split Onigashima.
+  // The CoC coating on his club makes even contact lethal.
   kaido_hybrid: {
     slug: 'kaido_hybrid', auraColor: '#6d28d9',
-    techniques: [{ name: 'Raimei Hakke!!!', type: 'elemental_lightning', color: '#6d28d9', secondaryColor: '#a855f7', duration: 3000, flavour: 'Thunder Bagua — the mightiest blow' }],
+    techniques: [{ name: "Conqueror's Haki — Thunder Bagua!!!", type: 'conquerors_haki', color: '#0a0614', secondaryColor: '#6d28d9', duration: 3600, flavour: 'One swing — one island. Even samurai cannot touch me.' }],
   },
+
+  // Big Mom — Prometheus + Zeus + Napoleon in a unified soul-powered attack
   big_mom: {
     slug: 'big_mom', auraColor: '#f9a8d4',
-    techniques: [{ name: 'Heavenly Fire — Prometheus!!!', type: 'elemental_fire', color: '#f97316', secondaryColor: '#fbbf24', duration: 2800 }],
+    techniques: [{ name: 'Heavenly Fire — Prometheus: Stolen Soul!!!', type: 'elemental_fire', color: '#f97316', secondaryColor: '#fbbf24', duration: 2800, flavour: 'Give me your soul — NOW!' }],
   },
+
+  // Akainu — Ryusei Kazan: volcanic fists that melt everything, even ice
   akainu: {
     slug: 'akainu', auraColor: '#dc2626',
-    techniques: [{ name: 'Mag-Fist Gushing!!!', type: 'logia', color: '#dc2626', secondaryColor: '#f97316', duration: 2800, flavour: 'Absolute Justice' }],
+    techniques: [{ name: 'Ryusei Kazan — Great Eruption!!!', type: 'logia', color: '#dc2626', secondaryColor: '#f97316', duration: 3000, flavour: 'Absolute Justice will cleanse this world in magma' }],
   },
+
+  // Blackbeard — Kurouzu draws everything into the void before unleashing it
   blackbeard: {
     slug: 'blackbeard', auraColor: '#1e293b',
-    techniques: [{ name: 'Darkness — Liberation!!!', type: 'darkness', color: '#0f0f0f', secondaryColor: '#1e293b', duration: 3200, flavour: 'My darkness has no limits' }],
+    techniques: [{ name: 'Kurouzu — Darkness: Liberation!!!', type: 'darkness', color: '#030303', secondaryColor: '#1e293b', duration: 3400, flavour: 'Darkness has no limits — it devours even the light' }],
   },
+
+  // Mihawk — Kokuto Yoru slices even the ocean itself; Black Blade
   mihawk: {
     slug: 'mihawk', auraColor: '#1e293b',
-    techniques: [{ name: 'Black Blade — Yoru!', type: 'sword', color: '#1e1b4b', secondaryColor: '#e0e7ff', duration: 2600, flavour: 'The world\'s greatest swordsman' }],
+    techniques: [{ name: 'Kokuto Yoru — Cross of Doom!!!', type: 'sword', color: '#1e1b4b', secondaryColor: '#e0e7ff', duration: 2800, flavour: 'The world\'s greatest swordsman cuts what cannot be cut' }],
   },
+
+  // Zoro post-Wano — Asura: King of Hell. Three demon heads, nine swords, nine slashes.
+  // His black blade coating rivals a Conqueror's Haki user's aura.
   zoro_post_wano: {
     slug: 'zoro_post_wano', auraColor: '#4ade80',
-    techniques: [{ name: 'Asura — Three-Sword Style!!!', type: 'sword', color: '#4ade80', secondaryColor: '#86efac', duration: 2800, flavour: 'Nine blades of the demon king' }],
+    techniques: [{ name: 'Asura — King of Hell: Nine Sword Style!!!', type: 'asura', color: '#4ade80', secondaryColor: '#052e16', duration: 3400, flavour: 'Demon king\'s nine blades — all at once, in the same instant' }],
   },
+
+  // Rayleigh — the Dark King's Conqueror's Haki teaching Luffy while stopping 100,000 fishmen
   rayleigh: {
     slug: 'rayleigh', auraColor: '#fbbf24',
-    techniques: [{ name: "Conqueror's Haki — Dark King's Might!", type: 'haki_burst', color: '#fbbf24', secondaryColor: '#f59e0b', duration: 3000, flavour: 'Roger\'s first mate holds nothing back' }],
+    techniques: [{ name: "Conqueror's Haki — Dark King's Might!!!", type: 'conquerors_haki', color: '#0a0a0a', secondaryColor: '#fbbf24', duration: 3400, flavour: 'Roger\'s first mate — not one step back' }],
   },
+
+  // Enel — El Thor: 200 million volts called down from the sky as divine judgment
   enel: {
     slug: 'enel', auraColor: '#fef08a',
-    techniques: [{ name: 'El Thor!!!', type: 'elemental_lightning', color: '#fef08a', secondaryColor: '#fefce8', duration: 2800, flavour: 'God\'s divine judgement' }],
+    techniques: [{ name: 'El Thor — 200 Million Volt Divine Punishment!!!', type: 'elemental_lightning', color: '#fef08a', secondaryColor: '#fffde7', duration: 3000, flavour: 'I am God — thou art unworthy of this sky' }],
   },
+
+  // Doflamingo — Birdcage: strings wrap the entire island; no one escapes
   doflamingo: {
     slug: 'doflamingo', auraColor: '#f472b6',
-    techniques: [{ name: 'Birdcage — Parasite!!!', type: 'string', color: '#f472b6', secondaryColor: '#fbcfe8', duration: 3000, flavour: 'There is no escape from the cage' }],
+    techniques: [{ name: 'Birdcage — Parasyte: Off with their Heads!!!', type: 'string', color: '#f472b6', secondaryColor: '#fbcfe8', duration: 3200, flavour: 'The cage shrinks — there is no escape from Doflamingo\'s strings' }],
   },
+
+  // Boa Hancock — Mero Mero no Mi: petrification through beauty and love
   boa_hancock: {
     slug: 'boa_hancock', auraColor: '#f9a8d4',
-    techniques: [{ name: 'Slave Arrow!!!', type: 'physical', color: '#f9a8d4', secondaryColor: '#fce7f3', duration: 2400, flavour: 'Petrified by beauty' }],
+    techniques: [{ name: 'Perfume Femur — Pistol Kiss!!!', type: 'physical', color: '#f9a8d4', secondaryColor: '#fce7f3', duration: 2600, flavour: 'Even your admiration will turn to stone' }],
   },
+
+  // Magellan — Venom Demon: his most powerful form, covering himself in poison
   magellan: {
     slug: 'magellan', auraColor: '#4ade80',
-    techniques: [{ name: 'Venom Demon — Hell Judge!!!', type: 'poison', color: '#16a34a', secondaryColor: '#4ade80', duration: 3000, flavour: 'No antidote has ever been found' }],
+    techniques: [{ name: 'Venom Demon — Hell Judge!!!', type: 'poison', color: '#14532d', secondaryColor: '#4ade80', duration: 3000, flavour: 'Impel Down\'s most powerful jailer — every touch is lethal' }],
+  },
+
+  // Sanji — Ifrit Jambe: post-Raid Suit, leg so hot it burns blue-white with hell fire
+  sanji: {
+    slug: 'sanji', auraColor: '#3b82f6',
+    techniques: [{ name: 'Ifrit Jambe — Hell Memory!!!', type: 'diable_jambe', color: '#3b82f6', secondaryColor: '#ffffff', duration: 3400, flavour: 'The flames of Ifrit — hotter than any fire in this world' }],
+  },
+  sanji_raid_suit: {
+    slug: 'sanji_raid_suit', auraColor: '#3b82f6',
+    techniques: [{ name: 'Ifrit Jambe — Rotisserie!!!', type: 'diable_jambe', color: '#3b82f6', secondaryColor: '#e0f2fe', duration: 3200, flavour: 'Germa\'s exoskeleton + Ifrit flames — unstoppable kick' }],
+  },
+  vinsmoke_sanji: {
+    slug: 'vinsmoke_sanji', auraColor: '#f97316',
+    techniques: [{ name: 'Diable Jambe — Poêle à Frire!!!', type: 'diable_jambe', color: '#f97316', secondaryColor: '#fbbf24', duration: 3000, flavour: 'The flames of hell, spinning into a frying pan' }],
+  },
+
+  // Portgas D. Ace — Fire Fist: the great flame fist that made fleets scatter
+  portgas_d_ace: {
+    slug: 'portgas_d_ace', auraColor: '#f97316',
+    techniques: [{ name: 'Fire Fist — Great Flame Commandment!!!', type: 'elemental_fire', color: '#f97316', secondaryColor: '#fbbf24', duration: 3000, flavour: 'My fire — it burns away even the darkness' }],
+  },
+  ace: {
+    slug: 'ace', auraColor: '#f97316',
+    techniques: [{ name: 'Hiken — Fire Fist!!!', type: 'elemental_fire', color: '#f97316', secondaryColor: '#fbbf24', duration: 2800, flavour: 'Ace\'s flame — it cannot be extinguished' }],
+  },
+
+  // Marco the Phoenix — blue regenerating phoenix flames; near-immortal in combat
+  marco_phoenix: {
+    slug: 'marco_phoenix', auraColor: '#3b82f6',
+    techniques: [{ name: 'Tori Tori no Mi — Phoenix: Blazing Wings!!!', type: 'elemental_fire', color: '#3b82f6', secondaryColor: '#60a5fa', duration: 3000, flavour: 'Blue phoenix flames — I do not fall' }],
+  },
+  marco: {
+    slug: 'marco', auraColor: '#3b82f6',
+    techniques: [{ name: 'Phoenix — Regenerating Talons!!!', type: 'elemental_fire', color: '#3b82f6', secondaryColor: '#93c5fd', duration: 2800, flavour: 'Whitebeard\'s first division commander — eternal as flame' }],
+  },
+
+  // Trafalgar Law — Mes + Room: surgically removes hearts from bodies
+  trafalgar_law: {
+    slug: 'trafalgar_law', auraColor: '#22d3ee',
+    techniques: [{ name: 'Room — K-Room: Shock Wille!!!', type: 'kamui', color: '#22d3ee', secondaryColor: '#0891b2', duration: 3200, flavour: 'My Room — nothing inside it escapes the Surgeon of Death' }],
+  },
+  law: {
+    slug: 'law', auraColor: '#22d3ee',
+    techniques: [{ name: 'Room — Mes!!!', type: 'kamui', color: '#22d3ee', secondaryColor: '#67e8f9', duration: 2800, flavour: 'Your heart belongs to me now' }],
+  },
+
+  // Jinbe — Fish-Man Karate: water itself is a weapon at this level
+  jinbe: {
+    slug: 'jinbe', auraColor: '#38bdf8',
+    techniques: [{ name: 'Fish-Man Karate — Vagabond Drill!!!', type: 'elemental_water', color: '#0369a1', secondaryColor: '#38bdf8', duration: 3000, flavour: 'Water, blood, and iron — I shall smash you through the deep' }],
+  },
+
+  // Brook — Soul Solid: sub-zero ice blade infused with the soul king's music
+  brook: {
+    slug: 'brook', auraColor: '#e2e8f0',
+    techniques: [{ name: 'Soul Solid — Phrase d\'Armes!!!', type: 'sword', color: '#e2e8f0', secondaryColor: '#94a3b8', duration: 2800, flavour: 'Yohohoho — shall I cut your soul?' }],
+  },
+
+  // Franky — General Franky / Radical Beam at full cyborg power
+  franky: {
+    slug: 'franky', auraColor: '#3b82f6',
+    techniques: [{ name: 'General Franky — Radical Beam!!!', type: 'ki_beam', color: '#3b82f6', secondaryColor: '#93c5fd', duration: 2800, flavour: 'SUPER! — Cola-powered full-power beam attack' }],
+  },
+
+  // Nico Robin — Mil Fleur: Gigantesco Mano Stomp
+  nico_robin: {
+    slug: 'nico_robin', auraColor: '#f472b6',
+    techniques: [{ name: 'Mil Fleur — Gigantesco Mano: Stomp!!!', type: 'physical', color: '#f472b6', secondaryColor: '#fbcfe8', duration: 2800, flavour: 'A giant hand from every shadow — bloom!' }],
+  },
+  robin: {
+    slug: 'robin', auraColor: '#f472b6',
+    techniques: [{ name: 'Gigantesco Mano — Storm!!!', type: 'physical', color: '#f472b6', secondaryColor: '#fce7f3', duration: 2600, flavour: 'Infinite arms, infinite bloom' }],
+  },
+
+  // Nami — Zeus Thunderbolt Tempo: Luffy\'s storm attacks with Big Mom\'s cloud
+  nami: {
+    slug: 'nami', auraColor: '#fef08a',
+    techniques: [{ name: 'Zeus Thunderbolt Tempo!!!', type: 'elemental_lightning', color: '#fef08a', secondaryColor: '#fbbf24', duration: 2800, flavour: 'Lightning that answers only to me — strike!' }],
+  },
+
+  // Usopp — God Usopp with Pop Green and Haki awakening at Dressrosa
+  usopp: {
+    slug: 'usopp', auraColor: '#84cc16',
+    techniques: [{ name: 'God Usopp — 5 Ton Hammer!!!', type: 'physical', color: '#84cc16', secondaryColor: '#d9f99d', duration: 2400, flavour: 'The warrior of the sea — 8000 followers cannot be wrong' }],
+  },
+
+  // Yamato — Ice Beast transformation with Namuaji Glacier
+  yamato: {
+    slug: 'yamato', auraColor: '#bfdbfe',
+    techniques: [{ name: 'Namuaji — Glacier Pace!!!', type: 'elemental_ice', color: '#bfdbfe', secondaryColor: '#eff6ff', duration: 3000, flavour: 'The guardian of Wano — Oden would do the same' }],
+  },
+
+  // Sabo — Mera Mera fire inherited from Ace
+  sabo: {
+    slug: 'sabo', auraColor: '#f97316',
+    techniques: [{ name: 'Hiken — Dragon\'s Breath!!!', type: 'elemental_fire', color: '#f97316', secondaryColor: '#fbbf24', duration: 2800, flavour: 'Ace\'s fire lives on in me — I will not let it be extinguished' }],
+  },
+
+  // Katakuri — Mochi awakening: his Observation Haki sees the future
+  katakuri: {
+    slug: 'katakuri', auraColor: '#e2e8f0',
+    techniques: [{ name: 'Mochi Mochi — Zan Giri Mochi!!!', type: 'logia', color: '#e2e8f0', secondaryColor: '#f1f5f9', duration: 3000, flavour: 'I can see the future — and you cannot win' }],
   },
 
   // ── Naruto ──────────────────────────────────────────────────────────────────

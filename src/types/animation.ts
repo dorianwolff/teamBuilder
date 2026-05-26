@@ -41,6 +41,11 @@ export type AnimationType =
   | 'kamui'          // Dimensional vortex — Obito / Kakashi Mangekyo
   | 'eight_gates'    // Gate of Death / inner-gate aura burst (Guy / Rock Lee)
   | 'gentle_fist'    // Byakugan chakra network + 64-palm strikes (Hyuga clan)
+  // ── One Piece-specific ─────────────────────────────────────────────────────
+  | 'conquerors_haki'  // CoC — black lightning shatters the sky (Shanks, Roger, Kaido…)
+  | 'asura'            // Zoro's demon-king manifestation — three heads, nine blades
+  | 'diable_jambe'     // Sanji's infernal spinning fire kick (Ifrit Jambe blue-white)
+  | 'gura_gura'        // Whitebeard's reality-cracking earthquake shockwave
 
 /** A single technique that can be shown in the pre-battle animation */
 export interface TechniqueAnim {

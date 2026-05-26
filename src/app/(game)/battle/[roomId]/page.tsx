@@ -114,11 +114,13 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
   const uiConfirmed = localConfirmed || (myState?.confirmed ?? false)
 
   // Countdown from local timer.
-  // Guard: also verify the deadline is actually in the past to prevent the
-  // spurious "expired" frame that fires when localTimerEndsAt is first set
-  // (useCountdown initialises to 0 before its effect runs).
-  const myTimeLeft   = useCountdown(localTimerEndsAt)
-  const timerExpired = localTimerEndsAt !== null
+  // IMPORTANT: freeze the countdown while an animation is playing so the
+  // timer cannot expire mid-sequence and auto-submit the wrong round.
+  // Also guard the spurious "expired" frame that fires when localTimerEndsAt
+  // is first set (useCountdown initialises to 0 before its effect runs).
+  const myTimeLeft   = useCountdown(animRound ? null : localTimerEndsAt)
+  const timerExpired = !animRound
+    && localTimerEndsAt !== null
     && myTimeLeft === 0
     && new Date(localTimerEndsAt).getTime() <= Date.now()
 
@@ -171,6 +173,7 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
   // while timerExpired is already true (edge-case: timer hits 0 mid-transition).
   useEffect(() => {
     if (!timerExpired) return
+    if (animRound !== null) return // never auto-pick while the animation is playing
     if (uiConfirmed || submitting || autoSubmittedRef.current) return
     if (!battle || battle.phase !== 'selecting') return
     const chars = myState?.remaining_characters ?? []
@@ -470,19 +473,28 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
   const animCharA = animRound ? allBattleChars.find(c => c.id === animRound.player_a_pick) ?? null : null
   const animCharB = animRound ? allBattleChars.find(c => c.id === animRound.player_b_pick) ?? null : null
 
-  // Defer score display during animation: show scores as they were BEFORE the round
-  // so the result isn't spoiled by a preemptive score update on the main page.
-  const displayScoreA = animRound?.winner_id
-    ? battle.scores.a - (animRound.winner_id === room.player_a_id ? 1 : 0)
+  // Defer score display during animation so the result isn't spoiled before the
+  // animation plays.  There is a 1-frame window between the realtime update
+  // (which writes the new score into `battle.scores`) and the useEffect that
+  // calls setAnimRound() — on that single frame animRound is still null but the
+  // score is already incremented.  We close the gap by also checking the last
+  // round in the rounds array directly (it has phase='result' the moment it is
+  // resolved, before animRound state is set).
+  const lastRound    = battle.rounds[battle.rounds.length - 1]
+  const pendingRound = animRound
+    ?? (!resultModal && lastRound?.phase === 'result' ? lastRound : null)
+
+  const displayScoreA = pendingRound?.winner_id != null
+    ? battle.scores.a - (pendingRound.winner_id === room.player_a_id ? 1 : 0)
     : battle.scores.a
-  const displayScoreB = animRound?.winner_id
-    ? battle.scores.b - (animRound.winner_id === room.player_b_id ? 1 : 0)
+  const displayScoreB = pendingRound?.winner_id != null
+    ? battle.scores.b - (pendingRound.winner_id === room.player_b_id ? 1 : 0)
     : battle.scores.b
   const myScore  = isA ? displayScoreA : displayScoreB
   const oppScore = isA ? displayScoreB : displayScoreA
 
-  // Show timer only while actively selecting (not confirmed, not game over)
-  const showTimer = !gameOver && localTimerEndsAt !== null && !uiConfirmed && battle.phase === 'selecting'
+  // Show timer only while actively selecting (not confirmed, not game over, not animating)
+  const showTimer = !gameOver && !animRound && localTimerEndsAt !== null && !uiConfirmed && battle.phase === 'selecting'
 
   return (
     <div className="h-screen flex flex-col overflow-hidden select-none bg-void-950">
