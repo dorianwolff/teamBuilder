@@ -72,6 +72,8 @@ export type AnimationType =
   | 'needle_control'   // Illumi — silver needle rain, cold threads, puppet-jerk manipulation
   | 'big_bang_impact'  // Uvogin — pure Enhancement: copper-red fist crater, shockwave
   | 'nen_copy'         // Ging — neutral white mirror: receives technique, amplifies and returns
+  // ── One Piece-specific (additional) ───────────────────────────────────────
+  | 'mero_mero'        // Hancock — drawn SVG hearts fly, pink beam, stone-grey petrification wave
 
 /** A single technique that can be shown in the pre-battle animation */
 export interface TechniqueAnim {

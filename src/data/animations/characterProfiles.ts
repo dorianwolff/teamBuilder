@@ -103,10 +103,10 @@ export const CHARACTER_PROFILES: Record<string, CharacterAnimProfile> = {
     techniques: [{ name: 'Birdcage — Parasyte: Off with their Heads!!!', type: 'string', color: '#f472b6', secondaryColor: '#fbcfe8', duration: 3200, flavour: 'The cage shrinks — there is no escape from Doflamingo\'s strings' }],
   },
 
-  // Boa Hancock — Mero Mero no Mi: petrification through beauty and love
+  // Boa Hancock — Mero Mero no Mi: hearts fly, beam fires, stone-grey petrification
   boa_hancock: {
     slug: 'boa_hancock', auraColor: '#f9a8d4',
-    techniques: [{ name: 'Perfume Femur — Pistol Kiss!!!', type: 'physical', color: '#f9a8d4', secondaryColor: '#fce7f3', duration: 2600, flavour: 'Even your admiration will turn to stone' }],
+    techniques: [{ name: 'Mero Mero Mellow!!!', type: 'mero_mero', color: '#f472b6', secondaryColor: '#fce7f3', duration: 3000, flavour: 'Your very admiration petrifies you — love is her most lethal weapon' }],
   },
 
   // Magellan — Venom Demon: his most powerful form, covering himself in poison

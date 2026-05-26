@@ -8,7 +8,7 @@
 import { motion } from 'framer-motion'
 import type { AnimationType } from '@/types/animation'
 import { ChidoriEffect, KamuiEffect, EightGatesEffect, GentleFistEffect } from './NarutoEffects'
-import { ConquerorsHakiEffect, AsuraEffect, DiableJambeEffect, GuraGuraEffect, LightSpeedEffect } from './OnePieceEffects'
+import { ConquerorsHakiEffect, AsuraEffect, DiableJambeEffect, GuraGuraEffect, LightSpeedEffect, MeroMeroEffect } from './OnePieceEffects'
 import { AdultGonEffect, GodspeedEffect, ZeroHandEffect, BungeeGumEffect, SkillHunterEffect, EmperorTimeEffect, RisingSunEffect, TerpsichoraEffect, RoyalPhotonEffect, NeedleControlEffect, BigBangImpactEffect, NenCopyEffect } from './HxHEffects'
 import { UltraInstinctEffect, UltraEgoEffect, HakaiEffect, LegendarySaiyanEffect, BeastModeEffect, SpiritSwordEffect, PowerImpactEffect, SolarKamehamehaEffect, BlackFriezaEffect, CandyBeamEffect } from './DBZEffects'
 
@@ -173,6 +173,19 @@ function SharinganEffect({ color, side }: EffectProps) {
 }
 
 // ── Genjutsu — Itachi crows + blood-moon Tsukuyomi ───────────────────────────
+
+// Pre-computed scattered Sharingan eye positions (% of screen).
+// Placed away from the center 35-65% x band (portrait zone).
+const GENJUTSU_EYE_POS = [
+  { x:  7, y: 14, scale: 0.95, delay: 0.20, rot:  -8 },
+  { x: 14, y: 46, scale: 0.72, delay: 0.44, rot:  13 },
+  { x:  6, y: 72, scale: 0.82, delay: 0.66, rot:  -5 },
+  { x: 88, y: 11, scale: 0.88, delay: 0.30, rot:   7 },
+  { x: 93, y: 55, scale: 0.98, delay: 0.54, rot: -11 },
+  { x: 84, y: 80, scale: 0.70, delay: 0.76, rot:   9 },
+  { x: 50, y:  5, scale: 0.84, delay: 0.14, rot:  -4 },
+]
+
 function GenjutsuEffect({ color, side }: EffectProps) {
   const cx = side === 'left' ? '25%' : '75%'
 
@@ -316,6 +329,48 @@ function GenjutsuEffect({ color, side }: EffectProps) {
           animate={{ scaleX: [0, 1, 0] }}
           transition={{ duration: 1, delay: 0.5 + i * 0.1 }}
         />
+      ))}
+
+      {/* Scattered drawn Sharingan eyes — the illusion fractures reality */}
+      {GENJUTSU_EYE_POS.map((ep, i) => (
+        <motion.div
+          key={`eye-${i}`}
+          className="absolute"
+          style={{
+            left: `${ep.x}%`,
+            top:  `${ep.y}%`,
+            transform: `translate(-50%, -50%) rotate(${ep.rot}deg) scale(${ep.scale})`,
+            transformOrigin: 'center',
+            zIndex: 25,
+          }}
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: [0, ep.scale * 1.25, ep.scale], opacity: [0, 1, 0.9, 0.75, 0] }}
+          transition={{
+            scale:   { duration: 0.5, delay: ep.delay },
+            opacity: { duration: 2.6, delay: ep.delay, times: [0, 0.18, 0.42, 0.8, 1] },
+          }}
+        >
+          {/* Drawn SVG Sharingan eye — never an emoji */}
+          <motion.div
+            animate={{ filter: [`drop-shadow(0 0 4px ${color}88)`, `drop-shadow(0 0 10px ${color}cc)`, `drop-shadow(0 0 4px ${color}88)`] }}
+            transition={{ duration: 0.9, repeat: Infinity, delay: ep.delay }}
+          >
+            <svg width="58" height="32" viewBox="0 0 58 32" style={{ overflow: 'visible' }}>
+              {/* Outer almond eye shape */}
+              <path d="M0,16 C10,-6 48,-6 58,16 C48,38 10,38 0,16 Z" fill="#0a0005" stroke={color} strokeWidth="1" />
+              {/* Iris — red Sharingan */}
+              <circle cx="29" cy="16" r="12" fill={color} />
+              {/* Pupil */}
+              <circle cx="29" cy="16" r="5.5" fill="#070010" />
+              {/* Three tomoe at 120° intervals around the pupil ring */}
+              <circle cx="29" cy="7"  r="2.3" fill="#070010" />
+              <circle cx="21" cy="21" r="2.3" fill="#070010" />
+              <circle cx="37" cy="21" r="2.3" fill="#070010" />
+              {/* Highlight */}
+              <ellipse cx="25" cy="12" rx="2.2" ry="1.4" fill="rgba(255,255,255,0.28)" />
+            </svg>
+          </motion.div>
+        </motion.div>
       ))}
     </div>
   )
@@ -952,6 +1007,7 @@ export function EffectOverlay({ type, color, secondaryColor, side }: { type: Ani
     case 'diable_jambe':      return <DiableJambeEffect {...props} />
     case 'gura_gura':         return <GuraGuraEffect {...props} />
     case 'light_speed':       return <LightSpeedEffect {...props} />
+    case 'mero_mero':         return <MeroMeroEffect {...props} />
     // ── Hunter × Hunter ────────────────────────────────────────────────────
     case 'adult_gon':         return <AdultGonEffect {...props} />
     case 'godspeed':          return <GodspeedEffect {...props} />

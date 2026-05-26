@@ -661,124 +661,162 @@ export function LightSpeedEffect({ color, secondaryColor, side }: EffectProps) {
   )
 }
 
-// ─── Gura Gura no Mi — Reality-Crack Earthquake ───────────────────────────────
+// ─── Gura Gura no Mi — Physics-Accurate Earthquake Fissure Network ──────────────
+//
+// 22 crack paths in three tiers:
+//   Tier 1: 6 world-spanning primary fractures (first to appear, widest)
+//   Tier 2: 6 secondary branches forking off the primaries at 45-90°
+//   Tier 3: 10 tertiary spider-web micro-cracks tight around the epicentre
+//
+// Plus a bright horizontal world-split fault line at ~50% height.
+// Side='left': epicentre at viewBox (30, 50). Side='right': mirrored.
 
-// Pre-computed crack lines radiating from the fist impact point
-// SVG paths in viewBox="0 0 100 100"; origin near attacker's fist (~30% or ~70%)
-// For side='left': fist at ~30,50; cracks spread right and toward opponent
-const CRACK_PATHS_L = [
-  // Primary crack — crosses entire screen to opponent
-  'M30,50 L44,44 L40,36 L58,28 L53,18 L68,32 L82,42 L100,38',
-  // Upward fracture branch
-  'M30,50 L28,38 L35,28 L28,15',
-  // Downward fracture branch
-  'M30,50 L38,62 L32,74 L44,85',
-  // Mid-right branch
-  'M44,44 L55,40 L62,46 L72,38 L85,44',
-  // Upper-right branch
-  'M40,36 L48,26 L58,22 L70,28',
-  // Short downward branch
-  'M38,62 L48,68 L55,64 L65,72',
-  // Spiderweb detail cracks
-  'M58,28 L65,24 L70,18',
-  'M58,28 L62,36 L70,34',
+interface GuraCrack { d: string; tier: 1|2|3; delay: number; width: number; dur: number }
+
+const GURA_CRACKS_L: GuraCrack[] = [
+  // ── Tier 1 — world-spanning primaries ─────────────────────────────────────
+  // Horizontal world-split fault line (most dramatic — crosses full screen)
+  { d: 'M0,47 L8,48.5 L14,47 L22,49 L30,50 L38,47.5 L48,51 L60,48 L74,51.5 L88,48 L100,50', tier: 1, delay: 0.03, width: 2.6, dur: 0.68 },
+  // Upper-right diagonal crack
+  { d: 'M30,50 L40,42 L37,32 L52,23 L48,13 L62,26 L76,32 L90,29 L100,27', tier: 1, delay: 0.05, width: 2.2, dur: 0.62 },
+  // Lower-right diagonal crack
+  { d: 'M30,50 L44,58 L40,68 L56,76 L70,82 L84,80 L100,84', tier: 1, delay: 0.07, width: 2.0, dur: 0.60 },
+  // Upper-left diagonal crack
+  { d: 'M30,50 L22,40 L26,28 L18,18 L10,10 L4,4', tier: 1, delay: 0.06, width: 1.8, dur: 0.55 },
+  // Straight upward crack
+  { d: 'M30,50 L31,36 L28,22 L30,10 L29,0', tier: 1, delay: 0.04, width: 1.9, dur: 0.56 },
+  // Straight downward crack
+  { d: 'M30,50 L29,64 L32,78 L30,90 L31,100', tier: 1, delay: 0.04, width: 1.9, dur: 0.56 },
+  // ── Tier 2 — secondary branches ───────────────────────────────────────────
+  { d: 'M40,42 L50,35 L56,27 L64,20 L72,14', tier: 2, delay: 0.22, width: 1.4, dur: 0.46 },
+  { d: 'M52,23 L62,17 L70,10 L80,5', tier: 2, delay: 0.28, width: 1.2, dur: 0.40 },
+  { d: 'M44,58 L54,64 L62,70 L70,76 L76,80', tier: 2, delay: 0.24, width: 1.4, dur: 0.46 },
+  { d: 'M40,68 L50,72 L58,68 L66,74 L74,78', tier: 2, delay: 0.32, width: 1.2, dur: 0.40 },
+  { d: 'M22,40 L30,32 L26,24 L32,16', tier: 2, delay: 0.26, width: 1.3, dur: 0.42 },
+  { d: 'M31,36 L40,30 L38,22 L46,14', tier: 2, delay: 0.30, width: 1.2, dur: 0.40 },
+  // ── Tier 3 — spider-web micro-cracks at epicentre ─────────────────────────
+  { d: 'M30,50 L26,46 L22,44 L18,43', tier: 3, delay: 0.15, width: 0.9, dur: 0.30 },
+  { d: 'M30,50 L34,46 L38,44 L42,43', tier: 3, delay: 0.15, width: 0.9, dur: 0.30 },
+  { d: 'M30,50 L26,54 L22,56 L18,57', tier: 3, delay: 0.17, width: 0.9, dur: 0.30 },
+  { d: 'M30,50 L34,54 L38,56 L42,57', tier: 3, delay: 0.17, width: 0.9, dur: 0.30 },
+  { d: 'M30,50 L28,44 L30,38 L26,34 L29,28', tier: 3, delay: 0.19, width: 0.8, dur: 0.33 },
+  { d: 'M30,50 L32,44 L30,40 L34,36 L31,30', tier: 3, delay: 0.19, width: 0.8, dur: 0.33 },
+  { d: 'M30,50 L28,56 L26,62 L30,68', tier: 3, delay: 0.21, width: 0.8, dur: 0.31 },
+  { d: 'M30,50 L32,56 L34,62 L30,68', tier: 3, delay: 0.21, width: 0.8, dur: 0.31 },
+  { d: 'M36,50 L40,48 L44,50 L48,48', tier: 3, delay: 0.23, width: 0.7, dur: 0.26 },
+  { d: 'M36,50 L40,52 L44,50 L48,52', tier: 3, delay: 0.23, width: 0.7, dur: 0.26 },
 ]
-const CRACK_PATHS_R = CRACK_PATHS_L.map(p =>
-  p.replace(/(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)/g, (_, x, y) => `${(100 - parseFloat(x)).toFixed(1)},${y}`)
-)
 
-const CRACK_DELAYS  = [0.05, 0.12, 0.15, 0.22, 0.28, 0.35, 0.40, 0.44]
-const CRACK_WIDTHS  = [2.4, 1.8, 1.8, 1.4, 1.2, 1.2, 0.8, 0.8]
-const CRACK_LENGTHS = [0.7, 0.45, 0.42, 0.5, 0.44, 0.42, 0.35, 0.35]
+const GURA_CRACKS_R = GURA_CRACKS_L.map(c => ({
+  ...c,
+  d: c.d.replace(/(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)/g, (_, x, y) => `${(100 - parseFloat(x)).toFixed(1)},${y}`)
+}))
 
-// Debris particle pre-computed configs
-const DEBRIS = [
-  { dx:  55, dy: -35, size: 5, delay: 0.18 },
-  { dx: -20, dy: -48, size: 3, delay: 0.22 },
-  { dx:  70, dy:  10, size: 4, delay: 0.25 },
-  { dx:  30, dy: -60, size: 6, delay: 0.15 },
-  { dx: -40, dy: -25, size: 4, delay: 0.30 },
-  { dx:  80, dy: -15, size: 3, delay: 0.20 },
-  { dx:  10, dy: -70, size: 5, delay: 0.12 },
-  { dx:  50, dy:  30, size: 4, delay: 0.28 },
-  { dx: -60, dy: -10, size: 3, delay: 0.33 },
-  { dx:  90, dy: -40, size: 6, delay: 0.16 },
-  { dx: -15, dy: -55, size: 4, delay: 0.26 },
-  { dx:  65, dy:  20, size: 3, delay: 0.35 },
+const GURA_DEBRIS = [
+  { dx:  55, dy: -35, w: 8,  h: 5, delay: 0.18 },
+  { dx: -20, dy: -48, w: 5,  h: 3, delay: 0.22 },
+  { dx:  70, dy:  10, w: 7,  h: 4, delay: 0.25 },
+  { dx:  30, dy: -60, w: 10, h: 6, delay: 0.15 },
+  { dx: -40, dy: -25, w: 6,  h: 4, delay: 0.30 },
+  { dx:  80, dy: -15, w: 5,  h: 3, delay: 0.20 },
+  { dx:  10, dy: -70, w: 8,  h: 5, delay: 0.12 },
+  { dx:  50, dy:  30, w: 6,  h: 4, delay: 0.28 },
+  { dx: -60, dy: -10, w: 5,  h: 3, delay: 0.33 },
+  { dx:  90, dy: -40, w: 9,  h: 6, delay: 0.16 },
+  { dx: -15, dy: -55, w: 6,  h: 4, delay: 0.26 },
+  { dx:  65, dy:  20, w: 5,  h: 3, delay: 0.35 },
+  { dx: -35, dy: -38, w: 7,  h: 5, delay: 0.19 },
+  { dx:  45, dy: -22, w: 6,  h: 4, delay: 0.24 },
+  { dx: -50, dy:  25, w: 5,  h: 3, delay: 0.31 },
 ]
 
 export function GuraGuraEffect({ color, side }: EffectProps) {
-  const fistX     = side === 'left' ? 30 : 70
-  const paths     = side === 'left' ? CRACK_PATHS_L : CRACK_PATHS_R
-  const white     = color.includes('fff') ? '#e0f2fe' : '#ffffff'
+  const fistX  = side === 'left' ? 30 : 70
+  const cracks = side === 'left' ? GURA_CRACKS_L : GURA_CRACKS_R
+  void color // color passed but effect uses white/ice palette for seismic energy
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
 
-      {/* Earthquake atmosphere — the world shudders */}
+      {/* Earthquake atmosphere — oppressive weight before the strike */}
       <motion.div
         className="absolute inset-0"
-        style={{ background: `radial-gradient(circle at ${fistX}% 50%, ${white}44 0%, transparent 55%)` }}
+        style={{ background: `radial-gradient(circle at ${fistX}% 50%, #e0f2fe44 0%, #00000055 80%)` }}
         animate={{ opacity: [0, 1, 0.7, 0.9, 0] }}
-        transition={{ duration: 2.5 }}
+        transition={{ duration: 2.6 }}
+      />
+
+      {/* Horizontal world-split fault-line glow — the planet itself fractures */}
+      <motion.div
+        className="absolute inset-x-0"
+        style={{
+          top: '49%', height: 5,
+          background: 'linear-gradient(to right, transparent 0%, #bae6fdcc 12%, #ffffff 50%, #bae6fdcc 88%, transparent 100%)',
+          filter: 'blur(2px)',
+        }}
+        initial={{ opacity: 0, scaleX: 0.1 }}
+        animate={{ opacity: [0, 0, 1, 0.88, 0.55, 0], scaleX: [0.1, 0.4, 1, 1, 0.9, 0.7] }}
+        transition={{ duration: 2.2, times: [0, 0.08, 0.18, 0.38, 0.72, 1] }}
       />
 
       {/* Screen tremble — seismic oscillation */}
       <motion.div
         className="absolute inset-0"
         animate={{
-          x: [0, -4, 3, -5, 2, -3, 4, -2, 1, 0],
-          y: [0, 2, -3, 4, -2, 3, -4, 1, -2, 0],
+          x: [0, -5, 4, -6, 3, -4, 5, -2, 2, 0],
+          y: [0,  3,-4,  5,-3,  4,-5,  2,-3, 0],
         }}
-        transition={{ duration: 1.0, delay: 0.1, times: [0,.1,.2,.3,.4,.5,.6,.7,.9,1] }}
+        transition={{ duration: 1.1, delay: 0.08, times: [0,.1,.2,.3,.4,.5,.6,.7,.9,1] }}
       >
-        {/* Main SVG crack layer — white fracture lines */}
+        {/* SVG crack network — glow layer behind */}
         <svg
           className="absolute inset-0 w-full h-full"
           viewBox="0 0 100 100"
           preserveAspectRatio="none"
-          style={{ filter: `drop-shadow(0 0 3px ${white})` }}
+          style={{ filter: 'blur(2.5px)', opacity: 0.28 }}
         >
-          {paths.map((d, i) => (
+          {cracks.filter(c => c.tier <= 2).map((c, i) => (
             <motion.path
-              key={`crack-${i}`}
-              d={d}
-              stroke={white}
-              strokeWidth={CRACK_WIDTHS[i]}
+              key={`glow-${i}`}
+              d={c.d}
+              stroke="#e0f2fe"
+              strokeWidth={c.width * 3}
               strokeLinecap="square"
               strokeLinejoin="miter"
               fill="none"
               initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ pathLength: [0, 1], opacity: [0, 1, 0.9] }}
-              transition={{ duration: CRACK_LENGTHS[i], delay: CRACK_DELAYS[i], ease: 'easeOut' }}
+              animate={{ pathLength: [0, 1], opacity: [0, 0.6, 0.25] }}
+              transition={{ duration: c.dur + 0.18, delay: c.delay }}
             />
           ))}
         </svg>
 
-        {/* Seismic energy glow behind cracks */}
+        {/* SVG crack network — crisp fracture lines */}
         <svg
           className="absolute inset-0 w-full h-full"
           viewBox="0 0 100 100"
           preserveAspectRatio="none"
-          style={{ filter: 'blur(4px)', opacity: 0.45 }}
+          style={{ filter: 'drop-shadow(0 0 2px #f0f9ff)' }}
         >
-          {paths.slice(0, 4).map((d, i) => (
+          {cracks.map((c, i) => (
             <motion.path
-              key={`glow-${i}`}
-              d={d}
-              stroke={white}
-              strokeWidth={CRACK_WIDTHS[i] * 2.5}
+              key={`crack-${i}`}
+              d={c.d}
+              stroke={c.tier === 1 ? '#ffffff' : c.tier === 2 ? '#e0f2feee' : '#bae6fdaa'}
+              strokeWidth={c.width}
+              strokeLinecap="square"
+              strokeLinejoin="miter"
               fill="none"
               initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ pathLength: [0, 1], opacity: [0, 0.6, 0.3] }}
-              transition={{ duration: CRACK_LENGTHS[i] + 0.2, delay: CRACK_DELAYS[i] }}
+              animate={{ pathLength: [0, 1], opacity: [0, 1, c.tier === 1 ? 0.92 : 0.72] }}
+              transition={{ duration: c.dur, delay: c.delay, ease: 'easeOut' }}
             />
           ))}
         </svg>
       </motion.div>
 
       {/* Seismic shockwave rings expanding from the fist */}
-      {[0, 1, 2].map(i => (
+      {[0, 1, 2, 3].map(i => (
         <motion.div
           key={`wave-${i}`}
           className="absolute rounded-full border-2"
@@ -786,56 +824,289 @@ export function GuraGuraEffect({ color, side }: EffectProps) {
             left: `${fistX}%`,
             top: '50%',
             transform: 'translate(-50%, -50%)',
-            borderColor: `${white}88`,
+            borderColor: i < 2 ? '#e0f2fecc' : '#bae6fd66',
           }}
           initial={{ width: 0, height: 0, opacity: 0.9 }}
-          animate={{ width: 80 + i * 70, height: 50 + i * 45, opacity: 0 }}
-          transition={{ duration: 0.85, delay: 0.05 + i * 0.18 }}
+          animate={{ width: 50 + i * 85, height: 35 + i * 58, opacity: 0 }}
+          transition={{ duration: 0.9, delay: 0.04 + i * 0.16 }}
         />
       ))}
 
-      {/* Debris particles flying from the impact */}
-      {DEBRIS.map((d, i) => {
+      {/* Debris chunks from the shattered air */}
+      {GURA_DEBRIS.map((d, i) => {
         const rx = side === 'left' ? d.dx : -d.dx
         return (
           <motion.div
             key={`debris-${i}`}
-            className="absolute rounded-sm"
+            className="absolute"
             style={{
-              width:  d.size,
-              height: d.size * 0.6,
-              background: i % 4 === 0 ? white : `${white}99`,
-              left:  `${fistX}%`,
-              top:   '50%',
+              width: d.w, height: d.h,
+              background: i % 3 === 0 ? '#ffffff' : '#bae6fdaa',
+              left: `${fistX}%`, top: '50%',
               transform: 'translate(-50%,-50%)',
+              borderRadius: 1,
             }}
             initial={{ x: 0, y: 0, opacity: 0, scale: 0 }}
             animate={{
-              x:       rx,
-              y:       d.dy,
+              x: rx, y: d.dy,
               opacity: [0, 1, 0.8, 0],
-              scale:   [0, 1.4, 0.9, 0],
-              rotate:  rx * 2,
+              scale:   [0, 1.4, 1, 0],
+              rotate:  rx * 1.5,
             }}
-            transition={{ duration: 0.55 + (i % 4) * 0.08, delay: d.delay, ease: 'easeOut' }}
+            transition={{ duration: 0.55 + (i % 4) * 0.1, delay: d.delay, ease: 'easeOut' }}
           />
         )
       })}
 
-      {/* Blinding white flash — the fist connecting with the air */}
+      {/* Fist impact flash — the air itself cracks */}
       <motion.div
         className="absolute inset-0 bg-white"
         initial={{ opacity: 0 }}
-        animate={{ opacity: [0, 0.65, 0.1, 0.4, 0] }}
-        transition={{ duration: 0.5, delay: 0.04, times: [0, 0.08, 0.25, 0.6, 1] }}
+        animate={{ opacity: [0, 0.78, 0.12, 0.44, 0] }}
+        transition={{ duration: 0.52, delay: 0.02, times: [0, 0.06, 0.20, 0.50, 1] }}
       />
 
-      {/* Afterglow — the energy lingers in the cracks */}
+      {/* Epicentre energy burst from Whitebeard's fist */}
+      <motion.div
+        className="absolute rounded-full"
+        style={{
+          left: `${fistX}%`, top: '50%',
+          width: 160, height: 160,
+          transform: 'translate(-50%, -50%)',
+          background: 'radial-gradient(circle, #ffffffcc 0%, #e0f2fe55 35%, transparent 65%)',
+          filter: 'blur(12px)',
+        }}
+        animate={{ scale: [0, 2.8, 1.8, 1, 0], opacity: [0, 0.9, 0.65, 0.4, 0] }}
+        transition={{ duration: 1.2, times: [0, 0.1, 0.3, 0.65, 1] }}
+      />
+
+      {/* Afterglow seeping through every crack */}
       <motion.div
         className="absolute inset-0"
-        style={{ background: `radial-gradient(circle at ${fistX}% 50%, ${white}33 0%, transparent 50%)` }}
-        animate={{ opacity: [0, 0, 0.8, 0.4, 0] }}
-        transition={{ duration: 2.2, times: [0, 0.2, 0.45, 0.75, 1] }}
+        style={{ background: `radial-gradient(circle at ${fistX}% 50%, #e0f2fe22 0%, transparent 42%)` }}
+        animate={{ opacity: [0, 0, 0.7, 0.3, 0] }}
+        transition={{ duration: 2.5, times: [0, 0.2, 0.42, 0.75, 1] }}
+      />
+    </div>
+  )
+}
+
+// ─── Mero Mero no Mi — Love-Love Fruit Petrification ────────────────────────
+//
+// Boa Hancock projects pure beauty as a weapon.
+// Phase 1: Pink love-energy sparkles scatter from Hancock's side.
+// Phase 2: Eight drawn SVG hearts arc in parabolas toward the opponent.
+// Phase 3: The Mero Mero beam fires — a wide pink ray.
+// Phase 4: Stone-grey petrification spreads across the opponent's side.
+
+// Heart arc configs — origin near attacker, fly toward opponent
+// For side='left': origin x ≈ 22%; for side='right': mirrored
+const HEART_CONFIGS = [
+  { oy: 38, size: 28, delay: 0.04, dur: 0.92, rot: -12, peakY: -128 },
+  { oy: 52, size: 22, delay: 0.16, dur: 0.86, rot:  18, peakY:  -92 },
+  { oy: 44, size: 32, delay: 0.28, dur: 1.04, rot: -25, peakY: -148 },
+  { oy: 60, size: 18, delay: 0.40, dur: 0.80, rot:  30, peakY:  -76 },
+  { oy: 34, size: 24, delay: 0.52, dur: 0.96, rot: -18, peakY: -112 },
+  { oy: 56, size: 16, delay: 0.10, dur: 0.78, rot:  12, peakY:  -86 },
+  { oy: 47, size: 20, delay: 0.34, dur: 1.00, rot:  -8, peakY: -122 },
+  { oy: 41, size: 14, delay: 0.60, dur: 0.74, rot:  22, peakY:  -96 },
+]
+
+// SVG heart path in viewBox="0 0 100 100"
+// Classic balloon-heart shape using smooth bezier curves
+const HEART_PATH = 'M50,25 C50,25 26,4 10,20 C0,32 7,57 50,80 C93,57 100,32 90,20 C74,4 50,25 50,25 Z'
+
+// Mero Mero beam — wide pink ray from attacker to opponent
+const MERO_BEAM_L = 'M22,50 Q52,44 78,50'
+const MERO_BEAM_R = 'M78,50 Q48,44 22,50'
+
+// Love-energy sparkles near attacker (stable — no Math.random in JSX)
+const LOVE_SPARKS = [
+  { x: 16, y: 32, delay: 0.0,  size: 7 },
+  { x: 28, y: 45, delay: 0.12, size: 5 },
+  { x: 13, y: 60, delay: 0.22, size: 8 },
+  { x: 30, y: 38, delay: 0.08, size: 4 },
+  { x: 20, y: 68, delay: 0.30, size: 6 },
+  { x: 11, y: 50, delay: 0.05, size: 7 },
+  { x: 32, y: 55, delay: 0.18, size: 4 },
+  { x: 25, y: 28, delay: 0.25, size: 5 },
+  { x: 17, y: 72, delay: 0.35, size: 6 },
+  { x: 23, y: 42, delay: 0.15, size: 3 },
+]
+
+export function MeroMeroEffect({ color, secondaryColor, side }: EffectProps) {
+  const attackerX = side === 'left' ? 22 : 78
+  const opponentX = side === 'left' ? 78 : 22
+  const travelX   = side === 'left' ? '54vw' : '-54vw'
+  const beamPath  = side === 'left' ? MERO_BEAM_L : MERO_BEAM_R
+  const pink      = color ?? '#f472b6'
+  const pale      = secondaryColor ?? '#fce7f3'
+
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+
+      {/* Step 1 — Rosy love-energy atmosphere radiates from Hancock */}
+      <motion.div
+        className="absolute inset-0"
+        style={{
+          background: `radial-gradient(ellipse at ${attackerX}% 52%, ${pink}55 0%, ${pale}22 40%, transparent 68%)`,
+        }}
+        animate={{ opacity: [0, 0.9, 0.7, 1, 0.6, 0] }}
+        transition={{ duration: 3.0, times: [0, 0.15, 0.35, 0.55, 0.8, 1] }}
+      />
+
+      {/* Step 2 — Love-energy sparkle burst near Hancock */}
+      {LOVE_SPARKS.map((sp, i) => {
+        const sx = side === 'left' ? sp.x : 100 - sp.x
+        return (
+          <motion.div
+            key={`spark-${i}`}
+            className="absolute rounded-full"
+            style={{
+              width: sp.size, height: sp.size,
+              left: `${sx}%`, top: `${sp.y}%`,
+              background: i % 3 === 0 ? pale : pink,
+              boxShadow: `0 0 ${sp.size * 2}px ${sp.size}px ${pink}88`,
+            }}
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: [0, 1.8, 1.2, 0], opacity: [0, 1, 0.8, 0], y: [-8, -22, -40] }}
+            transition={{ duration: 0.7, delay: sp.delay }}
+          />
+        )
+      })}
+
+      {/* Step 3 — Eight drawn SVG hearts arc toward opponent */}
+      {HEART_CONFIGS.map((h, i) => {
+        const ox = side === 'left' ? 22 : 78
+        return (
+          <motion.div
+            key={`heart-${i}`}
+            className="absolute"
+            style={{
+              left: `${ox}%`,
+              top: `${h.oy}%`,
+              transform: 'translate(-50%, -50%)',
+              zIndex: 30,
+            }}
+            initial={{ x: 0, y: 0, opacity: 0, scale: 0.2, rotate: h.rot }}
+            animate={{
+              x: travelX,
+              y: [0, h.peakY, h.peakY * 0.55, 20],
+              opacity: [0, 1, 1, 0.85, 0],
+              scale: [0.2, 1.1, 1, 0.85, 0.7],
+              rotate: h.rot * 2.5,
+            }}
+            transition={{
+              x:       { duration: h.dur, ease: 'easeIn' },
+              y:       { duration: h.dur, times: [0, 0.38, 0.72, 1], ease: 'easeOut' },
+              opacity: { duration: h.dur, times: [0, 0.08, 0.65, 0.85, 1] },
+              scale:   { duration: h.dur },
+              rotate:  { duration: h.dur },
+              delay: h.delay,
+            }}
+          >
+            <svg
+              width={h.size}
+              height={h.size}
+              viewBox="0 0 100 100"
+              style={{ overflow: 'visible', filter: `drop-shadow(0 0 ${h.size * 0.3}px ${pink})` }}
+            >
+              <path
+                d={HEART_PATH}
+                fill={pink}
+                stroke={pale}
+                strokeWidth="3"
+                opacity="0.92"
+              />
+            </svg>
+          </motion.div>
+        )
+      })}
+
+      {/* Step 4 — Mero Mero beam fires (SVG path) */}
+      <svg
+        className="absolute inset-0 w-full h-full"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+      >
+        {/* Wide outer glow */}
+        <motion.path
+          d={beamPath}
+          stroke={pale}
+          strokeWidth="12"
+          strokeLinecap="round"
+          fill="none"
+          style={{ filter: 'blur(6px)' }}
+          initial={{ pathLength: 0, opacity: 0 }}
+          animate={{ pathLength: [0, 1, 1, 0], opacity: [0, 0.55, 0.45, 0] }}
+          transition={{ duration: 0.7, delay: 0.75, ease: 'easeOut' }}
+        />
+        {/* Mid pink beam */}
+        <motion.path
+          d={beamPath}
+          stroke={pink}
+          strokeWidth="7"
+          strokeLinecap="round"
+          fill="none"
+          style={{ filter: 'blur(2px)' }}
+          initial={{ pathLength: 0, opacity: 0 }}
+          animate={{ pathLength: [0, 1, 1, 0], opacity: [0, 0.9, 0.8, 0] }}
+          transition={{ duration: 0.65, delay: 0.78, ease: 'easeOut' }}
+        />
+        {/* White-hot core */}
+        <motion.path
+          d={beamPath}
+          stroke="#ffffff"
+          strokeWidth="2"
+          strokeLinecap="round"
+          fill="none"
+          initial={{ pathLength: 0, opacity: 0 }}
+          animate={{ pathLength: [0, 1, 1, 0], opacity: [0, 1, 0.9, 0] }}
+          transition={{ duration: 0.55, delay: 0.82, ease: 'linear' }}
+        />
+      </svg>
+
+      {/* Step 5 — Stone-grey petrification wave on opponent side */}
+      <motion.div
+        className="absolute inset-0"
+        style={{
+          background: `radial-gradient(ellipse at ${opponentX}% 50%, #94a3b8cc 0%, #64748b55 30%, transparent 60%)`,
+          mixBlendMode: 'overlay',
+        }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: [0, 0, 0.7, 0.9, 0.65, 0] }}
+        transition={{ duration: 2.2, times: [0, 0.38, 0.52, 0.65, 0.82, 1] }}
+      />
+
+      {/* Stone-grey expanding ring at opponent */}
+      {[0, 1].map(i => (
+        <motion.div
+          key={`stone-${i}`}
+          className="absolute rounded-full border"
+          style={{
+            left: `${opponentX}%`, top: '50%',
+            transform: 'translate(-50%, -50%)',
+            borderColor: '#94a3b888',
+          }}
+          initial={{ width: 0, height: 0, opacity: 0.8 }}
+          animate={{ width: 80 + i * 60, height: 80 + i * 60, opacity: 0 }}
+          transition={{ duration: 0.75, delay: 1.28 + i * 0.18 }}
+        />
+      ))}
+
+      {/* Heart impact burst at opponent */}
+      <motion.div
+        className="absolute rounded-full"
+        style={{
+          left: `${opponentX}%`, top: '50%',
+          width: 80, height: 80,
+          transform: 'translate(-50%, -50%)',
+          background: `radial-gradient(circle, ${pale}ee 0%, ${pink}77 40%, transparent 70%)`,
+          filter: 'blur(8px)',
+        }}
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: [0, 2.2, 0.8, 0], opacity: [0, 0.9, 0.6, 0] }}
+        transition={{ duration: 0.5, delay: 1.15, times: [0, 0.15, 0.55, 1] }}
       />
     </div>
   )

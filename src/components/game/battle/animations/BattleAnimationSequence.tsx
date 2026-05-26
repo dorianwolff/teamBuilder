@@ -32,6 +32,7 @@ import { NumberReveal } from './NumberReveal'
 import { cn } from '@/lib/utils/cn'
 import type { Character } from '@/types/character'
 import type { BattleRound } from '@/types/game'
+import type { BattleModifier } from '@/types/game'
 import type { TechniqueAnim, AnimationType } from '@/types/animation'
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
@@ -293,6 +294,100 @@ function CharPortrait({
   )
 }
 
+// ─── FloatingModifiers — impact text scattered on screen during number reveal ──
+
+// Pre-computed screen positions: left column for A-side events, right for B-side.
+// Coords in %, avoiding the center portrait zone and the bottom score area.
+const FM_LEFT: { x: number; y: number }[] = [
+  { x: 9,  y: 16 },
+  { x: 11, y: 42 },
+  { x: 7,  y: 65 },
+  { x: 13, y: 82 },
+]
+const FM_RIGHT: { x: number; y: number }[] = [
+  { x: 88, y: 13 },
+  { x: 85, y: 39 },
+  { x: 91, y: 62 },
+  { x: 84, y: 79 },
+]
+
+function FloatingModifiers({ modifiers, active }: { modifiers: BattleModifier[]; active: boolean }) {
+  if (!active) return null
+  const items = modifiers.filter(m => m.description && (m.score_delta_a !== 0 || m.score_delta_b !== 0)).slice(0, 6)
+  if (items.length === 0) return null
+
+  const leftUsed  = { count: 0 }
+  const rightUsed = { count: 0 }
+
+  return (
+    <div className="absolute inset-0 pointer-events-none z-25">
+      {items.map((m, i) => {
+        const isNegA  = m.score_delta_a < 0
+        const isPosA  = m.score_delta_a > 0
+        const isNegB  = m.score_delta_b < 0
+        const isPosB  = m.score_delta_b > 0
+
+        // Position: debuffs land on the victim's side; buffs on the attacker's side
+        let pos: { x: number; y: number }
+        let textAlign: 'left' | 'right'
+        if (isNegA || isPosB) {
+          pos = FM_LEFT[leftUsed.count++ % FM_LEFT.length]
+          textAlign = 'left'
+        } else {
+          pos = FM_RIGHT[rightUsed.count++ % FM_RIGHT.length]
+          textAlign = 'right'
+        }
+
+        const isNeg = isNegA || isNegB
+        const isPos = isPosA || isPosB
+        const initX = textAlign === 'left' ? -18 : 18
+
+        return (
+          <motion.div
+            key={i}
+            className="absolute"
+            style={{
+              left: `${pos.x}%`,
+              top:  `${pos.y}%`,
+              maxWidth: '32%',
+              transform: 'translate(-50%, -50%)',
+            }}
+            initial={{ opacity: 0, x: initX, scale: 0.75 }}
+            animate={{ opacity: [0, 1, 1, 0], x: 0, scale: [0.75, 1.05, 1, 0.95] }}
+            transition={{
+              duration: 2.6,
+              delay: 0.08 + i * 0.22,
+              times: [0, 0.1, 0.62, 1],
+              ease: 'easeOut',
+            }}
+          >
+            <p
+              className={cn(
+                'text-[10px] sm:text-[11px] font-semibold leading-snug',
+                'px-2 py-1 rounded-lg backdrop-blur-sm',
+                textAlign === 'left' ? 'text-left' : 'text-right',
+                isNeg
+                  ? 'text-red-300 bg-red-950/70 border border-red-500/40'
+                  : isPos
+                    ? 'text-emerald-300 bg-emerald-950/70 border border-emerald-500/40'
+                    : 'text-white/70 bg-black/50 border border-white/15',
+              )}
+              style={{
+                textShadow: isNeg
+                  ? '0 0 10px #f87171aa'
+                  : isPos ? '0 0 10px #4ade80aa'
+                  : 'none',
+              }}
+            >
+              {m.description}
+            </p>
+          </motion.div>
+        )
+      })}
+    </div>
+  )
+}
+
 // ─── ClashEffect ──────────────────────────────────────────────────────────────
 
 function ClashEffect({ visible }: { visible: boolean }) {
@@ -525,6 +620,12 @@ export function BattleAnimationSequence({
           {/* ── Clash ─────────────────────────────────────────────────────────── */}
           <ClashEffect visible={s.clash} />
 
+          {/* ── Floating modifier impact text (scattered over screen during number reveal) */}
+          <FloatingModifiers
+            modifiers={round.modifiers_applied ?? []}
+            active={s.numberReveal || s.revealResult}
+          />
+
           {/* ── Number reveal section ─────────────────────────────────────────── */}
           <AnimatePresence>
             {s.numberReveal && (
@@ -538,8 +639,6 @@ export function BattleAnimationSequence({
                 <NumberReveal
                   targetScore={round.effective_score_a}
                   baseScore={charA.power_level}
-                  modifiers={round.modifiers_applied}
-                  isPlayerA={true}
                   isWinner={winnerIsA}
                   charName={charA.name}
                   active={s.numberReveal}
@@ -548,8 +647,6 @@ export function BattleAnimationSequence({
                 <NumberReveal
                   targetScore={round.effective_score_b}
                   baseScore={charB.power_level}
-                  modifiers={round.modifiers_applied}
-                  isPlayerA={false}
                   isWinner={!winnerIsA}
                   charName={charB.name}
                   active={s.numberReveal}
