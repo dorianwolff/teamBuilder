@@ -217,6 +217,227 @@ export const CHARACTER_PROFILES: Record<string, CharacterAnimProfile> = {
     techniques: [{ name: 'Mochi Mochi — Zan Giri Mochi!!!', type: 'logia', color: '#e2e8f0', secondaryColor: '#f1f5f9', duration: 3000, flavour: 'I can see the future — and you cannot win' }],
   },
 
+  // ── One Piece DB characters (exact slugs) ─────────────────────────────────
+
+  // Sanji Ifrit Jambe — post-Wano awakening of Diable Jambe pushed beyond all limits.
+  // Spinning at near-subsonic speed, his legs generate blue-white "hellfire" hotter
+  // than any fire in One Piece. The Ifrit's name references a fire-jinn of Islamic lore.
+  sanji_ifrit_jambe: {
+    slug: 'sanji_ifrit_jambe', auraColor: '#3b82f6',
+    techniques: [{ name: 'Ifrit Jambe — Hell Memory!!!', type: 'diable_jambe', color: '#3b82f6', secondaryColor: '#ffffff', duration: 3400, flavour: 'Ifrit burns hotter than any fire — my leg is the devil\'s itself' }],
+  },
+
+  // Ace Marineford — Portgas D. Ace, Fire Fist, Whitebeard's second commander.
+  // At Marineford he bought the fleet precious seconds before Akainu's magma
+  // pierced the fire that cannot be extinguished — his final act of love.
+  ace_marineford: {
+    slug: 'ace_marineford', auraColor: '#f97316',
+    techniques: [{ name: 'Fire Fist — Great Flame Commandment!!!', type: 'elemental_fire', color: '#f97316', secondaryColor: '#fbbf24', duration: 3000, flavour: 'I am grateful for the love — thank you, Luffy' }],
+  },
+
+  // Law Awakened — Trafalgar D. Water Law, the Surgeon of Death.
+  // His Ope Ope no Mi awakening expands Room to city scale; K-Room allows
+  // him to infuse his sword and burst from inside targets at full scale.
+  law_awakened: {
+    slug: 'law_awakened', auraColor: '#22d3ee',
+    techniques: [{ name: 'K-Room — Anesthesia: Shock Wille!!!', type: 'kamui', color: '#22d3ee', secondaryColor: '#0891b2', duration: 3400, flavour: 'Inside my Room, I am God — even hearts are mine to take' }],
+  },
+
+  // Aokiji — Kuzan, Admiral of Ice. His Hie Hie no Mi froze the ocean around Punk Hazard
+  // for a week after battling Akainu. One touch creates a glacier; one breath freezes the sea.
+  aokiji: {
+    slug: 'aokiji', auraColor: '#bfdbfe',
+    techniques: [{ name: 'Ice Age — Frozen World!!!', type: 'elemental_ice', color: '#bfdbfe', secondaryColor: '#e0f2fe', duration: 3200, flavour: 'Justice without cruelty — one touch and the ocean sleeps forever' }],
+  },
+
+  // Kizaru — Borsalino, Admiral of Light. The Pika Pika no Mi makes him light itself.
+  // Yasakani no Magatama fires an endless volley of laser beams from his fingertips,
+  // each one travelling at the speed of light. Casually the most powerful admiral in range.
+  kizaru: {
+    slug: 'kizaru', auraColor: '#fef9c3',
+    techniques: [{ name: 'Yasakani no Magatama — Speed of Light Volley!!!', type: 'light_speed', color: '#fef9c3', secondaryColor: '#ffffff', duration: 3200, flavour: 'Travelling at the speed of light... oh dear, that\'s quite fast' }],
+  },
+
+  // Garp Marineford — Vice Admiral Garp, the Hero of the Marines.
+  // His Haki-clad fist crushed pirate fleets bare-handed; known to have cornered
+  // Roger multiple times and matched him blow for blow without a devil fruit.
+  garp_marineford: {
+    slug: 'garp_marineford', auraColor: '#94a3b8',
+    techniques: [{ name: 'Fist of Love — Galaxy Impact!!!', type: 'physical', color: '#94a3b8', secondaryColor: '#e2e8f0', duration: 2800, flavour: 'A grandfather\'s love — harder than any cannonball' }],
+  },
+
+  // Bartolomeo Barrier — the Barrier-Barrier Fruit; his Bari Bari no Mi
+  // generates indestructible barrier fields. Luffy's greatest fanboy fights
+  // with conviction: a barrier that has never once been broken.
+  bartolomeo_barrier: {
+    slug: 'bartolomeo_barrier', auraColor: '#a78bfa',
+    techniques: [{ name: 'Bari Bari no Mi — Barrier Crash!!!', type: 'barrier', color: '#a78bfa', secondaryColor: '#ede9fe', duration: 2800, flavour: 'Senpai\'s power inspires me — this barrier will NEVER break' }],
+  },
+
+  // Bellamy the Hyena — Spring-Spring Fruit; his legs compress like metal coils
+  // and he launches himself as a human wrecking-ball at immense speed.
+  bellamy_spring: {
+    slug: 'bellamy_spring', auraColor: '#fbbf24',
+    techniques: [{ name: 'Spring Hopper — Boing Boing Crush!!!', type: 'physical', color: '#fbbf24', secondaryColor: '#fef08a', duration: 2400, flavour: 'Spring legs — no floor, no ceiling, no escape' }],
+  },
+
+  // Shiryu of the Rain — former Head Jailer of Impel Down, wields the
+  // invisible-blade cursed sword Raiu. His Suke Suke no Mi makes him
+  // completely invisible, striking from nowhere.
+  shiryu_rain: {
+    slug: 'shiryu_rain', auraColor: '#475569',
+    techniques: [{ name: 'Raiu — Invisible Blade: Rain of Death!!!', type: 'sword', color: '#475569', secondaryColor: '#94a3b8', duration: 3000, flavour: 'The blade you cannot see is the one that ends your life' }],
+  },
+
+  // Monkey D. Dragon — the world's most wanted man, Revolutionary Army leader.
+  // His apparent mastery of wind (likely a Mythical Zoan or wind Logia) manifests
+  // as world-scale storms answering his will.
+  monkey_d_dragon: {
+    slug: 'monkey_d_dragon', auraColor: '#4ade80',
+    techniques: [{ name: 'Dragon\'s Storm — World Revolution!!!', type: 'elemental_wind', color: '#4ade80', secondaryColor: '#86efac', duration: 3400, flavour: 'The wind of revolution — it cannot be stopped' }],
+  },
+
+  // Kid Awakened — Eustass Captain Kid, Repel & Attract.
+  // His Jiki Jiki awakening projects his ability into the ground itself,
+  // pulling all metal across the battlefield into a giant magnetized fist.
+  kid_awakened: {
+    slug: 'kid_awakened', auraColor: '#ef4444',
+    techniques: [{ name: 'Damned Punk — Electromagnetic Cannon!!!', type: 'ki_aura', color: '#ef4444', secondaryColor: '#fca5a5', duration: 3200, flavour: 'The Yonko learned what lightning feels like today' }],
+  },
+
+  // Bonney Distorted Future — Jewelry Bonney's awakened Toshi Toshi no Mi
+  // can age or de-age anything and project distorted futures onto targets,
+  // briefly manifesting what they fear — or transforming the environment itself.
+  bonney_distorted_future: {
+    slug: 'bonney_distorted_future', auraColor: '#f0abfc',
+    techniques: [{ name: 'Distorted Future — Age Liberation!!!', type: 'physical', color: '#f0abfc', secondaryColor: '#e879f9', duration: 2800, flavour: 'I will rewrite your future — and erase Vegapunk\'s cruelty' }],
+  },
+
+  // Vegapunk — Dr. Vegapunk, the world's greatest scientist.
+  // His satellite system and Seraphim creations represent science beyond
+  // imagination. In combat he deploys energy barriers, laser weaponry, and
+  // the accumulated power of a lifetime of research.
+  vegapunk: {
+    slug: 'vegapunk', auraColor: '#38bdf8',
+    techniques: [{ name: 'Satellite System — Frontier Dome!!!', type: 'barrier', color: '#38bdf8', secondaryColor: '#7dd3fc', duration: 3000, flavour: 'The future of humanity, compressed into a single mind' }],
+  },
+
+  // Vinsmoke Reiju — the eldest Vinsmoke child, Poison Pink.
+  // Her genetically engineered body secretes all-dissolving poison and
+  // her lips administer a toxin no antidote can counter.
+  vinsmoke_reiju: {
+    slug: 'vinsmoke_reiju', auraColor: '#f0abfc',
+    techniques: [{ name: 'Poison Pink — All-Blue Venom Kiss!!!', type: 'poison', color: '#c026d3', secondaryColor: '#f0abfc', duration: 2800, flavour: 'A Vinsmoke without feelings — but not without precision' }],
+  },
+
+  // Vinsmoke Ichiji — eldest son, Sparking Red. Photovoltaic ray attacks
+  // channelled through a Germa exoskeleton that makes him functionally invulnerable.
+  vinsmoke_ichiji: {
+    slug: 'vinsmoke_ichiji', auraColor: '#f87171',
+    techniques: [{ name: 'Sparking Red — Photon Staff!!!', type: 'elemental_lightning', color: '#ef4444', secondaryColor: '#fca5a5', duration: 2800, flavour: 'Germa 66 — science turned the Vinsmoke children into gods' }],
+  },
+
+  // Vinsmoke Niji — second son, Electric Blue. Controls lightning at will
+  // through his Dengeki Blue exoskeleton; fastest of the Vinsmoke siblings.
+  vinsmoke_niji: {
+    slug: 'vinsmoke_niji', auraColor: '#38bdf8',
+    techniques: [{ name: 'Dengeki Blue — Lightning Speed Strike!!!', type: 'elemental_lightning', color: '#38bdf8', secondaryColor: '#bfdbfe', duration: 2800, flavour: 'Blue lightning, moving too fast to perceive — you\'re already hit' }],
+  },
+
+  // Vinsmoke Yonji — fourth son, Winch Green. Raw physical power amplified
+  // by the exoskeleton; the most straightforward bruiser of the quartet.
+  vinsmoke_yonji: {
+    slug: 'vinsmoke_yonji', auraColor: '#4ade80',
+    techniques: [{ name: 'Winch Green — Iron Drill Smash!!!', type: 'physical', color: '#4ade80', secondaryColor: '#86efac', duration: 2600, flavour: 'The power of science — I don\'t need cleverness, just strength' }],
+  },
+
+  // Arlong — the Saw-Shark Fish-Man who enslaved Nami's village for years.
+  // His saw-like nose and physical Fish-Man strength dwarf most humans;
+  // he regenerates teeth indefinitely in water.
+  arlong: {
+    slug: 'arlong', auraColor: '#0ea5e9',
+    techniques: [{ name: 'Shark on Tooth — Saw-Nose Crusher!!!', type: 'physical', color: '#0ea5e9', secondaryColor: '#38bdf8', duration: 2400, flavour: 'Fish-Men are a superior race — I will prove it with every tooth' }],
+  },
+
+  // Buggy the Star Clown — Bara Bara no Mi divides his body into flying pieces,
+  // making him completely immune to bladed attacks. Through sheer luck and
+  // charisma he ascended to Yonko rank. His Muggy Ball pierces steel.
+  buggy: {
+    slug: 'buggy', auraColor: '#ef4444',
+    techniques: [{ name: 'Bara Bara Cannon — Muggy Ball!!!', type: 'physical', color: '#ef4444', secondaryColor: '#fbbf24', duration: 2200, flavour: 'Buggy the Star Clown — the most fortunate pirate in the world!' }],
+  },
+
+  // Coby Post-Timeskip — two years of SWORD training awakened a budding
+  // Conqueror's Haki. His Color of Observation reached an extreme that
+  // lets him hear the "voice of all things" in combat.
+  coby_post_timeskip: {
+    slug: 'coby_post_timeskip', auraColor: '#f9a8d4',
+    techniques: [{ name: 'Haki Burst — Color of the Supreme King!!!', type: 'haki_burst', color: '#f9a8d4', secondaryColor: '#fce7f3', duration: 2800, flavour: 'I hear the voice of every person on this battlefield' }],
+  },
+
+  // Smoker the White Hunter — Moku Moku no Mi, smoke Logia.
+  // His Jutte is laced with Seastone, neutralising devil fruit users on contact.
+  smoker: {
+    slug: 'smoker', auraColor: '#94a3b8',
+    techniques: [{ name: 'Smoke White Out — White Launcher!!!', type: 'logia', color: '#94a3b8', secondaryColor: '#e2e8f0', duration: 2800, flavour: 'Smoke that cannot be cut — and Seastone that strips your power' }],
+  },
+
+  // Chopper Monster Point — Tony Tony Chopper's most powerful Rumble Ball form.
+  // Monster Point dwarfs buildings; his strength and durability become inhuman.
+  // Awakened Monster Point triples the size again.
+  chopper_monster_point: {
+    slug: 'chopper_monster_point', auraColor: '#f97316',
+    techniques: [{ name: 'Monster Point — Arm Point Cannon!!!', type: 'physical', color: '#f97316', secondaryColor: '#fbbf24', duration: 2800, flavour: 'A monster created by medicine — and love for his crew' }],
+  },
+
+  // Crocodile Desert — Sir Crocodile, Warlord of the Sand.
+  // His Suna Suna no Mi makes him the desert itself; Gold Venom dessication
+  // sucks the water from anything he touches into dust.
+  crocodile_desert: {
+    slug: 'crocodile_desert', auraColor: '#d97706',
+    techniques: [{ name: 'Desert Spada — Gold Venom Dessication!!!', type: 'sand', color: '#d97706', secondaryColor: '#fbbf24', duration: 3000, flavour: 'The desert cannot be defeated — I am the sand itself' }],
+  },
+
+  // Robin Post-Timeskip — Nico Robin, the Devil Child, flower of the Ohara library.
+  // Hana Hana no Mi fully awakened: Gigantesco Mano manifests colossal arms
+  // from any surface; her body blooms everywhere at once.
+  robin_post_timeskip: {
+    slug: 'robin_post_timeskip', auraColor: '#f472b6',
+    techniques: [{ name: 'Mil Fleur — Gigantesco Mano: Stomp!!!', type: 'physical', color: '#f472b6', secondaryColor: '#fbcfe8', duration: 3000, flavour: 'I want to live — and I will bloom wherever I please' }],
+  },
+
+  // Nami Clima-Tact — with Zeus the thundercloud as her weapon, Nami commands
+  // atmospheric electricity and temperature. Zeus Thunderbolt Tempo was strong
+  // enough to shock a Yonko-level opponent.
+  nami_clima_tact: {
+    slug: 'nami_clima_tact', auraColor: '#fef08a',
+    techniques: [{ name: 'Zeus Thunderbolt Tempo — 20 Billion Volt Lightning!!!', type: 'elemental_lightning', color: '#fef08a', secondaryColor: '#fbbf24', duration: 3000, flavour: 'A woman\'s wrath, electrified — even Big Mom\'s cloud obeys me' }],
+  },
+
+  // Usopp God — at Dressrosa, Usopp awakened Observation Haki by accident
+  // and became "God Usopp" to 8000 freed slaves. His Pop Green sniping
+  // from 8 km with haki-enhanced aim made him a legitimate threat.
+  usopp_god: {
+    slug: 'usopp_god', auraColor: '#84cc16',
+    techniques: [{ name: 'Sacred Pop Green — Hissatsu: Midori Boshi!!!', type: 'physical', color: '#84cc16', secondaryColor: '#d9f99d', duration: 2600, flavour: '8000 followers call me God — so I suppose I\'d better act like one' }],
+  },
+
+  // Franky Cyborg — post-timeskip General Franky: a giant mech powered by cola.
+  // Radical Beam fires concentrated energy from his chest; Coup de Boo
+  // propels him as a living rocket. He built the Thousand Sunny.
+  franky_cyborg: {
+    slug: 'franky_cyborg', auraColor: '#3b82f6',
+    techniques: [{ name: 'General Franky — Radical Beam!!!', type: 'ki_beam', color: '#3b82f6', secondaryColor: '#93c5fd', duration: 2800, flavour: 'SUPER! — Cola-powered justice, straight from my chest' }],
+  },
+
+  // Brook Soul King — 50 years of isolation on the Thriller Bark ghost ship
+  // produced sub-zero Soul Solid sword attacks. His music can freeze souls;
+  // his body is already dead, immune to poison and pain.
+  brook_soul_king: {
+    slug: 'brook_soul_king', auraColor: '#e2e8f0',
+    techniques: [{ name: 'Soul Solid — Absolute Zero Curtain!!!', type: 'sword', color: '#e2e8f0', secondaryColor: '#bfdbfe', duration: 2800, flavour: 'Yohohoho — shall I cut your soul? I already lost mine years ago' }],
+  },
+
   // ── Naruto ──────────────────────────────────────────────────────────────────
 
   // Six Paths Sage Art — a rasengan grown to planetary scale,

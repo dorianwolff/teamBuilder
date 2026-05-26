@@ -46,6 +46,7 @@ export type AnimationType =
   | 'asura'            // Zoro's demon-king manifestation — three heads, nine blades
   | 'diable_jambe'     // Sanji's infernal spinning fire kick (Ifrit Jambe blue-white)
   | 'gura_gura'        // Whitebeard's reality-cracking earthquake shockwave
+  | 'light_speed'      // Kizaru's Pika Pika no Mi — blinding laser orbs at the speed of light
 
 /** A single technique that can be shown in the pre-battle animation */
 export interface TechniqueAnim {

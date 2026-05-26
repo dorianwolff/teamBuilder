@@ -470,6 +470,197 @@ export function DiableJambeEffect({ color, secondaryColor, side }: EffectProps) 
   )
 }
 
+// ─── Pika Pika no Mi — Speed of Light: Yasakani no Magatama ─────────────────
+
+// Pre-computed laser beam paths (SVG lines in viewBox 0 0 100 100)
+// side='left': origin near (22, Y) → opponent side right edge
+// side='right': mirror of left
+const LASER_PATHS_L = [
+  'M22,38 L100,28',
+  'M22,44 L100,42',
+  'M22,50 L100,54',
+  'M22,56 L100,62',
+  'M22,62 L100,75',
+  'M22,33 L100,18',
+  'M22,68 L100,84',
+  'M22,41 L100,36',
+  'M22,53 L100,48',
+  'M22,60 L100,68',
+  'M22,35 L100,22',
+  'M22,47 L100,44',
+]
+const LASER_PATHS_R = LASER_PATHS_L.map(p =>
+  p.replace(/(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)/g, (_, x, y) => `${(100 - parseFloat(x)).toFixed(1)},${y}`)
+)
+
+// Light orbs scattered around the origin — pre-charge buildup
+const LIGHT_ORBS = [
+  { ox: 12, oy: 30, size: 7,  delay: 0.05 },
+  { ox: 28, oy: 22, size: 5,  delay: 0.09 },
+  { ox: 8,  oy: 45, size: 6,  delay: 0.02 },
+  { ox: 32, oy: 38, size: 4,  delay: 0.12 },
+  { ox: 6,  oy: 60, size: 8,  delay: 0.07 },
+  { ox: 24, oy: 68, size: 5,  delay: 0.14 },
+  { ox: 15, oy: 78, size: 6,  delay: 0.04 },
+  { ox: 35, oy: 55, size: 4,  delay: 0.11 },
+  { ox: 10, oy: 15, size: 5,  delay: 0.16 },
+  { ox: 30, oy: 12, size: 7,  delay: 0.08 },
+]
+
+// Lens-flare streaks (prismatic diagonal lines)
+const LENS_FLARES = [
+  { angle: 28,  length: 55, delay: 0.38, opacity: 0.55 },
+  { angle: -18, length: 45, delay: 0.42, opacity: 0.40 },
+  { angle: 52,  length: 38, delay: 0.36, opacity: 0.45 },
+  { angle: -42, length: 60, delay: 0.44, opacity: 0.35 },
+  { angle: 8,   length: 72, delay: 0.40, opacity: 0.50 },
+]
+
+const BEAM_DELAYS  = [0.30, 0.32, 0.30, 0.34, 0.36, 0.28, 0.38, 0.31, 0.33, 0.35, 0.29, 0.33]
+const BEAM_LENGTHS = [0.12, 0.10, 0.12, 0.11, 0.13, 0.10, 0.14, 0.11, 0.12, 0.13, 0.10, 0.11]
+
+export function LightSpeedEffect({ color, secondaryColor, side }: EffectProps) {
+  const originX   = side === 'left' ? 22 : 78
+  const paths     = side === 'left' ? LASER_PATHS_L : LASER_PATHS_R
+  const gold      = color.includes('fef') || color.includes('fbb') ? color : '#fef9c3'
+  const coreWhite = secondaryColor ?? '#ffffff'
+
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+
+      {/* Step 1 — Solar aura builds at the attacker's position */}
+      <motion.div
+        className="absolute rounded-full"
+        style={{
+          width: 120,
+          height: 120,
+          left: `${originX}%`,
+          top: '50%',
+          transform: 'translate(-50%, -50%)',
+          background: `radial-gradient(circle, ${coreWhite} 10%, ${gold}cc 35%, ${gold}44 65%, transparent 80%)`,
+          filter: 'blur(8px)',
+        }}
+        animate={{ scale: [0, 2.5, 1.8, 0.8], opacity: [0, 1, 0.9, 0.2] }}
+        transition={{ duration: 0.55, times: [0, 0.18, 0.5, 1] }}
+      />
+
+      {/* Step 2 — Pre-charge orbs gathering around origin */}
+      {LIGHT_ORBS.map((orb, i) => {
+        const ox = side === 'left' ? orb.ox : 100 - orb.ox
+        return (
+          <motion.div
+            key={`orb-${i}`}
+            className="absolute rounded-full"
+            style={{
+              width:   orb.size,
+              height:  orb.size,
+              left:    `${ox}%`,
+              top:     `${orb.oy}%`,
+              background: `radial-gradient(circle, ${coreWhite} 20%, ${gold}cc 60%, transparent 90%)`,
+              filter: 'blur(1px)',
+              boxShadow: `0 0 ${orb.size * 2}px ${orb.size}px ${gold}99`,
+            }}
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: [0, 1.8, 1.2, 0], opacity: [0, 1, 0.8, 0] }}
+            transition={{ duration: 0.4, delay: orb.delay }}
+          />
+        )
+      })}
+
+      {/* Step 3 — Screen-wide blinding flash (the attack fires) */}
+      <motion.div
+        className="absolute inset-0"
+        style={{ background: `radial-gradient(ellipse at ${originX}% 50%, ${coreWhite}ee 0%, ${gold}99 35%, transparent 65%)` }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: [0, 1, 0.85, 0] }}
+        transition={{ duration: 0.35, delay: 0.28, times: [0, 0.12, 0.4, 1] }}
+      />
+
+      {/* Step 4 — Laser volley SVG beams */}
+      <svg
+        className="absolute inset-0 w-full h-full"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+      >
+        {/* Glowing beam halos */}
+        {paths.map((d, i) => (
+          <motion.path
+            key={`halo-${i}`}
+            d={d}
+            stroke={gold}
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            fill="none"
+            style={{ filter: 'blur(3px)' }}
+            initial={{ pathLength: 0, opacity: 0 }}
+            animate={{ pathLength: [0, 1, 1, 0], opacity: [0, 0.6, 0.4, 0] }}
+            transition={{ duration: BEAM_LENGTHS[i] + 0.14, delay: BEAM_DELAYS[i] }}
+          />
+        ))}
+        {/* Core beam lines (white-hot centre) */}
+        {paths.map((d, i) => (
+          <motion.path
+            key={`beam-${i}`}
+            d={d}
+            stroke={coreWhite}
+            strokeWidth="0.8"
+            strokeLinecap="round"
+            fill="none"
+            initial={{ pathLength: 0, opacity: 0 }}
+            animate={{ pathLength: [0, 1, 1, 0], opacity: [0, 1, 0.9, 0] }}
+            transition={{ duration: BEAM_LENGTHS[i], delay: BEAM_DELAYS[i], ease: 'linear' }}
+          />
+        ))}
+      </svg>
+
+      {/* Step 5 — Lens flare star-burst at origin */}
+      {LENS_FLARES.map((flare, i) => (
+        <motion.div
+          key={`flare-${i}`}
+          className="absolute"
+          style={{
+            left:   `${originX}%`,
+            top:    '50%',
+            width:  `${flare.length}%`,
+            height: 1.5,
+            transform: `translate(-50%, -50%) rotate(${flare.angle}deg)`,
+            background: `linear-gradient(to right, transparent, ${coreWhite}${Math.round(flare.opacity * 255).toString(16).padStart(2,'0')}, transparent)`,
+            filter: 'blur(1px)',
+          }}
+          initial={{ scaleX: 0, opacity: 0 }}
+          animate={{ scaleX: [0, 1, 0.7, 0], opacity: [0, flare.opacity, flare.opacity * 0.5, 0] }}
+          transition={{ duration: 0.5, delay: flare.delay }}
+        />
+      ))}
+
+      {/* Step 6 — Impact zone glow at the opponent side */}
+      <motion.div
+        className="absolute rounded-full"
+        style={{
+          width: 90,
+          height: 90,
+          left: side === 'left' ? '88%' : '12%',
+          top: '50%',
+          transform: 'translate(-50%, -50%)',
+          background: `radial-gradient(circle, ${coreWhite}dd 0%, ${gold}88 40%, transparent 75%)`,
+          filter: 'blur(6px)',
+        }}
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: [0, 2, 0.5, 0], opacity: [0, 1, 0.7, 0] }}
+        transition={{ duration: 0.4, delay: 0.44, times: [0, 0.15, 0.55, 1] }}
+      />
+
+      {/* Step 7 — Afterglow: the battlefield still shines */}
+      <motion.div
+        className="absolute inset-0"
+        style={{ background: `radial-gradient(ellipse at ${originX}% 50%, ${gold}22 0%, transparent 55%)` }}
+        animate={{ opacity: [0, 0, 0.9, 0.3, 0] }}
+        transition={{ duration: 2.2, times: [0, 0.3, 0.5, 0.8, 1] }}
+      />
+    </div>
+  )
+}
+
 // ─── Gura Gura no Mi — Reality-Crack Earthquake ───────────────────────────────
 
 // Pre-computed crack lines radiating from the fist impact point

@@ -12,9 +12,8 @@ import toast from 'react-hot-toast'
 import { createClient } from '@/lib/supabase/client'
 import { useAuth } from '@/hooks/useAuth'
 import { Button } from '@/components/ui/Button'
-import { formatEloDelta, formatElo } from '@/lib/utils/format'
+import { formatElo } from '@/lib/utils/format'
 import { getEloTier, ELO_TIER_COLORS } from '@/types/user'
-import { previewEloDelta } from '@/lib/game/elo'
 import { buildInitialDraftState } from '@/lib/game/draft'
 import type { Verse } from '@/types/character'
 import type { Character } from '@/types/character'
@@ -125,7 +124,6 @@ function LobbyContent() {
   // ── ELO bar ───────────────────────────────────────────────────────────────────
 
   const eloColor = ELO_TIER_COLORS[tier]
-  const delta    = profile ? previewEloDelta(elo, elo, profile.games_played) : null
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-10">
@@ -188,7 +186,6 @@ function LobbyContent() {
               user={user}
               profile={profile}
               elo={elo}
-              delta={delta}
               channelRef={channelRef}
               requireAuth={requireAuth}
               clearChannel={clearChannel}
@@ -229,7 +226,6 @@ interface RankedTabProps {
   user:         ReturnType<typeof useAuth>['user']
   profile:      ReturnType<typeof useAuth>['profile']
   elo:          number
-  delta:        { if_win: number; if_loss: number } | null
   channelRef:   React.MutableRefObject<ReturnType<ReturnType<typeof createClient>['channel']> | null>
   requireAuth:  () => boolean
   clearChannel: () => void
@@ -237,7 +233,7 @@ interface RankedTabProps {
   router:       ReturnType<typeof useRouter>
 }
 
-function RankedTab({ supabase, user, profile, elo, delta, channelRef, requireAuth, clearChannel, joinRoom, router }: RankedTabProps) {
+function RankedTab({ supabase, user, profile, elo, channelRef, requireAuth, clearChannel, joinRoom, router }: RankedTabProps) {
   const [isSearching, setIsSearching]   = useState(false)
   const [assignedVerse, setAssigned]    = useState<Verse | 'all' | null>(null)
   const pollRef = useRef<ReturnType<typeof setInterval> | null>(null)
@@ -467,20 +463,6 @@ function RankedTab({ supabase, user, profile, elo, delta, channelRef, requireAut
               })}
             </div>
           </div>
-
-          {/* ELO preview */}
-          {delta && (
-            <div className="flex gap-3 text-sm text-center">
-              <div className="flex-1 py-3 rounded-xl bg-void-800 border border-white/8">
-                <div className="text-green-400 font-mono font-bold">{formatEloDelta(delta.if_win)}</div>
-                <div className="text-white/30 text-xs mt-0.5">If you win</div>
-              </div>
-              <div className="flex-1 py-3 rounded-xl bg-void-800 border border-white/8">
-                <div className="text-red-400 font-mono font-bold">{formatEloDelta(delta.if_loss)}</div>
-                <div className="text-white/30 text-xs mt-0.5">If you lose</div>
-              </div>
-            </div>
-          )}
 
           <Button variant="gold" size="lg" fullWidth onClick={startSearch}>
             <Swords size={18} /> Find Ranked Match

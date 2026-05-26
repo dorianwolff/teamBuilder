@@ -71,21 +71,12 @@ export function Navbar() {
         <div className="flex items-center gap-1.5 sm:gap-2">
           {user && profile ? (
             <>
-              {/* ELO badge — hidden on mobile */}
-              <div className="hidden sm:flex items-center gap-2 px-3 py-1 rounded-lg bg-void-800 border border-white/10">
-                <div className="w-2 h-2 rounded-full" style={{ background: color, boxShadow: `0 0 6px ${color}` }} />
-                <span className="text-xs font-mono font-bold" style={{ color }}>
+              {/* ELO badge — always visible; slightly condensed on mobile */}
+              <div className="flex items-center gap-1 sm:gap-2 px-1.5 sm:px-3 py-1 rounded-lg bg-void-800 border border-white/10">
+                <div className="w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full shrink-0" style={{ background: color, boxShadow: `0 0 6px ${color}` }} />
+                <span className="text-[10px] sm:text-xs font-mono font-bold" style={{ color }}>
                   {formatElo(profile.elo)}
                 </span>
-              </div>
-
-              {/* On mobile: compact ELO dot only */}
-              <div
-                className="flex sm:hidden w-6 h-6 rounded-full items-center justify-center"
-                style={{ background: `${color}22`, border: `1px solid ${color}44` }}
-                title={`${formatElo(profile.elo)} ELO`}
-              >
-                <div className="w-1.5 h-1.5 rounded-full" style={{ background: color }} />
               </div>
 
               {/* Username — hidden on mobile */}

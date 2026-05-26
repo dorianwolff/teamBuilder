@@ -91,6 +91,9 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
   const [localConfirmed, setLocalConfirmed] = useState(false)
   const [resultModal, setResultModal]       = useState<BattleRound | null>(null)
   const [animRound,   setAnimRound]         = useState<BattleRound | null>(null)
+  // Track the round_number of the last animation that completed so we can
+  // stop incorrectly deferring the score after the modal is dismissed.
+  const lastAnimatedRoundRef = useRef(0)
   const [playingAgain, setPlayingAgain]     = useState(false)
   const [rematchCountdown, setRematchCountdown] = useState<number | null>(null)
 
@@ -474,15 +477,28 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
   const animCharB = animRound ? allBattleChars.find(c => c.id === animRound.player_b_pick) ?? null : null
 
   // Defer score display during animation so the result isn't spoiled before the
-  // animation plays.  There is a 1-frame window between the realtime update
-  // (which writes the new score into `battle.scores`) and the useEffect that
-  // calls setAnimRound() — on that single frame animRound is still null but the
-  // score is already incremented.  We close the gap by also checking the last
-  // round in the rounds array directly (it has phase='result' the moment it is
-  // resolved, before animRound state is set).
+  // animation plays.
+  //
+  // Problem A: 1-frame gap — when battle updates from realtime the scores are
+  //   already incremented but animRound state hasn't been set yet (useEffect
+  //   runs after render).  We detect this via the rounds array itself.
+  //
+  // Problem B: stale deferral — once the animation + modal are done, the last
+  //   completed round still sits in battle.rounds with phase='result'.  Without
+  //   tracking what's been shown we'd keep deferring for the whole next round.
+  //   Fix: lastAnimatedRoundRef records the round_number after animation ends.
+  //
+  // Combined logic: defer the score if
+  //   (a) animRound is set (animation playing), OR
+  //   (b) the latest round hasn't been animated yet AND the modal isn't showing
   const lastRound    = battle.rounds[battle.rounds.length - 1]
-  const pendingRound = animRound
-    ?? (!resultModal && lastRound?.phase === 'result' ? lastRound : null)
+  const pendingRound = animRound ?? (
+    !resultModal &&
+    lastRound?.phase === 'result' &&
+    lastRound.round_number > lastAnimatedRoundRef.current
+      ? lastRound
+      : null
+  )
 
   const displayScoreA = pendingRound?.winner_id != null
     ? battle.scores.a - (pendingRound.winner_id === room.player_a_id ? 1 : 0)
@@ -670,6 +686,9 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
           playerBId={room.player_b_id!}
           isPlayerA={isA}
           onComplete={() => {
+            // Mark this round as shown BEFORE clearing animRound so
+            // pendingRound logic doesn't re-defer on the same render frame
+            if (animRound) lastAnimatedRoundRef.current = animRound.round_number
             setResultModal(animRound)
             setAnimRound(null)
           }}
