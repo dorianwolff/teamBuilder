@@ -1482,8 +1482,8 @@
     "trait_weaknesses": [
       {
         "trait": "female",
-        "coefficient": 0.7,
-        "description": "Sanji's Chivalric Code — his absolute honor forbids striking women, reducing his effective offense to a fraction against female opponents"
+        "coefficient": 0.95,
+        "description": "Sanji's Chivalric Code — his absolute code of honor makes it physically impossible for him to fight women, reducing his effective offense to near zero against female opponents"
       }
     ],
     "trait_strengths": [],

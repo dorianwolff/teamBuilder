@@ -3,19 +3,17 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Swords, Bot, Trophy, ChevronRight, RotateCcw, Info, Flag } from 'lucide-react'
+import { Swords, Bot, Trophy, ChevronRight, RotateCcw, Flag } from 'lucide-react'
 import toast from 'react-hot-toast'
 import { createClient } from '@/lib/supabase/client'
 import { useAuth } from '@/hooks/useAuth'
 import { PlayingCard, FaceDownCard } from '@/components/game/PlayingCard'
 import { CardHand } from '@/components/game/CardHand'
 import { Button } from '@/components/ui/Button'
-import { Modal } from '@/components/ui/Modal'
 import { buildDraftPool, applyPick, DRAFT_ROUNDS, getVisiblePool } from '@/lib/game/draft'
 import { resolveBattle } from '@/lib/game/battle'
 import { aiDraftPick, aiBattlePick, AI_ID, AI_NAME, type AiDifficulty } from '@/lib/game/ai'
 import { BattleAnimationSequence } from '@/components/game/battle/animations/BattleAnimationSequence'
-import { formatPowerLevel } from '@/lib/utils/format'
 import type { Character, Verse } from '@/types/character'
 import type { DraftState, DraftPoolSlot, BattleRound } from '@/types/game'
 import { cn } from '@/lib/utils/cn'
@@ -64,7 +62,6 @@ export default function SoloPage() {
   const [selectedCharId, setSelectedCharId]       = useState<string | null>(null)
   const [rounds, setRounds]                       = useState<BattleRound[]>([])
   const [scores, setScores]                       = useState({ player: 0, ai: 0 })
-  const [resultRound, setResultRound]             = useState<BattleRound | null>(null)
   const [winner, setWinner]                       = useState<'player' | 'ai' | null>(null)
   const [aiHiddenSlugs, setAiHiddenSlugs]         = useState<Set<string>>(new Set())
 
@@ -72,6 +69,17 @@ export default function SoloPage() {
   const [pendingAnimRound, setPendingAnimRound]   = useState<BattleRound | null>(null)
   const [animCharA, setAnimCharA]                 = useState<Character | null>(null)
   const [animCharB, setAnimCharB]                 = useState<Character | null>(null)
+
+  // Deferred display values — hidden until animation completes
+  const displayRounds = pendingAnimRound
+    ? rounds.filter(r => r.round_number < pendingAnimRound.round_number)
+    : rounds
+  const displayScores = pendingAnimRound
+    ? {
+        player: scores.player - (pendingAnimRound.winner_id === PLAYER_ID ? 1 : 0),
+        ai:     scores.ai     - (pendingAnimRound.winner_id !== null && pendingAnimRound.winner_id !== PLAYER_ID ? 1 : 0),
+      }
+    : scores
 
   // ── Start game ──────────────────────────────────────────────────────────────
 
@@ -254,18 +262,14 @@ export default function SoloPage() {
     setPendingAnimRound(newRound)
   }
 
-  function handleAnimComplete(round: BattleRound, isGameOver: boolean) {
+  function handleAnimComplete(isGameOver: boolean) {
     setPendingAnimRound(null)
     setAnimCharA(null)
     setAnimCharB(null)
-    setResultRound(round)
-    // Game-over transition happens when the result modal is closed (see JSX)
-    if (!isGameOver) return
-    // Auto-close modal after 2.5 s for game-over rounds
-    setTimeout(() => {
-      setResultRound(null)
-      setPhase('result')
-    }, 2500)
+    if (isGameOver) {
+      // Brief pause so the number-reveal still reads before transitioning
+      setTimeout(() => setPhase('result'), 800)
+    }
   }
 
   async function saveResult(
@@ -292,7 +296,6 @@ export default function SoloPage() {
     setSelectedSlot(null)
     setWinner(null)
     setRounds([])
-    setResultRound(null)
     setAiHiddenSlugs(new Set())
     setPendingAnimRound(null)
     setAnimCharA(null)
@@ -302,7 +305,6 @@ export default function SoloPage() {
   function handleSurrender() {
     if (user && profile) saveResult('ai', playerTeam, aiTeam, profile)
     setWinner('ai')
-    setResultRound(null)
     setPhase('result')
   }
 
@@ -340,8 +342,8 @@ export default function SoloPage() {
           playerRemaining={playerRemaining}
           aiRemaining={aiRemaining}
           aiHiddenSlugs={aiHiddenSlugs}
-          scores={scores}
-          rounds={rounds}
+          scores={displayScores}
+          rounds={displayRounds}
           selectedCharId={selectedCharId}
           setSelectedCharId={setSelectedCharId}
           onConfirm={confirmBattlePick}
@@ -358,30 +360,9 @@ export default function SoloPage() {
             playerAId={PLAYER_ID}
             playerBId={AI_ID}
             isPlayerA
-            onComplete={() => handleAnimComplete(pendingAnimRound, isGameOver)}
+            onComplete={() => handleAnimComplete(isGameOver)}
           />
         )}
-
-        <Modal
-          open={!!resultRound}
-          onClose={() => {
-            setResultRound(null)
-            if (isGameOver) setPhase('result')
-          }}
-          title={`Round ${resultRound?.round_number} Result`}
-        >
-          {resultRound && (
-            <RoundResultContent
-              round={resultRound}
-              playerChar={playerTeam.find(c => c.id === resultRound.player_a_pick) ?? playerTeam[0]}
-              aiChar={aiTeam.find(c => c.id === resultRound.player_b_pick) ?? aiTeam[0]}
-              onClose={() => {
-                setResultRound(null)
-                if (isGameOver) setPhase('result')
-              }}
-            />
-          )}
-        </Modal>
       </>
     )
   }
@@ -735,35 +716,24 @@ function BattleScreen({ playerRemaining, aiRemaining, aiHiddenSlugs, scores, rou
           </div>
         )}
 
-        {/* Card preview — desktop only (mobile: selected card lifts in the hand) */}
-        <div className="hidden sm:block">
-          <AnimatePresence mode="wait">
-            {selectedChar ? (
-              <motion.div key={selectedChar.id}
-                initial={{ opacity: 0, scale: 0.85, y: 12 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.85, y: 12 }}
-                transition={{ type: 'spring', damping: 18, stiffness: 280 }}
-                className="flex flex-col items-center gap-2"
-              >
-                <p className="text-[10px] text-gold-400 uppercase tracking-widest">Ready for battle</p>
-                <PlayingCard character={selectedChar} size="md" animate={false} selected />
-              </motion.div>
-            ) : (
-              <motion.p key="hint"
-                initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-                className="text-white/20 text-xs"
-              >
-                Select a fighter below
-              </motion.p>
-            )}
-          </AnimatePresence>
-        </div>
-
-        {/* Mobile-only hint when nothing selected */}
-        <p className={cn('text-white/20 text-xs sm:hidden', selectedChar && 'invisible')}>
-          Select a fighter below
-        </p>
+        {/* Selection hint */}
+        <AnimatePresence mode="wait">
+          {selectedChar ? (
+            <motion.p key="ready"
+              initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -4 }}
+              className="text-gold-400 text-xs font-medium tracking-wide"
+            >
+              Ready for battle
+            </motion.p>
+          ) : (
+            <motion.p key="hint"
+              initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+              className="text-white/20 text-xs"
+            >
+              Select a fighter below
+            </motion.p>
+          )}
+        </AnimatePresence>
 
       </div>
 
@@ -797,58 +767,6 @@ function BattleScreen({ playerRemaining, aiRemaining, aiHiddenSlugs, scores, rou
         </div>
       </div>
 
-    </div>
-  )
-}
-
-// ── Round result ──────────────────────────────────────────────────────────────
-
-function RoundResultContent({ round, playerChar, aiChar, onClose }: {
-  round: BattleRound; playerChar: Character; aiChar: Character; onClose: () => void
-}) {
-  const iWon = round.winner_id === PLAYER_ID
-  return (
-    <div className="text-center">
-      <p className={cn('text-4xl font-black mb-5', iWon ? 'text-gold-400' : 'text-crimson-400')}>
-        {iWon ? 'Round won!' : 'Round lost'}
-      </p>
-
-      <div className="flex justify-center items-end gap-6 mb-5">
-        <div className="text-center">
-          <p className="text-xs text-white/40 mb-2">You sent</p>
-          <PlayingCard character={playerChar} size="sm" animate={false} />
-        </div>
-        <Swords size={20} className="text-white/20 mb-12" />
-        <div className="text-center">
-          <p className="text-xs text-white/40 mb-2">AI sent</p>
-          <PlayingCard character={aiChar} size="sm" animate={false} />
-        </div>
-      </div>
-
-      <div className="flex justify-center gap-8 text-sm font-mono mb-4">
-        <div>
-          <p className="text-white/30 text-xs mb-0.5">Your score</p>
-          <p className="text-white font-bold">{formatPowerLevel(round.effective_score_a)}</p>
-        </div>
-        <div className="text-white/20">vs</div>
-        <div>
-          <p className="text-white/30 text-xs mb-0.5">AI score</p>
-          <p className="text-white font-bold">{formatPowerLevel(round.effective_score_b)}</p>
-        </div>
-      </div>
-
-      {round.modifiers_applied.length > 0 && (
-        <div className="mt-2 text-left space-y-1 p-3 rounded-xl bg-void-900">
-          <p className="text-xs text-white/30 uppercase tracking-wider mb-2 flex items-center gap-1.5">
-            <Info size={10} /> Modifiers applied
-          </p>
-          {round.modifiers_applied.map((m, i) => (
-            <p key={i} className="text-xs text-white/40">{m.description}</p>
-          ))}
-        </div>
-      )}
-
-      <Button variant="gold" fullWidth onClick={onClose} className="mt-5">Continue</Button>
     </div>
   )
 }

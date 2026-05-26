@@ -4,7 +4,7 @@ import { useEffect, useState, useRef, use } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import toast from 'react-hot-toast'
-import { Swords, Trophy, ChevronRight, Info, RotateCcw, Users, Flag, Loader2, Timer } from 'lucide-react'
+import { Swords, Trophy, ChevronRight, RotateCcw, Users, Flag, Loader2, Timer } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import { useGameRoom } from '@/hooks/useGameRoom'
 import { useAuth } from '@/hooks/useAuth'
@@ -12,12 +12,11 @@ import { useCountdown } from '@/hooks/useTimer'
 import { PlayingCard, FaceDownCard } from '@/components/game/PlayingCard'
 import { CardHand } from '@/components/game/CardHand'
 import { Button } from '@/components/ui/Button'
-import { Modal } from '@/components/ui/Modal'
 import { BattleAnimationSequence } from '@/components/game/battle/animations/BattleAnimationSequence'
 import { buildInitialDraftState } from '@/lib/game/draft'
 import { resolveBattle } from '@/lib/game/battle'
 import { computeElo } from '@/lib/game/elo'
-import { formatPowerLevel, formatEloDelta } from '@/lib/utils/format'
+import { formatEloDelta } from '@/lib/utils/format'
 import type { BattleState, BattleRound } from '@/types/game'
 import type { Character, Verse } from '@/types/character'
 import { cn } from '@/lib/utils/cn'
@@ -89,10 +88,9 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
   const [submitting, setSubmitting]         = useState(false)
   // localConfirmed: immediate UI feedback before Supabase realtime echoes the write back
   const [localConfirmed, setLocalConfirmed] = useState(false)
-  const [resultModal, setResultModal]       = useState<BattleRound | null>(null)
   const [animRound,   setAnimRound]         = useState<BattleRound | null>(null)
   // Track the round_number of the last animation that completed so we can
-  // stop incorrectly deferring the score after the modal is dismissed.
+  // stop incorrectly deferring the score after the animation is dismissed.
   const lastAnimatedRoundRef = useRef(0)
   const [playingAgain, setPlayingAgain]     = useState(false)
   const [rematchCountdown, setRematchCountdown] = useState<number | null>(null)
@@ -188,11 +186,11 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [timerExpired, battle?.phase])
 
-  // Show animation then result modal whenever a round resolves
+  // Start animation whenever a round resolves
   useEffect(() => {
     if (!battle) return
     const last = battle.rounds[battle.rounds.length - 1]
-    if (last?.phase === 'result' && !resultModal && !animRound) {
+    if (last?.phase === 'result' && !animRound) {
       console.log('[Battle] round', last.round_number, 'resolved — playing animation')
       setAnimRound(last)
     }
@@ -493,7 +491,6 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
   //   (b) the latest round hasn't been animated yet AND the modal isn't showing
   const lastRound    = battle.rounds[battle.rounds.length - 1]
   const pendingRound = animRound ?? (
-    !resultModal &&
     lastRound?.phase === 'result' &&
     lastRound.round_number > lastAnimatedRoundRef.current
       ? lastRound
@@ -582,54 +579,44 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
           </div>
         </div>
 
-        {/* Round result dots */}
-        {battle.rounds.length > 0 && (
+        {/* Round result dots — only show rounds that have already been animated */}
+        {battle.rounds.filter(r => !pendingRound || r.round_number < pendingRound.round_number).length > 0 && (
           <div className="flex gap-2">
-            {battle.rounds.map(r => (
-              <div key={r.round_number}
-                className={cn('w-6 h-6 rounded-full text-xs font-bold flex items-center justify-center',
-                  r.winner_id === user?.id ? 'bg-gold-500 text-void-950' : 'bg-crimson-600 text-white')}
-              >
-                {r.winner_id === user?.id ? '✓' : '✗'}
-              </div>
-            ))}
+            {battle.rounds
+              .filter(r => !pendingRound || r.round_number < pendingRound.round_number)
+              .map(r => (
+                <div key={r.round_number}
+                  className={cn('w-6 h-6 rounded-full text-xs font-bold flex items-center justify-center',
+                    r.winner_id === user?.id ? 'bg-gold-500 text-void-950' : 'bg-crimson-600 text-white')}
+                >
+                  {r.winner_id === user?.id ? '✓' : '✗'}
+                </div>
+              ))}
           </div>
         )}
 
-        {/* Card preview — desktop only */}
-        <div className="hidden sm:block">
-          <AnimatePresence mode="wait">
-            {selectedChar && !uiConfirmed ? (
-              <motion.div key={selectedChar.id}
-                initial={{ opacity: 0, scale: 0.85, y: 12 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.85, y: 12 }}
-                transition={{ type: 'spring', damping: 18, stiffness: 280 }}
-                className="flex flex-col items-center gap-2"
-              >
-                <p className="text-[10px] text-gold-400 uppercase tracking-widest">Ready for battle</p>
-                <PlayingCard character={selectedChar} size="md" animate={false} selected />
-              </motion.div>
-            ) : uiConfirmed ? (
-              <motion.p key="wait" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-                className="text-white/30 text-xs animate-pulse"
-              >
-                Waiting for opponent…
-              </motion.p>
-            ) : (
-              <motion.p key="hint" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-                className="text-white/20 text-xs"
-              >
-                Select a fighter below
-              </motion.p>
-            )}
-          </AnimatePresence>
-        </div>
-
-        {/* Mobile hints */}
-        {!uiConfirmed && !selectedChar && (
-          <p className="text-white/20 text-xs sm:hidden">Select a fighter below</p>
-        )}
+        {/* Selection hint */}
+        <AnimatePresence mode="wait">
+          {uiConfirmed ? (
+            <motion.p key="wait" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+              className="text-white/30 text-xs animate-pulse"
+            >
+              Waiting for opponent…
+            </motion.p>
+          ) : selectedChar ? (
+            <motion.p key="ready" initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -4 }}
+              className="text-gold-400 text-xs font-medium tracking-wide"
+            >
+              Ready for battle
+            </motion.p>
+          ) : (
+            <motion.p key="hint" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+              className="text-white/20 text-xs"
+            >
+              Select a fighter below
+            </motion.p>
+          )}
+        </AnimatePresence>
       </div>
 
       {/* ── BOTTOM: My hand + confirm button ── */}
@@ -689,28 +676,10 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
             // Mark this round as shown BEFORE clearing animRound so
             // pendingRound logic doesn't re-defer on the same render frame
             if (animRound) lastAnimatedRoundRef.current = animRound.round_number
-            setResultModal(animRound)
             setAnimRound(null)
           }}
         />
       )}
-
-      {/* ── Round result modal ── */}
-      <Modal
-        open={!!resultModal}
-        onClose={() => setResultModal(null)}
-        title={`Round ${resultModal?.round_number} Result`}
-      >
-        {resultModal && (
-          <RoundResultModal
-            round={resultModal}
-            myUserId={user?.id ?? ''}
-            allChars={allBattleChars}
-            isA={isA}
-            onClose={() => setResultModal(null)}
-          />
-        )}
-      </Modal>
 
       {/* ── Game over overlay — hidden while animation is playing ── */}
       <AnimatePresence>
@@ -793,69 +762,6 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
-  )
-}
-
-// ── Round result modal ────────────────────────────────────────────────────────
-
-function RoundResultModal({
-  round, myUserId, allChars, isA, onClose,
-}: { round: BattleRound; myUserId: string; allChars: Character[]; isA: boolean; onClose: () => void }) {
-  const iWon    = round.winner_id === myUserId
-  const charA   = allChars.find(c => c.id === round.player_a_pick)
-  const charB   = allChars.find(c => c.id === round.player_b_pick)
-  const myChar  = isA ? charA : charB
-  const oppChar = isA ? charB : charA
-
-  return (
-    <div className="text-center">
-      <p className={cn('text-4xl font-black mb-5', iWon ? 'text-gold-400' : 'text-crimson-400')}>
-        {iWon ? 'Round won!' : 'Round lost'}
-      </p>
-
-      {myChar && oppChar && (
-        <div className="flex justify-center items-end gap-6 mb-5">
-          <div className="text-center">
-            <p className="text-xs text-white/40 mb-2">You sent</p>
-            <PlayingCard character={myChar} size="sm" animate={false} />
-          </div>
-          <Swords size={20} className="text-white/20 mb-12" />
-          <div className="text-center">
-            <p className="text-xs text-white/40 mb-2">They sent</p>
-            <PlayingCard character={oppChar} size="sm" animate={false} />
-          </div>
-        </div>
-      )}
-
-      <div className="flex justify-center gap-8 text-sm font-mono mb-4">
-        <div>
-          <p className="text-white/30 text-xs mb-0.5">Your score</p>
-          <p className="text-white font-bold">
-            {formatPowerLevel(isA ? round.effective_score_a : round.effective_score_b)}
-          </p>
-        </div>
-        <div className="text-white/20">vs</div>
-        <div>
-          <p className="text-white/30 text-xs mb-0.5">Their score</p>
-          <p className="text-white font-bold">
-            {formatPowerLevel(isA ? round.effective_score_b : round.effective_score_a)}
-          </p>
-        </div>
-      </div>
-
-      {round.modifiers_applied.length > 0 && (
-        <div className="mt-2 text-left space-y-1 p-3 rounded-xl bg-void-900">
-          <p className="text-xs text-white/30 uppercase tracking-wider mb-2 flex items-center gap-1.5">
-            <Info size={10} /> Modifiers applied
-          </p>
-          {round.modifiers_applied.map((m, i) => (
-            <p key={i} className="text-xs text-white/40">{m.description}</p>
-          ))}
-        </div>
-      )}
-
-      <Button variant="gold" fullWidth onClick={onClose} className="mt-5">Continue</Button>
     </div>
   )
 }
