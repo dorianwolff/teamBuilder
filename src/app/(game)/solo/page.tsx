@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Swords, Bot, Trophy, ChevronRight, RotateCcw, Flag } from 'lucide-react'
@@ -80,6 +80,15 @@ export default function SoloPage() {
         ai:     scores.ai     - (pendingAnimRound.winner_id !== null && pendingAnimRound.winner_id !== PLAYER_ID ? 1 : 0),
       }
     : scores
+
+  // Auto-select the only remaining card so the Battle button always appears
+  useEffect(() => {
+    if (pendingAnimRound) return  // don't interfere while animation is playing
+    if (playerRemaining.length !== 1) return
+    const only = playerRemaining[0]
+    setSelectedCharId(prev => (prev === only.id ? prev : only.id))
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [playerRemaining.length, !!pendingAnimRound])
 
   // ── Start game ──────────────────────────────────────────────────────────────
 

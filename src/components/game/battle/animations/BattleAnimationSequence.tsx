@@ -294,88 +294,87 @@ function CharPortrait({
   )
 }
 
-// ─── FloatingModifiers — impact text scattered on screen during number reveal ──
+// ─── FloatingModifiers — cinematic impact text during the fight sequence ──────
+//
+// Modifier descriptions float on-screen while scores count up.
+// Left column = events that hurt / buff A-side (debuffs on A, buffs from B).
+// Right column = events that hurt / buff B-side.
+//
+// Positioning: anchored to screen edge so they NEVER overflow regardless of
+// device width. Left items use `left: 2%`; right items use `right: 2%`.
+// maxWidth is clamped to `min(38vw, 220px)` which gives:
+//   mobile 375px  →  ~143px  (safe)
+//   tablet 768px  →  ~220px
+//   desktop 1200+ →   220px
 
-// Pre-computed screen positions: left column for A-side events, right for B-side.
-// Coords in %, avoiding the center portrait zone and the bottom score area.
-const FM_LEFT: { x: number; y: number }[] = [
-  { x: 9,  y: 16 },
-  { x: 11, y: 42 },
-  { x: 7,  y: 65 },
-  { x: 13, y: 82 },
-]
-const FM_RIGHT: { x: number; y: number }[] = [
-  { x: 88, y: 13 },
-  { x: 85, y: 39 },
-  { x: 91, y: 62 },
-  { x: 84, y: 79 },
-]
+const FM_SLOTS_L = [{ y: 11 }, { y: 34 }, { y: 57 }, { y: 78 }]
+const FM_SLOTS_R = [{ y:  9 }, { y: 32 }, { y: 55 }, { y: 76 }]
 
 function FloatingModifiers({ modifiers, active }: { modifiers: BattleModifier[]; active: boolean }) {
   if (!active) return null
-  const items = modifiers.filter(m => m.description && (m.score_delta_a !== 0 || m.score_delta_b !== 0)).slice(0, 6)
+  const items = modifiers
+    .filter(m => m.description && (m.score_delta_a !== 0 || m.score_delta_b !== 0))
+    .slice(0, 6)
   if (items.length === 0) return null
 
-  const leftUsed  = { count: 0 }
-  const rightUsed = { count: 0 }
+  let leftCount  = 0
+  let rightCount = 0
 
   return (
-    <div className="absolute inset-0 pointer-events-none z-25">
+    <div className="absolute inset-0 pointer-events-none z-[26]">
       {items.map((m, i) => {
-        const isNegA  = m.score_delta_a < 0
-        const isPosA  = m.score_delta_a > 0
-        const isNegB  = m.score_delta_b < 0
-        const isPosB  = m.score_delta_b > 0
+        const isNegA = m.score_delta_a < 0
+        const isPosA = m.score_delta_a > 0
+        const isNegB = m.score_delta_b < 0
+        const isPosB = m.score_delta_b > 0
 
-        // Position: debuffs land on the victim's side; buffs on the attacker's side
-        let pos: { x: number; y: number }
-        let textAlign: 'left' | 'right'
-        if (isNegA || isPosB) {
-          pos = FM_LEFT[leftUsed.count++ % FM_LEFT.length]
-          textAlign = 'left'
-        } else {
-          pos = FM_RIGHT[rightUsed.count++ % FM_RIGHT.length]
-          textAlign = 'right'
-        }
+        const onLeft = isNegA || isPosB
+        const slotY  = onLeft
+          ? FM_SLOTS_L[leftCount++  % FM_SLOTS_L.length].y
+          : FM_SLOTS_R[rightCount++ % FM_SLOTS_R.length].y
 
-        const isNeg = isNegA || isNegB
-        const isPos = isPosA || isPosB
-        const initX = textAlign === 'left' ? -18 : 18
+        const isNeg  = isNegA || isNegB
+        const isPos  = isPosA || isPosB
+        const initX  = onLeft ? -28 : 28
 
         return (
           <motion.div
             key={i}
             className="absolute"
             style={{
-              left: `${pos.x}%`,
-              top:  `${pos.y}%`,
-              maxWidth: '32%',
-              transform: 'translate(-50%, -50%)',
+              [onLeft ? 'left' : 'right']: '2%',
+              top: `${slotY}%`,
+              maxWidth: 'min(38vw, 220px)',
             }}
-            initial={{ opacity: 0, x: initX, scale: 0.75 }}
-            animate={{ opacity: [0, 1, 1, 0], x: 0, scale: [0.75, 1.05, 1, 0.95] }}
+            initial={{ opacity: 0, x: initX, scale: 0.5 }}
+            animate={{ opacity: [0, 1, 1, 0], x: 0, scale: [0.5, 1.12, 1, 0.95] }}
             transition={{
-              duration: 2.6,
-              delay: 0.08 + i * 0.22,
-              times: [0, 0.1, 0.62, 1],
+              duration: 2.8,
+              delay: 0.06 + i * 0.20,
+              times:   [0, 0.08, 0.60, 1],
               ease: 'easeOut',
             }}
           >
             <p
               className={cn(
-                'text-[10px] sm:text-[11px] font-semibold leading-snug',
-                'px-2 py-1 rounded-lg backdrop-blur-sm',
-                textAlign === 'left' ? 'text-left' : 'text-right',
+                'text-xs sm:text-sm font-bold leading-tight',
+                'px-2.5 py-1.5 rounded-xl border backdrop-blur-sm',
+                onLeft ? 'text-left' : 'text-right',
                 isNeg
-                  ? 'text-red-300 bg-red-950/70 border border-red-500/40'
+                  ? 'text-red-200 bg-red-950/85 border-red-500/55'
                   : isPos
-                    ? 'text-emerald-300 bg-emerald-950/70 border border-emerald-500/40'
-                    : 'text-white/70 bg-black/50 border border-white/15',
+                    ? 'text-emerald-200 bg-emerald-950/85 border-emerald-500/55'
+                    : 'text-white/80 bg-black/65 border-white/20',
               )}
               style={{
+                boxShadow: isNeg
+                  ? '0 0 18px #ef444440, inset 0 0 8px #ef444418'
+                  : isPos
+                    ? '0 0 18px #22c55e40, inset 0 0 8px #22c55e18'
+                    : 'none',
                 textShadow: isNeg
-                  ? '0 0 10px #f87171aa'
-                  : isPos ? '0 0 10px #4ade80aa'
+                  ? '0 0 10px #fca5a5cc'
+                  : isPos ? '0 0 10px #6ee7b7cc'
                   : 'none',
               }}
             >
@@ -491,23 +490,24 @@ export function BattleAnimationSequence({
       setS(p => ({ ...p, clash: false }))
       await delay(400)
 
-      // ── 5. Technique A  (effect fires left → right toward charB) ─────────
-      setS(p => ({ ...p, techniqueA: true, effectA: true }))
+      // ── 5. Technique A  +  number reveal START together (threaded) ───────
+      // Number reveal runs concurrently so scores count up DURING the fight.
+      // duration=5600 ms covers (techA 2500 + gap 400 + techB 2500 + gap 400) = 5800 ms
+      // so the count-up completes a beat before revealResult, giving a satisfying pause.
+      setS(p => ({ ...p, techniqueA: true, effectA: true, numberReveal: true }))
       await delay(2500)
       setS(p => ({ ...p, techniqueA: false, effectA: false }))
       await delay(400)
 
-      // ── 6. Technique B  (effect fires right → left toward charA) ─────────
+      // ── 6. Technique B  (number reveal still running in background) ───────
       setS(p => ({ ...p, techniqueB: true, effectB: true }))
       await delay(2500)
       setS(p => ({ ...p, techniqueB: false, effectB: false }))
+      // Short gap — count-up finishes here, ~200 ms of silence before result
       await delay(400)
 
-      // ── 7. Number reveal (count from 0 → final scores) ───────────────────
-      setS(p => ({ ...p, numberReveal: true }))
-      await delay(2900) // slightly longer than NumberReveal's 2400 ms duration
-
-      // ── 8. Show winner/loser result state ─────────────────────────────────
+      // ── 7. Show winner/loser result state ─────────────────────────────────
+      // Total elapsed since numberReveal: 2500+400+2500+400 = 5800 ms ≥ 5600 ms duration
       setS(p => ({ ...p, revealResult: true }))
       await delay(1600)
 
@@ -643,6 +643,7 @@ export function BattleAnimationSequence({
                   charName={charA.name}
                   active={s.numberReveal}
                   revealResult={s.revealResult}
+                  duration={5600}
                 />
                 <NumberReveal
                   targetScore={round.effective_score_b}
@@ -651,6 +652,7 @@ export function BattleAnimationSequence({
                   charName={charB.name}
                   active={s.numberReveal}
                   revealResult={s.revealResult}
+                  duration={5600}
                 />
               </motion.div>
             )}

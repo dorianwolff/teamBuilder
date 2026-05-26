@@ -169,6 +169,16 @@ export default function BattlePage({ params }: { params: Promise<{ roomId: strin
     setLocalConfirmed(false)
   }, [battle?.current_round])
 
+  // Auto-select the only remaining card so the Battle button always appears
+  // without requiring an extra click — prevents "last card unplayable" UX bug.
+  useEffect(() => {
+    if (!myState || uiConfirmed) return
+    if (myState.remaining_characters.length !== 1) return
+    const only = myState.remaining_characters[0]
+    setSelectedCharId(prev => (prev === only.id ? prev : only.id))
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [myState?.remaining_characters.length, uiConfirmed])
+
   // Auto-submit a random character when the local timer expires.
   // Also depends on battle.phase so it re-fires if phase becomes 'selecting'
   // while timerExpired is already true (edge-case: timer hits 0 mid-transition).
