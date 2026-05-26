@@ -47,6 +47,31 @@ export type AnimationType =
   | 'diable_jambe'     // Sanji's infernal spinning fire kick (Ifrit Jambe blue-white)
   | 'gura_gura'        // Whitebeard's reality-cracking earthquake shockwave
   | 'light_speed'      // Kizaru's Pika Pika no Mi — blinding laser orbs at the speed of light
+  // ── HxH-specific ──────────────────────────────────────────────────────────
+  | 'adult_gon'        // Forbidden all-in: ink-black aura, ghost eyes, ground-shattering palm
+  | 'godspeed'         // Killua's Narukami — lightning body, six dodge-afterimages, bolt from sky
+  | 'zero_hand'        // Netero's final prayer — spectrum beam cycling red→white, then void
+  | 'bungee_gum'       // Hisoka's elastic trap — pink strands, flying cards, theatrical snap
+  | 'skill_hunter'     // Chrollo's grimoire — six stolen auras layer simultaneously
+  | 'emperor_time'     // Kurapika: crimson eyes flood the screen, chains everywhere, Chain Jail
+  | 'rising_sun'       // Feitan's Pain Packer — darkness → ascending ball → solar corona ignites
+  | 'terpsichora'      // Neferpitou puppet mode — cat ears, marionette strings, impossible angles
+  | 'royal_photon'     // Meruem post-Rose — dark pressure + directional blast + gold photon motes
+  // ── DBZ-specific ──────────────────────────────────────────────────────────
+  | 'ultra_instinct'   // MUI Goku — silver aura vanishes, perfect calm, afterimage dodges
+  | 'ultra_ego'        // Vegeta destroyer — dark purple, cracks → swells stronger, demonic
+  | 'hakai'            // Beerus — violet atom-orb slow erasure, target dissolves to purple dust
+  | 'legendary_saiyan' // Broly LSSJ — chaotic green → gold, blank eyes, atmospheric violence
+  | 'beast_mode'       // Gohan Beast — upward magenta geyser, blue-white outer, crimson eyes
+  | 'spirit_sword'     // Trunks Rage — dual gold+blue aura, hope gathered, enormous white blade
+  // ── Additional character-specific ─────────────────────────────────────────
+  | 'power_impact'     // Jiren — compressed will-sphere, oval shockwave rings, gold will-arcs
+  | 'solar_kamehameha' // Cell Perfect — wide green-gold planetary-scale beam, solar flares
+  | 'black_frieza'     // Frieza Black — contracting dark void aura, instant Death Beam erasure
+  | 'candy_beam'       // Majin Buu Pure — bubbly pink innocence, wavy beam, cheerful dissolution
+  | 'needle_control'   // Illumi — silver needle rain, cold threads, puppet-jerk manipulation
+  | 'big_bang_impact'  // Uvogin — pure Enhancement: copper-red fist crater, shockwave
+  | 'nen_copy'         // Ging — neutral white mirror: receives technique, amplifies and returns
 
 /** A single technique that can be shown in the pre-battle animation */
 export interface TechniqueAnim {

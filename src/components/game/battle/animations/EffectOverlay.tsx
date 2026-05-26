@@ -9,6 +9,8 @@ import { motion } from 'framer-motion'
 import type { AnimationType } from '@/types/animation'
 import { ChidoriEffect, KamuiEffect, EightGatesEffect, GentleFistEffect } from './NarutoEffects'
 import { ConquerorsHakiEffect, AsuraEffect, DiableJambeEffect, GuraGuraEffect, LightSpeedEffect } from './OnePieceEffects'
+import { AdultGonEffect, GodspeedEffect, ZeroHandEffect, BungeeGumEffect, SkillHunterEffect, EmperorTimeEffect, RisingSunEffect, TerpsichoraEffect, RoyalPhotonEffect, NeedleControlEffect, BigBangImpactEffect, NenCopyEffect } from './HxHEffects'
+import { UltraInstinctEffect, UltraEgoEffect, HakaiEffect, LegendarySaiyanEffect, BeastModeEffect, SpiritSwordEffect, PowerImpactEffect, SolarKamehamehaEffect, BlackFriezaEffect, CandyBeamEffect } from './DBZEffects'
 
 interface EffectProps {
   color: string
@@ -950,6 +952,31 @@ export function EffectOverlay({ type, color, secondaryColor, side }: { type: Ani
     case 'diable_jambe':      return <DiableJambeEffect {...props} />
     case 'gura_gura':         return <GuraGuraEffect {...props} />
     case 'light_speed':       return <LightSpeedEffect {...props} />
+    // ── Hunter × Hunter ────────────────────────────────────────────────────
+    case 'adult_gon':         return <AdultGonEffect {...props} />
+    case 'godspeed':          return <GodspeedEffect {...props} />
+    case 'zero_hand':         return <ZeroHandEffect {...props} />
+    case 'bungee_gum':        return <BungeeGumEffect {...props} />
+    case 'skill_hunter':      return <SkillHunterEffect {...props} />
+    case 'emperor_time':      return <EmperorTimeEffect {...props} />
+    case 'rising_sun':        return <RisingSunEffect {...props} />
+    case 'terpsichora':       return <TerpsichoraEffect {...props} />
+    case 'royal_photon':      return <RoyalPhotonEffect {...props} />
+    // ── Dragon Ball ────────────────────────────────────────────────────────
+    case 'ultra_instinct':    return <UltraInstinctEffect {...props} />
+    case 'ultra_ego':         return <UltraEgoEffect {...props} />
+    case 'hakai':             return <HakaiEffect {...props} />
+    case 'legendary_saiyan':  return <LegendarySaiyanEffect {...props} />
+    case 'beast_mode':        return <BeastModeEffect {...props} />
+    case 'spirit_sword':      return <SpiritSwordEffect {...props} />
+    case 'power_impact':      return <PowerImpactEffect {...props} />
+    case 'solar_kamehameha':  return <SolarKamehamehaEffect {...props} />
+    case 'black_frieza':      return <BlackFriezaEffect {...props} />
+    case 'candy_beam':        return <CandyBeamEffect {...props} />
+    // ── Hunter × Hunter (additional) ───────────────────────────────────────
+    case 'needle_control':    return <NeedleControlEffect {...props} />
+    case 'big_bang_impact':   return <BigBangImpactEffect {...props} />
+    case 'nen_copy':          return <NenCopyEffect {...props} />
     default:                  return <PhysicalEffect {...props} />
   }
 }

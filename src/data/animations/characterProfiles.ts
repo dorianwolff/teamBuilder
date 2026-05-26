@@ -690,135 +690,200 @@ export const CHARACTER_PROFILES: Record<string, CharacterAnimProfile> = {
   },
 
   // ── Dragon Ball ─────────────────────────────────────────────────────────────
+
+  // Mastered Ultra Instinct — silver hair, silver aura that VANISHES at mastery;
+  // the most powerful form is visually the most understated.
   goku_mui: {
     slug: 'goku_mui', auraColor: '#f8fafc',
-    techniques: [{ name: 'Mastered Ultra Instinct!!!', type: 'ki_aura', color: '#f8fafc', secondaryColor: '#e0f2fe', duration: 4000, flavour: 'Empty mind — the body moves on its own' }],
+    techniques: [{ name: 'Mastered Ultra Instinct — Autonomous Movement!!!', type: 'ultra_instinct', color: '#f8fafc', secondaryColor: '#e0f2fe', duration: 3800, flavour: 'Empty mind — the aura disappears, yet nothing can touch him' }],
   },
+
+  // Ultra Ego — dark tyrian purple, destroyer energy, SWELLS after absorbing damage
   vegeta_ultra_ego: {
-    slug: 'vegeta_ultra_ego', auraColor: '#a855f7',
-    techniques: [{ name: 'Ultra Ego — Final Explosion!!!', type: 'ki_aura', color: '#a855f7', secondaryColor: '#e9d5ff', duration: 3600, flavour: 'Stronger with every hit taken' }],
+    slug: 'vegeta_ultra_ego', auraColor: '#7c3aed',
+    techniques: [{ name: 'Ultra Ego — Destroyer\'s Pride!!!', type: 'ultra_ego', color: '#7c3aed', secondaryColor: '#e879f9', duration: 3800, flavour: 'The more I\'m hurt, the more powerful I become — this is the pride of a Saiyan!' }],
   },
+
+  // Beerus Hakai — atom-shaped violet orb, slow and inexorable erasure
   beerus: {
-    slug: 'beerus', auraColor: '#a855f7',
-    techniques: [{ name: 'Hakai!!!', type: 'divine', color: '#a855f7', secondaryColor: '#ede9fe', duration: 3800, flavour: 'Destruction — the beginning of creation' }],
+    slug: 'beerus', auraColor: '#7c3aed',
+    techniques: [{ name: 'Hakai — Destruction!!!', type: 'hakai', color: '#7c3aed', secondaryColor: '#c084fc', duration: 3800, flavour: 'You are already gone — you simply haven\'t realised it yet' }],
   },
+
+  // Whis — Angels transcend all mortal concepts; perfect autonomous combat
   whis: {
     slug: 'whis', auraColor: '#e0f2fe',
-    techniques: [{ name: 'Autonomous Ultra Instinct!!!', type: 'divine', color: '#bfdbfe', secondaryColor: '#ffffff', duration: 4200, flavour: 'Angels transcend all concepts of combat' }],
+    techniques: [{ name: 'Autonomous Ultra Instinct — Angel\'s Path!!!', type: 'ultra_instinct', color: '#e0f2fe', secondaryColor: '#ffffff', duration: 4200, flavour: 'Angels do not fight — they simply are, and you are not' }],
   },
+
+  // Broly LSSJ — chaotic green aura erupting asymmetrically; blank eyes; most violent
   broly_dbs: {
     slug: 'broly_dbs', auraColor: '#4ade80',
-    techniques: [{ name: 'Gigantic Explosion!!!', type: 'ki_aura', color: '#4ade80', secondaryColor: '#86efac', duration: 3600, flavour: 'Primal Saiyan force unchained' }],
+    techniques: [{ name: 'Legendary Super Saiyan — Primal Destruction!!!', type: 'legendary_saiyan', color: '#4ade80', secondaryColor: '#fbbf24', duration: 4000, flavour: 'There is nothing left inside — only the aura of a god of destruction' }],
   },
+
+  // Gohan Beast — upward magenta geyser, layered aura, crimson eyes, barely-contained fury
   gohan_beast: {
-    slug: 'gohan_beast', auraColor: '#ef4444',
-    techniques: [{ name: 'Beast Mode — Special Beam Cannon!!!', type: 'ki_beam', color: '#ef4444', secondaryColor: '#fbbf24', duration: 3400, flavour: 'The power of a father\'s love' }],
+    slug: 'gohan_beast', auraColor: '#c026d3',
+    techniques: [{ name: 'Beast Mode — Soaring Dragon Strike!!!', type: 'beast_mode', color: '#c026d3', secondaryColor: '#bfdbfe', duration: 3800, flavour: 'The power that was always there — I just refused to use it' }],
   },
+
+  // Jiren — pure compressed will; the most powerful mortal in Universe 11
   jiren: {
     slug: 'jiren', auraColor: '#ef4444',
-    techniques: [{ name: 'Power Impact!!!', type: 'ki_aura', color: '#ef4444', secondaryColor: '#fca5a5', duration: 3600, flavour: 'Power surpassing limits itself' }],
+    techniques: [{ name: 'Power Impact — Will Made Physical!!!', type: 'power_impact', color: '#ef4444', secondaryColor: '#fbbf24', duration: 3600, flavour: 'Power that surpasses the limits of the gods themselves — my will IS the ki' }],
   },
+
+  // Cell Perfect — Solar Kamehameha; the perfect organism's ultimate beam
   cell_perfect: {
     slug: 'cell_perfect', auraColor: '#4ade80',
-    techniques: [{ name: 'Solar Kamehameha!!!', type: 'ki_beam', color: '#4ade80', secondaryColor: '#86efac', duration: 3400, flavour: 'Perfection, achieved' }],
+    techniques: [{ name: 'Solar Kamehameha — Planetary Erasure!!!', type: 'solar_kamehameha', color: '#4ade80', secondaryColor: '#fbbf24', duration: 3600, flavour: 'I am perfect — and this beam is the proof. It would destroy the Earth itself.' }],
   },
+
+  // Black Frieza — 10 years in hyperbolic time chamber; surpasses both MUI and UE
   frieza_black: {
-    slug: 'frieza_black', auraColor: '#1e293b',
-    techniques: [{ name: 'Black Frieza — Emperor of the Universe!!!', type: 'ki_aura', color: '#1e1b4b', secondaryColor: '#6d28d9', duration: 3800, flavour: '10 years of training in the hyperbolic time chamber' }],
+    slug: 'frieza_black', auraColor: '#1e1b4b',
+    techniques: [{ name: 'Black Frieza — Death Beam of the Emperor!!!', type: 'black_frieza', color: '#1e1b4b', secondaryColor: '#6d28d9', duration: 3800, flavour: 'Ten years of silence. One second to end them both. I needed no more.' }],
   },
+
+  // Golden Frieza — gilded tyrant, Death Beam empowered by golden ki
   frieza_golden: {
     slug: 'frieza_golden', auraColor: '#fbbf24',
-    techniques: [{ name: 'Golden Frieza — Death Beam!!!', type: 'ki_beam', color: '#fbbf24', secondaryColor: '#fef08a', duration: 3000, flavour: 'The gilded emperor\'s wrath' }],
+    techniques: [{ name: 'Golden Frieza — Emperor\'s Death Beam!!!', type: 'ki_beam', color: '#fbbf24', secondaryColor: '#fef08a', duration: 3200, flavour: 'The gilded emperor — more beautiful and more deadly than ever' }],
   },
+
+  // Future Trunks — hope energy from all survivors, Spirit Sword of light
   future_trunks_rage: {
     slug: 'future_trunks_rage', auraColor: '#3b82f6',
-    techniques: [{ name: 'Sword of Hope — Rage Mode!!!', type: 'ki_aura', color: '#3b82f6', secondaryColor: '#bfdbfe', duration: 3400, flavour: 'The hope of the future' }],
+    techniques: [{ name: 'Sword of Hope — Final Hope Slash!!!', type: 'spirit_sword', color: '#3b82f6', secondaryColor: '#fbbf24', duration: 3800, flavour: 'Everyone\'s hope becomes this blade — I will not let their future die' }],
   },
+
+  // Hit — Time Skip; the world freezes, he moves in the gap
   hit_universe6: {
     slug: 'hit_universe6', auraColor: '#94a3b8',
-    techniques: [{ name: 'Time Skip — Ruthless Blow!', type: 'time_stop', color: '#94a3b8', secondaryColor: '#cbd5e1', duration: 3200, flavour: 'Half a second — that\'s all' }],
+    techniques: [{ name: 'Time Skip — Ruthless Blow!!!', type: 'time_stop', color: '#94a3b8', secondaryColor: '#cbd5e1', duration: 3200, flavour: 'Half a second — enough to end your life a thousand times over' }],
   },
+
+  // Android 18 — infinite energy, rapid-fire ki volley, mechanical precision
   android_18_super: {
     slug: 'android_18_super', auraColor: '#60a5fa',
-    techniques: [{ name: 'Infinity Bullet!!!', type: 'ki_beam', color: '#60a5fa', secondaryColor: '#bfdbfe', duration: 2600, flavour: 'Infinite energy — infinite firepower' }],
+    techniques: [{ name: 'Infinity Bullet — Endless Volley!!!', type: 'ki_beam', color: '#60a5fa', secondaryColor: '#e0f2fe', duration: 2800, flavour: 'I will never run out of energy — can you say the same?' }],
   },
+
+  // Krillin — Destructo Disc cuts through any power level
   krillin_super: {
     slug: 'krillin_super', auraColor: '#fbbf24',
-    techniques: [{ name: 'Destructo Disc!!!', type: 'ki_beam', color: '#facc15', secondaryColor: '#fef08a', duration: 2400, flavour: 'The disc ignores power levels' }],
+    techniques: [{ name: 'Destructo Disc — Earth Splitter!!!', type: 'ki_beam', color: '#facc15', secondaryColor: '#fef9c3', duration: 2600, flavour: 'This disc doesn\'t care about power levels — it cuts regardless' }],
   },
+
+  // Master Roshi — the original Kamehameha at MAX POWER
   master_roshi: {
     slug: 'master_roshi', auraColor: '#fbbf24',
-    techniques: [{ name: 'MAX Power Kamehameha!!!', type: 'ki_beam', color: '#fbbf24', secondaryColor: '#fef9c3', duration: 2800, flavour: 'The technique that started it all' }],
+    techniques: [{ name: 'MAX Power Kamehameha!!!', type: 'ki_beam', color: '#fbbf24', secondaryColor: '#ffffff', duration: 3000, flavour: 'The Turtle Hermit — the man who created the technique that changed everything' }],
   },
+
+  // Piccolo Orange — Special Beam Cannon drilling through existence
   piccolo_orange: {
     slug: 'piccolo_orange', auraColor: '#4ade80',
-    techniques: [{ name: 'Special Beam Cannon!!!', type: 'ki_beam', color: '#4ade80', secondaryColor: '#86efac', duration: 2800, flavour: 'Four minutes of concentration, one shot' }],
+    techniques: [{ name: 'Special Beam Cannon — Drill of Light!!!', type: 'ki_beam', color: '#4ade80', secondaryColor: '#86efac', duration: 3000, flavour: 'Four minutes of absolute concentration — one hole through the universe' }],
   },
+
+  // Majin Buu Pure — candy beam extinction, innocent pink chaos
   majin_buu_pure: {
     slug: 'majin_buu_pure', auraColor: '#f9a8d4',
-    techniques: [{ name: 'Extinction Attack!!!', type: 'ki_aura', color: '#f9a8d4', secondaryColor: '#fce7f3', duration: 3200, flavour: 'Pure instinct — pure destruction' }],
+    techniques: [{ name: 'Candy Beam — Extinction Amusement!!!', type: 'candy_beam', color: '#f9a8d4', secondaryColor: '#fbbf24', duration: 3200, flavour: 'You become candy now. Buu happy.' }],
   },
 
   // ── HxH ─────────────────────────────────────────────────────────────────────
+
+  // Gon Adult — forbidden all-in; ink-black aura, white ghost eyes, single palm detonation
   gon_adult: {
-    slug: 'gon_adult', auraColor: '#4ade80',
-    techniques: [{ name: 'Jajanken — Rock!!!', type: 'nen_aura', color: '#4ade80', secondaryColor: '#86efac', duration: 3600, flavour: 'All potential released in one moment' }],
+    slug: 'gon_adult', auraColor: '#052e16',
+    techniques: [{ name: 'Jajanken — Forbidden Rock: All In!!!', type: 'adult_gon', color: '#4ade80', secondaryColor: '#d1fae5', duration: 3800, flavour: 'I give up everything — every possibility, every future — for this one hit' }],
   },
+
+  // Killua Godspeed — lightning body, six dodge-afterimages, Narukami thunderbolt
   killua_godspeed: {
     slug: 'killua_godspeed', auraColor: '#38bdf8',
-    techniques: [{ name: 'Godspeed — Lightning Palm!!!', type: 'nen_aura', color: '#38bdf8', secondaryColor: '#7dd3fc', duration: 3200, flavour: 'Speed so great he leaves afterimages' }],
+    techniques: [{ name: 'Godspeed — Narukami: Thunderbolt!!!', type: 'godspeed', color: '#38bdf8', secondaryColor: '#ffffff', duration: 3400, flavour: 'I convert my aura to electricity and become the bolt itself' }],
   },
+
+  // Meruem post-Rose — absorbed nen, directional blast, gold photon motes
   meruem_post_rose: {
-    slug: 'meruem_post_rose', auraColor: '#facc15',
-    techniques: [{ name: 'Royal Flush — Nen Absorption!!!', type: 'nen_aura', color: '#facc15', secondaryColor: '#fef08a', duration: 4000, flavour: 'All Nen becomes his own' }],
+    slug: 'meruem_post_rose', auraColor: '#fbbf24',
+    techniques: [{ name: 'Royal Photon — Absorbed Nen: Full Release!!!', type: 'royal_photon', color: '#fbbf24', secondaryColor: '#4c1d95', duration: 4000, flavour: 'I have become everything — your power merely extends my dominion' }],
   },
+
+  // Neferpitou — cat ears, marionette strings, mechanical corpse-puppet strikes
   neferpitou: {
     slug: 'neferpitou', auraColor: '#f9a8d4',
-    techniques: [{ name: 'Terpsichora — Doctor Blythe!', type: 'nen_aura', color: '#f9a8d4', secondaryColor: '#fce7f3', duration: 3000, flavour: 'The strongest Royal Guard' }],
+    techniques: [{ name: 'Terpsichora — Combat Puppet: Absolute Speed!!!', type: 'terpsichora', color: '#f9a8d4', secondaryColor: '#dc2626', duration: 3200, flavour: 'Even in death the strings move — the dance never ends' }],
   },
+
+  // Netero Zero Hand — prayer orbs, Kannon mandala, spectrum beam, white nova, emptiness
   netero: {
-    slug: 'netero', auraColor: '#f8fafc',
-    techniques: [{ name: 'Zero Hand — Empty!!!', type: 'nen_aura', color: '#f8fafc', secondaryColor: '#e0f2fe', duration: 4000, flavour: 'Every last drop of Nen' }],
+    slug: 'netero', auraColor: '#fbbf24',
+    techniques: [{ name: 'Zero Hand — Every Last Drop!!!', type: 'zero_hand', color: '#fbbf24', secondaryColor: '#f8fafc', duration: 4200, flavour: 'Nothing remains — I have given everything that I am' }],
   },
+
+  // Hisoka — pink elastic, flying cards, theatrical snap
   hisoka: {
     slug: 'hisoka', auraColor: '#f9a8d4',
-    techniques: [{ name: 'Bungee Gum — Elastic Love!!!', type: 'nen_aura', color: '#f9a8d4', secondaryColor: '#fbbf24', duration: 2800, flavour: 'Bungee Gum has the properties of both rubber and gum' }],
+    techniques: [{ name: 'Bungee Gum — Love & Terror!!!', type: 'bungee_gum', color: '#f9a8d4', secondaryColor: '#fbbf24', duration: 3000, flavour: 'Bungee Gum has the properties of both rubber and gum — you were attached before you noticed' }],
   },
+
+  // Chrollo Full Prep — grimoire opens, six stolen auras layer simultaneously
   chrollo_full_prep: {
     slug: 'chrollo_full_prep', auraColor: '#334155',
-    techniques: [{ name: 'Skill Hunter — Full Prep!!!', type: 'nen_aura', color: '#334155', secondaryColor: '#64748b', duration: 3400, flavour: 'Every stolen ability ready at once' }],
+    techniques: [{ name: 'Skill Hunter — Full Repertoire: All Pages!!!', type: 'skill_hunter', color: '#334155', secondaryColor: '#64748b', duration: 3600, flavour: 'Every power stolen from every person I have killed — all of them, at once' }],
   },
+
+  // Kurapika Emperor Time — crimson eyes flood screen, metallic chains, Chain Jail prison
   kurapika_emperor_time: {
     slug: 'kurapika_emperor_time', auraColor: '#dc2626',
-    techniques: [{ name: 'Emperor Time — Chain Jail!!!', type: 'chain_jail', color: '#dc2626', secondaryColor: '#fbbf24', duration: 3400, flavour: 'These chains were made for Phantom Troupe alone' }],
+    techniques: [{ name: 'Emperor Time — Chain Jail: Absolute Imprisonment!!!', type: 'emperor_time', color: '#dc2626', secondaryColor: '#fbbf24', duration: 3600, flavour: 'My eyes go red, and every category of Nen becomes mine — there is no escape from these chains' }],
   },
+
+  // Feitan Rising Sun — darkness, ascending ball, solar corona burns everything
   feitan_rising_sun: {
-    slug: 'feitan_rising_sun', auraColor: '#fbbf24',
-    techniques: [{ name: 'Rising Sun — Pain Packer!!!', type: 'ki_aura', color: '#fbbf24', secondaryColor: '#dc2626', duration: 3400, flavour: 'Anger turns to absolute temperature' }],
+    slug: 'feitan_rising_sun', auraColor: '#f97316',
+    techniques: [{ name: 'Rising Sun — Pain Packer: Miniature Star!!!', type: 'rising_sun', color: '#f97316', secondaryColor: '#fef08a', duration: 3600, flavour: 'All the pain you gave me — I compress it into a sun and burn the world with it' }],
   },
+
+  // Ging — perfectly neutral Nen mirror; copies and returns with total understanding
   ging_freecss: {
-    slug: 'ging_freecss', auraColor: '#a3e635',
-    techniques: [{ name: 'Nen Copy & Return!!!', type: 'nen_aura', color: '#a3e635', secondaryColor: '#d9f99d', duration: 3000, flavour: 'Every technique used against him becomes his own' }],
+    slug: 'ging_freecss', auraColor: '#f8fafc',
+    techniques: [{ name: 'Nen Copy — Returned with Interest!!!', type: 'nen_copy', color: '#f8fafc', secondaryColor: '#e2e8f0', duration: 3200, flavour: 'Whatever you give me — I give it back. Observe, understand, return. That is all.' }],
   },
+
+  // Illumi — silver needle rain, cold puppet threads, alien control
   illumi: {
     slug: 'illumi', auraColor: '#e2e8f0',
-    techniques: [{ name: 'Needle People — Mass Manipulation!!!', type: 'nen_aura', color: '#e2e8f0', secondaryColor: '#f1f5f9', duration: 2800, flavour: 'Everyone becomes his puppet' }],
+    techniques: [{ name: 'Needlemen — Cold Insertion: Total Control!!!', type: 'needle_control', color: '#e2e8f0', secondaryColor: '#94a3b8', duration: 3000, flavour: 'A single needle, and your free will is gone forever — there is no pain, only obedience' }],
   },
+
+  // Uvogin — pure Enhancement, the mightiest body in the Troupe
   uvogin: {
-    slug: 'uvogin', auraColor: '#f97316',
-    techniques: [{ name: 'Big Bang Impact!!!', type: 'nen_aura', color: '#f97316', secondaryColor: '#fbbf24', duration: 3000, flavour: 'Pure Enhancement — the mightiest body' }],
+    slug: 'uvogin', auraColor: '#ea580c',
+    techniques: [{ name: 'Big Bang Impact — One Fist: All Enhancement!!!', type: 'big_bang_impact', color: '#ea580c', secondaryColor: '#fbbf24', duration: 3000, flavour: 'No tricks. No ability. The strongest body in the Phantom Troupe — one punch splits the ground.' }],
   },
+
+  // Franklin — Double Machine Gun, nen bullets fired from finger-cannons
   franklin: {
     slug: 'franklin', auraColor: '#f97316',
-    techniques: [{ name: 'Double Machine Gun!!!', type: 'nen_aura', color: '#f97316', secondaryColor: '#fb923c', duration: 2800, flavour: 'Every bullet a Nen cannonball' }],
+    techniques: [{ name: 'Double Machine Gun — Ten Thousand Shots!!!', type: 'nen_aura', color: '#dc2626', secondaryColor: '#f97316', duration: 2800, flavour: 'Every finger fires — each bullet a cannonball of compressed Nen' }],
   },
+
+  // Phinks — Ripper Cyclotron; arm rotation compounds multiplicatively
   phinks: {
     slug: 'phinks', auraColor: '#ef4444',
-    techniques: [{ name: 'Ripper Cyclotron — Max Rotation!!!', type: 'physical', color: '#ef4444', secondaryColor: '#dc2626', duration: 2800, flavour: 'Each rotation multiplies destruction' }],
+    techniques: [{ name: 'Ripper Cyclotron — 15 Rotations!!!', type: 'physical', color: '#ef4444', secondaryColor: '#dc2626', duration: 2800, flavour: 'Each spin multiplies the power — fifteen rotations ends everything' }],
   },
+
+  // Shalnark — Black Voice antenna, autopilot control of living weapons
   shalnark: {
     slug: 'shalnark', auraColor: '#7c3aed',
-    techniques: [{ name: 'Black Voice — Autopilot!!!', type: 'nen_aura', color: '#7c3aed', secondaryColor: '#a855f7', duration: 2800, flavour: 'You are now my puppet' }],
+    techniques: [{ name: 'Black Voice — Remote Control!!!', type: 'nen_aura', color: '#7c3aed', secondaryColor: '#a855f7', duration: 2800, flavour: 'Insert the antenna — from that moment you fight for me' }],
   },
 }
 
